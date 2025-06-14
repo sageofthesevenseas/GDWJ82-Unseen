@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmr5lyfmqmup3"]
+
+[ext_resource type="Script" uid="uid://dcfikt4o3jl0f" path="res://00_Scenes/chest.gd" id="1_5x6e1"]
+[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_vkt0e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ys4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vkt0e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Chest" type="StaticBody2D"]
+script = ExtResource("1_5x6e1")
+
+[node name="Animated Sprite" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5ys4r")

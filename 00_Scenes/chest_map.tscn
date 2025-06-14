@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://l04nsg0jtwj5"]
+
+[ext_resource type="Script" uid="uid://bgqrkld4qvdyt" path="res://Scripts/chestmap.gd" id="1_uobb1"]
+[ext_resource type="PackedScene" uid="uid://cogyev6rih8q2" path="res://00_Scenes/hidden_chest.tscn" id="2_p1n0o"]
+
+[node name="ChestMap" type="Node2D"]
+script = ExtResource("1_uobb1")
+chest_prefab = ExtResource("2_p1n0o")
+
+[node name="SpawnPoints" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="SP" type="Node2D" parent="SpawnPoints"]
+
+[node name="SP2" type="Node2D" parent="SpawnPoints"]
+position = Vector2(28, 40)
+
+[node name="SP3" type="Node2D" parent="SpawnPoints"]
+position = Vector2(70, 10)
+
+[node name="SP4" type="Node2D" parent="SpawnPoints"]
+position = Vector2(61, -58)
+
+[node name="SP5" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-80, 2)
+
+[node name="SP29" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-41, -16)
+
+[node name="SP6" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-66, 107)
+
+[node name="SP7" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-15, 40)
+
+[node name="SP8" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-39, -54)
+
+[node name="SP9" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-123, 81)
+
+[node name="SP10" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-129, 16)
+
+[node name="SP11" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-203, 54)
+
+[node name="SP12" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-81, 36)
+
+[node name="SP13" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-100, -51)
+
+[node name="SP14" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-34, -130)
+
+[node name="SP15" type="Node2D" parent="SpawnPoints"]
+position = Vector2(74, -122)
+
+[node name="SP16" type="Node2D" parent="SpawnPoints"]
+position = Vector2(155, -60)
+
+[node name="SP17" type="Node2D" parent="SpawnPoints"]
+position = Vector2(175, 15)
+
+[node name="SP18" type="Node2D" parent="SpawnPoints"]
+position = Vector2(125, 86)
+
+[node name="SP19" type="Node2D" parent="SpawnPoints"]
+position = Vector2(42, 148)
+
+[node name="SP20" type="Node2D" parent="SpawnPoints"]
+position = Vector2(51, 83)
+
+[node name="SP21" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-24, 152)
+
+[node name="SP22" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-106, 180)
+
+[node name="SP23" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-141, 122)
+
+[node name="SP24" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-242, -29)
+
+[node name="SP25" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-168, -26)
+
+[node name="SP26" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-162, -93)
+
+[node name="SP27" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-89, -97)
+
+[node name="SP28" type="Node2D" parent="SpawnPoints"]
+position = Vector2(2, -99)
+
+[node name="ChestsSpawned" type="Node" parent="."]
+unique_name_in_owner = true

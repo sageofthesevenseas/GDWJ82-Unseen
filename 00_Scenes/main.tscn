@@ -1,10 +1,20 @@
-[gd_scene format=3 uid="uid://ctxqtjrcc0d7"]
+[gd_scene load_steps=4 format=3 uid="uid://ctxqtjrcc0d7"]
+
+[ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_xfl2n"]
+[ext_resource type="PackedScene" uid="uid://l04nsg0jtwj5" path="res://00_Scenes/chest_map.tscn" id="2_1jgy6"]
+[ext_resource type="PackedScene" uid="uid://bvgi6cgxe834m" path="res://00_Scenes/Debug Nodes/debug_on_ready_screecher.tscn" id="3_a7hb6"]
 
 [node name="GameController" type="Node"]
+
+[node name="DEBUG_Quit_Restart_Key" parent="." instance=ExtResource("1_xfl2n")]
 
 [node name="World3D" type="Node3D" parent="."]
 
 [node name="World2D" type="Node2D" parent="."]
+
+[node name="ChestMap" parent="World2D" instance=ExtResource("2_1jgy6")]
+
+[node name="DEBUG_OnReady_Screecher" parent="World2D/ChestMap" instance=ExtResource("3_a7hb6")]
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cniuy7xdthf14"]
+
+[ext_resource type="Script" uid="uid://u4f02qfvr7xk" path="res://debug_quit_restart_key.gd" id="1_htx60"]
+
+[node name="DEBUG_Quit_Restart_Key" type="Node"]
+script = ExtResource("1_htx60")
