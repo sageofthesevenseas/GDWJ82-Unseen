@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtixa5vp1ijuq"]
+
+[ext_resource type="Texture2D" uid="uid://k00sde5uick7" path="res://VFX/VFX_Sprites/light00.png" id="1_ra2yb"]
+
+[node name="MainLight" type="Node2D"]
+
+[node name="LightOverlay" type="PointLight2D" parent="."]
+energy = 5.03
+range_item_cull_mask = 2
+texture = ExtResource("1_ra2yb")
+texture_scale = 7.63
+height = 512.0
+
+[node name="Shadow" type="PointLight2D" parent="."]
+visibility_layer = 3
+z_index = 1
+energy = 4.9
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+texture = ExtResource("1_ra2yb")
+texture_scale = 6.14

@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b66d1l1857x3g"]
+[gd_scene load_steps=9 format=3 uid="uid://b66d1l1857x3g"]
 
-[ext_resource type="PackedScene" uid="uid://c0ql3ift72m6o" path="res://VFX/VFX_Sprites/backgroundTexture01.tscn" id="1_70k2p"]
-[ext_resource type="Texture2D" uid="uid://k00sde5uick7" path="res://VFX/VFX_Sprites/light00.png" id="2_1vqgh"]
+[ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="1_chrnd"]
 [ext_resource type="PackedScene" uid="uid://bxfw4dap4a6ha" path="res://00_Scenes/StaticObjects/rock02.tscn" id="3_3tj0l"]
 [ext_resource type="Texture2D" uid="uid://i6ehfnl2as6i" path="res://EnvTextures/floor.png" id="4_1vqgh"]
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="4_70k2p"]
@@ -1048,44 +1047,10 @@ sources/1 = SubResource("TileSetAtlasSource_a35pm")
 [node name="TestScenery" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-position = Vector2(-523, -1406)
 color = Color(0, 0, 0, 1)
 
-[node name="Background" type="Node" parent="."]
-
-[node name="BackgroundTexture" parent="Background" instance=ExtResource("1_70k2p")]
-visible = false
-position = Vector2(778, 372)
-
-[node name="BackgroundTexture4" parent="Background" instance=ExtResource("1_70k2p")]
-visible = false
-position = Vector2(778, -1676)
-
-[node name="BackgroundTexture2" parent="Background" instance=ExtResource("1_70k2p")]
-visible = false
-position = Vector2(-1270, 372)
-
-[node name="BackgroundTexture3" parent="Background" instance=ExtResource("1_70k2p")]
-visible = false
-position = Vector2(-1270, -1676)
-
-[node name="LightTest" type="Node2D" parent="."]
-position = Vector2(301, -703)
-
-[node name="LightOverlay" type="PointLight2D" parent="LightTest"]
-energy = 4.57
-texture = ExtResource("2_1vqgh")
-texture_scale = 6.2
-height = 512.0
-
-[node name="Shadow" type="PointLight2D" parent="LightTest"]
-energy = 3.83
-blend_mode = 2
-shadow_enabled = true
-shadow_color = Color(0.427493, 0.427493, 0.427493, 0)
-texture = ExtResource("2_1vqgh")
-texture_scale = 11.38
+[node name="MainLight" parent="." instance=ExtResource("1_chrnd")]
+position = Vector2(-698, -1302)
 
 [node name="Node" type="Node" parent="."]
 
@@ -1114,8 +1079,6 @@ rotation = -0.648709
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color(0.423651, 0.423651, 0.423651, 1)
-visibility_layer = 2
-z_index = 1
 position = Vector2(122, -1153)
 rotation = -0.00108712
 tile_set = SubResource("TileSet_e2pd5")
@@ -1123,5 +1086,5 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-65536, 1, 0, -65535, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -1, 1, 0, 65535, 1, 0, 65534, 1, 0, -2, 1, 0, -3, 1, 0, -4, 1, 0, -5, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 131071, 1, 0, 196607, 1, 0, 131072, 1, 0, 65536, 1, 0, 65537, 1, 0, 1, 1, 0, 0, 1, 0, 131068, 1, 0, 131069, 1, 0, 196606, 1, 0, 262146, 1, 0, 262145, 1, 0, 196609, 1, 0, 131073, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 327681, 1, 0, 196610, 1, 0, 131074, 1, 0, 65538, 1, 0, 65539, 1, 0, 3, 1, 0, 262143, 1, 0, 327679, 1, 0, 393215, 1, 0, 458751, 1, 0, 393214, 1, 0, 327678, 1, 0, 262141, 1, 0, 196605, 1, 0, 131070, 1, 0, 262142, 1, 0, 327677, 1, 0, 393213, 1, 0, 393212, 1, 0, 327676, 1, 0, 262140, 1, 0, 196604, 1, 0, 131067, 1, 0, 196603, 1, 0, 262139, 1, 0, 327675, 1, 0, 327674, 1, 0, -65541, 1, 0, -65542, 1, 0, -131078, 1, 0, -131077, 1, 0, -65539, 1, 0, -65538, 1, 0, -65540, 1, 0, 131066, 1, 0, 196602, 1, 0, 262138, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -131070, 1, 0, -65534, 1, 0, 2, 1, 0, -65533, 1, 0, -131069, 1, 0, -196605, 1, 0, -196606, 1, 0, 131075, 1, 0, 196611, 1, 0, 262147, 1, 0, 327683, 1, 0, 393219, 1, 0, 393218, 1, 0, 393217, 1, 0, 393216, 1, 0, 327682, 1, 0, 458750, 1, 0, 458749, 1, 0, 458748, 1, 0, 458747, 1, 0, 458746, 1, 0, 458745, 1, 0, 393210, 1, 0, 393211, 1, 0, 393209, 1, 0, 327673, 1, 0, 196601, 1, 0, 131065, 1, 0, 65529, 1, 0, -7, 1, 0, -65543, 1, 0, -131079, 1, 0, 65530, 1, 0, -6, 1, 0, 262137, 1, 0, 262148, 1, 0, 262149, 1, 0, 393220, 1, 0, 393221, 1, 0, 327685, 1, 0, 327684, 1, 0, 196613, 1, 0, 131077, 1, 0, 131076, 1, 0, 196612, 1, 0, 65540, 1, 0, 4, 1, 0, 5, 1, 0, 65541, 1, 0, -65532, 1, 0, -65531, 1, 0, -131067, 1, 0, -131068, 1, 0, -196604, 1, 0, -196603, 1, 0)
 
 [node name="backgroundOverlay" parent="TileMap" instance=ExtResource("4_70k2p")]
-position = Vector2(-238, 496)
+position = Vector2(-235.539, 495.744)
 scale = Vector2(4, 4)
