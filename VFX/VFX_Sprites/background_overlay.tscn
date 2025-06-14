@@ -1,11 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccrokse2n0guf"]
 
 [sub_resource type="Gradient" id="Gradient_eg23k"]
-offsets = PackedFloat32Array(0, 0.837662)
-colors = PackedColorArray(0.227443, 0.166613, 0.0107074, 0.458824, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.857143)
+colors = PackedColorArray(0.19, 0.19, 0.19, 0.129412, 0.11, 0.0737, 0.011, 0.745098)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wxiqh"]
-frequency = 0.0017
+frequency = 0.0059
+fractal_octaves = 6
+fractal_lacunarity = 2.83
+fractal_gain = 0.895
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dmgby"]
 width = 2048
