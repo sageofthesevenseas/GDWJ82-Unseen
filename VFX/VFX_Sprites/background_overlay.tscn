@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccrokse2n0guf"]
+
+[sub_resource type="Gradient" id="Gradient_eg23k"]
+offsets = PackedFloat32Array(0, 0.837662)
+colors = PackedColorArray(0.227443, 0.166613, 0.0107074, 0.458824, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wxiqh"]
+frequency = 0.0017
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dmgby"]
+width = 2048
+height = 2048
+seamless = true
+color_ramp = SubResource("Gradient_eg23k")
+noise = SubResource("FastNoiseLite_wxiqh")
+
+[node name="backgroundOverlay" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("NoiseTexture2D_dmgby")
