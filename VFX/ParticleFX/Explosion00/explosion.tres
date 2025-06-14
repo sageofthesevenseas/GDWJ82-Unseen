@@ -1,0 +1,50 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://cx2af8q41i0bo"]
+
+[ext_resource type="Texture2D" uid="uid://bgoie51m36q5j" path="res://VFX/ParticleFX/Explosion00/Smoke01.png" id="1_khgbi"]
+[ext_resource type="Texture2D" uid="uid://dyb3grhyol868" path="res://VFX/ParticleFX/Explosion00/Smoke02.png" id="2_ono3h"]
+[ext_resource type="Texture2D" uid="uid://cukytt6ac6ecl" path="res://VFX/ParticleFX/Explosion00/Smoke03.png" id="3_brqll"]
+[ext_resource type="Texture2D" uid="uid://bel2i4nqeq31v" path="res://VFX/ParticleFX/Explosion00/Smoke04.png" id="4_rwmx7"]
+[ext_resource type="Texture2D" uid="uid://botbqjsj7vhjh" path="res://VFX/ParticleFX/Explosion00/Smoke05.png" id="5_cxhin"]
+[ext_resource type="Texture2D" uid="uid://dwht7clqdqhty" path="res://VFX/ParticleFX/Explosion00/Smoke06.png" id="6_hoke5"]
+[ext_resource type="Texture2D" uid="uid://dmaex73d18wau" path="res://VFX/ParticleFX/Explosion00/Smoke07.png" id="7_v8l6m"]
+[ext_resource type="Texture2D" uid="uid://cw2fa5ruoiy4h" path="res://VFX/ParticleFX/Explosion00/Smoke08.png" id="8_5apvg"]
+[ext_resource type="Texture2D" uid="uid://cnpsqpvp8m3a7" path="res://VFX/ParticleFX/Explosion00/Smoke09.png" id="9_6jg1p"]
+[ext_resource type="Texture2D" uid="uid://bm7iicmh8oxmf" path="res://VFX/ParticleFX/Explosion00/Smoke10.png" id="10_uaxwr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_khgbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ono3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_brqll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rwmx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cxhin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hoke5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v8l6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5apvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6jg1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uaxwr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
