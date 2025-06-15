@@ -1,16 +1,30 @@
 [gd_scene load_steps=4 format=3 uid="uid://dymgee2dlalp7"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_amc0l"]
+[ext_resource type="Texture2D" uid="uid://bmn5ty6y0hm6h" path="res://VFX/ParticleFX/Explosion00/Smoke_Spritesheet.png" id="1_amc0l"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_fbi7s"]
-frame_0/texture = SubResource("AnimatedTexture_amc0l")
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8pa15"]
+particles_animation = true
+particles_anim_h_frames = 9
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8pa15"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+[sub_resource type="Gradient" id="Gradient_37mcd"]
+offsets = PackedFloat32Array(0, 0.466667, 0.98)
+colors = PackedColorArray(0.76, 0.447893, 0.1748, 1, 0.448646, 0.119446, 0.0840247, 1, 0.914124, 0.739548, 0.385023, 1)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-texture = SubResource("AnimatedTexture_fbi7s")
-process_material = SubResource("ParticleProcessMaterial_8pa15")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8pa15")
+texture = ExtResource("1_amc0l")
+lifetime = 0.37
+explosiveness = 0.95
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 148.63
+initial_velocity_max = 40.4
+angular_velocity_min = -58.18
+angular_velocity_max = 101.82
+color_ramp = SubResource("Gradient_37mcd")
+anim_speed_min = 0.1
+anim_speed_max = 0.5
