@@ -1,0 +1,210 @@
+[gd_scene load_steps=13 format=3 uid="uid://rwqyuhniy1u"]
+
+[ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
+[ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://00_Scenes/chest_minigame_manager.gd" id="1_h54ls"]
+[ext_resource type="PackedScene" uid="uid://bvgi6cgxe834m" path="res://00_Scenes/Debug Nodes/debug_on_ready_screecher.tscn" id="2_0yltb"]
+[ext_resource type="Texture2D" uid="uid://d2rvmpwow6han" path="res://ItemTextures/ChestTop.png" id="2_sh4cu"]
+[ext_resource type="Texture2D" uid="uid://8qioaxdvsiob" path="res://ItemTextures/Screenshot 2025-06-15 174622.png" id="3_h54ls"]
+[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="3_iga1p"]
+[ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="4_0yltb"]
+
+[sub_resource type="Curve2D" id="Curve2D_xauol"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -150)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_epv20"]
+_data = {
+"points": PackedVector2Array(-0.791625, -53.8138, 0.791625, 53.8138, -100, 0, -55.2935, -0.229347, 55.2935, 0.229347, 0, 100, -0.396057, 65.544, 0.396057, -65.544, 100, 0, 48.836, -0.478892, -48.836, 0.478892, 0, -100, 0.478654, -58.4116, -0.478654, 58.4116, -100, 0)
+}
+point_count = 5
+
+[sub_resource type="Animation" id="Animation_h54ls"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest_Top:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest_Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, -12.5)]
+}
+
+[sub_resource type="Animation" id="Animation_xauol"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest_Top:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest_Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epv20"]
+_data = {
+&"Open": SubResource("Animation_h54ls"),
+&"RESET": SubResource("Animation_xauol")
+}
+
+[node name="Chest_Minigame" type="Node2D"]
+position = Vector2(569, 317)
+script = ExtResource("1_h54ls")
+
+[node name="ChestInside" type="Sprite2D" parent="."]
+modulate = Color(0.252028, 0.252028, 0.252028, 1)
+position = Vector2(0, 64)
+scale = Vector2(0.96, 0.96)
+texture = ExtResource("2_sh4cu")
+
+[node name="Chest_Bottom" type="Sprite2D" parent="."]
+position = Vector2(0, 106)
+texture = ExtResource("2_sh4cu")
+
+[node name="Chest_Top" type="Sprite2D" parent="."]
+texture = ExtResource("3_h54ls")
+
+[node name="DEBUG_OnReady_Screecher" parent="." instance=ExtResource("2_0yltb")]
+
+[node name="MiniGame1" type="Path2D" parent="."]
+position = Vector2(-86, 134)
+scale = Vector2(0.475, 0.47)
+curve = SubResource("Curve2D_xauol")
+script = ExtResource("1_bd1gb")
+
+[node name="Line2D" type="Line2D" parent="MiniGame1"]
+position = Vector2(10, 32)
+points = PackedVector2Array(-9.99994, -29.8724, -12.1052, -178.809)
+default_color = Color(2.69532e-06, 0.743847, 0.512493, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="TargetBar" type="PathFollow2D" parent="MiniGame1"]
+position = Vector2(0, -12.1409)
+rotation = -1.5708
+progress = 12.21
+
+[node name="Line2D" type="Line2D" parent="MiniGame1/TargetBar"]
+position = Vector2(-22.47, 0)
+scale = Vector2(1.5, 1.5)
+points = PackedVector2Array(0, 0, 23.18, 0)
+width = 11.175
+
+[node name="PlayerPin" type="PathFollow2D" parent="MiniGame1"]
+rotation = -1.5708
+cubic_interp = false
+loop = false
+
+[node name="SpritePin" type="Sprite2D" parent="MiniGame1/PlayerPin"]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("3_iga1p")
+
+[node name="MiniGame2" type="Path2D" parent="."]
+position = Vector2(5, 104)
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
+curve = SubResource("Curve2D_epv20")
+script = ExtResource("1_bd1gb")
+
+[node name="Line2D2" type="Line2D" parent="MiniGame2"]
+points = PackedVector2Array(-100, 0, -96, -32, -80, -62, -58, -82, -30, -96, 2, -100, 38, -94, 68, -74, 88, -48, 98, -20, 100, 8, 96, 34, 82, 56, 64, 78, 36, 94, 4, 100, -30, 96, -58, 84, -78, 66, -90, 44, -98, 22, -100, -2)
+default_color = Color(0, 0.745098, 0.513726, 1)
+
+[node name="TargetBar" type="PathFollow2D" parent="MiniGame2"]
+position = Vector2(-100, 0)
+rotation = 1.55609
+loop = false
+
+[node name="Line2D" type="Line2D" parent="MiniGame2/TargetBar"]
+position = Vector2(23.55, 0)
+rotation = 3.14159
+scale = Vector2(1.5, 1.5)
+points = PackedVector2Array(0, 1.5, 5, 0.4, 10, -0.2, 15, -0.44, 20, -0.2, 25, 0.4, 30, 1.5)
+width = 11.175
+
+[node name="PlayerPin" type="PathFollow2D" parent="MiniGame2"]
+position = Vector2(-100, 0)
+rotation = 1.55609
+cubic_interp = false
+loop = false
+
+[node name="SpritePin" type="Sprite2D" parent="MiniGame2/PlayerPin"]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("3_iga1p")
+
+[node name="MiniGame3" type="Path2D" parent="."]
+position = Vector2(92, 136)
+scale = Vector2(0.5, 0.5)
+curve = SubResource("Curve2D_xauol")
+script = ExtResource("1_bd1gb")
+
+[node name="Line2D" type="Line2D" parent="MiniGame3"]
+position = Vector2(10, 32)
+points = PackedVector2Array(-9.99994, -29.8724, -12.1052, -178.809)
+default_color = Color(2.69532e-06, 0.743847, 0.512493, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="TargetBar" type="PathFollow2D" parent="MiniGame3"]
+position = Vector2(0, -12.1409)
+rotation = -1.5708
+progress = 12.21
+
+[node name="Line2D" type="Line2D" parent="MiniGame3/TargetBar"]
+position = Vector2(-22.47, 0)
+scale = Vector2(1.5, 1.5)
+points = PackedVector2Array(0, 0, 23.18, 0)
+width = 11.175
+
+[node name="PlayerPin" type="PathFollow2D" parent="MiniGame3"]
+rotation = -1.5708
+cubic_interp = false
+loop = false
+
+[node name="SpritePin" type="Sprite2D" parent="MiniGame3/PlayerPin"]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("3_iga1p")
+
+[node name="DEBUG_Quit_Restart_Key" parent="." instance=ExtResource("4_0yltb")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_epv20")
+}

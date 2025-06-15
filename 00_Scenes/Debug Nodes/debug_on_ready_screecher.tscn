@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvgi6cgxe834m"]
 
-[ext_resource type="Script" uid="uid://g42e2g43ml2" path="res://Scripts/onready_screecher.gd" id="1_sa81j"]
+[ext_resource type="Script" uid="uid://g42e2g43ml2" path="res://Scripts/debug_onready_screecher.gd" id="1_sa81j"]
 
 [node name="DEBUG_OnReady_Screecher" type="Node"]
 script = ExtResource("1_sa81j")
