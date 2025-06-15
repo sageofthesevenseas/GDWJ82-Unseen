@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cogyev6rih8q2"]
+[gd_scene load_steps=4 format=3 uid="uid://dcmviarkgg7uu"]
 
 [ext_resource type="Script" uid="uid://b8duy7cy81uku" path="res://Scripts/hidden_chest.gd" id="1_ebnwn"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_fqfsf"]

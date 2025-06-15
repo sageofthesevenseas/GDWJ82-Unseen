@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://i6ehfnl2as6i" path="res://EnvTextures/floor.png" id="4_1vqgh"]
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="4_70k2p"]
 [ext_resource type="Texture2D" uid="uid://bajs5fdbhmyqn" path="res://EnvTextures/floor01.png" id="5_mu4cm"]
-[ext_resource type="PackedScene" uid="uid://qm14agpmwdrt" path="res://VFX/ParticleFX/Flare00/Flare.tscn" id="6_hcjed"]
+[ext_resource type="PackedScene" uid="uid://mwu3nkm7l7ih" path="res://00_Scenes/torch.tscn" id="6_hcjed"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r1mdt"]
 texture = ExtResource("4_1vqgh")
@@ -1048,11 +1048,10 @@ sources/1 = SubResource("TileSetAtlasSource_a35pm")
 [node name="TestScenery" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="MainLight" parent="." instance=ExtResource("1_chrnd")]
-position = Vector2(202, -862)
+position = Vector2(832, -129)
 
 [node name="Node" type="Node" parent="."]
 
@@ -1080,7 +1079,6 @@ position = Vector2(778, 594)
 rotation = -0.648709
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 modulate = Color(0.423651, 0.423651, 0.423651, 1)
 position = Vector2(122, -1153)
 rotation = -0.00108712
@@ -1092,7 +1090,6 @@ layer_0/tile_data = PackedInt32Array(-65536, 1, 0, -65535, 1, 0, -131076, 1, 0, 
 position = Vector2(-235.539, 495.744)
 scale = Vector2(4, 4)
 
-[node name="Node2D" parent="." instance=ExtResource("6_hcjed")]
-light_mask = 0
-visibility_layer = 2
-position = Vector2(644, -880)
+[node name="Torch" parent="." instance=ExtResource("6_hcjed")]
+position = Vector2(625, 146)
+rotation = -0.00108712

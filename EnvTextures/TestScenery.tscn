@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b66d1l1857x3g"]
+[gd_scene load_steps=9 format=3 uid="uid://dca37tlgpq8uf"]
 
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="1_chrnd"]
 [ext_resource type="PackedScene" uid="uid://bxfw4dap4a6ha" path="res://00_Scenes/StaticObjects/rock02.tscn" id="3_3tj0l"]

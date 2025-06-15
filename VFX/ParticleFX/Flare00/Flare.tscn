@@ -6,33 +6,31 @@
 blend_mode = 1
 
 [sub_resource type="Curve" id="Curve_4lw4m"]
-_data = [Vector2(0.0113636, 0.662921), 0.0, 0.0, 0, 0, Vector2(0.357955, 0.168539), 0.0, 0.0, 0, 0, Vector2(0.704545, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.0170455, 0.52809), 0.0, 0.0, 0, 0, Vector2(0.318182, 0.157303), 0.0, 0.0, 0, 0, Vector2(0.670455, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_siuds"]
-offsets = PackedFloat32Array(0, 0.186667, 0.653333)
-colors = PackedColorArray(0.286337, 0.543729, 0.881965, 1, 0.792735, 0.574351, 0.221304, 1, 0.932916, 0.838615, 0, 1)
+offsets = PackedFloat32Array(0, 0.6, 0.913333)
+colors = PackedColorArray(0.126994, 0.341656, 0.613833, 1, 0.792735, 0.574351, 0.221304, 1, 0.932916, 0.838615, 0, 1)
 
 [node name="Node2D" type="Node2D"]
+light_mask = 0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-modulate = Color(0.10748, 0.10748, 0.10748, 1)
+modulate = Color(0.223103, 0.223103, 0.223103, 1)
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_ojyny")
-position = Vector2(-21, 5)
 amount = 133
 texture = ExtResource("1_louap")
 lifetime = 0.19
-speed_scale = 0.5
-emission_shape = 1
-emission_sphere_radius = 128.0
+speed_scale = 0.4
 direction = Vector2(1.11, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 1000.0
-initial_velocity_max = 1000.0
-scale_amount_min = 0.3
-scale_amount_max = 0.45
+initial_velocity_min = 555.55
+initial_velocity_max = 807.83
+scale_amount_min = 0.1
+scale_amount_max = 0.25
 scale_amount_curve = SubResource("Curve_4lw4m")
 color_ramp = SubResource("Gradient_siuds")

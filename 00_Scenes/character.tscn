@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
-[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="1_ablri"]
+[ext_resource type="Texture2D" uid="uid://dwto8w174o3q2" path="res://Player/playerCharStaticPlaceholder.png" id="2_h7igj"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_48qfa"]
@@ -18,7 +18,9 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_48qfa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ablri")
+position = Vector2(-63, -41)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_h7igj")
 
 [node name="GeolocationArea" type="Area2D" parent="."]
 
@@ -26,3 +28,4 @@ texture = ExtResource("1_ablri")
 shape = SubResource("CircleShape2D_h7igj")
 
 [node name="Chest_Minigame" parent="." instance=ExtResource("3_h7igj")]
+visible = false
