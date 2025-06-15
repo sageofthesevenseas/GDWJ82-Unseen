@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv83jr3jhhgxt"]
+[gd_scene load_steps=4 format=3 uid="uid://dv83jr3jhhgxt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qp0ye"]
 radius = 30.0
+
+[sub_resource type="Animation" id="Animation_qp0ye"]
+resource_name = "Shrink light"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qbq1"]
+_data = {
+&"Shrink light": SubResource("Animation_qp0ye")
+}
 
 [node name="LightSource" type="Area2D"]
 position = Vector2(0, -1)
@@ -9,3 +17,8 @@ position = Vector2(0, -1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qp0ye")
 debug_color = Color(0, 0.6, 0.701961, 0.870588)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5qbq1")
+}

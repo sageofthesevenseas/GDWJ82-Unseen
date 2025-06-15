@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cogyev6rih8q2"]
+[gd_scene load_steps=4 format=3 uid="uid://cogyev6rih8q2"]
 
 [ext_resource type="Script" uid="uid://b8duy7cy81uku" path="res://Scripts/hidden_chest.gd" id="1_ebnwn"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_fqfsf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n74om"]
+radius = 350.0
 
 [node name="HiddenChest" type="Area2D"]
 script = ExtResource("1_ebnwn")
 
 [node name="Sprite2DDEBUG" type="Sprite2D" parent="."]
 texture = ExtResource("2_fqfsf")
+
+[node name="DetectionArea" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n74om")

@@ -36,7 +36,8 @@ func spawn_chests():
 		chest.position = chest_location.position
 		#hand over the contents
 		
-	
+	var chest_number = chests_spawned.get_children().size()
+	print("there are ", chest_number, " chests spawned for the player to find")
 
 func choose_chest_locations():
 	collect_locators()
@@ -50,4 +51,4 @@ func choose_chest_locations():
 func collect_locators():
 # LZB NOTE 15-06-25 - maybe doesnt need to be a function but whatever
 	location_array = spawn_points.get_children()
-	print(location_array.size())
+	print("there are ", location_array.size(), " possible locators to select from")

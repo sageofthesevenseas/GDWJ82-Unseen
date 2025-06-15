@@ -1088,3 +1088,7 @@ layer_0/tile_data = PackedInt32Array(-65536, 1, 0, -65535, 1, 0, -131076, 1, 0, 
 [node name="backgroundOverlay" parent="TileMap" instance=ExtResource("4_70k2p")]
 position = Vector2(-235.539, 495.744)
 scale = Vector2(4, 4)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-404, -908)
+zoom = Vector2(0.325, 0.325)

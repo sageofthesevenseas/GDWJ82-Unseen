@@ -15,10 +15,10 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_khgbi")
+"texture": ExtResource("2_ono3h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ono3h")
+"texture": ExtResource("1_khgbi")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_brqll")
@@ -36,10 +36,10 @@ animations = [{
 "texture": ExtResource("7_v8l6m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_5apvg")
+"texture": ExtResource("9_6jg1p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_6jg1p")
+"texture": ExtResource("8_5apvg")
 }, {
 "duration": 1.0,
 "texture": ExtResource("10_uaxwr")
