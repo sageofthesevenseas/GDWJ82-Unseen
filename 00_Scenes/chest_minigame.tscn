@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://rwqyuhniy1u"]
 
-[ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
-[ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://00_Scenes/chest_minigame_manager.gd" id="1_h54ls"]
+[ext_resource type="Script" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
+[ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://Scripts/chest_minigame_manager.gd" id="1_h54ls"]
 [ext_resource type="PackedScene" uid="uid://bvgi6cgxe834m" path="res://00_Scenes/Debug Nodes/debug_on_ready_screecher.tscn" id="2_0yltb"]
 [ext_resource type="Texture2D" uid="uid://d2rvmpwow6han" path="res://ItemTextures/ChestTop.png" id="2_sh4cu"]
 [ext_resource type="Texture2D" uid="uid://8qioaxdvsiob" path="res://ItemTextures/Screenshot 2025-06-15 174622.png" id="3_h54ls"]
