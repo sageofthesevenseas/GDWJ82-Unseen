@@ -1,10 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://rwqyuhniy1u"]
+[gd_scene load_steps=15 format=3 uid="uid://rwqyuhniy1u"]
 
 [ext_resource type="Script" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
 [ext_resource type="Script" path="res://Scripts/chest_minigame_manager.gd" id="1_h54ls"]
+[ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="3_h54ls"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="3_sh4cu"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="4_h54ls"]
+[ext_resource type="Texture2D" uid="uid://k00sde5uick7" path="res://VFX/VFX_Sprites/light00.png" id="4_sh4cu"]
 [ext_resource type="Texture2D" uid="uid://bepkb3qlv14mq" path="res://ItemTextures/LockpickingPin.png" id="5_iga1p"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iga1p"]
+polygon = PackedVector2Array(-431.429, -148.571, -428.571, 145.714, 428.571, 145.714, 428.571, -145.714, 405.714, -145.714, 402.857, 117.143, -397.143, 125.714, -397.143, -148.571)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h54ls"]
+polygon = PackedVector2Array(-431.429, 142.857, -431.429, 34.2857, -417.143, 14.2857, -400, -65.7143, -354.286, -108.571, -342.857, -125.714, 342.857, -122.857, 368.571, -102.857, 391.428, -45.7143, 402.857, 11.4286, 431.429, 48.5714, 431.429, 148.571, 405.714, 148.571, 405.714, 51.4286, 382.857, 20, 365.714, -42.8571, 345.714, -97.1429, -328.571, -97.1429, -377.143, -54.2857, -394.286, 17.1429, -397.143, 142.857)
 
 [sub_resource type="Curve2D" id="Curve2D_xauol"]
 _data = {
@@ -82,14 +90,39 @@ _data = {
 position = Vector2(569, 317)
 script = ExtResource("1_h54ls")
 
+[node name="backgroundOverlay" parent="." instance=ExtResource("3_h54ls")]
+visible = false
+light_mask = 7
+position = Vector2(-46, 7)
+rotation = -0.818559
+scale = Vector2(0.35, 0.35)
+
 [node name="Chest_Backing" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 4
 position = Vector2(0, 102)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_sh4cu")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Chest_Backing"]
+light_mask = 4
+visibility_layer = 4
+occluder = SubResource("OccluderPolygon2D_iga1p")
+occluder_light_mask = 4
+
 [node name="Chest_Top" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_h54ls")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Chest_Top"]
+show_behind_parent = true
+light_mask = 4
+visibility_layer = 4
+position = Vector2(-0.341613, -0.365056)
+occluder = SubResource("OccluderPolygon2D_h54ls")
+occluder_light_mask = 4
 
 [node name="MiniGame1" type="Path2D" parent="."]
 position = Vector2(-86, 134)
@@ -209,6 +242,18 @@ texture = ExtResource("5_iga1p")
 libraries = {
 &"": SubResource("AnimationLibrary_epv20")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(-5, -3)
+scale = Vector2(1, 1)
+energy = 2.21
+range_item_cull_mask = 5
+shadow_enabled = true
+shadow_item_cull_mask = 4
+texture = ExtResource("4_sh4cu")
+texture_scale = 10.52
 
 [connection signal="minigame_completed" from="MiniGame1" to="." method="_on_mini_game_1_minigame_completed"]
 [connection signal="minigame_ready" from="MiniGame1" to="." method="_on_mini_game_1_minigame_ready"]
