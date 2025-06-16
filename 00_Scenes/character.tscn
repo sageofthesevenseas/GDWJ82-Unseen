@@ -1,26 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://qlr7s5cs5b3y"]
+[gd_scene load_steps=7 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
-[ext_resource type="Texture2D" uid="uid://dwto8w174o3q2" path="res://Player/playerCharStaticPlaceholder.png" id="2_h7igj"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
+[ext_resource type="PackedScene" uid="uid://b206ab03crtra" path="res://Player/player_visuals.tscn" id="3_vwvbh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_48qfa"]
-radius = 74.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7igj"]
+radius = 64.0
+height = 254.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7igj"]
 radius = 809.99
 
+[sub_resource type="GDScript" id="GDScript_h7igj"]
+script/source = "extends Node2D
+"
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_48qfa")
+acceleration = 10000.0
+max_speed = 7500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_48qfa")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-63, -41)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_h7igj")
+position = Vector2(0, -136)
+shape = SubResource("CapsuleShape2D_h7igj")
 
 [node name="GeolocationArea" type="Area2D" parent="."]
 
@@ -36,3 +38,7 @@ offset_top = 150.0
 offset_right = 106.0
 offset_bottom = 173.0
 text = "in diggable_range of chest"
+
+[node name="PlayerVisuals" parent="." instance=ExtResource("3_vwvbh")]
+scale = Vector2(0.3, 0.3)
+script = SubResource("GDScript_h7igj")

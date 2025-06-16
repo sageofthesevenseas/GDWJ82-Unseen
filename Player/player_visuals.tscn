@@ -278,7 +278,6 @@ rotation = 0.97913
 
 [node name="LeftArm" type="Sprite2D" parent="LeftArmJoint"]
 position = Vector2(-85.8568, 151.785)
-scale = Vector2(1, 1)
 texture = ExtResource("2_csxa4")
 
 [node name="LeftLegJoint" type="Node2D" parent="."]

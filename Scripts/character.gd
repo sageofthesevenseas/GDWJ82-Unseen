@@ -1,5 +1,7 @@
 class_name Character extends CharacterBody2D
 
+@onready var animation_player: AnimationPlayer = get_node("PlayerVisuals/AnimationPlayer")
+
 @export var acceleration : float = 5000.0
 @export var friction : float = 10.0
 @export var max_speed : float = 1000.0
@@ -20,6 +22,7 @@ signal dug_anywhere()
 signal dug_chest()
 
 func _ready() -> void:
+	
 	$"Label".visible = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
 
 func _physics_process(delta : float) -> void:
@@ -29,7 +32,15 @@ func _physics_process(delta : float) -> void:
 	velocity -= velocity * friction * delta
 	velocity = velocity.limit_length(max_speed)
 	move_and_slide()
-
+	
+	if velocity.x <= 0.0:
+		animation_player.play("Player Walking")
+		animation_player.speed_scale = 2.0 #speedscale for now, remove once animations are done
+	elif velocity.x >= 0.0:
+		animation_player.play("Player Walking")
+		animation_player.speed_scale = 2.0
+		$PlayerVisuals.scale.x *= -1
+	
 	var geolocatables : Array[HiddenChest] = []
 	for area in geolocation_area.get_overlapping_areas():
 		if (area is HiddenChest):
