@@ -6,7 +6,8 @@ extends Node2D
 @onready var target_bar: PathFollow2D = $TargetBar
 @onready var player_pin: PathFollow2D = $PlayerPin
 
-@export var game_state: String = "stopped"
+enum MinigameState { STOPPED, SETUP, RUNNING }
+@export var game_state: MinigameState = MinigameState.STOPPED
 # LZB NOTE 15-06-25 - possibles are "stopped", "setup", and "running"
 
 @export var setup_rotation_speed: float = 0.5
@@ -20,15 +21,18 @@ signal minigame_completed
 
 func _ready() -> void:
 	prep_minigame()
+
 func run_minigame():
 	print("running minigame")
 	# LZB NOTE 15-06-25 - start the playerpin moving
-	game_state = "running"
+	game_state = MinigameState.RUNNING
+
 func stop_minigame():
-	game_state = "stopped"
+	game_state = MinigameState.STOPPED
+
 func prep_minigame():
 	print("running setup of minigame")
-	game_state = "setup"
+	game_state = MinigameState.SETUP
 	var tbar_starting_position = randf_range(0,1)
 	target_bar.progress_ratio = tbar_starting_position
 	tbar_target_position = randf_range(0.2,0.93) 	# pick position of the target. Can't be set to 0 as thats cruel
@@ -38,14 +42,14 @@ func prep_minigame():
 	player_pin.progress_ratio = 0.0 # reset the player position
 
 func _process(delta: float) -> void:
-	if game_state == "stopped":
+	if game_state == MinigameState.STOPPED:
 		return
-	if game_state == "setup":
+	if game_state == MinigameState.SETUP:
 		target_bar.progress_ratio = move_toward(target_bar.progress_ratio, tbar_target_position, 0.005)
 		if is_equal_approx(target_bar.progress_ratio, tbar_target_position):
 			emit_minigame_ready()
-			game_state = "ready"
-	if game_state == "running":
+			game_state = MinigameState.RUNNING
+	if game_state == MinigameState.RUNNING:
 		player_pin.progress_ratio += minigame_speed * delta
 
 
