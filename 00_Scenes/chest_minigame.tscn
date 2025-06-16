@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://rwqyuhniy1u"]
+[gd_scene load_steps=11 format=3 uid="uid://rwqyuhniy1u"]
 
 [ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
-[ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://00_Scenes/chest_minigame_manager.gd" id="1_h54ls"]
-[ext_resource type="PackedScene" uid="uid://bvgi6cgxe834m" path="res://00_Scenes/Debug Nodes/debug_on_ready_screecher.tscn" id="2_0yltb"]
+[ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://Scripts/chest_minigame_manager.gd" id="1_h54ls"]
 [ext_resource type="Texture2D" uid="uid://d2rvmpwow6han" path="res://ItemTextures/ChestTop.png" id="2_sh4cu"]
 [ext_resource type="Texture2D" uid="uid://8qioaxdvsiob" path="res://ItemTextures/Screenshot 2025-06-15 174622.png" id="3_h54ls"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="3_iga1p"]
-[ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="4_0yltb"]
 
 [sub_resource type="Curve2D" id="Curve2D_xauol"]
 _data = {
@@ -90,20 +88,20 @@ position = Vector2(0, 64)
 scale = Vector2(0.96, 0.96)
 texture = ExtResource("2_sh4cu")
 
-[node name="Chest_Bottom" type="Sprite2D" parent="."]
+[node name="Chest_Backing" type="Sprite2D" parent="."]
 position = Vector2(0, 106)
 texture = ExtResource("2_sh4cu")
 
 [node name="Chest_Top" type="Sprite2D" parent="."]
 texture = ExtResource("3_h54ls")
 
-[node name="DEBUG_OnReady_Screecher" parent="." instance=ExtResource("2_0yltb")]
-
 [node name="MiniGame1" type="Path2D" parent="."]
 position = Vector2(-86, 134)
 scale = Vector2(0.475, 0.47)
 curve = SubResource("Curve2D_xauol")
 script = ExtResource("1_bd1gb")
+minigame_speed = 1.5
+setup_rotation_speed = 1.0
 
 [node name="Line2D" type="Line2D" parent="MiniGame1"]
 position = Vector2(10, 32)
@@ -140,6 +138,9 @@ rotation = -1.57079
 scale = Vector2(0.5, 0.5)
 curve = SubResource("Curve2D_epv20")
 script = ExtResource("1_bd1gb")
+minigame_speed = 0.5
+setup_rotation_speed = 1.0
+target_range_offset = 0.035
 
 [node name="Line2D2" type="Line2D" parent="MiniGame2"]
 points = PackedVector2Array(-100, 0, -96, -32, -80, -62, -58, -82, -30, -96, 2, -100, 38, -94, 68, -74, 88, -48, 98, -20, 100, 8, 96, 34, 82, 56, 64, 78, 36, 94, 4, 100, -30, 96, -58, 84, -78, 66, -90, 44, -98, 22, -100, -2)
@@ -172,6 +173,8 @@ position = Vector2(92, 136)
 scale = Vector2(0.5, 0.5)
 curve = SubResource("Curve2D_xauol")
 script = ExtResource("1_bd1gb")
+setup_rotation_speed = 1.0
+target_range_offset = 0.05
 
 [node name="Line2D" type="Line2D" parent="MiniGame3"]
 position = Vector2(10, 32)
@@ -202,9 +205,12 @@ loop = false
 scale = Vector2(0.145, 0.145)
 texture = ExtResource("3_iga1p")
 
-[node name="DEBUG_Quit_Restart_Key" parent="." instance=ExtResource("4_0yltb")]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_epv20")
 }
+
+[connection signal="minigame_completed" from="MiniGame1" to="." method="_on_mini_game_1_minigame_completed"]
+[connection signal="minigame_ready" from="MiniGame1" to="." method="_on_mini_game_1_minigame_ready"]
+[connection signal="minigame_completed" from="MiniGame2" to="." method="_on_mini_game_2_minigame_completed"]
+[connection signal="minigame_completed" from="MiniGame3" to="." method="_on_mini_game_3_minigame_completed"]

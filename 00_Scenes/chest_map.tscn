@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://l04nsg0jtwj5"]
 
 [ext_resource type="Script" uid="uid://bgqrkld4qvdyt" path="res://Scripts/chestmap.gd" id="1_uobb1"]
-[ext_resource type="PackedScene" uid="uid://cogyev6rih8q2" path="res://00_Scenes/hidden_chest.tscn" id="2_p1n0o"]
+[ext_resource type="PackedScene" uid="uid://dcmviarkgg7uu" path="res://00_Scenes/hidden_chest.tscn" id="2_p1n0o"]
 
 [node name="ChestMap" type="Node2D"]
 script = ExtResource("1_uobb1")

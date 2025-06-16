@@ -116,9 +116,6 @@ position = Vector2(-3333, -2450)
 
 [node name="TestScenery" parent="World2D" instance=ExtResource("4_1jgy6")]
 
-[node name="backgroundOverlay" parent="World2D/TestScenery/TileMap" index="1"]
-position = Vector2(-235.539, 495.744)
-
 [node name="CharacterBody2D" parent="World2D" instance=ExtResource("2_a7hb6")]
 position = Vector2(-195, -934)
 
