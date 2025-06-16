@@ -6,34 +6,38 @@ extends Node2D
 @onready var target_bar: PathFollow2D = $TargetBar
 @onready var player_pin: PathFollow2D = $PlayerPin
 
-enum MinigameState { STOPPED, SETUP, RUNNING }
+enum MinigameState { STOPPED, SETUP,READY, RUNNING }
 @export var game_state: MinigameState = MinigameState.STOPPED
-# LZB NOTE 15-06-25 - possibles are "stopped", "setup", and "running"
 
 @export var setup_rotation_speed: float = 0.5
 var tbar_target_position: float
 var target_range_min: float
 var target_range_max: float
-@export var target_range_offset: float = 0.07
+@export var target_range_offset: float = 0.04
 
+var minigame_ready_triggered: bool = false
 signal minigame_ready
 signal minigame_completed
 
-func _ready() -> void:
-	prep_minigame()
+func change_state(statename: String):
+	if MinigameState.has(statename):
+		game_state = MinigameState[statename]
+		print(self, " state is being changed to ", statename)
+	else:
+		push_error("invalid state name: " + statename)
 
-func run_minigame():
+func run():
 	print("running minigame")
-	# LZB NOTE 15-06-25 - start the playerpin moving
-	game_state = MinigameState.RUNNING
+	change_state("RUNNING") #start the playerpin moving
 
-func stop_minigame():
-	game_state = MinigameState.STOPPED
+func stop():
+	change_state("STOPPED")
+	
 
-func prep_minigame():
-	print("running setup of minigame")
-	game_state = MinigameState.SETUP
-	var tbar_starting_position = randf_range(0,1)
+func prep():
+	print("running setup of ", self)
+	change_state("SETUP")
+	var tbar_starting_position = randf_range(0,1) # start the bar somewhere random so it moves into the right spot from a different place every time
 	target_bar.progress_ratio = tbar_starting_position
 	tbar_target_position = randf_range(0.2,0.93) 	# pick position of the target. Can't be set to 0 as thats cruel
 	print("target position of the target bar is ", tbar_target_position)
@@ -42,16 +46,28 @@ func prep_minigame():
 	player_pin.progress_ratio = 0.0 # reset the player position
 
 func _process(delta: float) -> void:
-	if game_state == MinigameState.STOPPED:
-		return
+	if game_state == MinigameState.STOPPED: return
+	if game_state == MinigameState.READY: return
+	
 	if game_state == MinigameState.SETUP:
 		target_bar.progress_ratio = move_toward(target_bar.progress_ratio, tbar_target_position, 0.005)
 		if is_equal_approx(target_bar.progress_ratio, tbar_target_position):
-			emit_minigame_ready()
-			game_state = MinigameState.RUNNING
+			change_state("READY")
+			emit_minigame_ready() #this will also stop emit from happening 10000 times
+	
 	if game_state == MinigameState.RUNNING:
-		player_pin.progress_ratio += minigame_speed * delta
-
+		if Input.is_action_pressed("dig"): #player has to hold the key to progress
+			#print("dig being held")
+			player_pin.progress_ratio += minigame_speed * delta
+		else:
+			player_pin.progress_ratio -= minigame_speed * delta
+		if Input.is_action_just_released("dig"):
+			if player_pin.progress_ratio > target_range_min and player_pin.progress_ratio < target_range_max:
+				print("congrats!")
+				emit_minigame_completed()
+				change_state("STOPPED")
+			else:
+				print("not quite")
 
 func emit_minigame_completed():
 	minigame_completed.emit()
@@ -66,4 +82,4 @@ func flip_calc():
 
 func _on_debug_timer_timeout() -> void:
 # LZB NOTE 15-06-25 - remove when we have better methods of starting minigame
-	prep_minigame()
+	prep()
