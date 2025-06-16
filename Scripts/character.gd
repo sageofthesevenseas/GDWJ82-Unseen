@@ -71,7 +71,7 @@ func dig_anywhere() -> void:
 func dig_chest(chest : HiddenChest) -> void:
 	emit_signal(&"dug_chest")
 	can_move = false
-	chest_minigame_manager.start_minigame(chest)
+	chest_minigame_manager.start_minigame()
 
 # Need some kind of signal to return to here after closing a chest or something. Maybe ChestMinigameManager? Maybe Chest?
 func on_chest_closed() -> void:
