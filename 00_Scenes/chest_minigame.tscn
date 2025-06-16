@@ -138,7 +138,7 @@ rotation = -1.57079
 scale = Vector2(0.5, 0.5)
 curve = SubResource("Curve2D_epv20")
 script = ExtResource("1_bd1gb")
-minigame_speed = 1.0
+minigame_speed = 0.5
 setup_rotation_speed = 1.0
 target_range_offset = 0.035
 
