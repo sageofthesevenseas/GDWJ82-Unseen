@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://n6ts3irheryv"]
+
+[ext_resource type="Script" uid="uid://cyl8x5jrafcug" path="res://00_Scenes/projectile.gd" id="1_2sl5h"]
+[ext_resource type="PackedScene" uid="uid://mwu3nkm7l7ih" path="res://00_Scenes/torch.tscn" id="1_4yd83"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yd83"]
+bounce = 0.28
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2sl5h"]
+radius = 19.0
+height = 170.0
+
+[node name="Projectile" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_4yd83")
+script = ExtResource("1_2sl5h")
+
+[node name="Torch" parent="." instance=ExtResource("1_4yd83")]
+position = Vector2(22, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2sl5h")

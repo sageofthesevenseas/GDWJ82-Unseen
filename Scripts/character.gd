@@ -11,6 +11,7 @@ class_name Character extends CharacterBody2D
 @onready var geolocation_area := $"GeolocationArea" as Area2D
 @onready var chest_minigame_manager := $Chest_Minigame as ChestMinigameManager
 
+
 enum GeolocationState { IDLE, IN_DIGGABLE_RANGE }
 var current_geolocation_state := GeolocationState.IDLE
 signal entered_diggable_range()
