@@ -33,14 +33,20 @@ func _physics_process(delta : float) -> void:
 	velocity = velocity.limit_length(max_speed)
 	move_and_slide()
 	
-	if velocity.x <= 0.0:
-		animation_player.play("Player Walking")
-		animation_player.speed_scale = 2.0 #speedscale for now, remove once animations are done
-	elif velocity.x >= 0.0:
-		animation_player.play("Player Walking")
-		animation_player.speed_scale = 2.0
-		$PlayerVisuals.scale.x *= -1
 	
+	#making player walk and flipping scale instead of flip_h because Node2D doesn't have flip_H
+	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
+		animation_player.speed_scale = 3.0
+		animation_player.play("Player Walking")
+	else:
+		animation_player.stop()
+	if Input.is_action_just_pressed("move_left") and $PlayerVisuals.scale.x > 0:
+		$PlayerVisuals.scale.x *= -1
+		print("Tried to flip")
+	if Input.is_action_just_pressed("move_right") and $PlayerVisuals.scale.x < 0:
+		$PlayerVisuals.scale.x *= -1
+		print("Tried to flip")
+
 	var geolocatables : Array[HiddenChest] = []
 	for area in geolocation_area.get_overlapping_areas():
 		if (area is HiddenChest):

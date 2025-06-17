@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="3_h54ls"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="3_sh4cu"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="4_h54ls"]
-[ext_resource type="Texture2D" uid="uid://k00sde5uick7" path="res://VFX/VFX_Sprites/light00.png" id="4_sh4cu"]
 [ext_resource type="Texture2D" uid="uid://bepkb3qlv14mq" path="res://ItemTextures/LockpickingPin.png" id="5_iga1p"]
+[ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="7_h54ls"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iga1p"]
 polygon = PackedVector2Array(-431.429, -148.571, -428.571, 145.714, 428.571, 145.714, 428.571, -145.714, 405.714, -145.714, 402.857, 117.143, -397.143, 125.714, -397.143, -148.571)
@@ -98,31 +98,24 @@ rotation = -0.818559
 scale = Vector2(0.35, 0.35)
 
 [node name="Chest_Backing" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 4
+light_mask = 5
 position = Vector2(0, 102)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_sh4cu")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Chest_Backing"]
 light_mask = 4
-visibility_layer = 4
 occluder = SubResource("OccluderPolygon2D_iga1p")
-occluder_light_mask = 4
 
 [node name="Chest_Top" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
+light_mask = 5
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_h54ls")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Chest_Top"]
-show_behind_parent = true
-light_mask = 4
-visibility_layer = 4
+light_mask = 0
 position = Vector2(-0.341613, -0.365056)
 occluder = SubResource("OccluderPolygon2D_h54ls")
-occluder_light_mask = 4
 
 [node name="MiniGame1" type="Path2D" parent="."]
 position = Vector2(-86, 134)
@@ -243,19 +236,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_epv20")
 }
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(-5, -3)
-scale = Vector2(1, 1)
-energy = 2.21
-range_item_cull_mask = 5
-shadow_enabled = true
-shadow_item_cull_mask = 4
-texture = ExtResource("4_sh4cu")
-texture_scale = 10.52
+[node name="MainLight" parent="." instance=ExtResource("7_h54ls")]
+position = Vector2(1, 0)
+
+[node name="LightOverlay" parent="MainLight" index="0"]
+texture_scale = 1.0
+
+[node name="Shadow" parent="MainLight" index="1"]
+position = Vector2(1, 0)
 
 [connection signal="minigame_completed" from="MiniGame1" to="." method="_on_mini_game_1_minigame_completed"]
 [connection signal="minigame_ready" from="MiniGame1" to="." method="_on_mini_game_1_minigame_ready"]
 [connection signal="minigame_completed" from="MiniGame2" to="." method="_on_mini_game_2_minigame_completed"]
 [connection signal="minigame_completed" from="MiniGame3" to="." method="_on_mini_game_3_minigame_completed"]
+
+[editable path="MainLight"]
