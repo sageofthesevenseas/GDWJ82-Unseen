@@ -9,7 +9,8 @@ class_name Character extends CharacterBody2D
 @export var diggable_range : float = 100.0
 
 @onready var geolocation_area := $"GeolocationArea" as Area2D
-@onready var chest_minigame_manager := $Chest_Minigame as ChestMinigameManager
+@onready var dig_minigame_manager := $"DigMinigame" as DigMinigameManager
+@onready var chest_minigame_manager := $"Chest_Minigame" as ChestMinigameManager
 
 
 enum GeolocationState { IDLE, IN_DIGGABLE_RANGE }
@@ -17,24 +18,26 @@ var current_geolocation_state := GeolocationState.IDLE
 signal entered_diggable_range()
 signal exited_diggable_range()
 
-var can_move : bool = true
+var controllable : bool = true
 
 signal dug_anywhere()
 signal dug_chest()
 
 func _ready() -> void:
-	
 	$"Label".visible = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
 
 func _physics_process(delta : float) -> void:
-	if can_move:
+	if controllable:
 		var input_dir := Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down").normalized()
 		velocity += acceleration * input_dir * delta
 	velocity -= velocity * friction * delta
 	velocity = velocity.limit_length(max_speed)
 	move_and_slide()
 	
-	
+	# NOTE: when the player becomes not controllable whilst in an animation, we need to stop the animation or transition to another animation
+	if not controllable:
+		return
+
 	#making player walk and flipping scale instead of flip_h because Node2D doesn't have flip_H
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
 		animation_player.speed_scale = 3.0
@@ -86,11 +89,14 @@ func dig_anywhere() -> void:
 	emit_signal(&"dug_anywhere")
 	# player digged, but nothing was in diggable range! do something
 
-func dig_chest(chest : HiddenChest) -> void:
+func dig_chest(hidden_chest : HiddenChest) -> void:
 	emit_signal(&"dug_chest")
-	can_move = false
-	chest_minigame_manager.start_minigame()
+	controllable = false
+	dig_minigame_manager.start_minigame(hidden_chest)
+
+func on_chest_dug() -> void:
+	controllable = true
 
 # Need some kind of signal to return to here after closing a chest or something. Maybe ChestMinigameManager? Maybe Chest?
 func on_chest_closed() -> void:
-	can_move = true
+	controllable = true

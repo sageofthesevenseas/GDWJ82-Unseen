@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://diaw6c2xtaibp"]
+
+[ext_resource type="Script" uid="uid://bhty3n34elyty" path="res://Scripts/dig_minigame.gd" id="1_jtvkj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eui0"]
+light_mode = 1
+
+[node name="DigMinigame" type="Node2D"]
+material = SubResource("CanvasItemMaterial_3eui0")
+script = ExtResource("1_jtvkj")
+
+[node name="PlaceholderScoreDisplay" type="Label" parent="."]
+use_parent_material = true
+offset_left = -64.0
+offset_top = 4.0
+offset_right = 62.0
+offset_bottom = 27.0
+text = "dig {CUR}/{MAX}"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = 32.0
+offset_right = -24.0
+offset_bottom = 72.0
+
+[node name="KeyBox0" type="MarginContainer" parent="Control"]
+use_parent_material = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+pivot_offset = Vector2(64, 0)
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="Control/KeyBox0"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/KeyBox0"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "{KEY}"
+
+[node name="KeyBox1" type="MarginContainer" parent="Control"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 128.0
+offset_right = 256.0
+offset_bottom = 128.0
+pivot_offset = Vector2(64, 0)
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="Control/KeyBox1"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/KeyBox1"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "{KEY}"
