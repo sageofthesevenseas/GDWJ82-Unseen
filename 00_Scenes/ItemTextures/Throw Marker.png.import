@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br5gtgj8frjjy"
-path="res://.godot/imported/ChestFront.png-1c6195b41a2f76dc3844995a5bc772ce.ctex"
+uid="uid://cj86sb27tpxe4"
+path="res://.godot/imported/Throw Marker.png-fd26c9b6427eb7e26ca8ec5aae9de149.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ItemTextures/ChestFront.png"
-dest_files=["res://.godot/imported/ChestFront.png-1c6195b41a2f76dc3844995a5bc772ce.ctex"]
+source_file="res://00_Scenes/ItemTextures/Throw Marker.png"
+dest_files=["res://.godot/imported/Throw Marker.png-fd26c9b6427eb7e26ca8ec5aae9de149.ctex"]
 
 [params]
 

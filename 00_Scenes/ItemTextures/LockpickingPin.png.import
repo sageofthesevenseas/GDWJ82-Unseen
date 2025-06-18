@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fdwsbnebg5i5"
-path="res://.godot/imported/Torch00_HM.png-7715d82244cca478793465f8f66b7743.ctex"
+uid="uid://bepkb3qlv14mq"
+path="res://.godot/imported/LockpickingPin.png-479ca50769a45ae33770159388cfe108.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ItemTextures/Torch00_HM.png"
-dest_files=["res://.godot/imported/Torch00_HM.png-7715d82244cca478793465f8f66b7743.ctex"]
+source_file="res://00_Scenes/ItemTextures/LockpickingPin.png"
+dest_files=["res://.godot/imported/LockpickingPin.png-479ca50769a45ae33770159388cfe108.ctex"]
 
 [params]
 

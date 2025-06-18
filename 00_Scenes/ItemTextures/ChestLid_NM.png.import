@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg6k5jvcaeh24"
-path="res://.godot/imported/Torch00_NM.png-87bf3d841eaf5ed88c6540cf93b2c8af.ctex"
+uid="uid://bgymhaefruurs"
+path="res://.godot/imported/ChestLid_NM.png-c5774e79dd3d4f3cea44e29ad046e755.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ItemTextures/Torch00_NM.png"
-dest_files=["res://.godot/imported/Torch00_NM.png-87bf3d841eaf5ed88c6540cf93b2c8af.ctex"]
+source_file="res://00_Scenes/ItemTextures/ChestLid_NM.png"
+dest_files=["res://.godot/imported/ChestLid_NM.png-c5774e79dd3d4f3cea44e29ad046e755.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://mwu3nkm7l7ih"]
 
-[ext_resource type="Texture2D" uid="uid://hi7c2k47yc6b" path="res://ItemTextures/Torch00_DIF.png" id="1_yeua4"]
+[ext_resource type="Texture2D" uid="uid://hi7c2k47yc6b" path="res://00_Scenes/ItemTextures/Torch00_DIF.png" id="1_yeua4"]
 [ext_resource type="PackedScene" uid="uid://qm14agpmwdrt" path="res://VFX/ParticleFX/Flare00/Flare.tscn" id="3_crdvj"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2u8sb"]
