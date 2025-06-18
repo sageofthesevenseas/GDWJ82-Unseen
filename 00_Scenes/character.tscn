@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://qlr7s5cs5b3y"]
+[gd_scene load_steps=9 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
 [ext_resource type="PackedScene" uid="uid://b206ab03crtra" path="res://Player/player_visuals.tscn" id="3_vwvbh"]
-[ext_resource type="Script" uid="uid://c3t2kxjk24a0q" path="res://00_Scenes/throwing_system.gd" id="4_spk8f"]
 [ext_resource type="PackedScene" uid="uid://diaw6c2xtaibp" path="res://00_Scenes/dig_minigame.tscn" id="4_vwvbh"]
-[ext_resource type="PackedScene" uid="uid://mwu3nkm7l7ih" path="res://00_Scenes/torch.tscn" id="5_5jv7e"]
-[ext_resource type="Texture2D" uid="uid://cj86sb27tpxe4" path="res://ItemTextures/Throw Marker.png" id="6_5jv7e"]
-[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="6_igamm"]
+[ext_resource type="Script" uid="uid://c3t2kxjk24a0q" path="res://00_Scenes/throwing_system.gd" id="4_spk8f"]
+[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="5_spk8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7igj"]
 radius = 64.0
@@ -19,10 +17,6 @@ radius = 809.99
 [sub_resource type="GDScript" id="GDScript_h7igj"]
 script/source = "extends Node2D
 "
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_igamm"]
-blend_mode = 4
-light_mode = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_48qfa")
@@ -62,22 +56,12 @@ script = SubResource("GDScript_h7igj")
 [node name="ThrowingSystem" type="Node2D" parent="."]
 position = Vector2(-2, -200)
 script = ExtResource("4_spk8f")
-bomb_image = ExtResource("6_igamm")
-flare_prefab = ExtResource("5_5jv7e")
 
 [node name="ProjectileSpawn" type="Marker2D" parent="ThrowingSystem"]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ThrowingSystem/ProjectileSpawn"]
-material = SubResource("CanvasItemMaterial_igamm")
-texture = ExtResource("6_5jv7e")
+texture = ExtResource("5_spk8f")
 
 [node name="TrajectoryPreview" type="Line2D" parent="ThrowingSystem"]
-
-[node name="Projectile Holdup" type="Sprite2D" parent="ThrowingSystem"]
-visible = false
-position = Vector2(23, -131)
-scale = Vector2(0.26, 0.26)
-texture = ExtResource("6_igamm")
 
 [connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
