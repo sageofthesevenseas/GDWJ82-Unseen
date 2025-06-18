@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://k00sde5uick7" path="res://VFX/VFX_Sprites/light00.png" id="1_ra2yb"]
 
-[node name="MainLight" type="Node2D"]
+[node name="MainLight" type="Node2D" groups=["lights"]]
+metadata/light_range = 1400.0
+metadata/use_for_darkness_damage = false
 
 [node name="LightOverlay" type="PointLight2D" parent="."]
 energy = 5.03
