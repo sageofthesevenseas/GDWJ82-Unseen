@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://qlr7s5cs5b3y"]
+[gd_scene load_steps=10 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
 [ext_resource type="PackedScene" uid="uid://b206ab03crtra" path="res://Player/player_visuals.tscn" id="3_vwvbh"]
 [ext_resource type="PackedScene" uid="uid://diaw6c2xtaibp" path="res://00_Scenes/dig_minigame.tscn" id="4_vwvbh"]
 [ext_resource type="PackedScene" path="res://00_Scenes/throwing_system.tscn" id="5_spk8f"]
+[ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="6_5jv7e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7igj"]
-radius = 64.0
-height = 254.0
+radius = 49.0
+height = 170.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7igj"]
 radius = 809.99
@@ -23,7 +24,7 @@ acceleration = 10000.0
 max_speed = 7500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -136)
+position = Vector2(-10, -95)
 shape = SubResource("CapsuleShape2D_h7igj")
 
 [node name="GeolocationArea" type="Area2D" parent="."]
@@ -61,5 +62,8 @@ enabled = false
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-64, -127)
 enabled = false
+
+[node name="MainLight" parent="." instance=ExtResource("6_5jv7e")]
+position = Vector2(-154, -165)
 
 [connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
