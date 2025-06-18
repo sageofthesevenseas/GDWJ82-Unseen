@@ -20,23 +20,19 @@ func _on_start_game():
 	var MenuNode = get_node("GUI/UI_Handler")
 	print("Loading Test Scenery")
 	var Level = preload("res://00_Scenes/TestScenery.tscn").instantiate()
+	WorldNode.add_child(Level)
+	spawn_player_and_switch_camera()
+	GuiNode.remove_child(MenuNode)
+
+func spawn_player_and_switch_camera():
+	var WorldNode = get_node("World2D")
+	var GuiNode = get_node("GUI")
+	var MenuNode = get_node("GUI/UI_Handler")
 	var Player = preload("res://00_Scenes/character.tscn").instantiate()
 	var camera = preload("res://00_Scenes/camera.tscn")
 	var MenuCamera = get_node("Camera")
-	WorldNode.add_child(Level)
 	WorldNode.add_child(Player)
 	var camera_instance = camera.instantiate()
 	Player.add_child(camera_instance)
 	camera_instance.make_current()
-	
-	
-	#var camera_parent = get_node("Camera")
-	#var camera_instance = get_node("Camera/Camera2D")
-	#var player_node = get_node("World2D/CharacterBody2D")
-	#camera_parent.reparent(player_node)
-	#camera_Prefab.current = true
-	
-	GuiNode.remove_child(MenuNode)
-
-	
 	pass
