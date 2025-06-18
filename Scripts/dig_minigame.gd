@@ -9,7 +9,12 @@ signal score_goal_reached()
 var score : int = 0
 enum Keys { UP = 0, LEFT = 1, DOWN = 2, RIGHT = 3 }
 # This could be anything else, but is just these characters for now.
-var keys_string : Array[String] = [ "↑", "←", "↓", "→" ]
+var keys_string : Array = [ 
+	preload("res://ItemTextures/arrow_up.png"),
+	preload("res://ItemTextures/arrow_left.png"),
+	preload("res://ItemTextures/arrow_down.png"),
+	preload("res://ItemTextures/arrow_right.png")
+	]
 var keys_action : Array[StringName] = [ &"move_up", &"move_left", &"move_down", &"move_right" ]
 
 var cur_key : Keys
@@ -62,8 +67,8 @@ func swap_key_boxes() -> void:
 	next_key = temp_key
 
 func update_key_box_textures() -> void:
-	(key_boxes[cur_key_box_i].get_child(1) as Label).text = keys_string[cur_key]
-	(key_boxes[next_key_box_i].get_child(1) as Label).text = keys_string[next_key]
+	(key_boxes[cur_key_box_i].get_child(1) as TextureRect).texture = keys_string[cur_key]
+	(key_boxes[next_key_box_i].get_child(1) as TextureRect).texture = keys_string[next_key]
 
 var tween : Tween
 func move_key_boxes(move_left : bool = true) -> void:
