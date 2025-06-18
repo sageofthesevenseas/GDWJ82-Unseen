@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://qlr7s5cs5b3y"]
+[gd_scene load_steps=9 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
 [ext_resource type="PackedScene" uid="uid://b206ab03crtra" path="res://Player/player_visuals.tscn" id="3_vwvbh"]
-[ext_resource type="Script" uid="uid://fmhyul3f0c1g" path="res://throwing_system.gd" id="4_spk8f"]
 [ext_resource type="PackedScene" uid="uid://diaw6c2xtaibp" path="res://00_Scenes/dig_minigame.tscn" id="4_vwvbh"]
-[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="5_spk8f"]
+[ext_resource type="PackedScene" uid="uid://bi4dpscy1x5qi" path="res://00_Scenes/throwing_system.tscn" id="5_spk8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7igj"]
 radius = 64.0
@@ -53,16 +52,7 @@ script = SubResource("GDScript_h7igj")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="ThrowingSystem" type="Node2D" parent="."]
-position = Vector2(-2, -200)
-script = ExtResource("4_spk8f")
-
-[node name="ProjectileSpawn" type="Marker2D" parent="ThrowingSystem"]
-
-[node name="Projectile Holdup" type="Sprite2D" parent="ThrowingSystem/ProjectileSpawn"]
-texture = ExtResource("5_spk8f")
-
-[node name="TrajectoryPreview" type="Line2D" parent="ThrowingSystem"]
+[node name="ThrowingSystem" parent="." instance=ExtResource("5_spk8f")]
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(64, -127)

@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://yyegmw7wru6o"]
+[gd_scene load_steps=3 format=3 uid="uid://yyegmw7wru6o"]
 
 [ext_resource type="PackedScene" uid="uid://qlr7s5cs5b3y" path="res://00_Scenes/character.tscn" id="1_f58qq"]
+
+[sub_resource type="AudioStream" id="AudioStream_f58qq"]
 
 [node name="Lazybones_Test_env" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_f58qq")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStream_f58qq")
 
 [editable path="CharacterBody2D"]

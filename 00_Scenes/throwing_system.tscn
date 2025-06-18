@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=3 uid="uid://bi4dpscy1x5qi"]
+
+[ext_resource type="Script" uid="uid://fmhyul3f0c1g" path="res://throwing_system.gd" id="1_gi8x3"]
+[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_wlfx5"]
+[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="2_yt3l2"]
+[ext_resource type="Texture2D" uid="uid://bb0n2lhyoa177" path="res://ItemTextures/Torch_preview.png" id="3_kxw5q"]
+[ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/projectile_bomb.tscn" id="4_ubnmy"]
+[ext_resource type="PackedScene" uid="uid://n6ts3irheryv" path="res://00_Scenes/projectile_torch.tscn" id="5_pvovm"]
+[ext_resource type="Texture2D" uid="uid://cwslskahro0pi" path="res://ItemTextures/circle.png" id="7_kxw5q"]
+
+[node name="ThrowingSystem" type="Node2D"]
+script = ExtResource("1_gi8x3")
+bomb_image = ExtResource("2_yt3l2")
+flare_image = ExtResource("3_kxw5q")
+bomb_prefab = ExtResource("4_ubnmy")
+flare_prefab = ExtResource("5_pvovm")
+
+[node name="ProjectileHoldup" type="Sprite2D" parent="."]
+position = Vector2(30, -125)
+texture = ExtResource("2_wlfx5")
+
+[node name="ProjectileTarget" type="Sprite2D" parent="."]
+texture = ExtResource("7_kxw5q")
