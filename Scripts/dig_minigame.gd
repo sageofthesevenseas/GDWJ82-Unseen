@@ -36,7 +36,12 @@ func start_minigame(hidden_chest : HiddenChest) -> void:
 	update_key_box_textures()
 	move_key_boxes()
 
-func _physics_process(delta: float) -> void:
+func quit_minigame() -> void:
+	state = State.IDLE
+	score = 0
+	visible = false
+
+func _physics_process(delta : float) -> void:
 	if state == State.IDLE:
 		return
 	if Input.is_action_just_pressed(keys_action[cur_key]):
@@ -61,50 +66,116 @@ func update_key_box_textures() -> void:
 	(key_boxes[next_key_box_i].get_child(1) as Label).text = keys_string[next_key]
 
 var tween : Tween
-func move_key_boxes() -> void:
+func move_key_boxes(move_left : bool = true) -> void:
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	key_boxes[cur_key_box_i].position = Vector2(128,8)
-	key_boxes[cur_key_box_i].scale = Vector2(0.875, 0.875)
-	key_boxes[cur_key_box_i].modulate.a = 0.8
-	var mod := key_boxes[cur_key_box_i].modulate
-	mod.a = 1.0
 	tween.set_parallel(true)
-	tween.tween_property(key_boxes[cur_key_box_i], ^"position", Vector2(0,0), 0.1).set_trans(Tween.TransitionType.TRANS_EXPO)
-	tween.tween_property(key_boxes[cur_key_box_i], ^"scale", Vector2(1.0,1.0), 0.1).set_trans(Tween.TransitionType.TRANS_SINE)
-	tween.tween_property(key_boxes[cur_key_box_i], ^"modulate", mod, 0.1).set_trans(Tween.TransitionType.TRANS_CUBIC)
+	var middle_position : Vector2 = Vector2(0,0)
+	var right_position : Vector2 = Vector2(128,0)
+	var far_right_position : Vector2 = Vector2(160,0)
 
-	key_boxes[next_key_box_i].position = Vector2(160,8)
-	key_boxes[next_key_box_i].scale = Vector2(0.875, 0.875)
-	key_boxes[next_key_box_i].modulate.a = 0.5
-	mod = key_boxes[next_key_box_i].modulate
-	mod.a = 0.8
-	tween.tween_property(key_boxes[next_key_box_i], ^"position", Vector2(128,8), 0.2).set_trans(Tween.TransitionType.TRANS_CIRC)
-	tween.tween_property(key_boxes[next_key_box_i], ^"modulate", mod, 0.2).set_trans(Tween.TransitionType.TRANS_LINEAR)
+	var middle_scale : Vector2 = Vector2(1,1)
+	var right_scale : Vector2 = Vector2(0.875,0.875)
+	var far_right_scale : Vector2 = Vector2(0.875,0.875)
+	var disappear_scale : Vector2 = Vector2(0.25,0.25)
 
-func on_key_pressed() -> void:
+	var middle_alpha : float = 1.0
+	var right_alpha : float = 0.8
+	var far_right_alpha : float = 0.5
+	var disappear_alpha : float = 0.0
+	if move_left:
+		# middle box → disappear
+		key_boxes[next_key_box_i].position = middle_position
+		key_boxes[next_key_box_i].scale = middle_scale
+		key_boxes[next_key_box_i].modulate.a = middle_alpha
+		var mod := key_boxes[next_key_box_i].modulate
+		mod.a = disappear_alpha
+		key_boxes[next_key_box_i].visible = true
+		tween.tween_property(key_boxes[next_key_box_i], ^"scale", disappear_scale, 0.1).set_trans(Tween.TransitionType.TRANS_LINEAR)
+		tween.tween_property(key_boxes[next_key_box_i], ^"modulate", mod, 0.1).set_trans(Tween.TransitionType.TRANS_LINEAR)
+
+		# right box → middle
+		key_boxes[cur_key_box_i].position = right_position
+		key_boxes[cur_key_box_i].scale = right_scale
+		key_boxes[cur_key_box_i].modulate.a = right_alpha
+		mod = key_boxes[cur_key_box_i].modulate
+		mod.a = middle_alpha
+		key_boxes[cur_key_box_i].visible = true
+		tween.tween_property(key_boxes[cur_key_box_i], ^"position", middle_position, 0.16).set_trans(Tween.TransitionType.TRANS_CUBIC)
+		tween.tween_property(key_boxes[cur_key_box_i], ^"scale", middle_scale, 0.16).set_trans(Tween.TransitionType.TRANS_SINE)
+		tween.tween_property(key_boxes[cur_key_box_i], ^"modulate", mod, 0.16).set_trans(Tween.TransitionType.TRANS_CUBIC)
+
+		# far right box → right
+		mod = key_boxes[next_key_box_i].modulate
+		mod.a = far_right_alpha
+		tween.chain().tween_property(key_boxes[next_key_box_i], ^"position", far_right_position, 0.0).set_trans(Tween.TransitionType.TRANS_LINEAR)
+		tween.tween_property(key_boxes[next_key_box_i], ^"scale", far_right_scale, 0.0).set_trans(Tween.TransitionType.TRANS_LINEAR)
+		tween.tween_property(key_boxes[next_key_box_i], ^"modulate", mod, 0.0).set_trans(Tween.TransitionType.TRANS_LINEAR)
+		if score + 2 >= score_goal:
+			tween.tween_property(key_boxes[next_key_box_i], ^"visible", false, 0.0)
+		mod.a = right_alpha
+		tween.chain().tween_property(key_boxes[next_key_box_i], ^"position", right_position, 0.1).set_trans(Tween.TransitionType.TRANS_CIRC)
+		tween.tween_property(key_boxes[next_key_box_i], ^"scale", right_scale, 0.1).set_trans(Tween.TransitionType.TRANS_LINEAR)
+		tween.tween_property(key_boxes[next_key_box_i], ^"modulate", mod, 0.1).set_trans(Tween.TransitionType.TRANS_LINEAR)
+	else:
+		# right box → far right
+		key_boxes[cur_key_box_i].position = right_position
+		key_boxes[cur_key_box_i].scale = right_scale
+		key_boxes[cur_key_box_i].modulate.a = far_right_alpha
+		var mod := key_boxes[cur_key_box_i].modulate
+		mod.a = disappear_alpha
+		key_boxes[cur_key_box_i].visible = true
+		if score + 1 >= score_goal:
+			key_boxes[cur_key_box_i].visible = false
+		tween.tween_property(key_boxes[cur_key_box_i], ^"position", far_right_position, 0.07).set_trans(Tween.TransitionType.TRANS_EXPO)
+		tween.tween_property(key_boxes[cur_key_box_i], ^"modulate", mod, 0.07).set_trans(Tween.TransitionType.TRANS_LINEAR)
+
+		# prepare box for middle appear
+		mod = key_boxes[cur_key_box_i].modulate
+		mod.a = far_right_alpha*0.2
+		tween.chain().tween_property(key_boxes[cur_key_box_i], ^"position", middle_position, 0.0).set_trans(Tween.TransitionType.TRANS_LINEAR)
+		tween.tween_property(key_boxes[cur_key_box_i], ^"scale", disappear_scale, 0.0).set_trans(Tween.TransitionType.TRANS_LINEAR)
+		tween.tween_property(key_boxes[cur_key_box_i], ^"modulate", mod, 0.0).set_trans(Tween.TransitionType.TRANS_LINEAR)
+		tween.tween_property(key_boxes[cur_key_box_i], ^"visible", true, 0.0)
+
+		# middle appear box
+		mod.a = middle_alpha
+		tween.chain().tween_property(key_boxes[cur_key_box_i], ^"scale", middle_scale, 0.15).set_trans(Tween.TransitionType.TRANS_CIRC)
+		tween.tween_property(key_boxes[cur_key_box_i], ^"modulate", mod, 0.2).set_trans(Tween.TransitionType.TRANS_CIRC)
+
+		# middle box → right
+		key_boxes[next_key_box_i].position = middle_position
+		key_boxes[next_key_box_i].scale = middle_scale
+		key_boxes[next_key_box_i].modulate.a = middle_alpha
+		mod = key_boxes[next_key_box_i].modulate
+		mod.a = right_alpha
+		key_boxes[next_key_box_i].visible = true
+		tween.tween_property(key_boxes[next_key_box_i], ^"position", right_position, 0.15).set_trans(Tween.TransitionType.TRANS_CUBIC)
+		tween.tween_property(key_boxes[next_key_box_i], ^"scale", right_scale, 0.2).set_trans(Tween.TransitionType.TRANS_CIRC)
+		tween.tween_property(key_boxes[next_key_box_i], ^"modulate", mod, 0.15).set_trans(Tween.TransitionType.TRANS_LINEAR)
+
+func on_correct_key_pressed() -> void:
 	swap_key_boxes()
 	next_key = Keys.values().pick_random()
 	update_key_box_textures()
 	state = State.PLAYING
-	move_key_boxes()
-
-func on_correct_key_pressed() -> void:
-	on_key_pressed()
+	move_key_boxes(true)
 	score += 1
 	emit_signal(&"correct_key_pressed")
 	if score == score_goal:
 		on_score_goal_reached()
 
 func on_incorrect_key_pressed() -> void:
-	on_key_pressed()
+	swap_key_boxes()
+	cur_key = Keys.values().pick_random()
+	update_key_box_textures()
+	state = State.PLAYING
+	move_key_boxes(false)
 	score = maxi(score - 1, 0)
 	emit_signal(&"incorrect_key_pressed")
 
 func on_score_goal_reached() -> void:
-	state = State.IDLE
-	score = 0
-	visible = false
+	quit_minigame()
 	emit_signal(&"score_goal_reached")
 	# TODO: Remove the hidden chest, spawn physical chest
