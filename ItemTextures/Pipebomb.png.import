@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bepkb3qlv14mq"
-path="res://.godot/imported/LockpickingPin.png-479ca50769a45ae33770159388cfe108.ctex"
+uid="uid://cpmluky30rapy"
+path="res://.godot/imported/Pipebomb.png-615513e4192fad41885ca3431ebb2d12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00_Scenes/ItemTextures/LockpickingPin.png"
-dest_files=["res://.godot/imported/LockpickingPin.png-479ca50769a45ae33770159388cfe108.ctex"]
+source_file="res://ItemTextures/Pipebomb.png"
+dest_files=["res://.godot/imported/Pipebomb.png-615513e4192fad41885ca3431ebb2d12.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpmluky30rapy"
-path="res://.godot/imported/Pipebomb.png-f06ae33ae2c3be6b7a8fc29178cfda48.ctex"
+uid="uid://b3pvks83upqnw"
+path="res://.godot/imported/ChestLid_NMb.png-84f2a74f4d5bd1831ef56555e697aca7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00_Scenes/ItemTextures/Pipebomb.png"
-dest_files=["res://.godot/imported/Pipebomb.png-f06ae33ae2c3be6b7a8fc29178cfda48.ctex"]
+source_file="res://ItemTextures/ChestLid_NMb.png"
+dest_files=["res://.godot/imported/ChestLid_NMb.png-84f2a74f4d5bd1831ef56555e697aca7.ctex"]
 
 [params]
 

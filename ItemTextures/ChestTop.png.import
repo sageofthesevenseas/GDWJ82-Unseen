@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3pvks83upqnw"
-path="res://.godot/imported/ChestLid_NMb.png-7956d955f51d9ed33f63717142e7a592.ctex"
+uid="uid://d2rvmpwow6han"
+path="res://.godot/imported/ChestTop.png-600c6f3cd41fa501b9e09720078b5a8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00_Scenes/ItemTextures/ChestLid_NMb.png"
-dest_files=["res://.godot/imported/ChestLid_NMb.png-7956d955f51d9ed33f63717142e7a592.ctex"]
+source_file="res://ItemTextures/ChestTop.png"
+dest_files=["res://.godot/imported/ChestTop.png-600c6f3cd41fa501b9e09720078b5a8f.ctex"]
 
 [params]
 

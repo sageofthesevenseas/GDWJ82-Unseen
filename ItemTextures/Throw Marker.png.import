@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpvymxuen1yo4"
-path="res://.godot/imported/ChestLid_HMb.png-38caaed69ae9884b846acb11a79a62dd.ctex"
+uid="uid://cj86sb27tpxe4"
+path="res://.godot/imported/Throw Marker.png-676041daf157b61420490a7af60f5991.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00_Scenes/ItemTextures/ChestLid_HMb.png"
-dest_files=["res://.godot/imported/ChestLid_HMb.png-38caaed69ae9884b846acb11a79a62dd.ctex"]
+source_file="res://ItemTextures/Throw Marker.png"
+dest_files=["res://.godot/imported/Throw Marker.png-676041daf157b61420490a7af60f5991.ctex"]
 
 [params]
 

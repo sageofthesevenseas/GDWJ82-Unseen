@@ -1,13 +1,13 @@
 extends Node2D
 @onready var projectile_spawn: Marker2D = $ProjectileSpawn
 @onready var trajectory_preview: Line2D = $TrajectoryPreview
-@onready var projectile_holdup: Sprite2D = $"Projectile Holdup"
+@onready var projectile_holdup: Sprite2D = $"ProjectileSpawn/Projectile Holdup" #Renamed Sprite2D in /CharacterBody2D/ThrowingSystem/ProjectileSpawn to "Projectile Holdup and re-referenced it here.
 
 @export var bomb_image: Texture2D
 @export var flare_image: Texture2D
 @export var bomb_prefab: PackedScene
 @export var flare_prefab: PackedScene
-const THROW_MARKER = preload("res://ItemTextures/Throw Marker.png")
+const THROW_MARKER = preload("res://ItemTextures/Throw_Marker.svg") #Added new texture SVG because of preload null. Renamed Node as well as reference from "Throw Marker" to "Throw_Marker"
 var max_radius := 600.0
 
 func _process(delta: float) -> void:

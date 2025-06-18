@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2rvmpwow6han"
-path="res://.godot/imported/ChestTop.png-b776d35f998ec41ff06ba1b2057ea15f.ctex"
+uid="uid://8qioaxdvsiob"
+path="res://.godot/imported/Screenshot 2025-06-15 174622.png-cfaa7eb88e22c7fb7d10972719d86fbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00_Scenes/ItemTextures/ChestTop.png"
-dest_files=["res://.godot/imported/ChestTop.png-b776d35f998ec41ff06ba1b2057ea15f.ctex"]
+source_file="res://ItemTextures/Screenshot 2025-06-15 174622.png"
+dest_files=["res://.godot/imported/Screenshot 2025-06-15 174622.png-cfaa7eb88e22c7fb7d10972719d86fbb.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nes7qws3hv4i"
-path="res://.godot/imported/ChestLid_NMc.png-efc7b6ead79a15905db15f3da04eeace.ctex"
+uid="uid://bepkb3qlv14mq"
+path="res://.godot/imported/LockpickingPin.png-1bd45b742c4ea6b32b3a2cf7c02a031e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00_Scenes/ItemTextures/ChestLid_NMc.png"
-dest_files=["res://.godot/imported/ChestLid_NMc.png-efc7b6ead79a15905db15f3da04eeace.ctex"]
+source_file="res://ItemTextures/LockpickingPin.png"
+dest_files=["res://.godot/imported/LockpickingPin.png-1bd45b742c4ea6b32b3a2cf7c02a031e.ctex"]
 
 [params]
 

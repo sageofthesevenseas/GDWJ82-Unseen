@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgymhaefruurs"
-path="res://.godot/imported/ChestLid_NM.png-c5774e79dd3d4f3cea44e29ad046e755.ctex"
+uid="uid://c4adb8ogvyv1c"
+path="res://.godot/imported/Throw_Marker.svg-54eeb41fd9287417bc28a6f694f9ee9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00_Scenes/ItemTextures/ChestLid_NM.png"
-dest_files=["res://.godot/imported/ChestLid_NM.png-c5774e79dd3d4f3cea44e29ad046e755.ctex"]
+source_file="res://ItemTextures/Throw_Marker.svg"
+dest_files=["res://.godot/imported/Throw_Marker.svg-54eeb41fd9287417bc28a6f694f9ee9f.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

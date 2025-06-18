@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8qioaxdvsiob"
-path="res://.godot/imported/Screenshot 2025-06-15 174622.png-f9d8985053c2317f2b40bd6518a1af09.ctex"
+uid="uid://hi7c2k47yc6b"
+path="res://.godot/imported/Torch00_DIF.png-d36c58d6ca25218223d9a467585d772f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00_Scenes/ItemTextures/Screenshot 2025-06-15 174622.png"
-dest_files=["res://.godot/imported/Screenshot 2025-06-15 174622.png-f9d8985053c2317f2b40bd6518a1af09.ctex"]
+source_file="res://ItemTextures/Torch00_DIF.png"
+dest_files=["res://.godot/imported/Torch00_DIF.png-d36c58d6ca25218223d9a467585d772f.ctex"]
 
 [params]
 
