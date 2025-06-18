@@ -4,10 +4,12 @@ class_name ChestMinigameManager extends Node2D
 @onready var mini_game_3: Path2D = $MiniGame3
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@export var DEBUG_run_mini_on_ready: bool = false
 signal chest_game_beaten
 
 func _ready() -> void:
-	start_minigame()
+	if DEBUG_run_mini_on_ready == true:
+		start_minigame()
 
 #func start_minigame(relevant_hidden_chest : HiddenChest) -> void:
 func start_minigame() -> void:
@@ -30,5 +32,8 @@ func _on_mini_game_2_minigame_completed() -> void:
 
 func _on_mini_game_3_minigame_completed() -> void:
 	print("player has completed minigame!")
+	mini_game_1.visible = false
+	mini_game_2.visible = false
+	mini_game_3.visible = false
 	animation_player.play("Open")
 	chest_game_beaten.emit()
