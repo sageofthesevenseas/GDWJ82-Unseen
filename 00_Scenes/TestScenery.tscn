@@ -22,7 +22,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="MainLight" parent="." instance=ExtResource("1_chrnd")]
 position = Vector2(-97, -674)
-metadata/use_for_darkness_damage = true
 
 [node name="Node" type="Node" parent="."]
 

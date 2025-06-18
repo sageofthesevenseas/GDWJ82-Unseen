@@ -12,9 +12,6 @@ class_name Character extends CharacterBody2D
 @onready var dig_minigame_manager := $"DigMinigame" as DigMinigameManager
 @onready var chest_minigame_manager := $"Chest_Minigame" as ChestMinigameManager
 
-@onready var raycast_left := $RayCastLeft as RayCast2D
-@onready var raycast_right := $RayCastRight as RayCast2D
-@onready var raycasts : Array[RayCast2D] = [ raycast_left, raycast_right ]
 
 enum GeolocationState { IDLE, IN_DIGGABLE_RANGE }
 var current_geolocation_state := GeolocationState.IDLE
@@ -36,7 +33,7 @@ func _physics_process(delta : float) -> void:
 	velocity -= velocity * friction * delta
 	velocity = velocity.limit_length(max_speed)
 	move_and_slide()
-
+	
 	# NOTE: when the player becomes not controllable whilst in an animation, we need to stop the animation or transition to another animation
 	if not controllable:
 		return
@@ -59,27 +56,6 @@ func _physics_process(delta : float) -> void:
 		if (area is HiddenChest):
 			geolocatables.append(area)
 	geolocation_process(delta, geolocatables)
-
-	var in_light := false
-	for light in get_tree().get_nodes_in_group(&"lights"):
-		if not (light as Node2D).visible or not light.get_meta(&"use_for_darkness_damage", false):
-			break
-		in_light = not is_in_shadow(light.get_meta(&"light_range", 0.0), (light as Node2D).global_position)
-		if in_light:
-			break
-	
-	if not in_light:
-		# Do something !
-		print("Not in light")
-
-func is_in_shadow(light_range : float, light_global_position : Vector2) -> bool:
-	for raycast in raycasts:
-		var rel_position := light_global_position - raycast.global_position
-		raycast.target_position = rel_position.limit_length(light_range)
-		raycast.force_raycast_update()
-		if rel_position.length() < light_range and not raycast.is_colliding():
-			return false
-	return true
 
 func geolocation_process(delta : float, geolocatables : Array[HiddenChest]) -> void:
 	var previously_in_diggable_range : bool = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE

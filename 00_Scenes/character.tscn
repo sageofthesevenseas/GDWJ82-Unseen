@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=13 format=3 uid="uid://qlr7s5cs5b3y"]
-=======
-[gd_scene load_steps=10 format=3 uid="uid://qlr7s5cs5b3y"]
->>>>>>> 280fb630601aac819f357f4afc833baade32b9a5
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
@@ -78,20 +74,10 @@ texture = ExtResource("6_5jv7e")
 
 [node name="TrajectoryPreview" type="Line2D" parent="ThrowingSystem"]
 
-<<<<<<< HEAD
 [node name="Projectile Holdup" type="Sprite2D" parent="ThrowingSystem"]
 visible = false
 position = Vector2(23, -131)
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("6_igamm")
-=======
-[node name="RayCastRight" type="RayCast2D" parent="."]
-position = Vector2(64, -127)
-enabled = false
-
-[node name="RayCastLeft" type="RayCast2D" parent="."]
-position = Vector2(-64, -127)
-enabled = false
->>>>>>> 280fb630601aac819f357f4afc833baade32b9a5
 
 [connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
