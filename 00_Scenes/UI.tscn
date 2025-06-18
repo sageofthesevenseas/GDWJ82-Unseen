@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhy1x5ovnpaku"]
+
+[ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
+[ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
+[ext_resource type="Texture2D" uid="uid://ddt2ie2p88gi2" path="res://Player/Textures/Ernest.png" id="3_0mb0d"]
+
+[node name="UI_Handler" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oeioq")
+
+[node name="GameStart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 300.0
+offset_right = 1216.0
+offset_bottom = 428.0
+pivot_offset = Vector2(256, 0)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Descend"
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 450.0
+offset_right = 1216.0
+offset_bottom = 578.0
+pivot_offset = Vector2(256, 0)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Settings"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 600.0
+offset_right = 1216.0
+offset_bottom = 728.0
+pivot_offset = Vector2(256, 0)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Flee"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 80.0
+offset_right = 1580.0
+offset_bottom = 243.0
+pivot_offset = Vector2(600, 0)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 128
+text = "Ernest's Descent"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ernest" type="Sprite2D" parent="."]
+position = Vector2(-15, 695)
+texture = ExtResource("3_0mb0d")
+
+[connection signal="pressed" from="GameStart" to="." method="_on_game_start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
