@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://rwqyuhniy1u"]
+[gd_scene load_steps=23 format=3 uid="uid://rwqyuhniy1u"]
 
-[ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
+[ext_resource type="Script" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
 [ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://Scripts/chest_minigame_manager.gd" id="1_h54ls"]
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="3_h54ls"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="3_sh4cu"]
@@ -8,8 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bepkb3qlv14mq" path="res://ItemTextures/LockpickingPin.png" id="5_iga1p"]
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="7_h54ls"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h54ls"]
+light_mode = 1
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iga1p"]
 polygon = PackedVector2Array(-431.429, -148.571, -428.571, 145.714, 428.571, 145.714, 428.571, -145.714, 405.714, -145.714, 402.857, 117.143, -397.143, 125.714, -397.143, -148.571)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xauol"]
+light_mode = 1
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h54ls"]
 polygon = PackedVector2Array(-431.429, 142.857, -431.429, 34.2857, -417.143, 14.2857, -400, -65.7143, -354.286, -108.571, -342.857, -125.714, 342.857, -122.857, 368.571, -102.857, 391.428, -45.7143, 402.857, 11.4286, 431.429, 48.5714, 431.429, 148.571, 405.714, 148.571, 405.714, 51.4286, 382.857, 20, 365.714, -42.8571, 345.714, -97.1429, -328.571, -97.1429, -377.143, -54.2857, -394.286, 17.1429, -397.143, 142.857)
@@ -20,11 +26,29 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0blsx"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_epv20"]
+light_mode = 1
+
 [sub_resource type="Curve2D" id="Curve2D_epv20"]
 _data = {
 "points": PackedVector2Array(-0.791625, -53.8138, 0.791625, 53.8138, -100, 0, -55.2935, -0.229347, 55.2935, 0.229347, 0, 100, -0.396057, 65.544, 0.396057, -65.544, 100, 0, 48.836, -0.478892, -48.836, 0.478892, 0, -100, 0.478654, -58.4116, -0.478654, 58.4116, -100, 0)
 }
 point_count = 5
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhnlo"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t51jr"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_efxef"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ocyvy"]
+light_mode = 1
 
 [sub_resource type="Animation" id="Animation_h54ls"]
 resource_name = "Open"
@@ -99,7 +123,9 @@ scale = Vector2(0.35, 0.35)
 
 [node name="Chest_Backing" type="Sprite2D" parent="."]
 light_mask = 5
+material = SubResource("CanvasItemMaterial_h54ls")
 position = Vector2(0, 102)
+rotation = -0.000376445
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_sh4cu")
 
@@ -109,6 +135,7 @@ occluder = SubResource("OccluderPolygon2D_iga1p")
 
 [node name="Chest_Top" type="Sprite2D" parent="."]
 light_mask = 5
+material = SubResource("CanvasItemMaterial_xauol")
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_h54ls")
 
@@ -140,6 +167,7 @@ rotation = -1.5708
 progress = 12.21
 
 [node name="Line2D" type="Line2D" parent="MiniGame1/TargetBar"]
+material = SubResource("CanvasItemMaterial_0blsx")
 position = Vector2(-22.47, 0)
 scale = Vector2(1.5, 1.5)
 points = PackedVector2Array(0, 0, 23.18, 0)
@@ -152,6 +180,7 @@ cubic_interp = false
 loop = false
 
 [node name="SpritePin" type="Sprite2D" parent="MiniGame1/PlayerPin"]
+material = SubResource("CanvasItemMaterial_epv20")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_iga1p")
 
@@ -175,6 +204,7 @@ rotation = 1.55609
 loop = false
 
 [node name="Line2D" type="Line2D" parent="MiniGame2/TargetBar"]
+material = SubResource("CanvasItemMaterial_qhnlo")
 position = Vector2(23.55, 0)
 rotation = 3.14159
 scale = Vector2(1.5, 1.5)
@@ -189,6 +219,7 @@ cubic_interp = false
 loop = false
 
 [node name="SpritePin" type="Sprite2D" parent="MiniGame2/PlayerPin"]
+material = SubResource("CanvasItemMaterial_t51jr")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_iga1p")
 
@@ -216,6 +247,7 @@ rotation = -1.5708
 progress = 12.21
 
 [node name="Line2D" type="Line2D" parent="MiniGame3/TargetBar"]
+material = SubResource("CanvasItemMaterial_efxef")
 position = Vector2(-22.1456, -0.175367)
 scale = Vector2(1.5, 1.5)
 points = PackedVector2Array(0, 0, 23.18, 0)
@@ -228,6 +260,7 @@ cubic_interp = false
 loop = false
 
 [node name="SpritePin" type="Sprite2D" parent="MiniGame3/PlayerPin"]
+material = SubResource("CanvasItemMaterial_ocyvy")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_iga1p")
 

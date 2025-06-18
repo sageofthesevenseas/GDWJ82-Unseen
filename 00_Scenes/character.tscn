@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
 [ext_resource type="PackedScene" uid="uid://b206ab03crtra" path="res://Player/player_visuals.tscn" id="3_vwvbh"]
 [ext_resource type="PackedScene" uid="uid://diaw6c2xtaibp" path="res://00_Scenes/dig_minigame.tscn" id="4_vwvbh"]
-[ext_resource type="PackedScene" uid="uid://bi4dpscy1x5qi" path="res://00_Scenes/throwing_system.tscn" id="5_spk8f"]
+[ext_resource type="PackedScene" path="res://00_Scenes/throwing_system.tscn" id="5_spk8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7igj"]
 radius = 64.0

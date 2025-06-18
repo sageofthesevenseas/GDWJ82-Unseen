@@ -18,7 +18,6 @@ func _on_start_game():
 	var WorldNode = get_node("World2D")
 	var GuiNode = get_node("GUI")
 	var MenuNode = get_node("GUI/UI_Handler")
-	print("Loading Test Scenery")
 	var Level = preload("res://00_Scenes/TestScenery.tscn").instantiate()
 	WorldNode.add_child(Level)
 	spawn_player_and_switch_camera()
