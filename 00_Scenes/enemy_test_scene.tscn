@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck7p3uvmbu2so"]
+
+[ext_resource type="PackedScene" uid="uid://qlr7s5cs5b3y" path="res://00_Scenes/character.tscn" id="1_2wbrk"]
+[ext_resource type="PackedScene" uid="uid://dclyhubdk31cs" path="res://00_Scenes/camera.tscn" id="2_ph8bg"]
+[ext_resource type="PackedScene" uid="uid://bfxt3h778c8mw" path="res://00_Scenes/enemy.tscn" id="3_8vb6j"]
+[ext_resource type="Shader" uid="uid://b3p5tepo3ewl7" path="res://VFX/grid_shader.gdshader" id="4_ph8bg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8vb6j"]
+shader = ExtResource("4_ph8bg")
+shader_parameter/grid_size = 40.0
+shader_parameter/grid_center = Vector2(0, 0)
+shader_parameter/width_outer = 0.08
+shader_parameter/width_inner = 0.02
+shader_parameter/bleed_power = 0.5
+shader_parameter/color = Color(1, 1, 1, 0.247059)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Grid" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8vb6j")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5000.0
+offset_top = -5000.0
+offset_right = 5000.0
+offset_bottom = 5000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_2wbrk")]
+collision_layer = 2
+acceleration = 9000.0
+friction = 9.0
+max_speed = 850.0
+
+[node name="Camera2D" parent="CharacterBody2D" instance=ExtResource("2_ph8bg")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_8vb6j")]
+position = Vector2(1380, -41)
+collision_layer = 2
+max_speed = 1500.0
+max_acceleration = 3000.0
+friction = 5.0
+preferred_target_distance = 600.0
+preferred_distance_wiggle_room = 30.0
+swoop_acceleration = 10000.0
+swoop_attack_range = 850.0
+swoop_attack_cooldown = 6.0
+max_swoop_time = 1.25

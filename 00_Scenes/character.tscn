@@ -17,7 +17,7 @@ radius = 809.99
 script/source = "extends Node2D
 "
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_48qfa")
 acceleration = 10000.0
 max_speed = 7500.0
