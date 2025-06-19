@@ -34,4 +34,5 @@ func spawn_player_and_switch_camera():
 	var camera_instance = camera.instantiate()
 	Player.add_child(camera_instance)
 	camera_instance.make_current()
+	$FmodEventEmitter2D.play()
 	pass
