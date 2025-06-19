@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0jo3ae54a4rv"]
+
+[ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/Basic Scenes (Inherit from these)/Basic Projectile Settings.tscn" id="1_gbctl"]
+[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="2_fhuon"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_15qpw"]
+radius = 15.0
+height = 170.0
+
+[node name="Projectile Bomb" instance=ExtResource("1_gbctl")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(31, 1)
+rotation = 0.802851
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("2_fhuon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_15qpw")

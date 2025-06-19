@@ -11,13 +11,18 @@ fractal_lacunarity = 2.83
 fractal_gain = 0.895
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dmgby"]
-width = 2048
-height = 2048
+width = 1024
+height = 1024
 seamless = true
 color_ramp = SubResource("Gradient_eg23k")
 noise = SubResource("FastNoiseLite_wxiqh")
 
 [node name="backgroundOverlay" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1024, 1024)
+repeat_times = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture_repeat = 2
 texture = SubResource("NoiseTexture2D_dmgby")

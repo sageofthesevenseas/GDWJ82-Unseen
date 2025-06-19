@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctxqtjrcc0d7"]
+[gd_scene load_steps=4 format=3 uid="uid://ctxqtjrcc0d7"]
 
+[ext_resource type="Script" uid="uid://m3v58b01t2vd" path="res://00_Scenes/GameController.gd" id="1_coj0j"]
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_xfl2n"]
-[ext_resource type="PackedScene" uid="uid://l04nsg0jtwj5" path="res://00_Scenes/chest_map.tscn" id="2_1jgy6"]
-[ext_resource type="PackedScene" uid="uid://qlr7s5cs5b3y" path="res://00_Scenes/character.tscn" id="2_a7hb6"]
-[ext_resource type="PackedScene" uid="uid://bvgi6cgxe834m" path="res://00_Scenes/Debug Nodes/debug_on_ready_screecher.tscn" id="3_a7hb6"]
-[ext_resource type="PackedScene" uid="uid://b66d1l1857x3g" path="res://00_Scenes/TestScenery.tscn" id="4_1jgy6"]
 [ext_resource type="PackedScene" uid="uid://dclyhubdk31cs" path="res://00_Scenes/camera.tscn" id="6_8471c"]
 
 [node name="GameController" type="Node"]
+script = ExtResource("1_coj0j")
+
+[node name="Camera" parent="." instance=ExtResource("6_8471c")]
 
 [node name="DEBUG_Restart_Key `" parent="." instance=ExtResource("1_xfl2n")]
 
@@ -15,120 +15,23 @@
 
 [node name="World2D" type="Node2D" parent="."]
 
-[node name="ChestMap" parent="World2D" instance=ExtResource("2_1jgy6")]
-
-[node name="Point" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="0"]
-position = Vector2(-915, -1339)
-
-[node name="Point2" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="1"]
-position = Vector2(-1204, -2092)
-
-[node name="Point3" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="2"]
-position = Vector2(-1513, -1224)
-
-[node name="Point4" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="3"]
-position = Vector2(-2340, -1076)
-
-[node name="Point5" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="4"]
-position = Vector2(-1889, -1190)
-
-[node name="Point6" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="5"]
-position = Vector2(1064, -995)
-
-[node name="Point7" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="6"]
-position = Vector2(223, -746)
-
-[node name="Point8" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="7"]
-position = Vector2(-806, -578)
-
-[node name="Point9" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="8"]
-position = Vector2(-167, -1231)
-
-[node name="Point10" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="9"]
-position = Vector2(-98, 1005)
-
-[node name="Point11" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="10"]
-position = Vector2(-88, 1891)
-
-[node name="Point12" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="11"]
-position = Vector2(-236, -355)
-
-[node name="Point13" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="12"]
-position = Vector2(2601, -1113)
-
-[node name="Point14" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="13"]
-position = Vector2(-965, -1734)
-
-[node name="Point15" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="14"]
-position = Vector2(-3073, -345)
-
-[node name="Point16" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="15"]
-position = Vector2(-3053, 807)
-
-[node name="Point17" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="16"]
-position = Vector2(-2925, 1674)
-
-[node name="Point18" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="17"]
-position = Vector2(-2026, 2118)
-
-[node name="Point19" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="18"]
-position = Vector2(-1094, 2172)
-
-[node name="Point20" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="19"]
-position = Vector2(921, 2118)
-
-[node name="Point21" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="20"]
-position = Vector2(1939, 2226)
-
-[node name="Point22" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="21"]
-position = Vector2(2697, 1868)
-
-[node name="Point23" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="22"]
-position = Vector2(2892, 980)
-
-[node name="Point24" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="23"]
-position = Vector2(3044, 113)
-
-[node name="Point25" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="24"]
-position = Vector2(2972, -519)
-
-[node name="Point26" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="25"]
-position = Vector2(2853, -1770)
-
-[node name="Point27" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="26"]
-position = Vector2(2841, -2545)
-
-[node name="Point28" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="27"]
-position = Vector2(1899, -2533)
-
-[node name="Point29" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="28"]
-position = Vector2(1827, -1103)
-
-[node name="Point30" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="29"]
-position = Vector2(981, -2605)
-
-[node name="Point31" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="30"]
-position = Vector2(-1653, -2557)
-
-[node name="Point32" type="Node2D" parent="World2D/ChestMap/SpawnPoints" index="31"]
-position = Vector2(-3333, -2450)
-
-[node name="DEBUG_OnReady_Screecher" parent="World2D/ChestMap" instance=ExtResource("3_a7hb6")]
-
-[node name="TestScenery" parent="World2D" instance=ExtResource("4_1jgy6")]
-
-[node name="PlayerCharacter" parent="World2D" instance=ExtResource("2_a7hb6")]
-position = Vector2(-195, -934)
-
-[node name="Camera" parent="World2D/PlayerCharacter" instance=ExtResource("6_8471c")]
-
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://Music/Desktop/Master.bank", "res://Music/Desktop/Cave.bank"]
 
-[editable path="World2D/ChestMap"]
-[editable path="World2D/TestScenery"]
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/CaveAmbiance"
+event_guid = "{9aa36312-7e51-4e3b-b79c-5c56633ac0e7}"
+attached = false
+auto_release = true
+fmod_parameters/GameplayType/id = -7955650638421249893
+fmod_parameters/GameplayType = "Exploration"
+fmod_parameters/GameplayType/labels = PackedStringArray("Exploration", "Combat")
+fmod_parameters/GameplayType/variant_type = 4
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]

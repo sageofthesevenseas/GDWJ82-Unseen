@@ -10,6 +10,8 @@ class_name Character extends CharacterBody2D
 
 @export var diggable_range : float = 100.0
 
+@export var DEBUG_lightcheck_messages_on: bool = true
+
 @onready var geolocation_area := $"GeolocationArea" as Area2D
 @onready var dig_minigame_manager := $"DigMinigame" as DigMinigameManager
 @onready var chest_minigame_manager := $"Chest_Minigame" as ChestMinigameManager
@@ -50,7 +52,6 @@ func _physics_process(delta : float) -> void:
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
 		animation_player.speed_scale = 3.0
 		animation_player.play("Player Walking")
-
 	else:
 		animation_player.stop()
 	if Input.is_action_just_pressed("move_left") and $PlayerVisuals.scale.x > 0:
@@ -59,6 +60,8 @@ func _physics_process(delta : float) -> void:
 	if Input.is_action_just_pressed("move_right") and $PlayerVisuals.scale.x < 0:
 		$PlayerVisuals.scale.x *= -1
 		print("Tried to flip")
+	
+		
 	
 
 	var geolocatables : Array[HiddenChest] = []
@@ -77,7 +80,8 @@ func _physics_process(delta : float) -> void:
 
 	if not in_light:
 		# Do something !
-		print("Not in light")
+		if DEBUG_lightcheck_messages_on == true:
+			print("Not in light")
 
 func is_in_shadow(light_range : float, light_global_position : Vector2) -> bool:
 	for raycast in raycasts:

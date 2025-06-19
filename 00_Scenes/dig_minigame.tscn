@@ -1,9 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://diaw6c2xtaibp"]
+[gd_scene load_steps=10 format=3 uid="uid://diaw6c2xtaibp"]
 
 [ext_resource type="Script" uid="uid://bhty3n34elyty" path="res://Scripts/dig_minigame.gd" id="1_jtvkj"]
+[ext_resource type="Texture2D" uid="uid://cu3o53t52vs7a" path="res://ItemTextures/button-01.png" id="2_3eui0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eui0"]
 light_mode = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vlqlu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vlqlu"]
+light_mode = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3eui0"]
+diffuse_texture = ExtResource("2_3eui0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3eui0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ds53"]
+light_mode = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vlqlu"]
+diffuse_texture = ExtResource("2_3eui0")
 
 [node name="DigMinigame" type="Node2D"]
 material = SubResource("CanvasItemMaterial_3eui0")
@@ -41,12 +58,19 @@ theme_override_constants/margin_bottom = 8
 [node name="Panel" type="Panel" parent="Control/KeyBox0"]
 use_parent_material = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vlqlu")
 
-[node name="Label" type="Label" parent="Control/KeyBox0"]
+[node name="TextureRect" type="TextureRect" parent="Control/KeyBox0/Panel"]
+material = SubResource("CanvasItemMaterial_vlqlu")
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 112.0
+texture = SubResource("CanvasTexture_3eui0")
+
+[node name="Label" type="TextureRect" parent="Control/KeyBox0"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "{KEY}"
 
 [node name="KeyBox1" type="MarginContainer" parent="Control"]
 use_parent_material = true
@@ -63,9 +87,16 @@ theme_override_constants/margin_bottom = 8
 [node name="Panel" type="Panel" parent="Control/KeyBox1"]
 use_parent_material = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3eui0")
 
-[node name="Label" type="Label" parent="Control/KeyBox1"]
+[node name="TextureRect" type="TextureRect" parent="Control/KeyBox1/Panel"]
+material = SubResource("CanvasItemMaterial_4ds53")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CanvasTexture_vlqlu")
+
+[node name="Label" type="TextureRect" parent="Control/KeyBox1"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "{KEY}"

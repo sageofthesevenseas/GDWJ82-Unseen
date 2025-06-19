@@ -56,12 +56,12 @@ func _process(delta: float) -> void:
 			emit_minigame_ready() #this will also stop emit from happening 10000 times
 	
 	if game_state == MinigameState.RUNNING:
-		if Input.is_action_pressed("dig"): #player has to hold the key to progress
-			#print("dig being held")
+		if Input.is_action_pressed("chest_minigame_key"): #player has to hold the key to progress
+			#print("chest_minigame_key being held")
 			player_pin.progress_ratio += minigame_speed * delta
 		else:
 			player_pin.progress_ratio -= minigame_speed * delta
-		if Input.is_action_just_released("dig"):
+		if Input.is_action_just_released("chest_minigame_key"):
 			if player_pin.progress_ratio > target_range_min and player_pin.progress_ratio < target_range_max:
 				print("congrats!")
 				emit_minigame_completed()

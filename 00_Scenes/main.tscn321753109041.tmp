@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctxqtjrcc0d7"]
+
+[ext_resource type="Script" uid="uid://dp4n7ykvsk5hb" path="res://00_Scenes/GameController.gd" id="1_coj0j"]
+[ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_xfl2n"]
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_coj0j")
+
+[node name="DEBUG_Restart_Key `" parent="." instance=ExtResource("1_xfl2n")]
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="World2D" type="Node2D" parent="."]
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
