@@ -10,6 +10,7 @@ radius = 350.0
 script = ExtResource("1_ebnwn")
 
 [node name="Sprite2DDEBUG" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_fqfsf")
 
 [node name="DetectionArea" type="CollisionShape2D" parent="."]
