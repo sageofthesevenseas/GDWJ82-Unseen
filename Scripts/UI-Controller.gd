@@ -10,7 +10,7 @@ func _on_exit_pressed() -> void:
 func _on_game_start_pressed() -> void:
 	emit_signal("start_game")
 	print("Signal emmitted")
-	pass # Replace with function body.
+	GameController.instance.add_lore(0)
 
 func _on_credits_pressed() -> void:
 	$Main.visible = false
@@ -19,4 +19,39 @@ func _on_credits_pressed() -> void:
 func _on_return_pressed() -> void:
 	$Credits.visible = false
 	$Main.visible = true
-	
+
+
+func _on_journals_pressed() -> void:
+	$Main.visible = false
+	$Journals.visible = true
+
+
+func _on_button_1_pressed() -> void:
+	GameController.instance.add_lore(0)
+
+func _on_button_2_pressed() -> void:
+	GameController.instance.add_lore(1)
+
+func _on_button_3_pressed() -> void:
+	GameController.instance.add_lore(2)
+
+func _on_button_4_pressed() -> void:
+	GameController.instance.add_lore(3)
+
+func _on_button_5_pressed() -> void:
+	GameController.instance.add_lore(4)
+
+func _on_button_6_pressed() -> void:
+	GameController.instance.add_lore(5)
+
+func _on_button_7_button_up() -> void:
+	GameController.instance.add_lore(6)
+
+func _on_button_8_pressed() -> void:
+	GameController.instance.add_lore(7)
+
+func _on_button_9_pressed() -> void:
+	GameController.instance.add_lore(8)
+
+func _on_button_10_pressed() -> void:
+	GameController.instance.add_lore(9)

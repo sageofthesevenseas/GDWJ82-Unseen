@@ -199,6 +199,107 @@ text = "Ernest's Descent"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Journals" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DebugAddJournals" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button1" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 250.0
+offset_right = 1800.0
+offset_bottom = 281.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 1"
+
+[node name="Button2" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 290.0
+offset_right = 1800.0
+offset_bottom = 321.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 2"
+
+[node name="Button3" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 330.0
+offset_right = 1800.0
+offset_bottom = 361.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 3"
+
+[node name="Button4" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 610.0
+offset_right = 1809.0
+offset_bottom = 641.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 10"
+
+[node name="Button5" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 370.0
+offset_right = 1800.0
+offset_bottom = 401.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 4"
+
+[node name="Button6" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 410.0
+offset_right = 1800.0
+offset_bottom = 441.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 5"
+
+[node name="Button7" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 450.0
+offset_right = 1800.0
+offset_bottom = 481.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 6"
+
+[node name="Button8" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 490.0
+offset_right = 1800.0
+offset_bottom = 521.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 7"
+
+[node name="Button9" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 530.0
+offset_right = 1800.0
+offset_bottom = 561.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 8"
+
+[node name="Button10" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 570.0
+offset_right = 1800.0
+offset_bottom = 601.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 9"
+
 [node name="Ernest" type="Sprite2D" parent="."]
 position = Vector2(-15, 700)
 texture = ExtResource("3_0mb0d")
@@ -233,5 +334,16 @@ position = Vector2(4, 5)
 
 [connection signal="pressed" from="Credits/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Main/GameStart" to="." method="_on_game_start_pressed"]
+[connection signal="pressed" from="Main/Journals" to="." method="_on_journals_pressed"]
 [connection signal="pressed" from="Main/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Main/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="button_up" from="DebugAddJournals/Button7" to="." method="_on_button_7_button_up"]
+[connection signal="pressed" from="DebugAddJournals/Button8" to="." method="_on_button_8_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button9" to="." method="_on_button_9_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button10" to="." method="_on_button_10_pressed"]

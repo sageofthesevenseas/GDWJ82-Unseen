@@ -1,7 +1,24 @@
 extends Node
+class_name GameController
+static var instance: GameController
+
 @onready var camera: Node2D = $Camera
 
+var lore_found : Array = [
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+]
+
 func _ready() -> void:
+	instance = self
 	var resolution : Vector2 = get_viewport().get_visible_rect().size
 	var Main_Menu = preload("res://00_Scenes/UI.tscn").instantiate()
 	var WorldNode = get_node("World2D")
@@ -12,6 +29,11 @@ func _ready() -> void:
 	GuiNode.add_child(Main_Menu)
 	var MenuNode = get_node("GUI/UI_Handler")
 	MenuNode.connect("start_game", Callable(self, "_on_start_game"))
+	pass
+
+func add_lore(index : int) -> void:
+	lore_found[index] = true
+	print(lore_found)
 	pass
 
 func _on_start_game():
