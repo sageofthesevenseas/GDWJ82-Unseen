@@ -6,16 +6,23 @@
 bounce = 0.15
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7660q"]
-radius = 45.0
-height = 414.0
+radius = 13.0
+height = 122.0
 
 [node name="Projectile Bomb" type="RigidBody2D"]
+top_level = true
+collision_layer = 2
+collision_mask = 2
+mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_okpvq")
+gravity_scale = 0.0
+linear_damp = 1.0
 metadata/_edit_horizontal_guides_ = [56.0]
 
 [node name="BombSprite" type="Sprite2D" parent="."]
-position = Vector2(-89, -9.145)
+position = Vector2(-27, -1)
 rotation = -2.33874
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_7660q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

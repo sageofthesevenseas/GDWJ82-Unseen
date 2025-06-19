@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt77hxpts27n6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_okpvq"]
+bounce = 0.15
+
+[node name="Projectile Bomb" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_okpvq")
+gravity_scale = 0.0
+linear_damp = 1.0
+metadata/_edit_horizontal_guides_ = [56.0]

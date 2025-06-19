@@ -16,8 +16,13 @@ bomb_prefab = ExtResource("4_ubnmy")
 flare_prefab = ExtResource("5_pvovm")
 
 [node name="ProjectileHoldup" type="Sprite2D" parent="."]
-position = Vector2(30, -125)
+position = Vector2(-1, -333)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_wlfx5")
 
 [node name="ProjectileTarget" type="Sprite2D" parent="."]
 texture = ExtResource("7_kxw5q")
+
+[node name="ThrowOrigin" type="Marker2D" parent="."]
+position = Vector2(1, -334)
+gizmo_extents = 68.6

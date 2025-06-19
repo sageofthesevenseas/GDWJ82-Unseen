@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://rwqyuhniy1u"]
 
-[ext_resource type="Script" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
+[ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
 [ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://Scripts/chest_minigame_manager.gd" id="1_h54ls"]
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="3_h54ls"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="3_sh4cu"]
