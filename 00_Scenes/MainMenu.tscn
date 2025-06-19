@@ -1,0 +1,697 @@
+<<<<<<< Updated upstream:00_Scenes/UI.tscn
+[gd_scene load_steps=11 format=3 uid="uid://xxcm7qalpqa"]
+=======
+[gd_scene load_steps=11 format=3 uid="uid://dhy1x5ovnpaku"]
+>>>>>>> Stashed changes:00_Scenes/MainMenu.tscn
+
+[ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
+[ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
+[ext_resource type="Texture2D" uid="uid://ddt2ie2p88gi2" path="res://Player/Textures/Ernest.png" id="3_0mb0d"]
+[ext_resource type="Script" uid="uid://chrftql7lrj5f" path="res://Scripts/journals.gd" id="3_lgx2n"]
+[ext_resource type="Texture2D" uid="uid://5puypvfvy5pu" path="res://ItemTextures/paper-01.png" id="4_icyyo"]
+<<<<<<< Updated upstream:00_Scenes/UI.tscn
+[ext_resource type="Script" path="res://Scripts/MenuMusicScriptgd.gd" id="4_oma37"]
+=======
+[ext_resource type="Script" uid="uid://bccfigi52rslb" path="res://Scripts/MenuMusicScriptgd.gd" id="4_oma37"]
+>>>>>>> Stashed changes:00_Scenes/MainMenu.tscn
+[ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
+[ext_resource type="FontFile" uid="uid://cjll6tk1uyy7f" path="res://Fonts/Mayonice.otf" id="5_icyyo"]
+[ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_am61d"]
+font = ExtResource("2_oma37")
+font_size = 32
+
+[node name="UI_Handler" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oeioq")
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 99.0
+offset_right = 1920.0
+offset_bottom = 186.0
+pivot_offset = Vector2(930, 0)
+text = "Character Design + Animations
+LuckySheep"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 224.0
+offset_right = 1920.0
+offset_bottom = 311.0
+pivot_offset = Vector2(930, 0)
+text = "Code + System Design
+Lanata, LazyBones, Colton Tytus"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 349.0
+offset_right = 1920.0
+offset_bottom = 436.0
+pivot_offset = Vector2(930, 0)
+text = "Music
+Cedric Nolin"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 474.0
+offset_right = 1920.0
+offset_bottom = 561.0
+pivot_offset = Vector2(930, 0)
+text = "Writing
+OldKingCrowe"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 599.0
+offset_right = 1920.0
+offset_bottom = 686.0
+pivot_offset = Vector2(930, 0)
+text = "VFX + SFX
+Colton Tytus"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 724.0
+offset_right = 1920.0
+offset_bottom = 811.0
+pivot_offset = Vector2(930, 0)
+text = "Integration
+Lanata, Colton Tytus"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="Button" parent="Credits"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 862.0
+offset_right = 1216.0
+offset_bottom = 990.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Return"
+
+[node name="Main" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameStart" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 265.0
+offset_right = 1216.0
+offset_bottom = 393.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Descend"
+
+[node name="Settings" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 415.0
+offset_right = 1216.0
+offset_bottom = 543.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Settings"
+
+[node name="Journals" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 565.0
+offset_right = 1216.0
+offset_bottom = 693.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Journals"
+
+[node name="Credits" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 715.0
+offset_right = 1216.0
+offset_bottom = 843.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Credits"
+
+[node name="Exit" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 865.0
+offset_right = 1216.0
+offset_bottom = 993.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Flee"
+
+[node name="Title" type="Label" parent="Main"]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 80.0
+offset_right = 1519.0
+offset_bottom = 243.0
+pivot_offset = Vector2(600, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_shadow_color = Color(0.970541, 0.892007, 0.96721, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 128
+text = "Ernest's Descent"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Journals" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_lgx2n")
+
+[node name="JournalSelectors" type="Control" parent="Journals"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Return2" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 862.0
+offset_right = 1216.0
+offset_bottom = 990.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Return"
+
+[node name="ButtonLog1" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 260.0
+offset_right = 728.0
+offset_bottom = 388.0
+text = "Log 1"
+
+[node name="ButtonLog2" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 260.0
+offset_right = 878.0
+offset_bottom = 388.0
+text = "Log 2"
+
+[node name="ButtonLog3" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 260.0
+offset_right = 1028.0
+offset_bottom = 388.0
+text = "Log 3"
+
+[node name="ButtonLog4" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 260.0
+offset_right = 1178.0
+offset_bottom = 388.0
+text = "Log 4"
+
+[node name="ButtonLog5" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 260.0
+offset_right = 1328.0
+offset_bottom = 388.0
+text = "Log 5"
+
+[node name="ButtonLog6" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 410.0
+offset_right = 728.0
+offset_bottom = 538.0
+text = "Log 6"
+
+[node name="ButtonLog7" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 410.0
+offset_right = 878.0
+offset_bottom = 538.0
+text = "Log 7"
+
+[node name="ButtonLog8" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 410.0
+offset_right = 1028.0
+offset_bottom = 538.0
+text = "Log 8"
+
+[node name="ButtonLog9" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 410.0
+offset_right = 1178.0
+offset_bottom = 538.0
+text = "Log 9"
+
+[node name="ButtonLog10" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 410.0
+offset_right = 1328.0
+offset_bottom = 538.0
+text = "Log 10"
+
+[node name="Logs" type="Control" parent="Journals"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LogBackground1" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel1" type="RichTextLabel" parent="Journals/Logs/LogBackground1"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "I brought a bottle of whiskey with me to work today.
+
+Normally I’d never do something that stupid, but who is gonna report me? Who are they gonna report me to? I figure it’s not until they decide to cut me too, when they realize we can’t run a research station with only one scientist.
+
+I’m gonna drink a glass for everyone that’s been fired. I think I’ll probably pass out by about 9 or 10.
+"
+
+[node name="LogBackground2" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Journals/Logs/LogBackground2"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "We’d been feeling the pain of budget cuts for a while now. When that disease ran through the rats, we lost a lot more than we could have because we only had one vet on staff. I think about stuff like that as I take inventory of everything I’m responsible for now.
+
+I’m a fucking pharmaceutical researcher, I don’t know how to diagnose a sick animal.
+
+And what if something breaks down? Or there’s an issue with the plumbing? Or an electrical issue? This place is sturdy, but we had people covering these jobs for a reason.
+
+I’d quit, but I don’t know what they’d do to the animals.
+
+Maybe I’ll just take care of them until I’m let go."
+
+[node name="LogBackground3" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Journals/Logs/LogBackground3"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "I need to go out and get another bottle, I’m gonna miss my team.
+
+A lot of them saw the writing on the wall, and a lot of them had the forethought to start preparing for whoever was left. As I started taking inventory of things, I found a lot of guides prepared by them that gave the For Dummies version of how things are done. I’m still learning (obviously), but I’m in a better spot than I thought I’d be."
+
+[node name="LogBackground4" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Journals/Logs/LogBackground4"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "There are 40 animals left in the facility. 10 bats, 20 rats, and 10 rabbits. Johnny, our old animal handler, was helpful enough to give them all names beforehand, and broke down the specifics of caring for each of them in his manual. He didn’t leave anything out, and it shows me just how much work he was doing before he got fired.
+
+I need to see what kind of wildlife is native to this area. Part of the reason this location was chosen was because it was uninhabited, but when I was taking the trash out last night, I thought I saw something moving outside.
+"
+
+[node name="LogBackground5" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Journals/Logs/LogBackground5"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "Even with all the instructions, this is still too much damn work.
+
+The animals require constant attention, which wouldn’t be an issue if we had the standard six handlers that were on staff when this station was founded, but now I’ve gotta find the time to take care of them while doing the jobs of 30 plus people. I think sometime soon, I’m going to figure out what’s absolutely essential, and what I can let fall to the wayside.
+
+Did some research, and I was right, there aren’t really any animals that live here. Sometimes birds migrate here, but the thing I saw was way too low to the ground to be a bird. I guess it’s not impossible that something from nearby found its way here, but I don’t like to think about what type of animal would be creeping around at night.
+
+I’m gonna turn the exterior lights on tonight. Maybe the security cameras can pick it up."
+
+[node name="LogBackground6" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="Journals/Logs/LogBackground6"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "I brought aI’m tired and scared but I need to write this down before I do anything else.
+
+I stayed up late to watch the cameras with the outside lights on and I definitely saw something. It stayed far back so it was still in the shadows but I know I saw something moving. I know because after I thought I saw something, the light near the first camera I saw it in turned off.
+
+When the second light went out, the bats started to freak out. The rats started losing it when the third light burst. 
+
+There’s still one light on outside, the one by the trash can outside. I think I can see something moving around in the shadows. It’s waiting, I don’t know, it doesn't just destroy the last light, or break down the door and kill me.
+
+I don’t think I’m gonna be sleeping tonight."
+
+[node name="LogBackground7" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="Journals/Logs/LogBackground7"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "I stayed up all night and there wasn’t anything there in the morning. Some kind of nocturnal hunter. Maybe it can smell the animals inside.
+
+I tried fixing the lights once the sun had come up and I was sure it was gone, but it’s way more than a burst bulb and the instruction book didn’t cover anything about those. I tried thinking of ways to protect it, but I couldn’t come up with anything that made any sense. I just have to hope it’ll be fine.
+
+The animals seem okay, but I know sudden intense stress like that can have serious effects on the little guys. I have no idea how to actually check them for that, because Johnny’s manuals really only went over illnesses they might get, not things like stress. I’ll just hope they’ll be fine too.
+
+I’m gonna take a nap and try to wake up before dusk. 
+"
+
+[node name="LogBackground8" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="Journals/Logs/LogBackground8"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "I woke up to it banging at the station door. 
+
+I had moved a cot into our security room so I could sleep there. I had set an alarm but I haven’t stayed up all night since I was in college, I guess I was a lot more tired than I thought because I slept straight through it. When I woke up, the thing was at the door and the last light outside had been burst.
+
+It didn’t seem to be able to bust down the door, so I was able to barricade it with some of the old equipment in the station. It’s not an animal, I know that now, I’m thinking it can’t come into the light at all. 
+
+Our generators are both underneath the building, so as long as it doesn’t realize that, I should be safe."
+
+[node name="LogBackground9" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="Journals/Logs/LogBackground9"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "I can hear it outside. It can tell how to turn off the lights, and it’s trying to find a way to get it.
+
+As long as the lights are on, I should be able to open up one of the windows. I’m gonna try and release all the animals and hope that whatever it is like the taste of rodents and rabbits.
+
+I’m gonna lock myself in the security room once I’ve released the bait. It’s probably the safest place in the station.
+
+Sorry, little guys."
+
+[node name="LogBackground10" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+position = Vector2(960, 452)
+texture = ExtResource("4_icyyo")
+
+[node name="RichTextLabel10" type="RichTextLabel" parent="Journals/Logs/LogBackground10"]
+offset_left = -276.0
+offset_top = -365.0
+offset_right = 204.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_font_sizes/normal_font_size = 32
+text = "I’m gonna die tonight.
+
+When I went outside, I saw a few of the rats wandering around. No evidence it ate any of them.
+
+Underneath the station, I found a wall smashed, and the primary engine disassembled. It won’t take long for it to destroy the backup.
+
+I think I still have some whiskey leftover, I don’t wanna be sober when it happens.
+"
+
+[node name="Close" type="Button" parent="Journals"]
+visible = false
+layout_mode = 0
+offset_left = 1188.0
+offset_top = 87.0
+offset_right = 1252.0
+offset_bottom = 154.0
+pivot_offset = Vector2(64, 64)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 46
+text = "X"
+
+[node name="DebugAddJournals" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button1" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 250.0
+offset_right = 1800.0
+offset_bottom = 281.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 1"
+
+[node name="Button2" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 290.0
+offset_right = 1800.0
+offset_bottom = 321.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 2"
+
+[node name="Button3" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 330.0
+offset_right = 1800.0
+offset_bottom = 361.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 3"
+
+[node name="Button4" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 610.0
+offset_right = 1809.0
+offset_bottom = 641.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 10"
+
+[node name="Button5" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 370.0
+offset_right = 1800.0
+offset_bottom = 401.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 4"
+
+[node name="Button6" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 410.0
+offset_right = 1800.0
+offset_bottom = 441.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 5"
+
+[node name="Button7" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 450.0
+offset_right = 1800.0
+offset_bottom = 481.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 6"
+
+[node name="Button8" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 490.0
+offset_right = 1800.0
+offset_bottom = 521.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 7"
+
+[node name="Button9" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 530.0
+offset_right = 1800.0
+offset_bottom = 561.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 8"
+
+[node name="Button10" type="Button" parent="DebugAddJournals"]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 570.0
+offset_right = 1800.0
+offset_bottom = 601.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+text = "Add Lore 9"
+
+[node name="Ernest" type="Sprite2D" parent="."]
+position = Vector2(-15, 700)
+texture = ExtResource("3_0mb0d")
+
+[node name="ChestFront" type="Sprite2D" parent="."]
+position = Vector2(1575, 1023)
+rotation = -0.213399
+scale = Vector2(0.594035, 0.594035)
+texture = ExtResource("5_am61d")
+
+[node name="ChestLid" type="Sprite2D" parent="ChestFront"]
+position = Vector2(0.447713, -296.168)
+texture = ExtResource("6_lgx2n")
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://Music/Desktop/Master.bank", "res://Music/Desktop/Menu.bank"]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/MainMenu"
+event_guid = "{8a1ef185-3888-4b2d-be1b-dd1b9abbc42d}"
+attached = false
+autoplay = true
+auto_release = true
+fmod_parameters/GameStart/id = 460050821763118337
+fmod_parameters/GameStart = 0
+fmod_parameters/GameStart/variant_type = 2
+position = Vector2(7, 9)
+script = ExtResource("4_oma37")
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
+position = Vector2(4, 5)
+
+[connection signal="pressed" from="Credits/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Main/GameStart" to="." method="_on_game_start_pressed"]
+[connection signal="pressed" from="Main/Journals" to="." method="_on_journals_pressed"]
+[connection signal="pressed" from="Main/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Main/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/Return2" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog1" to="Journals" method="_on_button_log_1_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog2" to="Journals" method="_on_button_log_2_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog3" to="Journals" method="_on_button_log_3_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog4" to="Journals" method="_on_button_log_4_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog5" to="Journals" method="_on_button_log_5_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog6" to="Journals" method="_on_button_log_6_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog7" to="Journals" method="_on_button_log_7_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog8" to="Journals" method="_on_button_log_8_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog9" to="Journals" method="_on_button_log_9_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog10" to="Journals" method="_on_button_log_10_pressed"]
+[connection signal="pressed" from="Journals/Close" to="Journals" method="_on_close_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="button_up" from="DebugAddJournals/Button7" to="." method="_on_button_7_button_up"]
+[connection signal="pressed" from="DebugAddJournals/Button8" to="." method="_on_button_8_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button9" to="." method="_on_button_9_pressed"]
+[connection signal="pressed" from="DebugAddJournals/Button10" to="." method="_on_button_10_pressed"]
