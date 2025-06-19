@@ -15,11 +15,14 @@ func _on_game_start_pressed() -> void:
 func _on_credits_pressed() -> void:
 	$Main.visible = false
 	$Credits.visible = true
+	GameController.instance.zoom_enable = true
+
 
 func _on_return_pressed() -> void:
 	$Credits.visible = false
 	$Journals.visible = false
 	$Main.visible = true
+	GameController.instance.zoom_enable = false
 
 
 func _on_journals_pressed() -> void:
