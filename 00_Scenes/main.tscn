@@ -22,9 +22,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://Music/Desktop/Master.bank", "res://Music/Desktop/Cave.bank"]
+bank_paths = ["res://Music/Desktop/Master.strings.bank", "res://Music/Desktop/Master.bank", "res://Music/Desktop/Menu.bank", "res://Music/Desktop/Cave.bank"]
 
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+[node name="FmodEventEmitter2D_Menu" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/MainMenu"
+event_guid = "{8a1ef185-3888-4b2d-be1b-dd1b9abbc42d}"
+attached = false
+auto_release = true
+fmod_parameters/GameStart/id = 460050821763118337
+fmod_parameters/GameStart = 0
+fmod_parameters/GameStart/variant_type = 2
+
+[node name="FmodEventEmitter2D_Cave" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/CaveAmbiance"
 event_guid = "{9aa36312-7e51-4e3b-b79c-5c56633ac0e7}"
 attached = false
@@ -35,3 +44,9 @@ fmod_parameters/GameplayType/labels = PackedStringArray("Exploration", "Combat")
 fmod_parameters/GameplayType/variant_type = 4
 
 [node name="FmodListener2D" type="FmodListener2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

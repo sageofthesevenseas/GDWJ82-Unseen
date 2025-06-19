@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhy1x5ovnpaku"]
+[gd_scene load_steps=8 format=3 uid="uid://dhy1x5ovnpaku"]
 
 [ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
 [ext_resource type="Texture2D" uid="uid://ddt2ie2p88gi2" path="res://Player/Textures/Ernest.png" id="3_0mb0d"]
 [ext_resource type="Script" uid="uid://chrftql7lrj5f" path="res://Scripts/journals.gd" id="3_lgx2n"]
-[ext_resource type="Script" uid="uid://bccfigi52rslb" path="res://Scripts/MenuMusicScriptgd.gd" id="4_oma37"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
 
@@ -460,24 +459,6 @@ texture = ExtResource("5_am61d")
 [node name="ChestLid" type="Sprite2D" parent="ChestFront"]
 position = Vector2(0.447713, -296.168)
 texture = ExtResource("6_lgx2n")
-
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://Music/Desktop/Master.bank", "res://Music/Desktop/Menu.bank"]
-
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/MainMenu"
-event_guid = "{8a1ef185-3888-4b2d-be1b-dd1b9abbc42d}"
-attached = false
-autoplay = true
-auto_release = true
-fmod_parameters/GameStart/id = 460050821763118337
-fmod_parameters/GameStart = 0
-fmod_parameters/GameStart/variant_type = 2
-position = Vector2(7, 9)
-script = ExtResource("4_oma37")
-
-[node name="FmodListener2D" type="FmodListener2D" parent="."]
-position = Vector2(4, 5)
 
 [connection signal="pressed" from="Credits/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Main/GameStart" to="." method="_on_game_start_pressed"]
