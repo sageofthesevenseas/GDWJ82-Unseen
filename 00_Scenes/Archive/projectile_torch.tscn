@@ -5,19 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="3_x1646"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yd83"]
-bounce = 0.28
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2sl5h"]
 radius = 19.0
 height = 170.0
 
-[node name="Projectile" type="RigidBody2D"]
+[node name="ProjectileTorch" type="RigidBody2D"]
 top_level = true
 light_mask = 2
 visibility_layer = 2
 collision_layer = 2
 collision_mask = 2
+mass = 13.895
 physics_material_override = SubResource("PhysicsMaterial_4yd83")
+gravity_scale = 0.0
+angular_damp = 100.0
 script = ExtResource("1_2sl5h")
 
 [node name="Torch" parent="." instance=ExtResource("1_4yd83")]

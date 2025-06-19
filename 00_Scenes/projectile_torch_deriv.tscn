@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bppo74h6hkep"]
+
+[ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/Basic Scenes (Inherit from these)/Basic Projectile Settings.tscn" id="1_hbhk3"]
+[ext_resource type="PackedScene" uid="uid://mwu3nkm7l7ih" path="res://00_Scenes/torch.tscn" id="2_dxdm5"]
+[ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="2_rarbl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rarbl"]
+radius = 15.0
+height = 170.0
+
+[node name="Projectile Torch" instance=ExtResource("1_hbhk3")]
+
+[node name="MainLight" parent="." index="0" instance=ExtResource("2_rarbl")]
+position = Vector2(-45.05, 3.7)
+scale = Vector2(0.675, 0.675)
+
+[node name="Torch" parent="." index="1" instance=ExtResource("2_dxdm5")]
+position = Vector2(13, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(-2, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rarbl")

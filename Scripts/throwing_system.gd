@@ -1,6 +1,7 @@
 extends Node2D
 @onready var projectile_target: Sprite2D = $ProjectileTarget
 @onready var projectile_holdup: Sprite2D = $ProjectileHoldup
+@onready var debug_projectile_direction_sprite: Sprite2D = $DEBUG_ProjectileDirectionSprite
 
 var weapon_counter: int = 1 #0 is bomb, 1 is flare
 var chosen_weapon: PackedScene
@@ -16,10 +17,10 @@ var chosen_weapon: PackedScene
 @export var can_activate: bool = true
 var mouse_pos
 var distance
-var max_mouse_radius := 600.0
+var max_mouse_radius := 800.0
 
-@export var min_throw_force: float = 50.0
-@export var max_throw_force: float = 1000.0
+@export var min_throw_force: float = 10.0
+@export var max_throw_force: float = 10000.0
 @onready var throw_origin: Marker2D = $ThrowOrigin
 
 
@@ -52,17 +53,21 @@ func _process(delta: float) -> void:
 
 func throw_projectile():
 	var throw_direction = mouse_pos.normalized()
-	print(throw_direction)
-	var throw_force = lerp(min_throw_force, max_throw_force, 0.5)
+	
+	var normalized_distance = min(distance / max_mouse_radius, 1.0)
+	print(normalized_distance, " is the lesser of dist/mmr vs 1.0")
+	
+	var throw_force = lerp(min_throw_force, max_throw_force,normalized_distance)
 	print("The force of the throw should be ", throw_force)
 	
 	var new_projectile = chosen_weapon.instantiate()
-	get_tree().current_scene.add_child(new_projectile)
 	new_projectile.global_position = throw_origin.global_position
-	
+	get_tree().current_scene.add_child(new_projectile)
+	debug_projectile_direction_sprite.position = throw_direction * max_mouse_radius
 	#time to send that shit flying
 	if new_projectile is RigidBody2D:
 		new_projectile.apply_impulse(throw_direction * throw_force, Vector2.ZERO)
+		print(throw_direction * throw_force)
 	else: 
 		push_error("that's not a blardy RB2D!")
 
