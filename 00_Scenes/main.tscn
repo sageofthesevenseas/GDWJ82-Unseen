@@ -20,3 +20,18 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://Music/Desktop/Master.bank", "res://Music/Desktop/Cave.bank"]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/CaveAmbiance"
+event_guid = "{9aa36312-7e51-4e3b-b79c-5c56633ac0e7}"
+attached = false
+auto_release = true
+fmod_parameters/GameplayType/id = -7955650638421249893
+fmod_parameters/GameplayType = "Exploration"
+fmod_parameters/GameplayType/labels = PackedStringArray("Exploration", "Combat")
+fmod_parameters/GameplayType/variant_type = 4
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
