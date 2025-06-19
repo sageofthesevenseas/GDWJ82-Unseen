@@ -29,7 +29,7 @@ func _ready() -> void:
 	GuiNode.add_child(Main_Menu)
 	var MenuNode = get_node("GUI/UI_Handler")
 	MenuNode.connect("start_game", Callable(self, "_on_start_game"))
-	$FmodEventEmitter2D_Menu.play()
+	#$FmodEventEmitter2D_Menu.play()
 	pass
 
 func add_lore(index : int) -> void:
@@ -45,13 +45,9 @@ func _on_start_game():
 	WorldNode.add_child(Level)
 	spawn_player_and_switch_camera()
 	GuiNode.remove_child(MenuNode)
-	$FmodEventEmitter2D_Menu.set_parameter("GameStart", 1)
-	$Timer.start()
 	pass
 	
-func _on_timer_timeout() -> void:
-		$FmodEventEmitter2D_Cave.play()
-		pass
+
 	
 func spawn_player_and_switch_camera():
 	var WorldNode = get_node("World2D")
