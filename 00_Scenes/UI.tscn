@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhy1x5ovnpaku"]
+[gd_scene load_steps=9 format=3 uid="uid://dhy1x5ovnpaku"]
 
 [ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
 [ext_resource type="Texture2D" uid="uid://ddt2ie2p88gi2" path="res://Player/Textures/Ernest.png" id="3_0mb0d"]
+[ext_resource type="Script" uid="uid://chrftql7lrj5f" path="res://Scripts/journals.gd" id="3_lgx2n"]
 [ext_resource type="Script" uid="uid://bccfigi52rslb" path="res://Scripts/MenuMusicScriptgd.gd" id="4_oma37"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
@@ -204,6 +205,152 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_lgx2n")
+
+[node name="JournalSelectors" type="Control" parent="Journals"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Return2" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 862.0
+offset_right = 1216.0
+offset_bottom = 990.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Return"
+
+[node name="ButtonLog1" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 260.0
+offset_right = 728.0
+offset_bottom = 388.0
+text = "Log 1"
+
+[node name="ButtonLog2" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 260.0
+offset_right = 878.0
+offset_bottom = 388.0
+text = "Log 2"
+
+[node name="ButtonLog3" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 260.0
+offset_right = 1028.0
+offset_bottom = 388.0
+text = "Log 3"
+
+[node name="ButtonLog4" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 260.0
+offset_right = 1178.0
+offset_bottom = 388.0
+text = "Log 4"
+
+[node name="ButtonLog5" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 260.0
+offset_right = 1328.0
+offset_bottom = 388.0
+text = "Log 5"
+
+[node name="ButtonLog6" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 410.0
+offset_right = 728.0
+offset_bottom = 538.0
+text = "Log 6"
+
+[node name="ButtonLog7" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 410.0
+offset_right = 878.0
+offset_bottom = 538.0
+text = "Log 7"
+
+[node name="ButtonLog8" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 410.0
+offset_right = 1028.0
+offset_bottom = 538.0
+text = "Log 8"
+
+[node name="ButtonLog9" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 410.0
+offset_right = 1178.0
+offset_bottom = 538.0
+text = "Log 9"
+
+[node name="ButtonLog10" type="Button" parent="Journals/JournalSelectors"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 410.0
+offset_right = 1328.0
+offset_bottom = 538.0
+text = "Log 10"
+
+[node name="Logs" type="Control" parent="Journals"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LogText1" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText2" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText3" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText4" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText5" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText6" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText7" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText8" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText9" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="LogText10" type="Sprite2D" parent="Journals/Logs"]
+visible = false
+
+[node name="Close" type="Button" parent="Journals"]
+visible = false
+layout_mode = 0
+offset_left = 901.0
+offset_top = 621.0
+offset_right = 1029.0
+offset_bottom = 749.0
+pivot_offset = Vector2(64, 64)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 46
+text = "X"
 
 [node name="DebugAddJournals" type="Control" parent="."]
 anchors_preset = 0
@@ -337,6 +484,18 @@ position = Vector2(4, 5)
 [connection signal="pressed" from="Main/Journals" to="." method="_on_journals_pressed"]
 [connection signal="pressed" from="Main/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Main/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/Return2" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog1" to="Journals" method="_on_button_log_1_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog2" to="Journals" method="_on_button_log_2_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog3" to="Journals" method="_on_button_log_3_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog4" to="Journals" method="_on_button_log_4_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog5" to="Journals" method="_on_button_log_5_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog6" to="Journals" method="_on_button_log_6_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog7" to="Journals" method="_on_button_log_7_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog8" to="Journals" method="_on_button_log_8_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog9" to="Journals" method="_on_button_log_9_pressed"]
+[connection signal="pressed" from="Journals/JournalSelectors/ButtonLog10" to="Journals" method="_on_button_log_10_pressed"]
+[connection signal="pressed" from="Journals/Close" to="Journals" method="_on_close_pressed"]
 [connection signal="pressed" from="DebugAddJournals/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="DebugAddJournals/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="DebugAddJournals/Button3" to="." method="_on_button_3_pressed"]

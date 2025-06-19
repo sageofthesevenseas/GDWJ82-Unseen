@@ -18,6 +18,7 @@ func _on_credits_pressed() -> void:
 
 func _on_return_pressed() -> void:
 	$Credits.visible = false
+	$Journals.visible = false
 	$Main.visible = true
 
 
