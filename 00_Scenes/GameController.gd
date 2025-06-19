@@ -20,7 +20,7 @@ var lore_found : Array = [
 func _ready() -> void:
 	instance = self
 	var resolution : Vector2 = get_viewport().get_visible_rect().size
-	var Main_Menu = preload("res://00_Scenes/UI.tscn").instantiate()
+	var Main_Menu = preload("res://00_Scenes/MainMenu.tscn").instantiate()
 	var WorldNode = get_node("World2D")
 	var GuiNode = get_node("GUI")
 	
