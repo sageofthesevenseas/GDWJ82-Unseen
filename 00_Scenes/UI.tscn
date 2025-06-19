@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhy1x5ovnpaku"]
+[gd_scene load_steps=6 format=3 uid="uid://dhy1x5ovnpaku"]
 
 [ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
 [ext_resource type="Texture2D" uid="uid://ddt2ie2p88gi2" path="res://Player/Textures/Ernest.png" id="3_0mb0d"]
+[ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
+[ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
 
 [node name="UI_Handler" type="Control"]
 layout_mode = 3
@@ -64,8 +66,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Ernest" type="Sprite2D" parent="."]
-position = Vector2(-15, 695)
+position = Vector2(-15, 700)
 texture = ExtResource("3_0mb0d")
+
+[node name="ChestFront" type="Sprite2D" parent="."]
+position = Vector2(1575, 1023)
+rotation = -0.213399
+scale = Vector2(0.594035, 0.594035)
+texture = ExtResource("5_am61d")
+
+[node name="ChestLid" type="Sprite2D" parent="ChestFront"]
+position = Vector2(0.447713, -296.168)
+texture = ExtResource("6_lgx2n")
 
 [connection signal="pressed" from="GameStart" to="." method="_on_game_start_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

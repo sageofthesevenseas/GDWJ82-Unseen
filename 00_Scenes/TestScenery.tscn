@@ -46,11 +46,10 @@ colors = PackedColorArray(0.215802, 0.25058, 1, 1, 1, 1, 1, 0)
 [node name="TestScenery" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="MainLight" parent="." instance=ExtResource("1_chrnd")]
-position = Vector2(-5593, -2300)
+position = Vector2(1827, 676)
 metadata/use_for_darkness_damage = true
 
 [node name="ILikeRocksAndShit" type="Node" parent="."]
@@ -160,6 +159,7 @@ position = Vector2(625, 146)
 rotation = -0.00108712
 
 [node name="ChestMap" parent="." instance=ExtResource("6_dokna")]
+position = Vector2(16, 0)
 number_of_chests = 4
 
 [node name="Node2D" type="Node2D" parent="ChestMap/SpawnPoints" index="0"]
