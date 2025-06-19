@@ -1,18 +1,11 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=3 uid="uid://dhy1x5ovnpaku"]
-=======
-[gd_scene load_steps=5 format=3 uid="uid://dhy1x5ovnpaku"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
 [ext_resource type="Texture2D" uid="uid://ddt2ie2p88gi2" path="res://Player/Textures/Ernest.png" id="3_0mb0d"]
-<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
-=======
 [ext_resource type="Script" uid="uid://bccfigi52rslb" path="res://Scripts/MenuMusicScriptgd.gd" id="4_oma37"]
->>>>>>> Stashed changes
 
 [node name="UI_Handler" type="Control"]
 layout_mode = 3
@@ -77,7 +70,6 @@ vertical_alignment = 1
 position = Vector2(-15, 700)
 texture = ExtResource("3_0mb0d")
 
-<<<<<<< Updated upstream
 [node name="ChestFront" type="Sprite2D" parent="."]
 position = Vector2(1575, 1023)
 rotation = -0.213399
@@ -87,7 +79,7 @@ texture = ExtResource("5_am61d")
 [node name="ChestLid" type="Sprite2D" parent="ChestFront"]
 position = Vector2(0.447713, -296.168)
 texture = ExtResource("6_lgx2n")
-=======
+
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://Music/Desktop/Master.bank", "res://Music/Desktop/Menu.bank"]
 
@@ -105,7 +97,6 @@ script = ExtResource("4_oma37")
 
 [node name="FmodListener2D" type="FmodListener2D" parent="."]
 position = Vector2(4, 5)
->>>>>>> Stashed changes
 
 [connection signal="pressed" from="GameStart" to="." method="_on_game_start_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
