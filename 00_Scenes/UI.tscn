@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhy1x5ovnpaku"]
+[gd_scene load_steps=7 format=3 uid="uid://dhy1x5ovnpaku"]
 
 [ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
 [ext_resource type="Texture2D" uid="uid://ddt2ie2p88gi2" path="res://Player/Textures/Ernest.png" id="3_0mb0d"]
+[ext_resource type="Script" uid="uid://bccfigi52rslb" path="res://Scripts/MenuMusicScriptgd.gd" id="4_oma37"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
-[ext_resource type="Script" uid="uid://bccfigi52rslb" path="res://Scripts/MenuMusicScriptgd.gd" id="4_oma37"]
 
 [node name="UI_Handler" type="Control"]
 layout_mode = 3
@@ -23,9 +23,9 @@ script = ExtResource("1_oeioq")
 [node name="GameStart" type="Button" parent="."]
 layout_mode = 0
 offset_left = 704.0
-offset_top = 300.0
+offset_top = 265.0
 offset_right = 1216.0
-offset_bottom = 428.0
+offset_bottom = 393.0
 pivot_offset = Vector2(256, 0)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
@@ -34,20 +34,42 @@ text = "Descend"
 [node name="Settings" type="Button" parent="."]
 layout_mode = 0
 offset_left = 704.0
-offset_top = 450.0
+offset_top = 415.0
 offset_right = 1216.0
-offset_bottom = 578.0
+offset_bottom = 543.0
 pivot_offset = Vector2(256, 0)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
 text = "Settings"
 
+[node name="Journals" type="Button" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 565.0
+offset_right = 1216.0
+offset_bottom = 693.0
+pivot_offset = Vector2(256, 0)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Journals"
+
+[node name="Credits" type="Button" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 715.0
+offset_right = 1216.0
+offset_bottom = 843.0
+pivot_offset = Vector2(256, 0)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Credits"
+
 [node name="Exit" type="Button" parent="."]
 layout_mode = 0
 offset_left = 704.0
-offset_top = 600.0
+offset_top = 865.0
 offset_right = 1216.0
-offset_bottom = 728.0
+offset_bottom = 993.0
 pivot_offset = Vector2(256, 0)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
@@ -55,9 +77,9 @@ text = "Flee"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 468.0
+offset_left = 407.0
 offset_top = 80.0
-offset_right = 1580.0
+offset_right = 1519.0
 offset_bottom = 243.0
 pivot_offset = Vector2(600, 0)
 theme_override_fonts/font = ExtResource("2_oma37")
