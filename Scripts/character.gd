@@ -52,7 +52,6 @@ func _physics_process(delta : float) -> void:
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
 		animation_player.speed_scale = 3.0
 		animation_player.play("Player Walking")
-
 	else:
 		animation_player.stop()
 	if Input.is_action_just_pressed("move_left") and $PlayerVisuals.scale.x > 0:
@@ -61,6 +60,8 @@ func _physics_process(delta : float) -> void:
 	if Input.is_action_just_pressed("move_right") and $PlayerVisuals.scale.x < 0:
 		$PlayerVisuals.scale.x *= -1
 		print("Tried to flip")
+	
+		
 	
 
 	var geolocatables : Array[HiddenChest] = []

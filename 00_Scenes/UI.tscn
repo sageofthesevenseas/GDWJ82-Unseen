@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhy1x5ovnpaku"]
+[gd_scene load_steps=8 format=3 uid="uid://dhy1x5ovnpaku"]
 
 [ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" uid="uid://bccfigi52rslb" path="res://Scripts/MenuMusicScriptgd.gd" id="4_oma37"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_am61d"]
+font = ExtResource("2_oma37")
+font_size = 32
 
 [node name="UI_Handler" type="Control"]
 layout_mode = 3
@@ -20,68 +24,175 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oeioq")
 
-[node name="GameStart" type="Button" parent="."]
+[node name="Credits" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 99.0
+offset_right = 1920.0
+offset_bottom = 186.0
+pivot_offset = Vector2(930, 0)
+text = "Character Design + Animations
+LuckySheep"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 224.0
+offset_right = 1920.0
+offset_bottom = 311.0
+pivot_offset = Vector2(930, 0)
+text = "Code + System Design
+Lanata, LazyBones, Colton Tytus"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 349.0
+offset_right = 1920.0
+offset_bottom = 436.0
+pivot_offset = Vector2(930, 0)
+text = "Music
+Cedric Nolin"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 474.0
+offset_right = 1920.0
+offset_bottom = 561.0
+pivot_offset = Vector2(930, 0)
+text = "Writing
+OldKingCrowe"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 599.0
+offset_right = 1920.0
+offset_bottom = 686.0
+pivot_offset = Vector2(930, 0)
+text = "VFX + SFX
+Colton Tytus"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Credits"]
+layout_mode = 0
+offset_top = 724.0
+offset_right = 1920.0
+offset_bottom = 811.0
+pivot_offset = Vector2(930, 0)
+text = "Integration
+Lanata, Colton Tytus"
+label_settings = SubResource("LabelSettings_am61d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="Button" parent="Credits"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 862.0
+offset_right = 1216.0
+offset_bottom = 990.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Return"
+
+[node name="Main" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameStart" type="Button" parent="Main"]
 layout_mode = 0
 offset_left = 704.0
 offset_top = 265.0
 offset_right = 1216.0
 offset_bottom = 393.0
 pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
 text = "Descend"
 
-[node name="Settings" type="Button" parent="."]
+[node name="Settings" type="Button" parent="Main"]
 layout_mode = 0
 offset_left = 704.0
 offset_top = 415.0
 offset_right = 1216.0
 offset_bottom = 543.0
 pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
 text = "Settings"
 
-[node name="Journals" type="Button" parent="."]
+[node name="Journals" type="Button" parent="Main"]
 layout_mode = 0
 offset_left = 704.0
 offset_top = 565.0
 offset_right = 1216.0
 offset_bottom = 693.0
 pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
 text = "Journals"
 
-[node name="Credits" type="Button" parent="."]
+[node name="Credits" type="Button" parent="Main"]
 layout_mode = 0
 offset_left = 704.0
 offset_top = 715.0
 offset_right = 1216.0
 offset_bottom = 843.0
 pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
 text = "Credits"
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="Main"]
 layout_mode = 0
 offset_left = 704.0
 offset_top = 865.0
 offset_right = 1216.0
 offset_bottom = 993.0
 pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
 text = "Flee"
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="Main"]
 layout_mode = 0
 offset_left = 407.0
 offset_top = 80.0
 offset_right = 1519.0
 offset_bottom = 243.0
 pivot_offset = Vector2(600, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_shadow_color = Color(0.970541, 0.892007, 0.96721, 1)
 theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 128
 text = "Ernest's Descent"
@@ -120,5 +231,7 @@ script = ExtResource("4_oma37")
 [node name="FmodListener2D" type="FmodListener2D" parent="."]
 position = Vector2(4, 5)
 
-[connection signal="pressed" from="GameStart" to="." method="_on_game_start_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Credits/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Main/GameStart" to="." method="_on_game_start_pressed"]
+[connection signal="pressed" from="Main/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Main/Exit" to="." method="_on_exit_pressed"]
