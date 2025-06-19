@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bi4dpscy1x5qi"]
 
-[ext_resource type="Script" path="res://throwing_system.gd" id="1_gi8x3"]
+[ext_resource type="Script" uid="uid://fmhyul3f0c1g" path="res://Scripts/throwing_system.gd" id="1_gi8x3"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_wlfx5"]
 [ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="2_yt3l2"]
 [ext_resource type="Texture2D" uid="uid://bb0n2lhyoa177" path="res://ItemTextures/Torch_preview.png" id="3_kxw5q"]
