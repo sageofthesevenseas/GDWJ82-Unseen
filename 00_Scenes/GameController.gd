@@ -16,6 +16,7 @@ var lore_found : Array = [
 	false,
 	false,
 ]
+var zoom_enable : bool = false
 
 func _ready() -> void:
 	instance = self
@@ -44,6 +45,7 @@ func _on_start_game():
 	WorldNode.add_child(Level)
 	spawn_player_and_switch_camera()
 	GuiNode.remove_child(MenuNode)
+	
 	$FmodEventEmitter2D_Menu.set_parameter("GameStart", 1)
 	$Timer.start()
 	pass
@@ -63,4 +65,5 @@ func spawn_player_and_switch_camera():
 	var camera_instance = camera.instantiate()
 	Player.add_child(camera_instance)
 	camera_instance.make_current()
+	zoom_enable = true
 	pass
