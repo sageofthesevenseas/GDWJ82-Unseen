@@ -1,50 +1,48 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0jo3ae54a4rv"]
+[gd_scene load_steps=10 format=3 uid="uid://di5yr5i43ao81"]
 
-[ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/Basic Scenes (Inherit from these)/Basic Projectile Settings.tscn" id="1_gbctl"]
-[ext_resource type="Script" uid="uid://duaanxpskr4cp" path="res://Scripts/projectile_bomb.gd" id="2_dp78m"]
-[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="2_fhuon"]
-[ext_resource type="Script" uid="uid://dvys1qypdpga2" path="res://Scripts/Bomb_explosion_children.gd" id="4_7b51i"]
-[ext_resource type="PackedScene" uid="uid://dymgee2dlalp7" path="res://VFX/ParticleFX/Explosion00/explosion.tscn" id="5_hfrv3"]
-[ext_resource type="AudioStream" uid="uid://buf4a4phdd1bg" path="res://SFX/explosion.ogg" id="6_3wirb"]
+[ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/Basic Scenes (Inherit from these)/Basic Projectile Settings.tscn" id="1_i3sr0"]
+[ext_resource type="Script" uid="uid://duaanxpskr4cp" path="res://Scripts/projectile_bomb.gd" id="2_vcwxn"]
+[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="3_0ondy"]
+[ext_resource type="Script" uid="uid://dvys1qypdpga2" path="res://Scripts/Bomb_explosion_children.gd" id="4_gtt0a"]
+[ext_resource type="PackedScene" uid="uid://dymgee2dlalp7" path="res://VFX/ParticleFX/Explosion00/explosion.tscn" id="5_ylaup"]
+[ext_resource type="AudioStream" uid="uid://buf4a4phdd1bg" path="res://SFX/explosion.ogg" id="6_kroav"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_15qpw"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nl7c5"]
 radius = 15.0
 height = 170.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dp78m"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xcqt"]
 radius = 600.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dp78m"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w61sn"]
 radius = 19.0
 height = 174.0
 
-[node name="Projectile Bomb" instance=ExtResource("1_gbctl")]
-light_mask = 0
-visibility_layer = 0
+[node name="Projectile Bomb2" instance=ExtResource("1_i3sr0")]
 collision_layer = 0
 collision_mask = 5
-script = ExtResource("2_dp78m")
+script = ExtResource("2_vcwxn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(-2, -2)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_15qpw")
+shape = SubResource("CapsuleShape2D_nl7c5")
 
 [node name="BombVisual" type="Sprite2D" parent="." index="1"]
 position = Vector2(31, 1)
 rotation = 0.802851
 scale = Vector2(0.38, 0.38)
-texture = ExtResource("2_fhuon")
+texture = ExtResource("3_0ondy")
 
 [node name="FuseSizzle" type="AudioStreamPlayer2D" parent="." index="2"]
 
 [node name="RemoveableChildren" type="Node2D" parent="." index="3"]
-script = ExtResource("4_7b51i")
+script = ExtResource("4_gtt0a")
 
-[node name="ExplosionVFX" parent="RemoveableChildren" index="0" instance=ExtResource("5_hfrv3")]
+[node name="ExplosionVFX" parent="RemoveableChildren" index="0" instance=ExtResource("5_ylaup")]
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="RemoveableChildren" index="1"]
-stream = ExtResource("6_3wirb")
+stream = ExtResource("6_kroav")
 
 [node name="Queue_free_timer" type="Timer" parent="RemoveableChildren" index="2"]
 wait_time = 1.5
@@ -55,7 +53,7 @@ one_shot = true
 
 [node name="ExplosionRadius" type="ShapeCast2D" parent="." index="5"]
 visible = false
-shape = SubResource("CircleShape2D_dp78m")
+shape = SubResource("CircleShape2D_1xcqt")
 target_position = Vector2(0, 0)
 margin = 0.6
 collision_mask = 4
@@ -67,7 +65,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemydetector" index="0"]
 position = Vector2(0, -2)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_dp78m")
+shape = SubResource("CapsuleShape2D_w61sn")
 debug_color = Color(0.700483, 0.451121, 0.531814, 0.42)
 
 [connection signal="timeout" from="RemoveableChildren/Queue_free_timer" to="RemoveableChildren" method="_on_queue_free_timer_timeout"]

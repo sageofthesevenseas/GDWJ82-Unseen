@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0jo3ae54a4rv"]
+[gd_scene load_steps=10 format=3 uid="uid://uroqiw8spvtg"]
 
-[ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/Basic Scenes (Inherit from these)/Basic Projectile Settings.tscn" id="1_gbctl"]
-[ext_resource type="Script" uid="uid://duaanxpskr4cp" path="res://Scripts/projectile_bomb.gd" id="2_dp78m"]
-[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="2_fhuon"]
-[ext_resource type="Script" uid="uid://dvys1qypdpga2" path="res://Scripts/Bomb_explosion_children.gd" id="4_7b51i"]
-[ext_resource type="PackedScene" uid="uid://dymgee2dlalp7" path="res://VFX/ParticleFX/Explosion00/explosion.tscn" id="5_hfrv3"]
-[ext_resource type="AudioStream" uid="uid://buf4a4phdd1bg" path="res://SFX/explosion.ogg" id="6_3wirb"]
+[ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/Basic Scenes (Inherit from these)/Basic Projectile Settings.tscn" id="1_srddw"]
+[ext_resource type="Script" uid="uid://duaanxpskr4cp" path="res://Scripts/projectile_bomb.gd" id="2_883ce"]
+[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="3_byr84"]
+[ext_resource type="Script" uid="uid://dvys1qypdpga2" path="res://Scripts/Bomb_explosion_children.gd" id="4_c4x57"]
+[ext_resource type="PackedScene" uid="uid://dymgee2dlalp7" path="res://VFX/ParticleFX/Explosion00/explosion.tscn" id="5_ypn5j"]
+[ext_resource type="AudioStream" uid="uid://buf4a4phdd1bg" path="res://SFX/explosion.ogg" id="6_qces6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_15qpw"]
 radius = 15.0
@@ -18,12 +18,12 @@ radius = 600.0
 radius = 19.0
 height = 174.0
 
-[node name="Projectile Bomb" instance=ExtResource("1_gbctl")]
+[node name="Projectile Bomb" instance=ExtResource("1_srddw")]
 light_mask = 0
 visibility_layer = 0
 collision_layer = 0
 collision_mask = 5
-script = ExtResource("2_dp78m")
+script = ExtResource("2_883ce")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(-2, -2)
@@ -34,17 +34,17 @@ shape = SubResource("CapsuleShape2D_15qpw")
 position = Vector2(31, 1)
 rotation = 0.802851
 scale = Vector2(0.38, 0.38)
-texture = ExtResource("2_fhuon")
+texture = ExtResource("3_byr84")
 
 [node name="FuseSizzle" type="AudioStreamPlayer2D" parent="." index="2"]
 
 [node name="RemoveableChildren" type="Node2D" parent="." index="3"]
-script = ExtResource("4_7b51i")
+script = ExtResource("4_c4x57")
 
-[node name="ExplosionVFX" parent="RemoveableChildren" index="0" instance=ExtResource("5_hfrv3")]
+[node name="ExplosionVFX" parent="RemoveableChildren" index="0" instance=ExtResource("5_ypn5j")]
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="RemoveableChildren" index="1"]
-stream = ExtResource("6_3wirb")
+stream = ExtResource("6_qces6")
 
 [node name="Queue_free_timer" type="Timer" parent="RemoveableChildren" index="2"]
 wait_time = 1.5

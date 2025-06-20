@@ -7,7 +7,7 @@ extends Node2D
 func start_the_show(queue_free_delay: float):
 	queue_free_timer.start(queue_free_delay)
 	explosion_sound.play()
-	explosion_vfx
+	explosion_vfx.emitting = true
 
 func _on_queue_free_timer_timeout() -> void:
 	queue_free()
