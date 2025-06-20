@@ -1,22 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmr5lyfmqmup3"]
+[gd_scene load_steps=5 format=3 uid="uid://cmr5lyfmqmup3"]
 
 [ext_resource type="Script" uid="uid://dcfikt4o3jl0f" path="res://Scripts/chest.gd" id="1_vwoqb"]
-[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_h41vx"]
+[ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="2_h41vx"]
+[ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="3_m7xla"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5ys4r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_h41vx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h41vx"]
+size = Vector2(156, 100)
 
 [node name="Chest" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 11
 script = ExtResource("1_vwoqb")
 
-[node name="Animated Sprite" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5ys4r")
+[node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(0.175, 0.175)
+
+[node name="Chest Top" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -150)
+texture = ExtResource("2_h41vx")
+
+[node name="Chest Bottom" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, 146)
+texture = ExtResource("3_m7xla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_h41vx")

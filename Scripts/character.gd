@@ -29,7 +29,7 @@ signal entered_diggable_range()
 signal exited_diggable_range()
 
 var closest_geolocatable_distance : float = 10000000.0
-
+var closest_geolocatable: HiddenChest
 var controllable : bool = true
 
 var curframe_in_darkness : bool = false
@@ -116,7 +116,7 @@ func geolocation_process(_delta : float, geolocatables : Array[HiddenChest]) -> 
 	var previously_in_diggable_range : bool = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
 	var in_diggable_range : bool = false
 	if geolocatables.size():
-		var closest_geolocatable : HiddenChest = geolocatables[0]
+		closest_geolocatable = geolocatables[0]
 		var closest_dist := (closest_geolocatable.global_position - global_position).length()
 		for i in geolocatables.size():
 			var i_length := (geolocatables[i].global_position - global_position).length();
@@ -152,6 +152,8 @@ func dig_chest(hidden_chest : HiddenChest) -> void:
 
 func on_chest_dug() -> void:
 	controllable = true
+	closest_geolocatable.spawn_real_chest()
+	# LZB NOTE 21-06-25 - spawn the bloody chest here
 
 # Need some kind of signal to return to here after closing a chest or something. Maybe ChestMinigameManager? Maybe Chest?
 func on_chest_closed() -> void:

@@ -6,9 +6,15 @@ var fizzle_delay: float = 30.0
 var torch_spin_animator: AnimationPlayer
 var max_speed: float = 1.0
 
+@export var DEBUG_start_timer_on_ready: bool = false
+@export var DEBUG_timer_override: float = 1000000
+
+
 func _ready() -> void:
 	if torch.has_node('AnimationPlayer'):
 		torch_spin_animator = torch.get_node('AnimationPlayer')
+	if DEBUG_start_timer_on_ready == true:
+		start_countdown(DEBUG_timer_override)
 
 
 func start_countdown(timer_delay: float):
