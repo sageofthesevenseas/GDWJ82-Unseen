@@ -1,9 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://yyegmw7wru6o"]
+[gd_scene load_steps=4 format=3 uid="uid://yyegmw7wru6o"]
 
 [ext_resource type="PackedScene" uid="uid://qlr7s5cs5b3y" path="res://00_Scenes/character.tscn" id="1_f58qq"]
+[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_frqfa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osux7"]
+size = Vector2(116, 109)
 
 [node name="Lazybones_Test_env" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_f58qq")]
+collision_layer = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["enemy"]]
+position = Vector2(1456, -89)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_osux7")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_frqfa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(639, -135)
 
 [editable path="CharacterBody2D"]

@@ -15,7 +15,7 @@ class_name Character extends CharacterBody2D
 @onready var geolocation_area := $"GeolocationArea" as Area2D
 @onready var dig_minigame_manager := $"DigMinigame" as DigMinigameManager
 @onready var chest_minigame_manager := $"Chest_Minigame" as ChestMinigameManager
-
+@onready var throwing_system: Node2D = $ThrowingSystem
 @onready var raycast_left := $RayCastLeft as RayCast2D
 @onready var raycast_right := $RayCastRight as RayCast2D
 @onready var raycasts : Array[RayCast2D] = [ raycast_left, raycast_right ]
@@ -143,3 +143,8 @@ func take_damage(amount : float) -> void:
 		emit_signal(&"health_depleted")
 	if amount > 0.0:
 		emit_signal(&"damage_taken")
+
+func get_bomb_quantity():
+	return throwing_system.get_bomb_quantity()
+func get_flare_quantity():
+	return throwing_system.get_flare_quantity()

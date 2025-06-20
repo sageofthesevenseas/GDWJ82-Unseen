@@ -52,6 +52,8 @@ enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 lights=""
 player=""
+projectileparent=""
+enemy=""
 
 [input]
 

@@ -35,6 +35,5 @@ texture = ExtResource("2_wlfx5")
 
 [node name="DisplayTimer" type="Timer" parent="."]
 wait_time = 1.5
-one_shot = true
 
 [connection signal="timeout" from="DisplayTimer" to="." method="_on_display_timer_timeout"]

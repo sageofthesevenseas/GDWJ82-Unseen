@@ -18,6 +18,7 @@ script/source = "extends Node2D
 "
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_layer = 5
 script = ExtResource("1_48qfa")
 acceleration = 10000.0
 max_speed = 7500.0
@@ -62,5 +63,7 @@ enabled = false
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-64, -127)
 enabled = false
+
+[node name="ReparentTarget" type="Node2D" parent="." groups=["projectileparent"]]
 
 [connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
