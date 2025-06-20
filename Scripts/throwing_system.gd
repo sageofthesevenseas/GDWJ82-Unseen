@@ -17,9 +17,9 @@ extends Node2D
 @export var flare_quantity: int = 5
 @export var bomb_explosion_timer: float = 3.0
 @export var flare_timer: float = 30.0
-@export var can_activate: bool = true
 @export var min_throw_force: float = 10.0
 @export var max_throw_force: float = 10000.0
+#@export var can_activate: bool = true
 
 var mouse_pos
 var distance
@@ -30,6 +30,8 @@ var chosen_weapon: PackedScene
 
 signal bombs_increased
 signal flares_increased
+signal play_sound(sfx_name)
+
 
 func _ready() -> void:
 	set_process(false)
@@ -82,15 +84,15 @@ func _process(_delta: float) -> void:
 				ammunition_changed()
 			else:
 				print("player doesnt have enough bombs!")
-				insufficient_ammo()
+				emit_signal("play_sound", "decline")
 		if weapon_counter == 1:
 			if flare_quantity > 0:
 				throw_projectile()
 				flare_quantity -= 1
 				ammunition_changed()
 			else:
-				insufficient_ammo()
 				print("player doesnt have enough flares!")
+				emit_signal("play_sound", "decline")
 
 func throw_projectile():
 	var throw_direction = mouse_pos.normalized()
@@ -102,6 +104,7 @@ func throw_projectile():
 	var new_projectile = chosen_weapon.instantiate()
 	new_projectile.global_position = throw_origin.global_position
 	get_tree().current_scene.add_child(new_projectile)
+	emit_signal("play_sound", "throw")
 	#debug_projectile_direction_sprite.position = throw_direction * max_mouse_radius
 	if new_projectile is RigidBody2D: 	#time to send that shit flying
 		new_projectile.apply_impulse(throw_direction * throw_force, Vector2.ZERO)
@@ -138,8 +141,6 @@ func increase_bombs(amount: int):
 	ammunition_changed()
 	bombs_increased.emit()
 
-func insufficient_ammo():
-	empty_sound.play()
 
 func _on_display_timer_timeout() -> void:
 	# LZB NOTE 20-06-25 - we want to turn the image off unless the player is holding left click

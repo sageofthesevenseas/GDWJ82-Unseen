@@ -14,6 +14,8 @@ bomb_image = ExtResource("2_yt3l2")
 flare_image = ExtResource("3_kxw5q")
 bomb_prefab = ExtResource("4_kxw5q")
 flare_prefab = ExtResource("5_kxw5q")
+flare_quantity = 20
+flare_timer = 60.0
 min_throw_force = 500.0
 max_throw_force = 3000.0
 

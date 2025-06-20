@@ -11,14 +11,11 @@ size = Vector2(116, 109)
 [node name="Lazybones_Test_env" type="Node2D"]
 
 [node name="PlayerStats" parent="." instance=ExtResource("1_osux7")]
-DEBUG_declaring_stats_enabled = true
-DEBUG_BOMB_declare = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_f58qq")]
-collision_layer = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["enemy"]]
-position = Vector2(1456, -89)
+position = Vector2(1444, -63)
 collision_layer = 4
 collision_mask = 0
 
