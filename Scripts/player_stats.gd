@@ -3,7 +3,7 @@ class_name PlayerStats
 static var instance: PlayerStats
 # LZB NOTE 21-06-25 - please note that these stats are only a COPY of what the player systems are holding
 #changing these stats will NOT change the actual player stats
-var player_health: int
+var player_health: float
 var player_bombs: int
 var player_flares: int
 
