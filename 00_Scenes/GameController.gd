@@ -50,7 +50,7 @@ func _on_start_game():
 	var Level = preload("res://00_Scenes/TestScenery.tscn").instantiate()
 	WorldNode.add_child(Level)
 	spawn_player_and_switch_camera()
-	GuiNode.remove_child(MenuNode)
+	MenuNode.visible = false
 	
 	$FmodEventEmitter2D_Menu.set_parameter("GameStart", 1)
 	$Timer.start()

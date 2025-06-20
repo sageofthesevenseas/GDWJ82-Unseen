@@ -19,7 +19,11 @@ func _on_credits_pressed() -> void:
 	$Credits.visible = true
 	GameController.instance.zoom_enable = true
 
-
+func _on_settings_pressed() -> void:
+	emit_signal("play_sound", "accept")
+	$Main.visible = false
+	$Settings.visible = true
+	
 func _on_return_pressed() -> void:
 	emit_signal("play_sound", "accept")
 	$Credits.visible = false
@@ -29,10 +33,14 @@ func _on_return_pressed() -> void:
 	GameController.instance.zoom_reset()
 
 
+
 func _on_journals_pressed() -> void:
 	emit_signal("play_sound", "accept")
 	$Main.visible = false
 	$Journals.visible = true
+	
+func _on_fx_h_slider_value_changed(value: float) -> void:
+	emit_signal("play_sound", "accept")
 
 
 func _on_button_1_pressed() -> void:
