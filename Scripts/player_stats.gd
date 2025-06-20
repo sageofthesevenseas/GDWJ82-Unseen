@@ -31,7 +31,7 @@ func get_flares():
 	return player_flares
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_debug_stat_declare_timer_timeout() -> void:

@@ -15,7 +15,7 @@ func start_countdown(timer_delay: float):
 	print(self, " been told to start CD, ", timer_delay)
 	fizzle_timer.start(timer_delay)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var current_speed = linear_velocity.length()/200
 	if current_speed > max_speed:
 		max_speed = current_speed

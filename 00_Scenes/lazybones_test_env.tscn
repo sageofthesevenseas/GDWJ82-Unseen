@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://qlr7s5cs5b3y" path="res://00_Scenes/character.tscn" id="1_f58qq"]
 [ext_resource type="PackedScene" uid="uid://ceaut2rbgnvd0" path="res://00_Scenes/Singletons/player_stats.tscn" id="1_osux7"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_frqfa"]
-[ext_resource type="PackedScene" path="res://00_Scenes/enemy.tscn" id="4_e8hjv"]
+[ext_resource type="PackedScene" uid="uid://bfxt3h778c8mw" path="res://00_Scenes/enemy.tscn" id="4_e8hjv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osux7"]
 size = Vector2(116, 109)

@@ -40,7 +40,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.25).timeout
 	set_process(true) # LZB NOTE 21-06-25 - just a short delay to stop a flare getting thrown by the player entering
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	mouse_pos = get_local_mouse_position()
 	distance = mouse_pos.length()
