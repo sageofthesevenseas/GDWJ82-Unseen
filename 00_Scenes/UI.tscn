@@ -28,7 +28,6 @@ grow_vertical = 2
 script = ExtResource("1_oeioq")
 
 [node name="Main" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -114,6 +113,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_top = 1.0
 offset_right = 40.0
@@ -736,6 +736,7 @@ position = Vector2(0.447713, -296.168)
 texture = ExtResource("6_lgx2n")
 
 [node name="TitleArt" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(960, 540)
 texture = ExtResource("9_icyyo")
