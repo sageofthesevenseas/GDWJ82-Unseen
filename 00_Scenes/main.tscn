@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctxqtjrcc0d7"]
+[gd_scene load_steps=8 format=3 uid="uid://ctxqtjrcc0d7"]
 
 [ext_resource type="Script" uid="uid://m3v58b01t2vd" path="res://00_Scenes/GameController.gd" id="1_coj0j"]
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_xfl2n"]
 [ext_resource type="Script" uid="uid://dt4lmesou4jvb" path="res://Scripts/fx_handler.gd" id="2_1jgy6"]
+[ext_resource type="AudioStream" uid="uid://bibf5lsnvodkv" path="res://SFX/menu_accept-03.ogg" id="3_a7hb6"]
+[ext_resource type="AudioStream" uid="uid://c1xu6nrn1vi71" path="res://SFX/paper.ogg" id="4_8471c"]
+[ext_resource type="AudioStream" uid="uid://c33ca52imty1s" path="res://SFX/menu_accept-02.ogg" id="5_6d08n"]
 [ext_resource type="PackedScene" uid="uid://dclyhubdk31cs" path="res://00_Scenes/camera.tscn" id="6_8471c"]
 
 [node name="GameController" type="Node"]
@@ -10,6 +13,18 @@ script = ExtResource("1_coj0j")
 
 [node name="FX_Handler" type="Node" parent="."]
 script = ExtResource("2_1jgy6")
+
+[node name="accept" type="AudioStreamPlayer2D" parent="FX_Handler"]
+stream = ExtResource("3_a7hb6")
+volume_db = 15.0
+
+[node name="paper" type="AudioStreamPlayer2D" parent="FX_Handler"]
+stream = ExtResource("4_8471c")
+volume_db = 20.0
+
+[node name="decline" type="AudioStreamPlayer2D" parent="FX_Handler"]
+stream = ExtResource("5_6d08n")
+volume_db = 10.0
 
 [node name="Camera" parent="." instance=ExtResource("6_8471c")]
 

@@ -117,6 +117,16 @@ theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
 text = "Return"
 
+[node name="EasterEgg" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 1263.0
+offset_right = 1741.0
+offset_bottom = 1345.0
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 64
+text = "Thanks for playing you cheeky bugger ;)"
+
 [node name="Main" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0

@@ -2,30 +2,35 @@ extends Control
 
 
 signal start_game
-	
+signal play_sound(sfx_name)
 	
 func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func _on_game_start_pressed() -> void:
+	emit_signal("play_sound", "accept")
 	emit_signal("start_game")
 	print("Signal emmitted")
 	GameController.instance.add_lore(0)
 
 func _on_credits_pressed() -> void:
+	emit_signal("play_sound", "accept")
 	$Main.visible = false
 	$Credits.visible = true
 	GameController.instance.zoom_enable = true
 
 
 func _on_return_pressed() -> void:
+	emit_signal("play_sound", "accept")
 	$Credits.visible = false
 	$Journals.visible = false
 	$Main.visible = true
 	GameController.instance.zoom_enable = false
+	GameController.instance.zoom_reset()
 
 
 func _on_journals_pressed() -> void:
+	emit_signal("play_sound", "accept")
 	$Main.visible = false
 	$Journals.visible = true
 

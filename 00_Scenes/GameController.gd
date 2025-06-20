@@ -18,6 +18,12 @@ var lore_found : Array = [
 ]
 var zoom_enable : bool = false
 
+
+func zoom_reset():
+	var cam = get_node("/root/GameController/Camera")
+	cam.zoom = Vector2(1.0, 1.0)
+	pass
+
 func _ready() -> void:
 	instance = self
 	var resolution : Vector2 = get_viewport().get_visible_rect().size
