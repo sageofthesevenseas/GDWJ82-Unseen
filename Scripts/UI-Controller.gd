@@ -3,6 +3,7 @@ extends Control
 
 signal start_game
 signal play_sound(sfx_name)
+signal get_gameplay_nodes
 var not_in_main_menu = false
 var menu_open = false
 
@@ -17,7 +18,8 @@ func _on_exit_pressed() -> void:
 func _on_game_start_pressed() -> void:
 	emit_signal("play_sound", "accept")
 	emit_signal("start_game")
-	print("Signal emmitted")
+	emit_signal("get_gameplay_nodes")
+	print("Signals emmitted")
 	not_in_main_menu = true
 	GameController.instance.add_lore(0)
 
