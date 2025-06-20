@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bppo74h6hkep" path="res://00_Scenes/projectile_torch_deriv.tscn" id="5_kxw5q"]
 [ext_resource type="Texture2D" uid="uid://cwslskahro0pi" path="res://ItemTextures/circle.png" id="7_kxw5q"]
 
-[node name="ThrowingSystem" type="Node2D"]
+[node name="ThrowingSystem" type="Node2D" groups=["throwingsystem"]]
 script = ExtResource("1_gi8x3")
 bomb_image = ExtResource("2_yt3l2")
 flare_image = ExtResource("3_kxw5q")
