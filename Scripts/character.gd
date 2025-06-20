@@ -112,7 +112,7 @@ func is_in_shadow(light_range : float, light_global_position : Vector2) -> bool:
 			return false
 	return true
 
-func geolocation_process(delta : float, geolocatables : Array[HiddenChest]) -> void:
+func geolocation_process(_delta : float, geolocatables : Array[HiddenChest]) -> void:
 	var previously_in_diggable_range : bool = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
 	var in_diggable_range : bool = false
 	if geolocatables.size():

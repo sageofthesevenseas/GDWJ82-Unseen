@@ -46,7 +46,7 @@ func quit_minigame() -> void:
 	score = 0
 	visible = false
 
-func _physics_process(delta : float) -> void:
+func _physics_process(_delta : float) -> void:
 	if state == State.IDLE:
 		return
 	if Input.is_action_just_pressed(keys_action[cur_key]):
