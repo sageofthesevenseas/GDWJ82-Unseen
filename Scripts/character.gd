@@ -25,6 +25,8 @@ var current_geolocation_state := GeolocationState.IDLE
 signal entered_diggable_range()
 signal exited_diggable_range()
 
+var closest_geolocatable_distance : float = 10000000.0
+
 var controllable : bool = true
 
 var curframe_in_darkness : bool = false
@@ -118,6 +120,7 @@ func geolocation_process(delta : float, geolocatables : Array[HiddenChest]) -> v
 			in_diggable_range = true
 			if Input.is_action_just_pressed(&"dig"):
 				dig_chest(closest_geolocatable)
+		closest_geolocatable_distance = closest_dist
 	else:
 		in_diggable_range = false
 		if Input.is_action_just_pressed(&"dig"):
