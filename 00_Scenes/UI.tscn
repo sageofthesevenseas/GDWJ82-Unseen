@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b26g6eci3pxrh"]
+[gd_scene load_steps=12 format=3 uid="uid://b26g6eci3pxrh"]
 
 [ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
 [ext_resource type="Texture2D" uid="uid://ddt2ie2p88gi2" path="res://Player/Textures/Ernest.png" id="3_0mb0d"]
+[ext_resource type="Texture2D" uid="uid://jmu4opr2tgdt" path="res://UI_Textures/title-01.png" id="3_17fi0"]
 [ext_resource type="Script" uid="uid://chrftql7lrj5f" path="res://Scripts/journals.gd" id="3_lgx2n"]
 [ext_resource type="Texture2D" uid="uid://5puypvfvy5pu" path="res://ItemTextures/paper-01.png" id="4_icyyo"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
@@ -98,6 +99,7 @@ theme_override_font_sizes/font_size = 41
 text = "Flee"
 
 [node name="Title" type="Label" parent="Main"]
+visible = false
 layout_mode = 0
 offset_left = 407.0
 offset_top = 80.0
@@ -111,6 +113,10 @@ theme_override_font_sizes/font_size = 128
 text = "Ernest's Descent"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Title-01" type="Sprite2D" parent="Main"]
+position = Vector2(967, 159)
+texture = ExtResource("3_17fi0")
 
 [node name="Settings" type="Control" parent="."]
 visible = false
@@ -736,7 +742,6 @@ position = Vector2(0.447713, -296.168)
 texture = ExtResource("6_lgx2n")
 
 [node name="TitleArt" type="Sprite2D" parent="."]
-visible = false
 z_index = -1
 position = Vector2(960, 540)
 texture = ExtResource("9_icyyo")
