@@ -27,11 +27,17 @@ signal exited_diggable_range()
 
 var controllable : bool = true
 
+var curframe_in_darkness : bool = false
+var prvframe_in_darkness : bool = false
+
 signal dug_anywhere()
 signal dug_chest()
 
 signal damage_taken()
 signal health_depleted()
+
+signal entered_darkness()
+signal exited_darkness()
 
 func _ready() -> void:
 	$"Label".visible = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
@@ -60,9 +66,7 @@ func _physics_process(delta : float) -> void:
 	if Input.is_action_just_pressed("move_right") and $PlayerVisuals.scale.x < 0:
 		$PlayerVisuals.scale.x *= -1
 		print("Tried to flip")
-	
-		
-	
+
 
 	var geolocatables : Array[HiddenChest] = []
 	for area in geolocation_area.get_overlapping_areas():
@@ -73,15 +77,22 @@ func _physics_process(delta : float) -> void:
 	var in_light := false
 	for light in get_tree().get_nodes_in_group(&"lights"):
 		if not (light as Node2D).visible or not light.get_meta(&"use_for_darkness_damage", false):
-			break
-		in_light = not is_in_shadow(light.get_meta(&"light_range", 0.0), (light as Node2D).global_position)
+			continue
+		in_light = not is_in_shadow(light.get_meta(&"light_range", 0.0) * (light as Node2D).scale.x, (light as Node2D).global_position)
 		if in_light:
 			break
 
-	if not in_light:
-		# Do something !
+	curframe_in_darkness = not in_light
+	if curframe_in_darkness:
+		if not prvframe_in_darkness:
+			emit_signal(&"entered_darkness")
 		if DEBUG_lightcheck_messages_on == true:
 			print("Not in light")
+	else:
+		if prvframe_in_darkness:
+			emit_signal(&"exited_darkness")
+
+	prvframe_in_darkness = curframe_in_darkness
 
 func is_in_shadow(light_range : float, light_global_position : Vector2) -> bool:
 	for raycast in raycasts:

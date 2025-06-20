@@ -11,11 +11,13 @@ height = 170.0
 
 [node name="Projectile Torch" instance=ExtResource("1_hbhk3")]
 collision_layer = 0
+collision_mask = 1
 script = ExtResource("2_8pyac")
 
 [node name="MainLight" parent="." index="0" instance=ExtResource("2_rarbl")]
 position = Vector2(-45.05, 3.7)
 scale = Vector2(0.675, 0.675)
+metadata/use_for_darkness_damage = true
 
 [node name="Torch" parent="." index="1" instance=ExtResource("2_dxdm5")]
 position = Vector2(13, 1)
