@@ -37,4 +37,6 @@ texture = ExtResource("2_wlfx5")
 wait_time = 1.5
 one_shot = true
 
+[node name="Empty_Sound" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="timeout" from="DisplayTimer" to="." method="_on_display_timer_timeout"]

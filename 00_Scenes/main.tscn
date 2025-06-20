@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://m3v58b01t2vd" path="res://00_Scenes/GameController.gd" id="1_coj0j"]
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_xfl2n"]
-[ext_resource type="Script" uid="uid://dt4lmesou4jvb" path="res://Scripts/fx_handler.gd" id="2_1jgy6"]
+[ext_resource type="Script" path="res://Scripts/fx_handler.gd" id="2_1jgy6"]
 [ext_resource type="AudioStream" uid="uid://bibf5lsnvodkv" path="res://SFX/menu_accept-03.ogg" id="3_a7hb6"]
 [ext_resource type="AudioStream" uid="uid://c1xu6nrn1vi71" path="res://SFX/paper.ogg" id="4_8471c"]
 [ext_resource type="AudioStream" uid="uid://c33ca52imty1s" path="res://SFX/menu_accept-02.ogg" id="5_6d08n"]

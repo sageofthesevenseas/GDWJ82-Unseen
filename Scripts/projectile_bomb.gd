@@ -21,9 +21,9 @@ func explode():
 		var body = explosion_radius.get_collider(detected_item)
 		if body.is_in_group("enemy"):
 			body.take_damage()
-	removeable_children.start_the_show(queue_free_delay) # LZB NOTE 20-06-25 - we do all this so that the kids audio and SFX does not get cut off when the bomb blows up and queues free
 	removeable_children.top_level = true
 	removeable_children.reparent(get_tree().get_first_node_in_group("projectileparent"), true)
+	removeable_children.start_the_show(queue_free_delay) # LZB NOTE 20-06-25 - we do all this so that the kids audio and SFX does not get cut off when the bomb blows up and queues free
 	queue_free()
 
 func _on_explosion_countdown_timeout() -> void:

@@ -46,6 +46,7 @@ signal exited_darkness()
 
 func _ready() -> void:
 	$"Label".visible = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
+	PlayerStats.instance.player_health = health
 
 func _physics_process(delta : float) -> void:
 	if controllable:
@@ -163,8 +164,9 @@ func take_damage(amount : float) -> void:
 		emit_signal(&"health_depleted")
 	if amount > 0.0:
 		emit_signal(&"damage_taken")
+	PlayerStats.instance.player_health = health
 
-func get_bomb_quantity():
-	return throwing_system.get_bomb_quantity()
-func get_flare_quantity():
-	return throwing_system.get_flare_quantity()
+#func get_bomb_quantity():
+	#return throwing_system.get_bomb_quantity()
+#func get_flare_quantity():
+	#return throwing_system.get_flare_quantity()

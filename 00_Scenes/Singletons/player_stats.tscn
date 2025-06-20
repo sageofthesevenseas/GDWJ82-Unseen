@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceaut2rbgnvd0"]
+
+[ext_resource type="Script" uid="uid://baywjwk4hf7e1" path="res://Scripts/player_stats.gd" id="1_l3w4m"]
+
+[node name="PlayerStats" type="Node"]
+script = ExtResource("1_l3w4m")
+
+[node name="Debug_Stat_declare_Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Debug_Stat_declare_Timer" to="." method="_on_debug_stat_declare_timer_timeout"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://qlr7s5cs5b3y"]
+
+[ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
+[ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
+[ext_resource type="PackedScene" uid="uid://b206ab03crtra" path="res://Player/player_visuals.tscn" id="3_vwvbh"]
+[ext_resource type="PackedScene" uid="uid://diaw6c2xtaibp" path="res://00_Scenes/dig_minigame.tscn" id="4_vwvbh"]
+[ext_resource type="PackedScene" uid="uid://bi4dpscy1x5qi" path="res://00_Scenes/throwing_system.tscn" id="5_spk8f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7igj"]
+radius = 49.0
+height = 170.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7igj"]
+radius = 809.99
+
+[sub_resource type="GDScript" id="GDScript_h7igj"]
+script/source = "extends Node2D
+"
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_layer = 5
+script = ExtResource("1_48qfa")
+acceleration = 10000.0
+max_speed = 7500.0
+DEBUG_lightcheck_messages_on = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -95)
+shape = SubResource("CapsuleShape2D_h7igj")
+
+[node name="GeolocationArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GeolocationArea"]
+shape = SubResource("CircleShape2D_h7igj")
+
+[node name="Chest_Minigame" parent="." instance=ExtResource("3_h7igj")]
+visible = false
+
+[node name="DigMinigame" parent="." instance=ExtResource("4_vwvbh")]
+visible = false
+light_mask = 0
+z_index = 16
+
+[node name="Label" type="Label" parent="."]
+offset_left = -86.0
+offset_top = 150.0
+offset_right = 106.0
+offset_bottom = 173.0
+text = "in diggable_range of chest"
+
+[node name="PlayerVisuals" parent="." instance=ExtResource("3_vwvbh")]
+scale = Vector2(0.3, 0.3)
+script = SubResource("GDScript_h7igj")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="ThrowingSystem" parent="." instance=ExtResource("5_spk8f")]
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(64, -127)
+enabled = false
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-64, -127)
+enabled = false
+
+[node name="ReparentTarget" type="Node2D" parent="." groups=["projectileparent"]]
+
+[connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
