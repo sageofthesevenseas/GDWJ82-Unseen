@@ -38,6 +38,8 @@ volume_db = 10.0
 [node name="World2D" type="Node2D" parent="."]
 
 [node name="GUI" type="Control" parent="."]
+light_mask = 0
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
