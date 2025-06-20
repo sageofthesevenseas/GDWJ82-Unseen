@@ -4,6 +4,9 @@ class_name Character extends CharacterBody2D
 
 @export var max_health : float = 100.0
 @export var health : float = 100.0
+
+@export var darkness_damage : float
+
 @export var acceleration : float = 5000.0
 @export var friction : float = 10.0
 @export var max_speed : float = 1000.0
@@ -90,9 +93,12 @@ func _physics_process(delta : float) -> void:
 			emit_signal(&"entered_darkness")
 		if DEBUG_lightcheck_messages_on == true:
 			print("Not in light")
+		take_damage(darkness_damage * delta)
 	else:
 		if prvframe_in_darkness:
 			emit_signal(&"exited_darkness")
+
+	$DebugHealth.text = "HP %.1f/%.1f" % [health, max_health]
 
 	prvframe_in_darkness = curframe_in_darkness
 

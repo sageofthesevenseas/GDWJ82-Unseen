@@ -20,6 +20,7 @@ script/source = "extends Node2D
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_48qfa")
+darkness_damage = 1.0
 acceleration = 10000.0
 max_speed = 7500.0
 DEBUG_lightcheck_messages_on = false
@@ -49,6 +50,13 @@ offset_top = 150.0
 offset_right = 106.0
 offset_bottom = 173.0
 text = "in diggable_range of chest"
+
+[node name="DebugHealth" type="Label" parent="."]
+offset_left = -48.0
+offset_top = 125.0
+offset_right = 61.0
+offset_bottom = 153.0
+text = "hp: cur/max"
 
 [node name="PlayerVisuals" parent="." instance=ExtResource("3_vwvbh")]
 scale = Vector2(0.3, 0.3)

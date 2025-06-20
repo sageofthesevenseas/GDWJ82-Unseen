@@ -6,6 +6,9 @@ var movement_state : MovementState = MovementState.FLYING
 enum AttackState { NOT_READY, READY, ATTACKING }
 var attack_state : AttackState = AttackState.NOT_READY
 
+@export var max_health : float = 100.0
+@export var health : float = 100.0
+
 @export var memory_time : float = 5.0
 @export var max_speed : float = 1500.0
 @export var max_acceleration : float = 3000.0
@@ -21,6 +24,7 @@ var attack_state : AttackState = AttackState.NOT_READY
 @export var swoop_attack_max_range : float = 600.0
 @export var swoop_attack_min_range : float = 400.0
 @export var swoop_attack_cooldown : float = 6.0
+@export var swoop_attack_damage : float = 5.0
 
 @export var max_swoop_time : float = 1.2
 
@@ -51,16 +55,32 @@ var time_since_not_moving : float = 0.0
 
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
 
+signal health_depleted()
+signal damage_taken()
+
+signal gained_sight_of_target()
+signal lost_sight_of_target()
+
+signal started_swoop_attack()
+signal swoop_attack_successful()
+signal swoop_attack_failed()
+
 func _ready() -> void:
 	$MoveGoal.visible = show_move_goal
+
+var prvframe_target_seen := false
 
 func _physics_process(delta : float) -> void:
 	choose_target()
 
 	target_seen = can_see_target();
 	if not target_seen:
+		if prvframe_target_seen:
+			emit_signal(&"lost_sight_of_target")
 		time_since_target_seen += delta
 	else:
+		if not prvframe_target_seen:
+			emit_signal(&"gained_sight_of_target")
 		time_since_target_seen = 0.0
 		target_last_seen_position = target.global_position
 
@@ -98,6 +118,8 @@ func _physics_process(delta : float) -> void:
 	velocity -= velocity * friction * delta
 	move_to_goal(delta)
 	move_and_slide()
+
+	prvframe_target_seen = target_seen
 
 func choose_target() -> void:
 	target = null
@@ -212,13 +234,25 @@ func _draw() -> void:
 func initiate_attack_target() -> void:
 	attack_state = AttackState.ATTACKING
 	movement_state = MovementState.PREPARE_SWOOP
+	emit_signal(&"started_swoop_attack")
 
 func finish_attack_target() -> void:
+	(target as Character).take_damage(swoop_attack_damage)
 	attack_state = AttackState.NOT_READY
 	movement_state = MovementState.FLYING
 	time_since_attack = 0.0
+	emit_signal(&"swoop_attack_successful")
 
 func cancel_attack_target() -> void:
 	attack_state = AttackState.NOT_READY
 	movement_state = MovementState.FLYING
 	time_since_attack = 0.0
+	emit_signal(&"swoop_attack_failed")
+
+func take_damage(amount : float) -> void:
+	var prev_health := health
+	health = maxf(health - amount, 0.0)
+	if health <= 0.0 and health < prev_health:
+		emit_signal(&"health_depleted")
+	if amount > 0.0:
+		emit_signal(&"damage_taken")
