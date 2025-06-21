@@ -38,6 +38,7 @@ signal flares_increased
 
 
 func _ready() -> void:
+	DebugMenuSingleton.infinite_ammo_toggled.connect(func (toggled_on : bool) -> void: debug_infinite_ammo = toggled_on)
 	set_process(false)
 	ammunition_changed() #doing this to set the singleton with the right ammo
 	check_weapon_selected()

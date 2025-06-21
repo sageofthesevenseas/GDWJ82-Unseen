@@ -23,6 +23,9 @@ func _ready() -> void:
 		for node_grandchildren in node_children:
 			node_grandchildren.use_parent_material = true
 			print(node_children, "done")
+	
+	# deeply evil code. just for debugging.
+	DebugMenuSingleton.story_logs_toggled.connect(func (toggled_on : bool) -> void: for i in lore_found.size(): lore_found[i] = toggled_on)
 
 var lore_found : Array = [
 	false,

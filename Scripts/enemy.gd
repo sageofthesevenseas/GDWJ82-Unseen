@@ -67,6 +67,7 @@ signal swoop_attack_failed()
 
 func _ready() -> void:
 	$MoveGoal.visible = show_move_goal
+	DebugMenuSingleton.enemy_nav_hints_toggled.connect(func (toggled_on : bool) -> void: show_acceleration_line = toggled_on; show_move_goal = toggled_on)
 
 var prvframe_target_seen := false
 
