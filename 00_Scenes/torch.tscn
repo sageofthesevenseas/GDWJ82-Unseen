@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://mwu3nkm7l7ih"]
+[gd_scene load_steps=6 format=3 uid="uid://mwu3nkm7l7ih"]
 
-[ext_resource type="Texture2D" uid="uid://hi7c2k47yc6b" path="res://ItemTextures/Torch00_DIF.png" id="1_yeua4"]
+[ext_resource type="Texture2D" uid="uid://dxyegb1ila2ch" path="res://UI_Textures/Torch.png" id="1_kewae"]
 [ext_resource type="PackedScene" uid="uid://qm14agpmwdrt" path="res://VFX/ParticleFX/Flare00/Flare.tscn" id="3_crdvj"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_2u8sb"]
-diffuse_texture = ExtResource("1_yeua4")
 
 [sub_resource type="Animation" id="Animation_yeua4"]
 length = 0.001
@@ -45,17 +42,19 @@ _data = {
 }
 
 [node name="Torch" type="Node2D"]
+z_index = -1
 
 [node name="AnimationPivot" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimationPivot"]
 modulate = Color(0.180005, 0.180005, 0.180005, 1)
-position = Vector2(-20, 4)
-scale = Vector2(0.35, 0.35)
-texture = SubResource("CanvasTexture_2u8sb")
+position = Vector2(-13, 0)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_kewae")
 
 [node name="Flare" parent="AnimationPivot" instance=ExtResource("3_crdvj")]
-position = Vector2(-104.4, 0)
+position = Vector2(-40, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

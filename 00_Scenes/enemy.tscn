@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cwslskahro0pi" path="res://ItemTextures/circle.png" id="3_rkwuh"]
 [ext_resource type="AudioStream" uid="uid://cufwgnwpkf5l6" path="res://SFX/screech.ogg" id="5_sp07a"]
 [ext_resource type="AudioStream" uid="uid://5msaxhdlwutu" path="res://SFX/wingflap.ogg" id="6_u8ick"]
-[ext_resource type="Script" uid="uid://b4hdxjt2qewv2" path="res://00_Scenes/random_noises.gd" id="6_yu6ct"]
+[ext_resource type="Script" uid="uid://b4hdxjt2qewv2" path="res://Scripts/random_noises.gd" id="6_yu6ct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkwuh"]
 radius = 90.0

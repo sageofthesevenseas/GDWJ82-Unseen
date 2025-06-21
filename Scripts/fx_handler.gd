@@ -21,10 +21,7 @@ func _ready():
 	menu_signal_listen.connect("get_gameplay_nodes", Callable(self, "on_get_gameplay_nodes"))
 	var journal_signal_listen = get_tree().get_first_node_in_group("Journals")
 	journal_signal_listen.connect("play_sound", Callable(self, "_on_play_sound"))
-	
-func on_get_gameplay_nodes():
-	var throw_signal_listen = get_tree().get_first_node_in_group("throwingsystem")
-	throw_signal_listen.connect("play_sound", Callable(self, "_on_play_sound"))
+
 
 func _on_play_sound(sfx_name):
 	print("Sound Queue recieved")

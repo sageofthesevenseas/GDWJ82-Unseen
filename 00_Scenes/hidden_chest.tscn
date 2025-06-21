@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b8duy7cy81uku" path="res://Scripts/hidden_chest.gd" id="1_ebnwn"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_fqfsf"]
-[ext_resource type="PackedScene" uid="uid://cmr5lyfmqmup3" path="res://00_Scenes/exposed_chest.tscn" id="2_oexk1"]
-[ext_resource type="Texture2D" uid="uid://de6mygafrcfnq" path="res://VFX/ParticleFX/Smell00/smell_DIF-02-02.png" id="3_fqfsf"]
+[ext_resource type="PackedScene" path="res://00_Scenes/exposed_chest.tscn" id="2_oexk1"]
+[ext_resource type="Texture2D" uid="uid://botbqjsj7vhjh" path="res://VFX/ParticleFX/Explosion00/Smoke05.png" id="4_oexk1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n74om"]
 radius = 350.0
@@ -32,10 +32,11 @@ texture = ExtResource("2_fqfsf")
 shape = SubResource("CircleShape2D_n74om")
 
 [node name="SpawnCPUParticle" type="CPUParticles2D" parent="."]
-amount = 500
-texture = ExtResource("3_fqfsf")
+amount = 250
+texture = ExtResource("4_oexk1")
 lifetime = 10.0
 preprocess = 10.0
+speed_scale = 0.5
 local_coords = true
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -49,8 +50,8 @@ radial_accel_min = -45.33
 radial_accel_max = -45.33
 tangential_accel_min = -100.0
 tangential_accel_max = 100.0
-scale_amount_min = 0.3
-scale_amount_max = 2.0
+scale_amount_min = 0.1
 scale_amount_curve = SubResource("Curve_oexk1")
+color = Color(1, 1, 1, 0.266667)
 color_ramp = SubResource("Gradient_aoaxv")
 color_initial_ramp = SubResource("Gradient_lfk5i")

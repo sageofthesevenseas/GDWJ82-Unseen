@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b206ab03crtra" path="res://Player/player_visuals.tscn" id="3_vwvbh"]
 [ext_resource type="PackedScene" uid="uid://diaw6c2xtaibp" path="res://00_Scenes/dig_minigame.tscn" id="4_vwvbh"]
 [ext_resource type="PackedScene" uid="uid://bi4dpscy1x5qi" path="res://00_Scenes/throwing_system.tscn" id="5_spk8f"]
-[ext_resource type="Script" uid="uid://ej32mq7giigx" path="res://00_Scenes/player_ui.gd" id="6_5jv7e"]
+[ext_resource type="Script" uid="uid://ej32mq7giigx" path="res://Scripts/player_ui.gd" id="6_5jv7e"]
 [ext_resource type="Texture2D" uid="uid://dg28hw1fsl7rc" path="res://UI_Textures/Sun.png" id="7_igamm"]
 [ext_resource type="Texture2D" uid="uid://dx6xvtslc4mjc" path="res://UI_Textures/Heart outside.png" id="8_gcin8"]
 [ext_resource type="Texture2D" uid="uid://bovuktice4xm3" path="res://UI_Textures/Heart inside.png" id="9_lqwpu"]
@@ -118,9 +118,9 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_veate")
 
 [node name="BombValue" type="Label" parent="PlayerUI"]
-offset_left = 373.0
+offset_left = 392.0
 offset_top = 940.0
-offset_right = 619.0
+offset_right = 638.0
 offset_bottom = 994.0
 theme_override_fonts/font = ExtResource("11_is46d")
 theme_override_font_sizes/font_size = 42
