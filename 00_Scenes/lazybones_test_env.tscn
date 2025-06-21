@@ -1,24 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://yyegmw7wru6o"]
+[gd_scene load_steps=9 format=3 uid="uid://yyegmw7wru6o"]
 
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_aqvis"]
 [ext_resource type="PackedScene" uid="uid://qlr7s5cs5b3y" path="res://00_Scenes/character.tscn" id="1_f58qq"]
 [ext_resource type="PackedScene" uid="uid://ceaut2rbgnvd0" path="res://00_Scenes/Singletons/player_stats.tscn" id="1_osux7"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_frqfa"]
-[ext_resource type="PackedScene" uid="uid://bfxt3h778c8mw" path="res://00_Scenes/enemy.tscn" id="4_e8hjv"]
 [ext_resource type="PackedScene" uid="uid://cmr5lyfmqmup3" path="res://00_Scenes/exposed_chest.tscn" id="4_vchd2"]
 [ext_resource type="PackedScene" uid="uid://dcmviarkgg7uu" path="res://00_Scenes/hidden_chest.tscn" id="5_frv34"]
 [ext_resource type="PackedScene" uid="uid://bppo74h6hkep" path="res://00_Scenes/projectile_torch_deriv.tscn" id="7_eusmn"]
 [ext_resource type="PackedScene" uid="uid://dye34evdgknxg" path="res://00_Scenes/Basic Scenes (Inherit from these)/pickup_base.tscn" id="9_54ps5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_osux7"]
-size = Vector2(116, 109)
 
 [node name="Lazybones_Test_env" type="Node2D"]
 
 [node name="DEBUG_Quit_Restart_Key" parent="." instance=ExtResource("1_aqvis")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.38848, 1.82897e-06, 0.248855, 1)
+modulate = Color(0.199052, 0.300502, 0.290047, 1)
 scale = Vector2(35.575, 35.575)
 texture = ExtResource("2_frqfa")
 
@@ -34,20 +30,6 @@ platform_floor_layers = 4294967295
 [node name="Chest" parent="." instance=ExtResource("4_vchd2")]
 position = Vector2(-311, -71)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["enemy"]]
-position = Vector2(1444, -63)
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_osux7")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("2_frqfa")
-
-[node name="Enemy" parent="." instance=ExtResource("4_e8hjv")]
-position = Vector2(583, -469)
-
 [node name="HiddenChest" parent="." instance=ExtResource("5_frv34")]
 position = Vector2(675, 151)
 
@@ -60,8 +42,15 @@ visible = false
 [node name="Projectile Torch" parent="." instance=ExtResource("7_eusmn")]
 position = Vector2(265, -62)
 
+[node name="Shadow" parent="Projectile Torch/MainLight" index="1"]
+energy = 1.85
+texture_scale = 36.61
+
 [node name="Pickup" parent="." instance=ExtResource("9_54ps5")]
 position = Vector2(-410, 231)
+pickup_type = 4
 
 [editable path="CharacterBody2D"]
 [editable path="HiddenChest"]
+[editable path="Projectile Torch"]
+[editable path="Projectile Torch/MainLight"]

@@ -1,4 +1,5 @@
 extends Node2D
+class_name ThrowingSystem
 
 @onready var projectile_target: Sprite2D = $ProjectileTarget
 @onready var projectile_holdup: Sprite2D = $ProjectileHoldup
@@ -7,7 +8,6 @@ extends Node2D
 @onready var holdup_display_timer: Timer = $DisplayTimer
 @onready var empty_sound: AudioStreamPlayer2D = $Empty_Sound
 @onready var throw_sound: AudioStreamPlayer2D = $Throw_Sound
-@onready var pickup_sound: AudioStreamPlayer2D = $Pickup_sound
 
 
 
@@ -141,13 +141,11 @@ func ammunition_changed():
 
 func increase_flares(amount: int):
 	flare_quantity += amount
-	pickup_sound.play()
 	ammunition_changed()
 	flares_increased.emit()
 
 func increase_bombs(amount: int):
 	bomb_quantity += amount
-	pickup_sound.play()
 	ammunition_changed()
 	bombs_increased.emit()
 

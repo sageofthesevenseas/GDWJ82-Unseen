@@ -1,13 +1,16 @@
 extends RigidBody2D
 @onready var detectable_area: Area2D = $"Detectable area"
 
-enum Categories {HEALTH, BOMB, FLARE, STORY, CHEESE}
-@export var pickup_type: Categories = Categories.HEALTH
-@export_range (1, 10) var selected_story: int
+enum Categories {BOMB, FLARE, STORY, CHEESE}
+@export var pickup_type: Categories = Categories.CHEESE
+@export_range (0, 9) var selected_story: int = 0
 
 @export var attraction_strength: float = 2500.0
 @export var player_center_offset= Vector2(0,100)
+@export var item_value_int: int = 1
+@export var health_value: float = 10.0
 
+var player_throwing_system: ThrowingSystem
 var player: CharacterBody2D
 
 func _ready() -> void:
@@ -34,13 +37,11 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 
 func pickup_assignment():
 	match  pickup_type:
-		Categories.HEALTH:
-			pass # LZB NOTE 21-06-25 - do somethinhg
 		Categories.BOMB:
-			pass
+			player_throwing_system.increase_bombs(item_value_int)
 		Categories.FLARE:
-			pass
+			player_throwing_system.increase_flares(item_value_int)
 		Categories.STORY:
-			pass
+			GameController.instance.add_lore(selected_story)
 		Categories.CHEESE:
-			pass
+			player.
