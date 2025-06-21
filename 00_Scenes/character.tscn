@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qlr7s5cs5b3y"]
+[gd_scene load_steps=10 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
@@ -17,9 +17,14 @@ radius = 2000.0
 script/source = "extends Node2D
 "
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_spk8f"]
+radius = 400.0
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 11
+collision_mask = 9
+motion_mode = 1
+platform_floor_layers = 0
 script = ExtResource("1_48qfa")
 darkness_damage = 1.0
 acceleration = 10000.0
@@ -37,9 +42,9 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GeolocationArea"]
 shape = SubResource("CircleShape2D_h7igj")
 
-[node name="Chest_Minigame" parent="." instance=ExtResource("3_h7igj")]
+[node name="Chest_Minigame" parent="." groups=["chestminigame"] instance=ExtResource("3_h7igj")]
 visible = false
-position = Vector2(0, 0)
+position = Vector2(0, -150)
 
 [node name="DigMinigame" parent="." instance=ExtResource("4_vwvbh")]
 visible = false
@@ -78,4 +83,15 @@ enabled = false
 
 [node name="ReparentTarget" type="Node2D" parent="." groups=["projectileparent"]]
 
+[node name="Exposed_Chest_Detector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exposed_Chest_Detector"]
+shape = SubResource("CircleShape2D_spk8f")
+
+[connection signal="chest_game_beaten" from="Chest_Minigame" to="." method="on_chest_closed"]
+[connection signal="chest_game_cancelled" from="Chest_Minigame" to="." method="on_minigame_cancelled"]
+[connection signal="dig_game_cancelled" from="DigMinigame" to="." method="on_minigame_cancelled"]
 [connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
+[connection signal="body_entered" from="Exposed_Chest_Detector" to="." method="_on_exposed_chest_detector_body_entered"]

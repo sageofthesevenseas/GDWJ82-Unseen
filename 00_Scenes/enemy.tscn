@@ -1,33 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfxt3h778c8mw"]
+[gd_scene load_steps=6 format=3 uid="uid://bfxt3h778c8mw"]
 
 [ext_resource type="Script" uid="uid://dmx65o08aasfa" path="res://Scripts/enemy.gd" id="1_0ob4p"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_6yein"]
+[ext_resource type="PackedScene" uid="uid://cyaisxoi46cj2" path="res://Enemies/bat_visuals.tscn" id="2_ednin"]
 [ext_resource type="Texture2D" uid="uid://cwslskahro0pi" path="res://ItemTextures/circle.png" id="3_rkwuh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkwuh"]
 radius = 90.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-z_index = 1
 collision_layer = 4
 motion_mode = 1
+platform_floor_layers = 0
+platform_wall_layers = 1
 script = ExtResource("1_0ob4p")
+swoop_acceleration = 12000.0
+swoop_attack_damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = -1
 shape = SubResource("CircleShape2D_rkwuh")
 
+[node name="BatVisuals" parent="." instance=ExtResource("2_ednin")]
+scale = Vector2(0.15, 0.15)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 0, 0.0166664, 1)
-z_index = -1
 texture = ExtResource("2_6yein")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 150.0
+target_desired_distance = 60.0
+path_max_distance = 400.0
 
 [node name="MoveGoal" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_rkwuh")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 150.0
-target_desired_distance = 60.0
-path_max_distance = 400.0
+[node name="DebugHealthLabel" type="Label" parent="."]
+offset_left = -47.0
+offset_top = 119.0
+offset_right = 44.0
+offset_bottom = 142.0
+text = "ĦP cur/max"
+metadata/_edit_use_anchors_ = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-150, 136)
+enabled = false
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(150, 136)
+enabled = false
+
+[node name="RayCastTop" type="RayCast2D" parent="."]
+position = Vector2(0, -182)

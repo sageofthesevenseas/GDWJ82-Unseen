@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctxqtjrcc0d7"]
+[gd_scene load_steps=11 format=3 uid="uid://ctxqtjrcc0d7"]
 
 [ext_resource type="Script" uid="uid://m3v58b01t2vd" path="res://00_Scenes/GameController.gd" id="1_coj0j"]
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_xfl2n"]
@@ -10,12 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://dclyhubdk31cs" path="res://00_Scenes/camera.tscn" id="6_8471c"]
 [ext_resource type="AudioStream" uid="uid://csbfghd7gtbth" path="res://SFX/flame-02.ogg" id="7_hlxf8"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hlxf8"]
+light_mode = 1
+
 [node name="GameController" type="Node"]
 script = ExtResource("1_coj0j")
 
 [node name="PlayerStats" parent="." instance=ExtResource("4_1jgy6")]
 
 [node name="FX_Handler" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("2_1jgy6")
 
 [node name="accept" type="AudioStreamPlayer2D" parent="FX_Handler"]
@@ -33,23 +37,24 @@ volume_db = 10.0
 [node name="throw" type="AudioStreamPlayer2D" parent="FX_Handler"]
 stream = ExtResource("7_hlxf8")
 
-[node name="Camera" parent="." instance=ExtResource("6_8471c")]
+[node name="Camera" parent="." groups=["camera"] instance=ExtResource("6_8471c")]
 
 [node name="DEBUG_Restart_Key `" parent="." instance=ExtResource("1_xfl2n")]
 
-[node name="World3D" type="Node3D" parent="."]
-
-[node name="World2D" type="Node2D" parent="."]
-
 [node name="GUI" type="Control" parent="."]
-light_mask = 0
-z_index = 10
+z_index = 4096
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_hlxf8")
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="World2D" type="Node2D" parent="."]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." groups=["camera"]]
 bank_paths = ["res://Music/Desktop/Master.strings.bank", "res://Music/Desktop/Master.bank", "res://Music/Desktop/Cave.bank", "res://Music/Desktop/Menu.bank"]
 
 [node name="FmodEventEmitter2D_Menu" type="FmodEventEmitter2D" parent="."]

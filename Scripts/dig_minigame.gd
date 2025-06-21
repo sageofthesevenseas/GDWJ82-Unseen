@@ -4,6 +4,7 @@ signal correct_key_pressed()
 signal incorrect_key_pressed()
 
 signal score_goal_reached()
+signal dig_game_cancelled()
 
 @export var score_goal : int = 4
 var score : int = 0
@@ -45,6 +46,15 @@ func quit_minigame() -> void:
 	state = State.IDLE
 	score = 0
 	visible = false
+
+func cancel_minigame() -> void:
+	quit_minigame()
+	dig_game_cancelled.emit()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action(&"Escape") and event.is_pressed() and state == State.PLAYING:
+		get_viewport().set_input_as_handled()
+		cancel_minigame()
 
 func _physics_process(_delta : float) -> void:
 	if state == State.IDLE:
@@ -183,4 +193,3 @@ func on_incorrect_key_pressed() -> void:
 func on_score_goal_reached() -> void:
 	quit_minigame()
 	emit_signal(&"score_goal_reached")
-	# TODO: Remove the hidden chest, spawn physical chest

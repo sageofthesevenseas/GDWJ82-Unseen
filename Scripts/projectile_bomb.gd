@@ -8,6 +8,7 @@ extends RigidBody2D
 var fuse_timer: float = 3.0
 @export var queue_free_delay: float = 1.5
 @export var explode_on_contact_with_enemy: bool = true
+@export var damage_amount: float
 # Called when the node enters the scene tree for the first time.
 
 func start_countdown(timer_delay: float):
@@ -20,7 +21,7 @@ func explode():
 	for detected_item in body_count:
 		var body = explosion_radius.get_collider(detected_item)
 		if body.is_in_group("enemy"):
-			body.take_damage()
+			(body as Enemy).take_damage(damage_amount)
 	removeable_children.top_level = true
 	removeable_children.global_position = global_position
 	removeable_children.reparent(get_tree().get_first_node_in_group("projectileparent"), true)

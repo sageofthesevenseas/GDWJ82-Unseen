@@ -3,9 +3,14 @@ class_name ChestMinigameManager extends Node2D
 @onready var mini_game_2: Path2D = $MiniGame2
 @onready var mini_game_3: Path2D = $MiniGame3
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var open_sound: AudioStreamPlayer2D = $Open_sound
+@onready var click_sound: AudioStreamPlayer2D = $Click_Sound
 
 @export var DEBUG_run_mini_on_ready: bool = false
 signal chest_game_beaten
+signal chest_game_cancelled
+
+var game_is_playing : bool = false
 
 func _ready() -> void:
 	if DEBUG_run_mini_on_ready == true:
@@ -13,7 +18,12 @@ func _ready() -> void:
 
 #func start_minigame(relevant_hidden_chest : HiddenChest) -> void:
 func start_minigame() -> void:
+	game_is_playing = true
 	visible = true
+	mini_game_1.visible = true
+	mini_game_2.visible = true
+	mini_game_3.visible = true
+	animation_player.play("RESET")
 	mini_game_1.prep()
 	mini_game_2.prep()
 	mini_game_3.prep()
@@ -26,14 +36,33 @@ func _on_mini_game_1_minigame_ready() -> void:
 
 func _on_mini_game_1_minigame_completed() -> void:
 	mini_game_2.run()
+	click_sound.play()
 
 func _on_mini_game_2_minigame_completed() -> void:
 	mini_game_3.run()
+	click_sound.play()
 
 func _on_mini_game_3_minigame_completed() -> void:
 	print("player has completed minigame!")
+	game_is_playing = false
 	mini_game_1.visible = false
 	mini_game_2.visible = false
 	mini_game_3.visible = false
 	animation_player.play("Open")
+	click_sound.play()
+	open_sound.play()
 	chest_game_beaten.emit()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action(&"Escape") and event.is_pressed() and game_is_playing:
+		get_viewport().set_input_as_handled()
+		exit_minigame()
+
+func exit_minigame():
+	game_is_playing = false
+	mini_game_1.stop()
+	mini_game_2.stop()
+	mini_game_3.stop()
+	visible = false
+	chest_game_cancelled.emit()
+	

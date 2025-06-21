@@ -50,7 +50,7 @@ _data = {
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimationPivot"]
 modulate = Color(0.180005, 0.180005, 0.180005, 1)
-position = Vector2(-20.4, 4)
+position = Vector2(-20, 4)
 scale = Vector2(0.35, 0.35)
 texture = SubResource("CanvasTexture_2u8sb")
 

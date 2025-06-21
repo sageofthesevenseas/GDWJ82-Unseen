@@ -6,6 +6,8 @@ extends Node2D
 @onready var throw_origin: Marker2D = $ThrowOrigin
 @onready var holdup_display_timer: Timer = $DisplayTimer
 @onready var empty_sound: AudioStreamPlayer2D = $Empty_Sound
+@onready var throw_sound: AudioStreamPlayer2D = $Throw_Sound
+@onready var pickup_sound: AudioStreamPlayer2D = $Pickup_sound
 
 
 
@@ -21,6 +23,9 @@ extends Node2D
 @export var max_throw_force: float = 10000.0
 #@export var can_activate: bool = true
 
+@export_group("Debug Settings")
+@export var debug_infinite_ammo : bool = false
+
 var mouse_pos
 var distance
 var max_mouse_radius := 800.0
@@ -30,10 +35,10 @@ var chosen_weapon: PackedScene
 
 signal bombs_increased
 signal flares_increased
-signal play_sound(sfx_name)
 
 
 func _ready() -> void:
+	DebugMenuSingleton.infinite_ammo_toggled.connect(func (toggled_on : bool) -> void: debug_infinite_ammo = toggled_on)
 	set_process(false)
 	ammunition_changed() #doing this to set the singleton with the right ammo
 	check_weapon_selected()
@@ -78,21 +83,21 @@ func _process(_delta: float) -> void:
 		projectile_target.visible = false
 		projectile_holdup.visible = false
 		if weapon_counter == 0:
-			if bomb_quantity > 0:
+			if bomb_quantity > 0 or debug_infinite_ammo:
 				throw_projectile()
 				bomb_quantity -= 1 
 				ammunition_changed()
 			else:
 				print("player doesnt have enough bombs!")
-				emit_signal("play_sound", "decline")
+				empty_sound.play()
 		if weapon_counter == 1:
-			if flare_quantity > 0:
+			if flare_quantity > 0 or debug_infinite_ammo:
 				throw_projectile()
 				flare_quantity -= 1
 				ammunition_changed()
 			else:
 				print("player doesnt have enough flares!")
-				emit_signal("play_sound", "decline")
+				empty_sound.play()
 
 func throw_projectile():
 	var throw_direction = mouse_pos.normalized()
@@ -104,10 +109,10 @@ func throw_projectile():
 	var new_projectile = chosen_weapon.instantiate()
 	new_projectile.global_position = throw_origin.global_position
 	get_tree().current_scene.add_child(new_projectile)
-	emit_signal("play_sound", "throw")
 	#debug_projectile_direction_sprite.position = throw_direction * max_mouse_radius
 	if new_projectile is RigidBody2D: 	#time to send that shit flying
 		new_projectile.apply_impulse(throw_direction * throw_force, Vector2.ZERO)
+		throw_sound.play()
 		print(throw_direction * throw_force)
 	else: 
 		push_error("that's not a blardy RB2D!")
@@ -128,16 +133,21 @@ func check_weapon_selected():
 		chosen_weapon = flare_prefab
 
 func ammunition_changed():
-	PlayerStats.instance.player_bombs = bomb_quantity
-	PlayerStats.instance.player_flares = flare_quantity
+	if PlayerStats.instance != null:
+		PlayerStats.instance.player_bombs = bomb_quantity
+		PlayerStats.instance.player_flares = flare_quantity
+	else:
+		push_warning("No PlayerStats instance available.")
 
 func increase_flares(amount: int):
 	flare_quantity += amount
+	pickup_sound.play()
 	ammunition_changed()
 	flares_increased.emit()
 
 func increase_bombs(amount: int):
 	bomb_quantity += amount
+	pickup_sound.play()
 	ammunition_changed()
 	bombs_increased.emit()
 

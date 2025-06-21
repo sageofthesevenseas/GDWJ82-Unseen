@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs6fwdx5myjdx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_crt8y"]
+light_mode = 1
+
+[node name="DebugMenu" type="PanelContainer"]
+light_mask = 0
+z_index = 1000
+material = SubResource("CanvasItemMaterial_crt8y")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+use_parent_material = true
+layout_mode = 2
+
+[node name="InfiniteAmmo" type="HBoxContainer" parent="VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/InfiniteAmmo"]
+use_parent_material = true
+layout_mode = 2
+text = "Infinite ammo"
+
+[node name="InfiniteAmmo" type="CheckButton" parent="VBoxContainer/InfiniteAmmo"]
+layout_mode = 2
+
+[node name="ShowEnemyNavHints" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ShowEnemyNavHints"]
+layout_mode = 2
+text = "Show Enemy nav hints"
+
+[node name="ShowEnemyNavHints" type="CheckButton" parent="VBoxContainer/ShowEnemyNavHints"]
+layout_mode = 2
+
+[node name="ToggleStoryLogs" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ToggleStoryLogs"]
+layout_mode = 2
+text = "Toggle story logs"
+
+[node name="ToggleStoryLogs" type="CheckButton" parent="VBoxContainer/ToggleStoryLogs"]
+layout_mode = 2

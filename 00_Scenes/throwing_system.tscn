@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi4dpscy1x5qi"]
+[gd_scene load_steps=11 format=3 uid="uid://bi4dpscy1x5qi"]
 
 [ext_resource type="Script" uid="uid://fmhyul3f0c1g" path="res://Scripts/throwing_system.gd" id="1_gi8x3"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_wlfx5"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://di5yr5i43ao81" path="res://00_Scenes/projectile_bomb_deriv2.tscn" id="4_kxw5q"]
 [ext_resource type="PackedScene" uid="uid://bppo74h6hkep" path="res://00_Scenes/projectile_torch_deriv.tscn" id="5_kxw5q"]
 [ext_resource type="Texture2D" uid="uid://cwslskahro0pi" path="res://ItemTextures/circle.png" id="7_kxw5q"]
+[ext_resource type="AudioStream" uid="uid://tprxoyf42yfn" path="res://SFX/screech-01.ogg" id="8_cb8sg"]
+[ext_resource type="AudioStream" uid="uid://c22notkcfwuwp" path="res://SFX/flame-01.ogg" id="9_d6o7i"]
+[ext_resource type="AudioStream" uid="uid://6u3ly2mmkt2j" path="res://SFX/screech-02.ogg" id="10_u22f5"]
 
 [node name="ThrowingSystem" type="Node2D" groups=["throwingsystem"]]
 script = ExtResource("1_gi8x3")
@@ -28,6 +31,7 @@ texture = ExtResource("2_wlfx5")
 texture = ExtResource("7_kxw5q")
 
 [node name="ThrowOrigin" type="Marker2D" parent="."]
+visible = false
 position = Vector2(1, -121)
 gizmo_extents = 68.6
 
@@ -40,5 +44,16 @@ wait_time = 1.5
 one_shot = true
 
 [node name="Empty_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_cb8sg")
+volume_db = -13.867
+pitch_scale = 2.44
+
+[node name="Throw_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_d6o7i")
+pitch_scale = 10.0
+
+[node name="Pickup_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_u22f5")
+pitch_scale = 4.5
 
 [connection signal="timeout" from="DisplayTimer" to="." method="_on_display_timer_timeout"]

@@ -7,10 +7,13 @@ signal get_gameplay_nodes
 var not_in_main_menu = false
 var menu_open = false
 
-func _on_ready():
-	var not_in_main_menu = false
-	var menu_open = false
+func _ready() -> void:
+	set_parent_material_recurse(self)
 
+func set_parent_material_recurse(node : CanvasItem) -> void:
+	for child in node.get_children():
+		child.use_parent_material = true
+		if child is CanvasItem: set_parent_material_recurse(child)
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -38,6 +41,7 @@ func _on_return_pressed() -> void:
 	emit_signal("play_sound", "accept")
 	$Credits.visible = false
 	$Journals.visible = false
+	$Settings.visible = false
 	$Main.visible = true
 	GameController.instance.zoom_enable = false
 	GameController.instance.zoom_reset()
@@ -52,27 +56,41 @@ func _on_journals_pressed() -> void:
 func _on_fx_h_slider_value_changed(value: float) -> void:
 	emit_signal("play_sound", "accept")
 
+func _on_sfx_toggle_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		GameController.instance.get_child(1).set_process(true)
+	else:
+		GameController.instance.get_child(1).set_process(false)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Escape"):
-		print("menu call recieved")
-	if Input.is_action_just_pressed("Escape") and not_in_main_menu and menu_open == false:
-		var player_position = get_node("root/GameController/World2D/CharacterBody2D")
-		self.position = player_position.position
-		self.visible = true
-		$Main.visible = true
-		$Main/GameStart.visible = false
-		menu_open = true
-		print("menu closed")
-	elif Input.is_action_just_pressed("Escape") and not_in_main_menu and menu_open:
-		self.visible = false
-		$Main.visible = false
-		$Main/GameStart.visible = true
-		menu_open = false
-		print("menu closed")
-		
-		
-	
+var camera_zoom_before_pausemenu : Vector2
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action(&"Escape") and event.is_pressed() and not_in_main_menu:
+		print("menu")
+		var camera = get_viewport().get_camera_2d()
+		if not menu_open:
+			camera_zoom_before_pausemenu = camera.zoom
+			camera.zoom = Vector2(1,1)
+			camera.position_smoothing_enabled = false
+			get_node("/root/GameController/GUI").position = camera.global_position
+			self.visible = true
+			$Main.visible = true
+			$Main/GameStart.visible = false
+			menu_open = true
+			get_tree().paused = true
+			print("menu opened")
+		else:
+			camera.zoom = camera_zoom_before_pausemenu
+			camera.position_smoothing_enabled = true
+			self.visible = false
+			$Main.visible = false
+			$Credits.visible = false
+			$Journals.visible = false
+			$Settings.visible = false
+			$Main/GameStart.visible = true
+			menu_open = false
+			print("menu closed")
+			get_tree().paused = false
+		get_viewport().set_input_as_handled()
 
 func _on_button_1_pressed() -> void:
 	GameController.instance.add_lore(0)
