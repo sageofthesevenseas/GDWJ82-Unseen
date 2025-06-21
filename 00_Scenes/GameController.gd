@@ -4,6 +4,7 @@ static var instance: GameController
 
 @onready var camera: Node2D = $Camera
 
+signal player_ui_ready()
 
 func _ready() -> void:
 	instance = self
@@ -55,6 +56,7 @@ func _on_start_game():
 	var Level = preload("res://00_Scenes/TestScenery.tscn").instantiate()
 	WorldNode.add_child(Level)
 	spawn_player_and_switch_camera()
+	emit_signal("player_ui_ready")
 	MenuNode.visible = false
 	
 	$FmodEventEmitter2D_Menu.set_parameter("GameStart", 1)

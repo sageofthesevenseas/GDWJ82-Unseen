@@ -38,6 +38,10 @@ volume_db = 10.0
 stream = ExtResource("7_hlxf8")
 
 [node name="Camera" parent="." groups=["camera"] instance=ExtResource("6_8471c")]
+cameraZoomSpeed = Vector2(0.2, 0.2)
+cameraZoomDefault = Vector2(1, 1)
+zoomMin = Vector2(0.5, 0.5)
+zoomMax = Vector2(1.5, 1.5)
 
 [node name="DEBUG_Restart_Key `" parent="." instance=ExtResource("1_xfl2n")]
 

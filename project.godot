@@ -60,6 +60,7 @@ camera=""
 GUI=""
 Journals=""
 chestminigame=""
+PlayerUI=""
 
 [input]
 
