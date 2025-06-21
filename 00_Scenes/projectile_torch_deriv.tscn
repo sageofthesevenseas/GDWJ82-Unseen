@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bppo74h6hkep"]
+[gd_scene load_steps=6 format=3 uid="uid://bppo74h6hkep"]
 
 [ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/Basic Scenes (Inherit from these)/Basic Projectile Settings.tscn" id="1_hbhk3"]
+[ext_resource type="Script" uid="uid://ccm1heng0ii28" path="res://Scripts/ProjectileTorch.gd" id="2_8pyac"]
 [ext_resource type="PackedScene" uid="uid://mwu3nkm7l7ih" path="res://00_Scenes/torch.tscn" id="2_dxdm5"]
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="2_rarbl"]
 
@@ -9,10 +10,14 @@ radius = 15.0
 height = 170.0
 
 [node name="Projectile Torch" instance=ExtResource("1_hbhk3")]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("2_8pyac")
 
 [node name="MainLight" parent="." index="0" instance=ExtResource("2_rarbl")]
 position = Vector2(-45.05, 3.7)
 scale = Vector2(0.675, 0.675)
+metadata/use_for_darkness_damage = true
 
 [node name="Torch" parent="." index="1" instance=ExtResource("2_dxdm5")]
 position = Vector2(13, 1)
@@ -21,3 +26,8 @@ position = Vector2(13, 1)
 position = Vector2(-2, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rarbl")
+
+[node name="FizzleTimer" type="Timer" parent="." index="3"]
+wait_time = 30.0
+
+[connection signal="timeout" from="FizzleTimer" to="." method="_on_fizzle_timer_timeout"]

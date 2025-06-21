@@ -1,13 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://b66d1l1857x3g"]
+[gd_scene load_steps=14 format=3 uid="uid://b66d1l1857x3g"]
 
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="1_chrnd"]
 [ext_resource type="PackedScene" uid="uid://bxfw4dap4a6ha" path="res://00_Scenes/StaticObjects/rock02.tscn" id="3_3tj0l"]
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="4_70k2p"]
 [ext_resource type="Texture2D" uid="uid://bajs5fdbhmyqn" path="res://EnvTextures/floor01.png" id="5_mu4cm"]
 [ext_resource type="PackedScene" uid="uid://l04nsg0jtwj5" path="res://00_Scenes/chest_map.tscn" id="6_dokna"]
-[ext_resource type="PackedScene" uid="uid://mwu3nkm7l7ih" path="res://00_Scenes/torch.tscn" id="6_hcjed"]
+[ext_resource type="PackedScene" uid="uid://lccfk6156mwg" path="res://00_Scenes/spawn_point.tscn" id="7_0oj2q"]
 [ext_resource type="Texture2D" uid="uid://bjgxqv8oojc7u" path="res://VFX/ParticleFX/Smell00/smell_DIF-02.png" id="7_dokna"]
-[ext_resource type="Texture2D" uid="uid://de6mygafrcfnq" path="res://VFX/ParticleFX/Smell00/smell_DIF-02-02.png" id="8_02sna"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a35pm"]
 texture = ExtResource("5_mu4cm")
@@ -17,16 +16,6 @@ texture_region_size = Vector2i(512, 512)
 [sub_resource type="TileSet" id="TileSet_e2pd5"]
 tile_size = Vector2i(512, 512)
 sources/1 = SubResource("TileSetAtlasSource_a35pm")
-
-[sub_resource type="Curve" id="Curve_kunwh"]
-_data = [Vector2(0, 0.124872), 0.0, 0.0, 0, 0, Vector2(0.508197, 0.886434), 0.0, 0.0, 0, 0, Vector2(1, 0.104831), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_kunwh"]
-offsets = PackedFloat32Array(0, 0.117647, 0.532353, 0.788235, 1)
-colors = PackedColorArray(0.03, 0.0235, 0, 0, 0, 0, 0, 1, 0.00793114, 0.390869, 0, 1, 0.180349, 0.139957, 3.60981e-08, 1, 0, 0, 0, 0)
-
-[sub_resource type="Gradient" id="Gradient_av87r"]
 
 [sub_resource type="Curve" id="Curve_dokna"]
 _limits = [-360.0, 360.0, 0.0, 1.0]
@@ -49,7 +38,6 @@ colors = PackedColorArray(0.215802, 0.25058, 1, 1, 1, 1, 1, 0)
 color = Color(0, 0, 0, 1)
 
 [node name="MainLight" parent="." instance=ExtResource("1_chrnd")]
-position = Vector2(1827, 676)
 metadata/use_for_darkness_damage = true
 
 [node name="ILikeRocksAndShit" type="Node" parent="."]
@@ -154,121 +142,21 @@ metadata/_edit_lock_ = true
 position = Vector2(-235.539, 495.744)
 scale = Vector2(4, 4)
 
-[node name="Torch" parent="." instance=ExtResource("6_hcjed")]
-position = Vector2(625, 146)
-rotation = -0.00108712
-
 [node name="ChestMap" parent="." instance=ExtResource("6_dokna")]
 position = Vector2(16, 0)
 number_of_chests = 4
 
-[node name="Node2D" type="Node2D" parent="ChestMap/SpawnPoints" index="0"]
+[node name="SpawnPoint" parent="ChestMap/SpawnPoints" index="0" instance=ExtResource("7_0oj2q")]
 position = Vector2(-3333, -3607)
 
-[node name="CPUParticles2D5" type="CPUParticles2D" parent="ChestMap/SpawnPoints/Node2D"]
-amount = 500
-texture = ExtResource("8_02sna")
-lifetime = 10.0
-preprocess = 10.0
-local_coords = true
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 420.0
-initial_velocity_max = 450.0
-angular_velocity_min = -351.45
-angular_velocity_max = 232.68
-linear_accel_min = -2.34
-linear_accel_max = -2.34
-radial_accel_min = -45.33
-radial_accel_max = -45.33
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
-scale_amount_min = 0.3
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_kunwh")
-color_ramp = SubResource("Gradient_kunwh")
-color_initial_ramp = SubResource("Gradient_av87r")
-
-[node name="Node2D2" type="Node2D" parent="ChestMap/SpawnPoints" index="1"]
+[node name="SpawnPoint2" parent="ChestMap/SpawnPoints" index="1" instance=ExtResource("7_0oj2q")]
 position = Vector2(2005, -3679)
 
-[node name="CPUParticles2D6" type="CPUParticles2D" parent="ChestMap/SpawnPoints/Node2D2"]
-amount = 300
-texture = ExtResource("8_02sna")
-lifetime = 10.0
-preprocess = 10.0
-local_coords = true
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 420.0
-initial_velocity_max = 450.0
-angular_velocity_min = -351.45
-angular_velocity_max = 232.68
-linear_accel_min = -2.34
-linear_accel_max = -2.34
-radial_accel_min = -45.33
-radial_accel_max = -45.33
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
-scale_amount_min = 0.3
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_kunwh")
-color_ramp = SubResource("Gradient_kunwh")
-color_initial_ramp = SubResource("Gradient_av87r")
-
-[node name="Node2D3" type="Node2D" parent="ChestMap/SpawnPoints" index="2"]
+[node name="SpawnPoint3" parent="ChestMap/SpawnPoints" index="2" instance=ExtResource("7_0oj2q")]
 position = Vector2(3784, -262)
 
-[node name="CPUParticles2D7" type="CPUParticles2D" parent="ChestMap/SpawnPoints/Node2D3"]
-amount = 300
-texture = ExtResource("8_02sna")
-lifetime = 10.0
-preprocess = 10.0
-local_coords = true
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 420.0
-initial_velocity_max = 450.0
-angular_velocity_min = -351.45
-angular_velocity_max = 232.68
-linear_accel_min = -2.34
-linear_accel_max = -2.34
-radial_accel_min = -45.33
-radial_accel_max = -45.33
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
-scale_amount_min = 0.3
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_kunwh")
-color_ramp = SubResource("Gradient_kunwh")
-color_initial_ramp = SubResource("Gradient_av87r")
-
-[node name="Node2D4" type="Node2D" parent="ChestMap/SpawnPoints" index="3"]
+[node name="SpawnPoint4" parent="ChestMap/SpawnPoints" index="3" instance=ExtResource("7_0oj2q")]
 position = Vector2(-1097, 638)
-
-[node name="CPUParticles2D8" type="CPUParticles2D" parent="ChestMap/SpawnPoints/Node2D4"]
-amount = 300
-texture = ExtResource("8_02sna")
-lifetime = 10.0
-preprocess = 10.0
-local_coords = true
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 420.0
-initial_velocity_max = 450.0
-angular_velocity_min = -351.45
-angular_velocity_max = 232.68
-linear_accel_min = -2.34
-linear_accel_max = -2.34
-radial_accel_min = -45.33
-radial_accel_max = -45.33
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
-scale_amount_min = 0.3
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_kunwh")
-color_ramp = SubResource("Gradient_kunwh")
-color_initial_ramp = SubResource("Gradient_av87r")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false

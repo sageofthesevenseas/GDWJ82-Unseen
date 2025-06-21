@@ -12,10 +12,9 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.466667, 0.98)
 colors = PackedColorArray(0.76, 0.447893, 0.1748, 1, 0.448646, 0.119446, 0.0840247, 1, 0.914124, 0.739548, 0.385023, 1)
 
-[node name="Node2D" type="Node2D"]
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="ExplosionVFX" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_8pa15")
+emitting = false
 texture = ExtResource("1_amc0l")
 lifetime = 0.37
 explosiveness = 0.95

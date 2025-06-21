@@ -4,6 +4,9 @@ class_name Character extends CharacterBody2D
 
 @export var max_health : float = 100.0
 @export var health : float = 100.0
+
+@export var darkness_damage : float
+
 @export var acceleration : float = 5000.0
 @export var friction : float = 10.0
 @export var max_speed : float = 1000.0
@@ -15,7 +18,7 @@ class_name Character extends CharacterBody2D
 @onready var geolocation_area := $"GeolocationArea" as Area2D
 @onready var dig_minigame_manager := $"DigMinigame" as DigMinigameManager
 @onready var chest_minigame_manager := $"Chest_Minigame" as ChestMinigameManager
-
+@onready var throwing_system: Node2D = $ThrowingSystem
 @onready var raycast_left := $RayCastLeft as RayCast2D
 @onready var raycast_right := $RayCastRight as RayCast2D
 @onready var raycasts : Array[RayCast2D] = [ raycast_left, raycast_right ]
@@ -25,7 +28,12 @@ var current_geolocation_state := GeolocationState.IDLE
 signal entered_diggable_range()
 signal exited_diggable_range()
 
+var closest_geolocatable_distance : float = 10000000.0
+var closest_geolocatable: HiddenChest
 var controllable : bool = true
+
+var curframe_in_darkness : bool = false
+var prvframe_in_darkness : bool = false
 
 signal dug_anywhere()
 signal dug_chest()
@@ -33,8 +41,12 @@ signal dug_chest()
 signal damage_taken()
 signal health_depleted()
 
+signal entered_darkness()
+signal exited_darkness()
+
 func _ready() -> void:
 	$"Label".visible = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
+	PlayerStats.instance.player_health = health
 
 func _physics_process(delta : float) -> void:
 	if controllable:
@@ -60,9 +72,7 @@ func _physics_process(delta : float) -> void:
 	if Input.is_action_just_pressed("move_right") and $PlayerVisuals.scale.x < 0:
 		$PlayerVisuals.scale.x *= -1
 		print("Tried to flip")
-	
-		
-	
+
 
 	var geolocatables : Array[HiddenChest] = []
 	for area in geolocation_area.get_overlapping_areas():
@@ -73,15 +83,25 @@ func _physics_process(delta : float) -> void:
 	var in_light := false
 	for light in get_tree().get_nodes_in_group(&"lights"):
 		if not (light as Node2D).visible or not light.get_meta(&"use_for_darkness_damage", false):
-			break
-		in_light = not is_in_shadow(light.get_meta(&"light_range", 0.0), (light as Node2D).global_position)
+			continue
+		in_light = not is_in_shadow(light.get_meta(&"light_range", 0.0) * (light as Node2D).scale.x, (light as Node2D).global_position)
 		if in_light:
 			break
 
-	if not in_light:
-		# Do something !
+	curframe_in_darkness = not in_light
+	if curframe_in_darkness:
+		if not prvframe_in_darkness:
+			emit_signal(&"entered_darkness")
 		if DEBUG_lightcheck_messages_on == true:
 			print("Not in light")
+		take_damage(darkness_damage * delta)
+	else:
+		if prvframe_in_darkness:
+			emit_signal(&"exited_darkness")
+
+	$DebugHealth.text = "HP %.1f/%.1f" % [health, max_health]
+
+	prvframe_in_darkness = curframe_in_darkness
 
 func is_in_shadow(light_range : float, light_global_position : Vector2) -> bool:
 	for raycast in raycasts:
@@ -92,11 +112,11 @@ func is_in_shadow(light_range : float, light_global_position : Vector2) -> bool:
 			return false
 	return true
 
-func geolocation_process(delta : float, geolocatables : Array[HiddenChest]) -> void:
+func geolocation_process(_delta : float, geolocatables : Array[HiddenChest]) -> void:
 	var previously_in_diggable_range : bool = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
 	var in_diggable_range : bool = false
 	if geolocatables.size():
-		var closest_geolocatable : HiddenChest = geolocatables[0]
+		closest_geolocatable = geolocatables[0]
 		var closest_dist := (closest_geolocatable.global_position - global_position).length()
 		for i in geolocatables.size():
 			var i_length := (geolocatables[i].global_position - global_position).length();
@@ -107,6 +127,7 @@ func geolocation_process(delta : float, geolocatables : Array[HiddenChest]) -> v
 			in_diggable_range = true
 			if Input.is_action_just_pressed(&"dig"):
 				dig_chest(closest_geolocatable)
+		closest_geolocatable_distance = closest_dist
 	else:
 		in_diggable_range = false
 		if Input.is_action_just_pressed(&"dig"):
@@ -131,6 +152,8 @@ func dig_chest(hidden_chest : HiddenChest) -> void:
 
 func on_chest_dug() -> void:
 	controllable = true
+	closest_geolocatable.spawn_real_chest()
+	# LZB NOTE 21-06-25 - spawn the bloody chest here
 
 # Need some kind of signal to return to here after closing a chest or something. Maybe ChestMinigameManager? Maybe Chest?
 func on_chest_closed() -> void:
@@ -143,3 +166,9 @@ func take_damage(amount : float) -> void:
 		emit_signal(&"health_depleted")
 	if amount > 0.0:
 		emit_signal(&"damage_taken")
+	PlayerStats.instance.player_health = health
+
+#func get_bomb_quantity():
+	#return throwing_system.get_bomb_quantity()
+#func get_flare_quantity():
+	#return throwing_system.get_flare_quantity()

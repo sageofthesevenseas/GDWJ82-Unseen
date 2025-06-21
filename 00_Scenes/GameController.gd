@@ -16,6 +16,13 @@ var lore_found : Array = [
 	false,
 	false,
 ]
+var zoom_enable : bool = false
+
+
+func zoom_reset():
+	var cam = get_node("/root/GameController/Camera")
+	cam.zoom = Vector2(1.0, 1.0)
+	pass
 
 func _ready() -> void:
 	instance = self
@@ -43,7 +50,15 @@ func _on_start_game():
 	var Level = preload("res://00_Scenes/TestScenery.tscn").instantiate()
 	WorldNode.add_child(Level)
 	spawn_player_and_switch_camera()
-	GuiNode.remove_child(MenuNode)
+	MenuNode.visible = false
+	
+	$FmodEventEmitter2D_Menu.set_parameter("GameStart", 1)
+	$Timer.start()
+	pass
+	
+func _on_timer_timeout() -> void:
+	$FmodEventEmitter2D_Cave.play()
+	pass
 
 func spawn_player_and_switch_camera():
 	var WorldNode = get_node("World2D")
@@ -56,5 +71,5 @@ func spawn_player_and_switch_camera():
 	var camera_instance = camera.instantiate()
 	Player.add_child(camera_instance)
 	camera_instance.make_current()
-	$FmodEventEmitter2D.play()
+	zoom_enable = true
 	pass

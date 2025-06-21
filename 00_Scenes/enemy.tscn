@@ -5,10 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://cwslskahro0pi" path="res://ItemTextures/circle.png" id="3_rkwuh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkwuh"]
-radius = 82.62
+radius = 90.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
+collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_0ob4p")
 
@@ -25,3 +26,8 @@ texture = ExtResource("2_6yein")
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_rkwuh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 150.0
+target_desired_distance = 60.0
+path_max_distance = 400.0

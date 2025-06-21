@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://lccfk6156mwg"]
+
+[node name="SpawnPoint" type="Node2D"]
