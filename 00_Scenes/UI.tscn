@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b26g6eci3pxrh"]
+[gd_scene load_steps=15 format=3 uid="uid://b26g6eci3pxrh"]
 
 [ext_resource type="Script" uid="uid://4bod12gwvlo8" path="res://Scripts/UI-Controller.gd" id="1_oeioq"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="2_oma37"]
@@ -14,11 +14,18 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_17fi0"]
 light_mode = 1
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qdyh2"]
+light_mode = 1
+
 [sub_resource type="LabelSettings" id="LabelSettings_am61d"]
 font = ExtResource("2_oma37")
 font_size = 32
 
-[node name="UI_Handler" type="Control"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e1pfq"]
+light_mode = 1
+
+[node name="UI_Handler" type="Control" groups=["GUI"]]
+process_mode = 3
 material = SubResource("CanvasItemMaterial_17fi0")
 layout_mode = 3
 anchors_preset = 15
@@ -119,6 +126,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Title-01" type="Sprite2D" parent="Main"]
+material = SubResource("CanvasItemMaterial_qdyh2")
 position = Vector2(967, 159)
 texture = ExtResource("3_17fi0")
 
@@ -202,7 +210,20 @@ theme_override_font_sizes/font_size = 32
 button_pressed = true
 text = "Music Toggle"
 
-[node name="Journals" type="Control" parent="."]
+[node name="Return3" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 861.0
+offset_right = 1216.0
+offset_bottom = 989.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Return"
+
+[node name="Journals" type="Control" parent="." groups=["Journals"]]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
@@ -634,7 +655,6 @@ theme_override_font_sizes/font_size = 64
 text = "Thanks for playing you cheeky bugger ;)"
 
 [node name="DebugAddJournals" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -747,6 +767,7 @@ texture = ExtResource("6_lgx2n")
 
 [node name="TitleArt" type="Sprite2D" parent="."]
 z_index = -1
+material = SubResource("CanvasItemMaterial_e1pfq")
 position = Vector2(960, 540)
 texture = ExtResource("9_icyyo")
 
@@ -756,6 +777,7 @@ texture = ExtResource("9_icyyo")
 [connection signal="pressed" from="Main/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Main/Exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="Settings/FX_HSlider" to="." method="_on_fx_h_slider_value_changed"]
+[connection signal="pressed" from="Settings/Return3" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Journals/JournalSelectors/Return2" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Journals/JournalSelectors/ButtonLog1" to="Journals" method="_on_button_log_1_pressed"]
 [connection signal="pressed" from="Journals/JournalSelectors/ButtonLog2" to="Journals" method="_on_button_log_2_pressed"]

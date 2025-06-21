@@ -10,7 +10,9 @@ var menu_open = false
 func _on_ready():
 	var not_in_main_menu = false
 	var menu_open = false
-
+	#var UI_Nodes = get_node("/root/GameController/GUI").get_children()
+	#for node in UI_Nodes:
+	#	node.use_parent_material = true
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -38,6 +40,7 @@ func _on_return_pressed() -> void:
 	emit_signal("play_sound", "accept")
 	$Credits.visible = false
 	$Journals.visible = false
+	$Settings.visible = false
 	$Main.visible = true
 	GameController.instance.zoom_enable = false
 	GameController.instance.zoom_reset()
@@ -54,22 +57,29 @@ func _on_fx_h_slider_value_changed(value: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Escape"):
-		print("menu call recieved")
 	if Input.is_action_just_pressed("Escape") and not_in_main_menu and menu_open == false:
-		var player_position = get_node("root/GameController/World2D/CharacterBody2D")
-		self.position = player_position.position
+		var camera = get_tree().get_first_node_in_group("camera")
+		camera.position_smoothing_enabled = false
+		var resolution : Vector2 = get_viewport().get_visible_rect().size
+		get_node("/root/GameController/GUI").position = camera.global_position
 		self.visible = true
 		$Main.visible = true
 		$Main/GameStart.visible = false
 		menu_open = true
-		print("menu closed")
+		get_tree().paused = true
+		print("menu opened")
 	elif Input.is_action_just_pressed("Escape") and not_in_main_menu and menu_open:
+		var camera = get_tree().get_first_node_in_group("camera")
+		camera.position_smoothing_enabled = true
 		self.visible = false
 		$Main.visible = false
+		$Credits.visible = false
+		$Journals.visible = false
+		$Settings.visible = false
 		$Main/GameStart.visible = true
 		menu_open = false
 		print("menu closed")
+		get_tree().paused = false
 		
 		
 	

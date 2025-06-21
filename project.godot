@@ -55,6 +55,9 @@ player=""
 projectileparent=""
 enemy=""
 throwingsystem=""
+camera=""
+GUI=""
+Journals=""
 
 [input]
 

@@ -5,6 +5,9 @@ extends Camera2D
 @export var zoomMin : Vector2 = Vector2(0.5, 0.5)
 @export var zoomMax : Vector2 = Vector2(1.5, 1.5)
 
+func _ready() -> void:
+	add_to_group("camera")
+
 func _process(_delta) -> void:
 	var zoom_allowed := true
 	# allows us to use the camera if there is no GameController present (e.g. a test scene)
