@@ -90,5 +90,8 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exposed_Chest_Detector"]
 shape = SubResource("CircleShape2D_spk8f")
 
+[connection signal="chest_game_beaten" from="Chest_Minigame" to="." method="on_chest_closed"]
+[connection signal="chest_game_cancelled" from="Chest_Minigame" to="." method="on_minigame_cancelled"]
+[connection signal="dig_game_cancelled" from="DigMinigame" to="." method="on_minigame_cancelled"]
 [connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
 [connection signal="body_entered" from="Exposed_Chest_Detector" to="." method="_on_exposed_chest_detector_body_entered"]

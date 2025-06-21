@@ -35,6 +35,9 @@ var controllable : bool = true
 var curframe_in_darkness : bool = false
 var prvframe_in_darkness : bool = false
 
+var curframe_can_dig_chest : bool = false
+var curframe_can_open_chest : bool = false
+
 signal dug_anywhere()
 signal dug_chest()
 
@@ -52,37 +55,10 @@ func _ready() -> void:
 		push_warning("No PlayerStats instance available.")
 
 func _physics_process(delta : float) -> void:
-	if controllable:
-		var input_dir := Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down").normalized()
-		velocity += acceleration * input_dir * delta
-	velocity -= velocity * friction * delta
-	velocity = velocity.limit_length(max_speed)
-	move_and_slide()
+	curframe_can_open_chest = false
+	curframe_can_dig_chest = false
 
-	# NOTE: when the player becomes not controllable whilst in an animation, we need to stop the animation or transition to another animation
-	if not controllable:
-		return
-
-	#making player walk and flipping scale instead of flip_h because Node2D doesn't have flip_H
-	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
-		animation_player.speed_scale = 3.0
-		animation_player.play("Player Walking")
-	else:
-		animation_player.stop()
-	if Input.is_action_just_pressed("move_left") and $PlayerVisuals.scale.x > 0:
-		$PlayerVisuals.scale.x *= -1
-		print("Tried to flip")
-	if Input.is_action_just_pressed("move_right") and $PlayerVisuals.scale.x < 0:
-		$PlayerVisuals.scale.x *= -1
-		print("Tried to flip")
-
-
-	var geolocatables : Array[HiddenChest] = []
-	for area in geolocation_area.get_overlapping_areas():
-		if (area is HiddenChest):
-			geolocatables.append(area)
-	geolocation_process(delta, geolocatables)
-
+	#region DARKNESS
 	var in_light := false
 	for light in get_tree().get_nodes_in_group(&"lights"):
 		if not (light as Node2D).visible or not light.get_meta(&"use_for_darkness_damage", false):
@@ -101,6 +77,62 @@ func _physics_process(delta : float) -> void:
 	else:
 		if prvframe_in_darkness:
 			emit_signal(&"exited_darkness")
+	#endregion
+
+	#region MOVEMENT
+	if controllable:
+		var input_dir := Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down").normalized()
+		velocity += acceleration * input_dir * delta
+	velocity -= velocity * friction * delta
+	velocity = velocity.limit_length(max_speed)
+	move_and_slide()
+	#endregion
+
+	#region ANIMATION
+	if controllable:
+		#making player walk and flipping scale instead of flip_h because Node2D doesn't have flip_H
+		if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
+			animation_player.speed_scale = 3.0
+			animation_player.play("Player Walking")
+		else:
+			animation_player.stop()
+		if Input.is_action_just_pressed("move_left") and $PlayerVisuals.scale.x > 0:
+			$PlayerVisuals.scale.x *= -1
+			print("Tried to flip")
+		if Input.is_action_just_pressed("move_right") and $PlayerVisuals.scale.x < 0:
+			$PlayerVisuals.scale.x *= -1
+			print("Tried to flip")
+	else:
+		pass
+		# animation_player.stop()
+	#endregion
+
+	#region EXPOSEDCHEST
+	if controllable:
+		for body in $Exposed_Chest_Detector.get_overlapping_bodies():
+			if body is ExposedChest and not body.chest_opened:
+				curframe_can_open_chest = true
+				break
+	#endregion
+
+	#region GEOLOCATION
+	if controllable:
+		var geolocatables : Array[HiddenChest] = []
+		for area in geolocation_area.get_overlapping_areas():
+			if (area is HiddenChest):
+				geolocatables.append(area)
+		geolocation_process(delta, geolocatables)
+	#endregion
+
+	#region DIG INPUT
+	if controllable and Input.is_action_just_pressed(&"dig"):
+		if curframe_can_open_chest:
+			for body in $Exposed_Chest_Detector.get_overlapping_bodies():
+				if body is ExposedChest and not body.chest_opened:
+					open_chest(body)
+		elif curframe_can_dig_chest:
+			dig_chest(closest_geolocatable)
+	#endregion
 
 	$DebugHealth.text = "HP %.1f/%.1f" % [health, max_health]
 
@@ -128,13 +160,10 @@ func geolocation_process(_delta : float, geolocatables : Array[HiddenChest]) -> 
 				closest_dist = i_length
 		if closest_dist < diggable_range:
 			in_diggable_range = true
-			if Input.is_action_just_pressed(&"dig"):
-				dig_chest(closest_geolocatable)
+			curframe_can_dig_chest = true
 		closest_geolocatable_distance = closest_dist
 	else:
 		in_diggable_range = false
-		if Input.is_action_just_pressed(&"dig"):
-			dig_anywhere()
 	if not previously_in_diggable_range and in_diggable_range:
 		current_geolocation_state = GeolocationState.IN_DIGGABLE_RANGE
 		emit_signal(&"entered_diggable_range")
@@ -152,14 +181,24 @@ func dig_chest(hidden_chest : HiddenChest) -> void:
 	emit_signal(&"dug_chest")
 	controllable = false
 	dig_minigame_manager.start_minigame(hidden_chest)
+	animation_player.speed_scale = 1.0
+	animation_player.play(&"Player Dig")
+	animation_player.queue(&"Player Dig Loop")
 
 func on_chest_dug() -> void:
 	controllable = true
 	closest_geolocatable.spawn_real_chest()
 	# LZB NOTE 21-06-25 - spawn the bloody chest here
 
+func open_chest(chest : ExposedChest) -> void:
+	controllable = false
+	chest.start_minigame()
+
 # Need some kind of signal to return to here after closing a chest or something. Maybe ChestMinigameManager? Maybe Chest?
 func on_chest_closed() -> void:
+	controllable = true
+
+func on_minigame_cancelled() -> void:
 	controllable = true
 
 func take_damage(amount : float) -> void:
@@ -175,7 +214,3 @@ func take_damage(amount : float) -> void:
 func die():
 	can_process()
 	emit_signal(&"health_depleted")
-
-func _on_exposed_chest_detector_body_entered(body: Node2D) -> void:
-	if body is ExposedChest:
-		body.start_minigame()

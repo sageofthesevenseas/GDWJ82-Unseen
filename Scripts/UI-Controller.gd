@@ -56,33 +56,35 @@ func _on_fx_h_slider_value_changed(value: float) -> void:
 	emit_signal("play_sound", "accept")
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Escape") and not_in_main_menu and menu_open == false:
-		var camera = get_tree().get_first_node_in_group("camera")
-		camera.position_smoothing_enabled = false
-		var resolution : Vector2 = get_viewport().get_visible_rect().size
-		get_node("/root/GameController/GUI").position = camera.global_position
-		self.visible = true
-		$Main.visible = true
-		$Main/GameStart.visible = false
-		menu_open = true
-		get_tree().paused = true
-		print("menu opened")
-	elif Input.is_action_just_pressed("Escape") and not_in_main_menu and menu_open:
-		var camera = get_tree().get_first_node_in_group("camera")
-		camera.position_smoothing_enabled = true
-		self.visible = false
-		$Main.visible = false
-		$Credits.visible = false
-		$Journals.visible = false
-		$Settings.visible = false
-		$Main/GameStart.visible = true
-		menu_open = false
-		print("menu closed")
-		get_tree().paused = false
-		
-		
-	
+var camera_zoom_before_pausemenu : Vector2
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action(&"Escape") and event.is_pressed() and not_in_main_menu:
+		print("menu")
+		var camera = get_viewport().get_camera_2d()
+		if not menu_open:
+			camera_zoom_before_pausemenu = camera.zoom
+			camera.zoom = Vector2(1,1)
+			camera.position_smoothing_enabled = false
+			get_node("/root/GameController/GUI").position = camera.global_position
+			self.visible = true
+			$Main.visible = true
+			$Main/GameStart.visible = false
+			menu_open = true
+			get_tree().paused = true
+			print("menu opened")
+		else:
+			camera.zoom = camera_zoom_before_pausemenu
+			camera.position_smoothing_enabled = true
+			self.visible = false
+			$Main.visible = false
+			$Credits.visible = false
+			$Journals.visible = false
+			$Settings.visible = false
+			$Main/GameStart.visible = true
+			menu_open = false
+			print("menu closed")
+			get_tree().paused = false
+		get_viewport().set_input_as_handled()
 
 func _on_button_1_pressed() -> void:
 	GameController.instance.add_lore(0)

@@ -41,10 +41,6 @@ stream = ExtResource("7_hlxf8")
 
 [node name="DEBUG_Restart_Key `" parent="." instance=ExtResource("1_xfl2n")]
 
-[node name="World3D" type="Node3D" parent="."]
-
-[node name="World2D" type="Node2D" parent="."]
-
 [node name="GUI" type="Control" parent="."]
 z_index = 4096
 z_as_relative = false
@@ -53,6 +49,10 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="World2D" type="Node2D" parent="."]
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." groups=["camera"]]
 bank_paths = ["res://Music/Desktop/Master.strings.bank", "res://Music/Desktop/Master.bank", "res://Music/Desktop/Cave.bank", "res://Music/Desktop/Menu.bank"]
