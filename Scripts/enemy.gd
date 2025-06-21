@@ -8,8 +8,9 @@ var attack_state : AttackState = AttackState.NOT_READY
 
 @export var max_health : float = 100.0
 @export var health : float = 100.0
+@export var max_time_in_darkness_before_despawn : float = 10.0
 
-@export var memory_time : float = 5.0
+@export var memory_time : float = 7.0
 @export var max_speed : float = 1500.0
 @export var max_acceleration : float = 3000.0
 @export var friction : float = 5.0
@@ -53,7 +54,14 @@ var move_goal : Vector2
 
 var time_since_not_moving : float = 0.0
 
+var time_in_darkness : float = 0.0
+
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
+
+@onready var raycast_left := $RayCastLeft as RayCast2D
+@onready var raycast_right := $RayCastRight as RayCast2D
+@onready var raycast_top := $RayCastTop as RayCast2D
+@onready var raycasts : Array[RayCast2D] = [ raycast_left, raycast_right, raycast_top ]
 
 signal health_depleted()
 signal damage_taken()
@@ -71,8 +79,33 @@ func _ready() -> void:
 
 var prvframe_target_seen := false
 
+var curframe_in_darkness : bool = false
+var prvframe_in_darkness : bool = false
+
 func _physics_process(delta : float) -> void:
 	choose_target()
+
+	#region (mostly) taken from Character
+	var in_light := false
+	for light in get_tree().get_nodes_in_group(&"lights"):
+		if not (light as Node2D).visible or not light.get_meta(&"use_for_darkness_damage", false):
+			continue
+		in_light = not is_in_shadow(light.get_meta(&"light_range", 0.0) * (light as Node2D).scale.x, (light as Node2D).global_position)
+		if in_light:
+			break
+
+	curframe_in_darkness = not in_light
+	if curframe_in_darkness:
+		time_in_darkness += delta
+		if not prvframe_in_darkness:
+			emit_signal(&"entered_darkness")
+		if time_in_darkness > max_time_in_darkness_before_despawn:
+			queue_free()
+	else:
+		time_in_darkness = 0.0
+		if prvframe_in_darkness:
+			emit_signal(&"exited_darkness")
+	#endregion
 
 	target_seen = can_see_target();
 	if not target_seen:
@@ -98,6 +131,9 @@ func _physics_process(delta : float) -> void:
 		if attack_state == AttackState.ATTACKING:
 			if get_to_target_vec().length() > swoop_attack_min_range:
 				swoop_from = global_position
+				var from_target_length := (swoop_from - target_last_seen_position).length()
+				if from_target_length + 150.0 < swoop_attack_max_range:
+					swoop_attack_min_range = from_target_length + 200.0
 				movement_state = MovementState.SWOOP_IN
 				swooping_time = 0.0
 
@@ -121,6 +157,17 @@ func _physics_process(delta : float) -> void:
 	move_and_slide()
 
 	prvframe_target_seen = target_seen
+	prvframe_in_darkness = curframe_in_darkness
+
+# this is so stupid :(
+func is_in_shadow(light_range : float, light_global_position : Vector2) -> bool:
+	for raycast in raycasts:
+		var rel_position := light_global_position - raycast.global_position
+		raycast.target_position = rel_position.limit_length(light_range)
+		raycast.force_raycast_update()
+		if rel_position.length() < light_range and not raycast.is_colliding():
+			return false
+	return true
 
 func choose_target() -> void:
 	target = null
@@ -160,7 +207,6 @@ func get_to_move_goal_vec() -> Vector2:
 var _curframe_too_close_to_target : bool = false
 var _prvframe_too_close_to_target : bool = false
 
-# var _angle_of_approach : float
 var _move_away_goal : Vector2
 
 func update_move_goal(delta : float) -> void:
@@ -216,6 +262,10 @@ func move_to_goal(delta : float) -> void:
 			thrust -= 1.0 - pow(1.0 + sin(Engine.get_physics_frames() * delta * PI * 2.0 * flaps_per_second) / 5.0, 3.0)
 		move_direction = (velocity + move_direction * 100.0).normalized().rotated(turn_angle)
 	var acceleration := thrust * move_direction * minf(to_move_goal_len / 20.0, 1.0) # minf for dampening
+	for enemy in get_tree().get_nodes_in_group(&"enemy"):
+		if not enemy == self:
+			var from_enemy_vec :=  global_position - (enemy as Enemy).global_position
+			acceleration += from_enemy_vec.normalized() / maxf(1.0, from_enemy_vec.length() / 50.0) * (0.4 + randfn(-0.1, 0.5))
 	if to_move_goal_len < 20.0:
 		acceleration.y += sin(Engine.get_physics_frames() * delta * PI * 2.0 * flaps_per_second) * 1.0
 	this_frame_acceleration = acceleration / delta

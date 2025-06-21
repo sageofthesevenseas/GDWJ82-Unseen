@@ -13,6 +13,8 @@ motion_mode = 1
 platform_floor_layers = 0
 platform_wall_layers = 1
 script = ExtResource("1_0ob4p")
+swoop_acceleration = 12000.0
+swoop_attack_damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rkwuh")
@@ -37,3 +39,15 @@ offset_top = 119.0
 offset_right = 44.0
 offset_bottom = 142.0
 text = "ĦP cur/max"
+metadata/_edit_use_anchors_ = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-150, 136)
+enabled = false
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(150, 136)
+enabled = false
+
+[node name="RayCastTop" type="RayCast2D" parent="."]
+position = Vector2(0, -182)

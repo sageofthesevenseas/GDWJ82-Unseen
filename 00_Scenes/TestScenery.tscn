@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://b66d1l1857x3g"]
+[gd_scene load_steps=16 format=3 uid="uid://b66d1l1857x3g"]
 
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="1_chrnd"]
+[ext_resource type="Script" uid="uid://cbdbrojmbdtes" path="res://scripts/bat_spawner.gd" id="3_02sna"]
 [ext_resource type="PackedScene" uid="uid://bxfw4dap4a6ha" path="res://00_Scenes/StaticObjects/rock02.tscn" id="3_3tj0l"]
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="4_70k2p"]
 [ext_resource type="Texture2D" uid="uid://bajs5fdbhmyqn" path="res://EnvTextures/floor01.png" id="5_mu4cm"]
@@ -43,7 +44,6 @@ colors = PackedColorArray(0.215802, 0.25058, 1, 1, 1, 1, 1, 0)
 [node name="TestScenery" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="MainLight" parent="." instance=ExtResource("1_chrnd")]
@@ -263,6 +263,17 @@ linear_accel_max = 63.92
 scale_amount_min = 0.1
 scale_amount_curve = SubResource("Curve_02sna")
 color_ramp = SubResource("Gradient_0oj2q")
+
+[node name="BatSpawner" type="Node2D" parent="."]
+script = ExtResource("3_02sna")
+max_tries = 5
+spawn_min_range_of_player = 2300.0
+
+[node name="SpawnTimer" type="Timer" parent="BatSpawner"]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="BatSpawner/SpawnTimer" to="BatSpawner" method="spawn_bat"]
 
 [editable path="TileMap/backgroundOverlay"]
 [editable path="ChestMap"]
