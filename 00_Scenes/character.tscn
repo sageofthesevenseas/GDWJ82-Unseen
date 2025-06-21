@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://qlr7s5cs5b3y"]
+[gd_scene load_steps=22 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
@@ -12,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://bmgb2yeo6ipqd" path="res://UI_Textures/Bomb.png" id="10_veate"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="11_is46d"]
 [ext_resource type="Texture2D" uid="uid://dxyegb1ila2ch" path="res://UI_Textures/Torch.png" id="11_ya0x4"]
+[ext_resource type="AudioStream" uid="uid://tprxoyf42yfn" path="res://SFX/screech-01.ogg" id="13_is46d"]
+[ext_resource type="AudioStream" uid="uid://djkxhx4yb6mdq" path="res://SFX/PLACEHOLDER item-pick-up-38258.mp3" id="14_fsxx8"]
+[ext_resource type="AudioStream" uid="uid://droev6ph8uajq" path="res://SFX/heartbeat.ogg" id="14_k4yda"]
+[ext_resource type="AudioStream" uid="uid://cgn0tsp8313r4" path="res://SFX/PLACEHOLDER Voicy_Medic Heal SFX.mp3" id="15_cpku8"]
+[ext_resource type="AudioStream" uid="uid://osa285nkqs23" path="res://SFX/PLACEHOLDER Eerierumble.wav" id="17_cpku8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7igj"]
 radius = 49.0
@@ -33,7 +38,7 @@ collision_mask = 9
 motion_mode = 1
 platform_floor_layers = 0
 script = ExtResource("1_48qfa")
-darkness_damage = 1.0
+darkness_damage = 5.0
 acceleration = 10000.0
 max_speed = 7500.0
 DEBUG_lightcheck_messages_on = false
@@ -90,6 +95,12 @@ enabled = false
 
 [node name="ReparentTarget" type="Node2D" parent="." groups=["projectileparent"]]
 
+[node name="Darkness Damage Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="HeartBeatLooper" type="Timer" parent="."]
+wait_time = 0.9
+
 [node name="Exposed_Chest_Detector" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 8
@@ -140,8 +151,40 @@ theme_override_fonts/font = ExtResource("11_is46d")
 theme_override_font_sizes/font_size = 42
 text = "000"
 
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("13_is46d")
+volume_db = -20.0
+pitch_scale = 2.44
+max_polyphony = 3
+bus = &"SFX Wet"
+
+[node name="PickupSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("14_fsxx8")
+volume_db = -8.914
+pitch_scale = 3.73
+bus = &"SFX Wet"
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="SFX"]
+bus = &"SFX Wet"
+
+[node name="HealSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("15_cpku8")
+bus = &"SFX Wet"
+
+[node name="HeartBeatSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("14_k4yda")
+bus = &"SFX Wet"
+
+[node name="DarknessSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("17_cpku8")
+volume_db = 9.905
+
 [connection signal="chest_game_beaten" from="Chest_Minigame" to="." method="on_chest_closed"]
 [connection signal="chest_game_cancelled" from="Chest_Minigame" to="." method="on_minigame_cancelled"]
 [connection signal="dig_game_cancelled" from="DigMinigame" to="." method="on_minigame_cancelled"]
 [connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
+[connection signal="timeout" from="Darkness Damage Timer" to="." method="_on_darkness_damage_timer_timeout"]
+[connection signal="timeout" from="HeartBeatLooper" to="." method="_on_heart_beat_looper_timeout"]
 [connection signal="body_entered" from="Exposed_Chest_Detector" to="." method="_on_exposed_chest_detector_body_entered"]

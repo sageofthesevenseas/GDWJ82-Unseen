@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8duy7cy81uku" path="res://Scripts/hidden_chest.gd" id="1_ebnwn"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_fqfsf"]
-[ext_resource type="PackedScene" path="res://00_Scenes/exposed_chest.tscn" id="2_oexk1"]
+[ext_resource type="PackedScene" uid="uid://cmr5lyfmqmup3" path="res://00_Scenes/exposed_chest.tscn" id="2_oexk1"]
 [ext_resource type="Texture2D" uid="uid://botbqjsj7vhjh" path="res://VFX/ParticleFX/Explosion00/Smoke05.png" id="4_oexk1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n74om"]

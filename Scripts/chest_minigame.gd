@@ -13,7 +13,7 @@ enum MinigameState { STOPPED, SETUP,READY, RUNNING }
 var tbar_target_position: float
 var target_range_min: float
 var target_range_max: float
-@export var target_range_offset: float = 0.04
+@export var target_range_offset: float = 0.07
 
 var minigame_ready_triggered: bool = false
 signal minigame_ready
@@ -40,9 +40,10 @@ func prep():
 	var tbar_starting_position = randf_range(0,1) # start the bar somewhere random so it moves into the right spot from a different place every time
 	target_bar.progress_ratio = tbar_starting_position
 	tbar_target_position = randf_range(0.2,0.93) 	# pick position of the target. Can't be set to 0 as thats cruel
-	print("target position of the target bar is ", tbar_target_position)
+
 	target_range_min = tbar_target_position - target_range_offset
 	target_range_max = tbar_target_position + target_range_offset #move the min and max ranges based on the tolerance we want to give
+	print("target position of the target bar is ", tbar_target_position, " while the target ranges are min: ", target_range_min, " Max: ", target_range_max)
 	player_pin.progress_ratio = 0.0 # reset the player position
 
 func _process(delta: float) -> void:
@@ -62,7 +63,7 @@ func _process(delta: float) -> void:
 		else:
 			player_pin.progress_ratio -= minigame_speed * delta
 		if Input.is_action_just_released("chest_minigame_key"):
-			if player_pin.progress_ratio > target_range_min and player_pin.progress_ratio < target_range_max:
+			if player_pin.progress_ratio >= target_range_min and player_pin.progress_ratio <= target_range_max:
 				print("congrats!")
 				emit_minigame_completed()
 				change_state("STOPPED")

@@ -18,10 +18,6 @@ gravity_scale = 0.0
 linear_damp = 5.0
 script = ExtResource("1_4evby")
 
-[node name="PickupImage" type="Sprite2D" parent="."]
-modulate = Color(2.09369e-06, 0.620035, 7.70092e-07, 1)
-texture = ExtResource("2_q22oa")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_aqvis")
 
@@ -40,5 +36,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
 shape = SubResource("CircleShape2D_7gdw6")
 debug_color = Color(0.961091, 0, 0.512329, 0.42)
+
+[node name="DefaultPickupImage" type="Sprite2D" parent="."]
+modulate = Color(2.09369e-06, 0.620035, 7.70092e-07, 1)
+texture = ExtResource("2_q22oa")
 
 [connection signal="body_entered" from="Pickup Area" to="." method="_on_pickup_area_body_entered"]

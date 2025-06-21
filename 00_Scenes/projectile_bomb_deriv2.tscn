@@ -35,6 +35,7 @@ scale = Vector2(0.38, 0.38)
 texture = ExtResource("3_0ondy")
 
 [node name="FuseSizzle" type="AudioStreamPlayer2D" parent="." index="2"]
+bus = &"SFX Wet"
 
 [node name="RemoveableChildren" type="Node2D" parent="." index="3"]
 script = ExtResource("4_gtt0a")
@@ -43,6 +44,7 @@ script = ExtResource("4_gtt0a")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="RemoveableChildren" index="1"]
 stream = ExtResource("6_kroav")
+bus = &"SFX Wet"
 
 [node name="Queue_free_timer" type="Timer" parent="RemoveableChildren" index="2"]
 wait_time = 1.5

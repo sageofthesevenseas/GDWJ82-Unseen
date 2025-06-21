@@ -15,7 +15,6 @@ resource_name = "Compressor"
 resource_name = "Compressor"
 
 [resource]
-bus/0/send = &"Kick SC bus"
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_j3pel")
 bus/0/effect/0/enabled = true
 bus/1/name = &"Music Master"

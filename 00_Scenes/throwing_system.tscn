@@ -46,9 +46,11 @@ one_shot = true
 stream = ExtResource("8_cb8sg")
 volume_db = -13.867
 pitch_scale = 2.44
+bus = &"SFX Wet"
 
 [node name="Throw_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_d6o7i")
 pitch_scale = 10.0
+bus = &"SFX Wet"
 
 [connection signal="timeout" from="DisplayTimer" to="." method="_on_display_timer_timeout"]

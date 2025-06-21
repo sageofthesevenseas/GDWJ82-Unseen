@@ -4,6 +4,7 @@ class_name Character extends CharacterBody2D
 
 @export var max_health : float = 100.0
 @export var health : float = 100.0
+@export var warning_health: float = 30.0
 
 @export var darkness_damage : float
 
@@ -22,6 +23,18 @@ class_name Character extends CharacterBody2D
 @onready var raycast_left := $RayCastLeft as RayCast2D
 @onready var raycast_right := $RayCastRight as RayCast2D
 @onready var raycasts : Array[RayCast2D] = [ raycast_left, raycast_right ]
+@onready var darkness_damage_timer: Timer = $"Darkness Damage Timer"
+@onready var heart_beat_looper: Timer = $HeartBeatLooper
+
+@onready var hurt_sfx: AudioStreamPlayer2D = $SFX/HurtSFX
+@onready var pickup_sfx: AudioStreamPlayer2D = $SFX/PickupSFX
+@onready var death_sfx: AudioStreamPlayer2D = $SFX/DeathSFX
+@onready var heal_sfx: AudioStreamPlayer2D = $SFX/HealSFX
+@onready var heart_beat_sfx: AudioStreamPlayer2D = $SFX/HeartBeatSFX
+@onready var darkness_sfx: AudioStreamPlayer2D = $SFX/DarknessSFX
+
+
+
 
 enum GeolocationState { IDLE, IN_DIGGABLE_RANGE }
 var current_geolocation_state := GeolocationState.IDLE
@@ -71,12 +84,15 @@ func _physics_process(delta : float) -> void:
 	if curframe_in_darkness:
 		if not prvframe_in_darkness:
 			emit_signal(&"entered_darkness")
+			darkness_damage_timer.start() # LZB NOTE 22-06-25 - change interval at the timer itself for simplicity
+			darkness_sfx.play()
 		if DEBUG_lightcheck_messages_on == true:
 			print("Not in light")
-		take_damage(darkness_damage * delta)
 	else:
 		if prvframe_in_darkness:
 			emit_signal(&"exited_darkness")
+			darkness_sfx.stop()
+			darkness_damage_timer.stop()
 	#endregion
 
 	#region MOVEMENT
@@ -208,9 +224,37 @@ func take_damage(amount : float) -> void:
 		die()
 	if amount > 0.0:
 		emit_signal(&"damage_taken")
+		hurt_sfx.play()
 	if PlayerStats.instance != null:
 		PlayerStats.instance.player_health = health
+	if health <= warning_health:
+		heart_beat_looper.start()
+	elif health > warning_health:
+		heart_beat_looper.stop()
+		heart_beat_sfx.stop() # LZB NOTE 22-06-25 - maybe tween the volume down instead
+
+func heal(amount: float) -> void:
+	var prev_health:= health
+	health = minf(health + amount, max_health)
+	if prev_health >= max_health:
+		return #do nothing
+	if  prev_health < max_health:
+		heal_sfx.play
+	if health > warning_health:
+		heart_beat_looper.stop()
+		heart_beat_sfx.stop() # LZB NOTE 22-06-25 - maybe tween the volume down instead
+
+
+func pickup_sound():
+	pickup_sfx.play()
 
 func die():
-	can_process()
+	#can_process()
+	death_sfx.play()
 	emit_signal(&"health_depleted")
+
+func _on_darkness_damage_timer_timeout() -> void:
+	take_damage(darkness_damage)
+
+func _on_heart_beat_looper_timeout() -> void:
+	heart_beat_sfx.play()

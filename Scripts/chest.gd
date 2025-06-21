@@ -5,6 +5,12 @@ class_name ExposedChest
 @onready var chest_top: Sprite2D = $"Sprites/Chest Top"
 
 @export var chest_opened: bool = false
+@export var max_items: int = 15
+
+@export var cheese_reward: PackedScene
+@export var bomb_reward: PackedScene
+@export var flare_reward: PackedScene
+@export var story_reward: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,3 +32,6 @@ func start_minigame():
 func on_minigame_finished():
 	chest_opened = true
 	chest_top.visible = false
+
+func create_rewards():
+	pass

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgn0tsp8313r4"
+path="res://.godot/imported/PLACEHOLDER Voicy_Medic Heal SFX.mp3-6aad21b0bdcf7968aaf80a06c4dea68d.mp3str"
+
+[deps]
+
+source_file="res://SFX/PLACEHOLDER Voicy_Medic Heal SFX.mp3"
+dest_files=["res://.godot/imported/PLACEHOLDER Voicy_Medic Heal SFX.mp3-6aad21b0bdcf7968aaf80a06c4dea68d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

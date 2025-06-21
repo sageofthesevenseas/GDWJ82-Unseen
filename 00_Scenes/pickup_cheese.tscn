@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://disxx1i2oiypy"]
+
+[ext_resource type="PackedScene" uid="uid://dye34evdgknxg" path="res://00_Scenes/Basic Scenes (Inherit from these)/pickup_base.tscn" id="1_06h2p"]
+[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_3d1s7"]
+[ext_resource type="Texture2D" uid="uid://c6m5xi1bpvtj0" path="res://ItemTextures/basic circle 256px white.png" id="2_pavqr"]
+
+[node name="CheesePickup" instance=ExtResource("1_06h2p")]
+
+[node name="ImageBackground2" type="Sprite2D" parent="." index="0"]
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("2_pavqr")
+
+[node name="ImageBackground" type="Sprite2D" parent="ImageBackground2" index="0"]
+modulate = Color(0, 0.143127, 0.135929, 0.458824)
+scale = Vector2(0.919561, 0.919561)
+texture = ExtResource("2_pavqr")
+
+[node name="CheeseImage" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("2_3d1s7")
+
+[node name="CollisionShape2D" parent="." index="2"]
+visible = false
+
+[node name="Detectable area" parent="." index="3"]
+visible = false
+
+[node name="Homing area" parent="Detectable area" index="0"]
+visible = false
+
+[node name="Pickup Area" parent="." index="4"]
+visible = false
+
+[node name="DefaultPickupImage" parent="." index="5"]
+visible = false

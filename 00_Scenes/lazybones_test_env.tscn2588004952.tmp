@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://yyegmw7wru6o"]
+[gd_scene load_steps=9 format=3 uid="uid://yyegmw7wru6o"]
 
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_aqvis"]
 [ext_resource type="PackedScene" uid="uid://qlr7s5cs5b3y" path="res://00_Scenes/character.tscn" id="1_f58qq"]
@@ -7,10 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmr5lyfmqmup3" path="res://00_Scenes/exposed_chest.tscn" id="4_vchd2"]
 [ext_resource type="PackedScene" uid="uid://dcmviarkgg7uu" path="res://00_Scenes/hidden_chest.tscn" id="5_frv34"]
 [ext_resource type="PackedScene" uid="uid://bppo74h6hkep" path="res://00_Scenes/projectile_torch_deriv.tscn" id="7_eusmn"]
-[ext_resource type="PackedScene" uid="uid://bovh4wplwg5w8" path="res://00_Scenes/pickup_bomb.tscn" id="8_5302y"]
-[ext_resource type="PackedScene" uid="uid://disxx1i2oiypy" path="res://00_Scenes/pickup_cheese.tscn" id="9_mo6x8"]
-[ext_resource type="PackedScene" uid="uid://bajhxdrxuvut2" path="res://00_Scenes/pickup_flare.tscn" id="10_nfdsu"]
-[ext_resource type="PackedScene" uid="uid://xoae86k6l84" path="res://00_Scenes/pickup_story.tscn" id="11_w636k"]
+[ext_resource type="PackedScene" uid="uid://dye34evdgknxg" path="res://00_Scenes/Basic Scenes (Inherit from these)/pickup_base.tscn" id="9_54ps5"]
 
 [node name="Lazybones_Test_env" type="Node2D"]
 
@@ -27,7 +24,6 @@ texture = ExtResource("2_frqfa")
 collision_mask = 11
 motion_mode = 0
 platform_floor_layers = 4294967295
-health = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
@@ -50,20 +46,9 @@ position = Vector2(265, -62)
 energy = 1.85
 texture_scale = 36.61
 
-[node name="Chest2" parent="." instance=ExtResource("4_vchd2")]
-position = Vector2(-635, 300)
-
-[node name="BombPickup" parent="." instance=ExtResource("8_5302y")]
-position = Vector2(-1792, 208)
-
-[node name="CheesePickup" parent="." instance=ExtResource("9_mo6x8")]
-position = Vector2(-1714, -113)
-
-[node name="Flare_Pickup" parent="." instance=ExtResource("10_nfdsu")]
-position = Vector2(-1553, 332)
-
-[node name="StoryPickup" parent="." instance=ExtResource("11_w636k")]
-position = Vector2(-1448, -201)
+[node name="Pickup" parent="." instance=ExtResource("9_54ps5")]
+position = Vector2(-410, 231)
+pickup_type = 4
 
 [editable path="CharacterBody2D"]
 [editable path="HiddenChest"]

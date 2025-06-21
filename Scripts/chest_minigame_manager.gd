@@ -54,7 +54,7 @@ func _on_mini_game_3_minigame_completed() -> void:
 	chest_game_beaten.emit()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action(&"Escape") and event.is_pressed() and game_is_playing:
+	if event.is_action(&"quit_minigame") and event.is_pressed() and game_is_playing:
 		get_viewport().set_input_as_handled()
 		exit_minigame()
 

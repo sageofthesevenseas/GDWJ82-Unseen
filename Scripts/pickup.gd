@@ -5,6 +5,7 @@ enum Categories {BOMB, FLARE, STORY, CHEESE}
 @export var pickup_type: Categories = Categories.CHEESE
 @export_range (0, 9) var selected_story: int = 0
 
+
 @export var attraction_strength: float = 2500.0
 @export var player_center_offset= Vector2(0,100)
 @export var item_value_int: int = 1
@@ -14,6 +15,7 @@ var player_throwing_system: ThrowingSystem
 var player: CharacterBody2D
 
 func _ready() -> void:
+	player_throwing_system = get_tree().get_first_node_in_group("throwingsystem")
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta: float) -> void:
@@ -27,7 +29,6 @@ func hurtle_towards(delta):
 	var direction = (player_GP_offset - global_position).normalized()
 	var force = direction * attraction_strength
 	apply_central_force(force)
-	print(force)
 
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -44,4 +45,4 @@ func pickup_assignment():
 		Categories.STORY:
 			GameController.instance.add_lore(selected_story)
 		Categories.CHEESE:
-			player.
+			player.heal(health_value)
