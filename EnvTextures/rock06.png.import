@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfeovwxxjgpjd"
-path="res://.godot/imported/rock06.png-b7dda7579efa674d43cb733fa958be8a.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://EnvTextures/rock06.png"
-dest_files=["res://.godot/imported/rock06.png-b7dda7579efa674d43cb733fa958be8a.ctex"]
 
 [params]
 
