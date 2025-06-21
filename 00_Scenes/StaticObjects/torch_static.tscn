@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5w1cm171ketk"]
+
+[ext_resource type="Texture2D" uid="uid://dxyegb1ila2ch" path="res://UI_Textures/Torch.png" id="1_oe3k4"]
+[ext_resource type="PackedScene" uid="uid://qm14agpmwdrt" path="res://VFX/ParticleFX/Flare00/Flare.tscn" id="2_ug5o5"]
+
+[node name="Torch" type="Node2D"]
+z_index = -1
+
+[node name="AnimationPivot" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimationPivot"]
+modulate = Color(0.180005, 0.180005, 0.180005, 1)
+position = Vector2(-13, 0)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_oe3k4")
+
+[node name="Flare" parent="AnimationPivot" instance=ExtResource("2_ug5o5")]
+position = Vector2(-38, 8.30516e-07)
