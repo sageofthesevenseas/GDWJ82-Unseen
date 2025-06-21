@@ -125,6 +125,8 @@ func _physics_process(delta : float) -> void:
 
 	if attack_state == AttackState.READY:
 		if target_seen and get_to_target_vec().length() < swoop_attack_max_range:
+			$AttackScreech.pitch_scale = randf_range(0.95, 1.05)
+			$AttackScreech.play()
 			initiate_attack_target()
 
 	if movement_state == MovementState.PREPARE_SWOOP:

@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfxt3h778c8mw"]
+[gd_scene load_steps=9 format=3 uid="uid://bfxt3h778c8mw"]
 
 [ext_resource type="Script" uid="uid://dmx65o08aasfa" path="res://Scripts/enemy.gd" id="1_0ob4p"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_6yein"]
 [ext_resource type="PackedScene" uid="uid://cyaisxoi46cj2" path="res://Enemies/bat_visuals.tscn" id="2_ednin"]
 [ext_resource type="Texture2D" uid="uid://cwslskahro0pi" path="res://ItemTextures/circle.png" id="3_rkwuh"]
+[ext_resource type="AudioStream" uid="uid://cufwgnwpkf5l6" path="res://SFX/screech.ogg" id="5_sp07a"]
+[ext_resource type="AudioStream" uid="uid://5msaxhdlwutu" path="res://SFX/wingflap.ogg" id="6_u8ick"]
+[ext_resource type="Script" uid="uid://b4hdxjt2qewv2" path="res://00_Scenes/random_noises.gd" id="6_yu6ct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkwuh"]
 radius = 90.0
@@ -56,3 +59,18 @@ enabled = false
 
 [node name="RayCastTop" type="RayCast2D" parent="."]
 position = Vector2(0, -182)
+
+[node name="AttackScreech" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_sp07a")
+playback_type = 1
+
+[node name="WingFlap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_u8ick")
+volume_db = 5.0
+autoplay = true
+max_polyphony = 4
+bus = &"Reverb"
+playback_type = 1
+script = ExtResource("6_yu6ct")
+
+[connection signal="finished" from="WingFlap" to="WingFlap" method="_on_finished"]
