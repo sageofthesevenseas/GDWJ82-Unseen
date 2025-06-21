@@ -7,12 +7,13 @@ signal get_gameplay_nodes
 var not_in_main_menu = false
 var menu_open = false
 
-func _on_ready():
-	var not_in_main_menu = false
-	var menu_open = false
-	#var UI_Nodes = get_node("/root/GameController/GUI").get_children()
-	#for node in UI_Nodes:
-	#	node.use_parent_material = true
+func _ready() -> void:
+	set_parent_material_recurse(self)
+
+func set_parent_material_recurse(node : CanvasItem) -> void:
+	for child in node.get_children():
+		child.use_parent_material = true
+		if child is CanvasItem: set_parent_material_recurse(child)
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

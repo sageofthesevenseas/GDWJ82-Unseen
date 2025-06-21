@@ -15,14 +15,6 @@ func _ready() -> void:
 	GuiNode.add_child(Main_Menu)
 	var MenuNode = get_node("GUI/UI_Handler")
 	MenuNode.connect("start_game", Callable(self, "_on_start_game"))
-	var UI_Nodes = $GUI/UI_Handler.get_children()
-	for nodes in UI_Nodes:
-		nodes.use_parent_material = true
-		print(nodes, "done")
-		var node_children = nodes.get_children()
-		for node_grandchildren in node_children:
-			node_grandchildren.use_parent_material = true
-			print(node_children, "done")
 	
 	# deeply evil code. just for debugging.
 	DebugMenuSingleton.story_logs_toggled.connect(func (toggled_on : bool) -> void: for i in lore_found.size(): lore_found[i] = toggled_on)
