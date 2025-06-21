@@ -19,7 +19,9 @@ script/source = "extends Node2D
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 11
+collision_mask = 9
+motion_mode = 1
+platform_floor_layers = 0
 script = ExtResource("1_48qfa")
 darkness_damage = 1.0
 acceleration = 10000.0

@@ -197,6 +197,7 @@ func update_move_goal(delta : float) -> void:
 	nav_agent.target_position = move_goal
 	move_goal = nav_agent.get_next_path_position()
 	$MoveGoal.global_position = move_goal
+	$DebugHealthLabel.text = "HP %.1f/%.1f" % [ health, max_health ]
 
 var this_frame_acceleration : Vector2
 
@@ -254,5 +255,6 @@ func take_damage(amount : float) -> void:
 	health = maxf(health - amount, 0.0)
 	if health <= 0.0 and health < prev_health:
 		emit_signal(&"health_depleted")
+		queue_free()
 	if amount > 0.0:
 		emit_signal(&"damage_taken")

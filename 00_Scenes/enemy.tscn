@@ -8,26 +8,32 @@
 radius = 90.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-z_index = 1
 collision_layer = 4
 motion_mode = 1
+platform_floor_layers = 0
+platform_wall_layers = 1
 script = ExtResource("1_0ob4p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = -1
 shape = SubResource("CircleShape2D_rkwuh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0.0166664, 1)
-z_index = -1
 texture = ExtResource("2_6yein")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 150.0
+target_desired_distance = 60.0
+path_max_distance = 400.0
 
 [node name="MoveGoal" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_rkwuh")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 150.0
-target_desired_distance = 60.0
-path_max_distance = 400.0
+[node name="DebugHealthLabel" type="Label" parent="."]
+offset_left = -47.0
+offset_top = 119.0
+offset_right = 44.0
+offset_bottom = 142.0
+text = "ĦP cur/max"

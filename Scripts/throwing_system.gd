@@ -21,6 +21,9 @@ extends Node2D
 @export var max_throw_force: float = 10000.0
 #@export var can_activate: bool = true
 
+@export_group("Debug Settings")
+@export var debug_infinite_ammo : bool = false
+
 var mouse_pos
 var distance
 var max_mouse_radius := 800.0
@@ -78,7 +81,7 @@ func _process(_delta: float) -> void:
 		projectile_target.visible = false
 		projectile_holdup.visible = false
 		if weapon_counter == 0:
-			if bomb_quantity > 0:
+			if bomb_quantity > 0 or debug_infinite_ammo:
 				throw_projectile()
 				bomb_quantity -= 1 
 				ammunition_changed()
@@ -86,7 +89,7 @@ func _process(_delta: float) -> void:
 				print("player doesnt have enough bombs!")
 				emit_signal("play_sound", "decline")
 		if weapon_counter == 1:
-			if flare_quantity > 0:
+			if flare_quantity > 0 or debug_infinite_ammo:
 				throw_projectile()
 				flare_quantity -= 1
 				ammunition_changed()
@@ -128,8 +131,11 @@ func check_weapon_selected():
 		chosen_weapon = flare_prefab
 
 func ammunition_changed():
-	PlayerStats.instance.player_bombs = bomb_quantity
-	PlayerStats.instance.player_flares = flare_quantity
+	if PlayerStats.instance != null:
+		PlayerStats.instance.player_bombs = bomb_quantity
+		PlayerStats.instance.player_flares = flare_quantity
+	else:
+		push_warning("No PlayerStats instance available.")
 
 func increase_flares(amount: int):
 	flare_quantity += amount
