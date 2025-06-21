@@ -777,6 +777,7 @@ texture = ExtResource("9_icyyo")
 [connection signal="pressed" from="Main/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Main/Exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="Settings/FX_HSlider" to="." method="_on_fx_h_slider_value_changed"]
+[connection signal="toggled" from="Settings/SFX_Toggle" to="." method="_on_sfx_toggle_toggled"]
 [connection signal="pressed" from="Settings/Return3" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Journals/JournalSelectors/Return2" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Journals/JournalSelectors/ButtonLog1" to="Journals" method="_on_button_log_1_pressed"]

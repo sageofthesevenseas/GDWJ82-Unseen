@@ -56,6 +56,11 @@ func _on_journals_pressed() -> void:
 func _on_fx_h_slider_value_changed(value: float) -> void:
 	emit_signal("play_sound", "accept")
 
+func _on_sfx_toggle_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		GameController.instance.get_child(1).set_process(true)
+	else:
+		GameController.instance.get_child(1).set_process(false)
 
 var camera_zoom_before_pausemenu : Vector2
 func _unhandled_input(event: InputEvent) -> void:
