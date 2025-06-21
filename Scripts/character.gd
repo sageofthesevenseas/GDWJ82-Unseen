@@ -166,13 +166,16 @@ func take_damage(amount : float) -> void:
 	var prev_health := health
 	health = maxf(health - amount, 0.0)
 	if health <= 0.0 and health < prev_health:
-		emit_signal(&"health_depleted")
+		die()
 	if amount > 0.0:
 		emit_signal(&"damage_taken")
 	if PlayerStats.instance != null:
 		PlayerStats.instance.player_health = health
 
-#func get_bomb_quantity():
-	#return throwing_system.get_bomb_quantity()
-#func get_flare_quantity():
-	#return throwing_system.get_flare_quantity()
+func die():
+	can_process()
+	emit_signal(&"health_depleted")
+
+func _on_exposed_chest_detector_body_entered(body: Node2D) -> void:
+	if body is ExposedChest:
+		body.start_minigame()

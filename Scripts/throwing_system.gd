@@ -6,6 +6,8 @@ extends Node2D
 @onready var throw_origin: Marker2D = $ThrowOrigin
 @onready var holdup_display_timer: Timer = $DisplayTimer
 @onready var empty_sound: AudioStreamPlayer2D = $Empty_Sound
+@onready var throw_sound: AudioStreamPlayer2D = $Throw_Sound
+@onready var pickup_sound: AudioStreamPlayer2D = $Pickup_sound
 
 
 
@@ -33,7 +35,6 @@ var chosen_weapon: PackedScene
 
 signal bombs_increased
 signal flares_increased
-signal play_sound(sfx_name)
 
 
 func _ready() -> void:
@@ -87,7 +88,7 @@ func _process(_delta: float) -> void:
 				ammunition_changed()
 			else:
 				print("player doesnt have enough bombs!")
-				emit_signal("play_sound", "decline")
+				empty_sound.play()
 		if weapon_counter == 1:
 			if flare_quantity > 0 or debug_infinite_ammo:
 				throw_projectile()
@@ -95,7 +96,7 @@ func _process(_delta: float) -> void:
 				ammunition_changed()
 			else:
 				print("player doesnt have enough flares!")
-				emit_signal("play_sound", "decline")
+				empty_sound.play()
 
 func throw_projectile():
 	var throw_direction = mouse_pos.normalized()
@@ -107,10 +108,10 @@ func throw_projectile():
 	var new_projectile = chosen_weapon.instantiate()
 	new_projectile.global_position = throw_origin.global_position
 	get_tree().current_scene.add_child(new_projectile)
-	emit_signal("play_sound", "throw")
 	#debug_projectile_direction_sprite.position = throw_direction * max_mouse_radius
 	if new_projectile is RigidBody2D: 	#time to send that shit flying
 		new_projectile.apply_impulse(throw_direction * throw_force, Vector2.ZERO)
+		throw_sound.play()
 		print(throw_direction * throw_force)
 	else: 
 		push_error("that's not a blardy RB2D!")
@@ -139,11 +140,13 @@ func ammunition_changed():
 
 func increase_flares(amount: int):
 	flare_quantity += amount
+	pickup_sound.play()
 	ammunition_changed()
 	flares_increased.emit()
 
 func increase_bombs(amount: int):
 	bomb_quantity += amount
+	pickup_sound.play()
 	ammunition_changed()
 	bombs_increased.emit()
 

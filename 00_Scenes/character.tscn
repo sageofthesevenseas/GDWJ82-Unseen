@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qlr7s5cs5b3y"]
+[gd_scene load_steps=10 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
@@ -16,6 +16,9 @@ radius = 2000.0
 [sub_resource type="GDScript" id="GDScript_h7igj"]
 script/source = "extends Node2D
 "
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spk8f"]
+radius = 400.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -39,9 +42,9 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GeolocationArea"]
 shape = SubResource("CircleShape2D_h7igj")
 
-[node name="Chest_Minigame" parent="." instance=ExtResource("3_h7igj")]
+[node name="Chest_Minigame" parent="." groups=["chestminigame"] instance=ExtResource("3_h7igj")]
 visible = false
-position = Vector2(0, 0)
+position = Vector2(0, -150)
 
 [node name="DigMinigame" parent="." instance=ExtResource("4_vwvbh")]
 visible = false
@@ -80,4 +83,12 @@ enabled = false
 
 [node name="ReparentTarget" type="Node2D" parent="." groups=["projectileparent"]]
 
+[node name="Exposed_Chest_Detector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exposed_Chest_Detector"]
+shape = SubResource("CircleShape2D_spk8f")
+
 [connection signal="score_goal_reached" from="DigMinigame" to="." method="on_chest_dug"]
+[connection signal="body_entered" from="Exposed_Chest_Detector" to="." method="_on_exposed_chest_detector_body_entered"]

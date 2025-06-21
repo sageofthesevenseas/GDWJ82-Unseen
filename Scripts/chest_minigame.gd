@@ -79,7 +79,3 @@ func emit_minigame_ready():
 func flip_calc():
 	var flip = randi_range(-1,1)
 	print("flip value is, ", flip)
-
-func _on_debug_timer_timeout() -> void:
-# LZB NOTE 15-06-25 - remove when we have better methods of starting minigame
-	prep()

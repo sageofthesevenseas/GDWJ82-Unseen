@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://rwqyuhniy1u"]
+[gd_scene load_steps=25 format=3 uid="uid://rwqyuhniy1u"]
 
 [ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
 [ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://Scripts/chest_minigame_manager.gd" id="1_h54ls"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="4_h54ls"]
 [ext_resource type="Texture2D" uid="uid://bepkb3qlv14mq" path="res://ItemTextures/LockpickingPin.png" id="5_iga1p"]
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="7_h54ls"]
+[ext_resource type="AudioStream" uid="uid://c1xu6nrn1vi71" path="res://SFX/paper.ogg" id="8_xauol"]
+[ext_resource type="AudioStream" uid="uid://cabpdvs888ahd" path="res://SFX/menu_accept-01.ogg" id="9_epv20"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h54ls"]
 light_mode = 1
@@ -52,6 +54,7 @@ light_mode = 1
 
 [sub_resource type="Animation" id="Animation_h54ls"]
 resource_name = "Open"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,6 +78,64 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.032248, 0.032248, -0.253073, 0.153589, -0.818559]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exit_minigame"
+}]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.5, 2)
 }
 
 [sub_resource type="Animation" id="Animation_xauol"]
@@ -103,6 +164,50 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_epv20"]
 _data = {
@@ -111,7 +216,8 @@ _data = {
 }
 
 [node name="Chest_Minigame" type="Node2D"]
-position = Vector2(569, 317)
+z_index = 1000
+scale = Vector2(4, 4)
 script = ExtResource("1_h54ls")
 
 [node name="backgroundOverlay" parent="." instance=ExtResource("3_h54ls")]
@@ -277,6 +383,15 @@ texture_scale = 1.0
 
 [node name="Shadow" parent="MainLight" index="1"]
 position = Vector2(1, 0)
+
+[node name="Open_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xauol")
+volume_db = 24.0
+pitch_scale = 0.42
+
+[node name="Click_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_epv20")
+pitch_scale = 12.0
 
 [connection signal="minigame_completed" from="MiniGame1" to="." method="_on_mini_game_1_minigame_completed"]
 [connection signal="minigame_ready" from="MiniGame1" to="." method="_on_mini_game_1_minigame_ready"]

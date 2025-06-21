@@ -21,6 +21,11 @@ texture = ExtResource("2_frqfa")
 [node name="PlayerStats" parent="." instance=ExtResource("1_osux7")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_f58qq")]
+collision_mask = 11
+motion_mode = 0
+platform_floor_layers = 4294967295
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
 [node name="Chest" parent="." instance=ExtResource("4_vchd2")]
 position = Vector2(-311, -71)
@@ -35,9 +40,6 @@ shape = SubResource("RectangleShape2D_osux7")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("2_frqfa")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(639, -135)
 
 [node name="Enemy" parent="." instance=ExtResource("4_e8hjv")]
 position = Vector2(583, -469)
