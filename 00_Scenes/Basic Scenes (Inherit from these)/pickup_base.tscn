@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dye34evdgknxg"]
+
+[ext_resource type="Script" uid="uid://ctq0r8magpnki" path="res://00_Scenes/pickup.gd" id="1_4evby"]
+[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_q22oa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqvis"]
+radius = 86.56
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54ps5"]
+radius = 350.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gdw6"]
+radius = 46.5296
+
+[node name="Pickup" type="RigidBody2D"]
+collision_layer = 0
+gravity_scale = 0.0
+linear_damp = 5.0
+script = ExtResource("1_4evby")
+
+[node name="PickupImage" type="Sprite2D" parent="."]
+modulate = Color(2.09369e-06, 0.620035, 7.70092e-07, 1)
+texture = ExtResource("2_q22oa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aqvis")
+
+[node name="Detectable area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Homing area" type="CollisionShape2D" parent="Detectable area"]
+shape = SubResource("CircleShape2D_54ps5")
+debug_color = Color(4.09111e-06, 0.642877, 0.310096, 0.42)
+
+[node name="Pickup Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
+shape = SubResource("CircleShape2D_7gdw6")
+debug_color = Color(0.961091, 0, 0.512329, 0.42)
+
+[connection signal="body_entered" from="Pickup Area" to="." method="_on_pickup_area_body_entered"]

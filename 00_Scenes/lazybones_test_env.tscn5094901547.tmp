@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yyegmw7wru6o"]
+[gd_scene load_steps=14 format=3 uid="uid://yyegmw7wru6o"]
 
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_aqvis"]
 [ext_resource type="PackedScene" uid="uid://qlr7s5cs5b3y" path="res://00_Scenes/character.tscn" id="1_f58qq"]
@@ -8,10 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://cmr5lyfmqmup3" path="res://00_Scenes/exposed_chest.tscn" id="4_vchd2"]
 [ext_resource type="PackedScene" uid="uid://dcmviarkgg7uu" path="res://00_Scenes/hidden_chest.tscn" id="5_frv34"]
 [ext_resource type="PackedScene" uid="uid://bppo74h6hkep" path="res://00_Scenes/projectile_torch_deriv.tscn" id="7_eusmn"]
-[ext_resource type="PackedScene" uid="uid://dye34evdgknxg" path="res://00_Scenes/Basic Scenes (Inherit from these)/pickup_base.tscn" id="9_54ps5"]
+[ext_resource type="Script" uid="uid://ctq0r8magpnki" path="res://00_Scenes/pickup.gd" id="9_54ps5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osux7"]
 size = Vector2(116, 109)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqvis"]
+radius = 86.56
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54ps5"]
+radius = 350.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gdw6"]
+radius = 118.27
 
 [node name="Lazybones_Test_env" type="Node2D"]
 
@@ -60,8 +69,37 @@ visible = false
 [node name="Projectile Torch" parent="." instance=ExtResource("7_eusmn")]
 position = Vector2(265, -62)
 
-[node name="Pickup" parent="." instance=ExtResource("9_54ps5")]
+[node name="Pickup" type="RigidBody2D" parent="."]
 position = Vector2(-410, 231)
+collision_layer = 0
+gravity_scale = 0.0
+script = ExtResource("9_54ps5")
+attraction_strength = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickup"]
+modulate = Color(2.09369e-06, 0.620035, 7.70092e-07, 1)
+texture = ExtResource("2_frqfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
+shape = SubResource("CircleShape2D_aqvis")
+
+[node name="Detectable area" type="Area2D" parent="Pickup"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Homing area" type="CollisionShape2D" parent="Pickup/Detectable area"]
+shape = SubResource("CircleShape2D_54ps5")
+debug_color = Color(4.09111e-06, 0.642877, 0.310096, 0.42)
+
+[node name="Pickup Area" type="Area2D" parent="Pickup"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup/Pickup Area"]
+shape = SubResource("CircleShape2D_7gdw6")
+debug_color = Color(0.961091, 0, 0.512329, 0.42)
+
+[connection signal="body_entered" from="Pickup/Pickup Area" to="Pickup" method="_on_pickup_area_body_entered"]
 
 [editable path="CharacterBody2D"]
 [editable path="HiddenChest"]

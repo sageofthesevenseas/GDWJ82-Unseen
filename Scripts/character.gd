@@ -98,10 +98,10 @@ func _physics_process(delta : float) -> void:
 			animation_player.stop()
 		if Input.is_action_just_pressed("move_left") and $PlayerVisuals.scale.x > 0:
 			$PlayerVisuals.scale.x *= -1
-			print("Tried to flip")
+			#print("Tried to flip") # LZB NOTE 21-06-25 - we probably dont need this anymore
 		if Input.is_action_just_pressed("move_right") and $PlayerVisuals.scale.x < 0:
 			$PlayerVisuals.scale.x *= -1
-			print("Tried to flip")
+			#print("Tried to flip")
 	else:
 		pass
 		# animation_player.stop()

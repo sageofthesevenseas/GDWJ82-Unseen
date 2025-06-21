@@ -1,19 +1,26 @@
-[gd_scene load_steps=22 format=3 uid="uid://rwqyuhniy1u"]
+[gd_scene load_steps=25 format=3 uid="uid://dofccitdvhexm"]
 
-[ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
-[ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://Scripts/chest_minigame_manager.gd" id="1_h54ls"]
-[ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="3_h54ls"]
-[ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="3_sh4cu"]
-[ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="4_h54ls"]
-[ext_resource type="Texture2D" uid="uid://bepkb3qlv14mq" path="res://ItemTextures/LockpickingPin.png" id="5_iga1p"]
-[ext_resource type="AudioStream" uid="uid://c1xu6nrn1vi71" path="res://SFX/paper.ogg" id="8_xauol"]
-[ext_resource type="AudioStream" uid="uid://cabpdvs888ahd" path="res://SFX/menu_accept-01.ogg" id="9_epv20"]
+[ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://Scripts/chest_minigame_manager.gd" id="1_5eqm2"]
+[ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="2_xkr2j"]
+[ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="3_gtsod"]
+[ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="4_hs8go"]
+[ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="5_3ytct"]
+[ext_resource type="Texture2D" uid="uid://bepkb3qlv14mq" path="res://ItemTextures/LockpickingPin.png" id="6_pmbfe"]
+[ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="7_1rikx"]
+[ext_resource type="AudioStream" uid="uid://c1xu6nrn1vi71" path="res://SFX/paper.ogg" id="8_1djcq"]
+[ext_resource type="AudioStream" uid="uid://cabpdvs888ahd" path="res://SFX/menu_accept-01.ogg" id="9_fgcrp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h54ls"]
 light_mode = 1
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iga1p"]
+polygon = PackedVector2Array(-431.429, -148.571, -428.571, 145.714, 428.571, 145.714, 428.571, -145.714, 405.714, -145.714, 402.857, 117.143, -397.143, 125.714, -397.143, -148.571)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xauol"]
 light_mode = 1
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h54ls"]
+polygon = PackedVector2Array(-431.429, 142.857, -431.429, 34.2857, -417.143, 14.2857, -400, -65.7143, -354.286, -108.571, -342.857, -125.714, 342.857, -122.857, 368.571, -102.857, 391.428, -45.7143, 402.857, 11.4286, 431.429, 48.5714, 431.429, 148.571, 405.714, 148.571, 405.714, 51.4286, 382.857, 20, 365.714, -42.8571, 345.714, -97.1429, -328.571, -97.1429, -377.143, -54.2857, -394.286, 17.1429, -397.143, 142.857)
 
 [sub_resource type="Curve2D" id="Curve2D_xauol"]
 _data = {
@@ -145,9 +152,9 @@ _data = {
 [node name="Chest_Minigame" type="Node2D"]
 z_index = 1000
 scale = Vector2(4, 4)
-script = ExtResource("1_h54ls")
+script = ExtResource("1_5eqm2")
 
-[node name="backgroundOverlay" parent="." instance=ExtResource("3_h54ls")]
+[node name="backgroundOverlay" parent="." instance=ExtResource("2_xkr2j")]
 visible = false
 light_mask = 7
 position = Vector2(-46, 7)
@@ -160,19 +167,28 @@ material = SubResource("CanvasItemMaterial_h54ls")
 position = Vector2(0, 102)
 rotation = -0.000376445
 scale = Vector2(0.35, 0.35)
-texture = ExtResource("3_sh4cu")
+texture = ExtResource("3_gtsod")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Chest_Backing"]
+light_mask = 4
+occluder = SubResource("OccluderPolygon2D_iga1p")
 
 [node name="Chest_Top" type="Sprite2D" parent="."]
 light_mask = 5
 material = SubResource("CanvasItemMaterial_xauol")
 scale = Vector2(0.35, 0.35)
-texture = ExtResource("4_h54ls")
+texture = ExtResource("4_hs8go")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Chest_Top"]
+light_mask = 0
+position = Vector2(-0.341613, -0.365056)
+occluder = SubResource("OccluderPolygon2D_h54ls")
 
 [node name="MiniGame1" type="Path2D" parent="."]
 position = Vector2(-86, 134)
 scale = Vector2(0.475, 0.47)
 curve = SubResource("Curve2D_xauol")
-script = ExtResource("1_bd1gb")
+script = ExtResource("5_3ytct")
 minigame_speed = 1.5
 setup_rotation_speed = 1.0
 
@@ -206,14 +222,14 @@ loop = false
 [node name="SpritePin" type="Sprite2D" parent="MiniGame1/PlayerPin"]
 material = SubResource("CanvasItemMaterial_epv20")
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_iga1p")
+texture = ExtResource("6_pmbfe")
 
 [node name="MiniGame2" type="Path2D" parent="."]
 position = Vector2(-0.77, 76.97)
 rotation = -1.57079
 scale = Vector2(0.615, 0.615)
 curve = SubResource("Curve2D_epv20")
-script = ExtResource("1_bd1gb")
+script = ExtResource("5_3ytct")
 minigame_speed = 0.5
 setup_rotation_speed = 1.0
 target_range_offset = 0.035
@@ -245,14 +261,14 @@ loop = false
 [node name="SpritePin" type="Sprite2D" parent="MiniGame2/PlayerPin"]
 material = SubResource("CanvasItemMaterial_t51jr")
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_iga1p")
+texture = ExtResource("6_pmbfe")
 
 [node name="MiniGame3" type="Path2D" parent="."]
 position = Vector2(85.175, 136)
 rotation = 0.0174533
 scale = Vector2(0.5, 0.5)
 curve = SubResource("Curve2D_xauol")
-script = ExtResource("1_bd1gb")
+script = ExtResource("5_3ytct")
 setup_rotation_speed = 1.0
 target_range_offset = 0.05
 
@@ -286,23 +302,34 @@ loop = false
 [node name="SpritePin" type="Sprite2D" parent="MiniGame3/PlayerPin"]
 material = SubResource("CanvasItemMaterial_ocyvy")
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_iga1p")
+texture = ExtResource("6_pmbfe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_epv20")
 }
 
+[node name="MainLight" parent="." instance=ExtResource("7_1rikx")]
+position = Vector2(1, 0)
+
+[node name="LightOverlay" parent="MainLight" index="0"]
+texture_scale = 1.0
+
+[node name="Shadow" parent="MainLight" index="1"]
+position = Vector2(1, 0)
+
 [node name="Open_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_xauol")
+stream = ExtResource("8_1djcq")
 volume_db = 24.0
 pitch_scale = 0.42
 
 [node name="Click_Sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_epv20")
+stream = ExtResource("9_fgcrp")
 pitch_scale = 12.0
 
 [connection signal="minigame_completed" from="MiniGame1" to="." method="_on_mini_game_1_minigame_completed"]
 [connection signal="minigame_ready" from="MiniGame1" to="." method="_on_mini_game_1_minigame_ready"]
 [connection signal="minigame_completed" from="MiniGame2" to="." method="_on_mini_game_2_minigame_completed"]
 [connection signal="minigame_completed" from="MiniGame3" to="." method="_on_mini_game_3_minigame_completed"]
+
+[editable path="MainLight"]
