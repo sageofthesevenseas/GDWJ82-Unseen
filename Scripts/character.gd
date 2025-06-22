@@ -247,7 +247,8 @@ func heal(amount: float) -> void:
 
 func pickup_sound():
 	pickup_sfx.play()
-
+	$SFX/PickupSFX.pitch_scale += 0.1
+	$SFX/PickupSFX/Timer.start()
 func die():
 	#can_process()
 	death_sfx.play()
@@ -258,3 +259,7 @@ func _on_darkness_damage_timer_timeout() -> void:
 
 func _on_heart_beat_looper_timeout() -> void:
 	heart_beat_sfx.play()
+
+
+func _on_timer_timeout() -> void:
+	$SFX/PickupSFX.pitch_scale = 1
