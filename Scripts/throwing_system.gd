@@ -121,7 +121,10 @@ func throw_projectile():
 	
 	var new_projectile = chosen_weapon.instantiate()
 	new_projectile.global_position = throw_origin.global_position
-	get_tree().current_scene.add_child(new_projectile)
+	if GameController.instance != null:
+		$"/root/GameController/World2D".add_child(new_projectile)
+	else:
+		get_tree().current_scene.add_child(new_projectile)
 	#debug_projectile_direction_sprite.position = throw_direction * max_mouse_radius
 	if new_projectile is RigidBody2D: 	#time to send that shit flying
 		new_projectile.apply_impulse(throw_direction * throw_force, Vector2.ZERO)
