@@ -55,7 +55,7 @@ func _on_mini_game_3_minigame_completed() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action(&"quit_minigame") and event.is_pressed() and game_is_playing:
+	if event.is_action(&"Escape") and event.is_pressed() and game_is_playing:
 		get_viewport().set_input_as_handled()
 		if game_beaten_bool == true:
 			emit_game_beaten() # LZB NOTE 22-06-25 - for animation cancelling the lid open

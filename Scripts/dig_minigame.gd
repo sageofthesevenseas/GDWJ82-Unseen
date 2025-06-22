@@ -52,7 +52,7 @@ func cancel_minigame() -> void:
 	dig_game_cancelled.emit()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action(&"quit_minigame") and event.is_pressed() and state == State.PLAYING:
+	if event.is_action(&"Escape") and event.is_pressed() and state == State.PLAYING:
 		get_viewport().set_input_as_handled()
 		cancel_minigame()
 

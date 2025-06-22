@@ -201,6 +201,7 @@ func dig_chest(hidden_chest : HiddenChest) -> void:
 	emit_signal(&"dug_chest")
 	controllable = false
 	dig_minigame_manager.start_minigame(hidden_chest)
+	throwing_system.can_throw = false
 	animation_player.speed_scale = 1.0
 	animation_player.play(&"Player Dig")
 	animation_player.queue(&"Player Dig Loop")
@@ -208,18 +209,22 @@ func dig_chest(hidden_chest : HiddenChest) -> void:
 func on_chest_dug() -> void:
 	controllable = true
 	closest_geolocatable.spawn_real_chest()
+	throwing_system.enable_throw_after_delay()
 	# LZB NOTE 21-06-25 - spawn the bloody chest here
 
 func open_chest(chest : ExposedChest) -> void:
 	controllable = false
 	chest.start_minigame()
+	throwing_system.can_throw = false
 
 # Need some kind of signal to return to here after closing a chest or something. Maybe ChestMinigameManager? Maybe Chest?
 func on_chest_closed() -> void:
 	controllable = true
+	throwing_system.enable_throw_after_delay()
 
 func on_minigame_cancelled() -> void:
 	controllable = true
+	throwing_system.enable_throw_after_delay()
 
 func take_damage(amount : float) -> void:
 	var prev_health := health
@@ -242,7 +247,9 @@ func heal(amount: float) -> void:
 	health = minf(health + amount, max_health)
 	if prev_health >= max_health:
 		return #do nothing
-	if  prev_health < max_health:
+	if PlayerStats.instance != null:
+		PlayerStats.instance.player_health = health
+	if prev_health < max_health:
 		heal_sfx.play()
 	if health > warning_health:
 		heart_beat_looper.stop()
@@ -255,8 +262,8 @@ func pickup_sound():
 	pickup_sfx.play()
 	$SFX/PickupSFX.pitch_scale += 0.1
 	$SFX/PickupSFX/Timer.start()
+
 func die():
-	#can_process()
 	death_sfx.play()
 	emit_signal(&"health_depleted")
 

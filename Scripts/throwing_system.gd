@@ -32,23 +32,27 @@ var max_mouse_radius := 800.0
 var weapon_counter: int = 1 #0 is bomb, 1 is flare
 var chosen_weapon: PackedScene
 
+var can_throw : bool = true
 
 signal bombs_increased
 signal flares_increased
 
+func enable_throw_after_delay() -> void:
+	get_tree().create_timer(0.02).timeout.connect(func () -> void: can_throw = true)
 
 func _ready() -> void:
 	DebugMenuSingleton.infinite_ammo_toggled.connect(func (toggled_on : bool) -> void: debug_infinite_ammo = toggled_on)
-	set_process(false)
+	can_throw = false
 	ammunition_changed() #doing this to set the singleton with the right ammo
 	check_weapon_selected()
 	projectile_target.visible = false
 	projectile_holdup.visible = false
-	await get_tree().create_timer(0.25).timeout
-	set_process(true) # LZB NOTE 21-06-25 - just a short delay to stop a flare getting thrown by the player entering
+	enable_throw_after_delay()
 
 func _process(_delta: float) -> void:
-	
+	# we should really be using _unhandled_input(), but i cba to refactor atp
+	if not can_throw:
+		return
 	mouse_pos = get_local_mouse_position()
 	distance = mouse_pos.length()
 	if distance > max_mouse_radius:
