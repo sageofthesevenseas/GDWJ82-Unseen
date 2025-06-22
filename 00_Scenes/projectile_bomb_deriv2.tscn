@@ -1,22 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://di5yr5i43ao81"]
+[gd_scene load_steps=11 format=3 uid="uid://di5yr5i43ao81"]
 
 [ext_resource type="PackedScene" uid="uid://qo3oh8heliqm" path="res://00_Scenes/Basic Scenes (Inherit from these)/Basic Projectile Settings.tscn" id="1_i3sr0"]
 [ext_resource type="Script" uid="uid://duaanxpskr4cp" path="res://Scripts/projectile_bomb.gd" id="2_vcwxn"]
-[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="3_0ondy"]
+[ext_resource type="Texture2D" uid="uid://bmgb2yeo6ipqd" path="res://UI_Textures/Bomb.png" id="3_i3sr0"]
 [ext_resource type="Script" uid="uid://dvys1qypdpga2" path="res://Scripts/Bomb_explosion_children.gd" id="4_gtt0a"]
 [ext_resource type="PackedScene" uid="uid://dymgee2dlalp7" path="res://VFX/ParticleFX/Explosion00/explosion.tscn" id="5_ylaup"]
 [ext_resource type="AudioStream" uid="uid://buf4a4phdd1bg" path="res://SFX/explosion.ogg" id="6_kroav"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nl7c5"]
-radius = 15.0
-height = 170.0
+radius = 37.0
+height = 74.0
+
+[sub_resource type="Curve" id="Curve_vcwxn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.222222, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.674157), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1xcqt"]
-radius = 600.0
+radius = 212.28
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w61sn"]
-radius = 19.0
-height = 174.0
+radius = 39.0
+height = 78.0
 
 [node name="Projectile Bomb2" instance=ExtResource("1_i3sr0")]
 collision_mask = 5
@@ -24,15 +28,12 @@ script = ExtResource("2_vcwxn")
 damage_amount = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
-position = Vector2(-2, -2)
-rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nl7c5")
 
 [node name="BombVisual" type="Sprite2D" parent="." index="1"]
-position = Vector2(31, 1)
-rotation = 0.802851
+position = Vector2(3, -7)
 scale = Vector2(0.38, 0.38)
-texture = ExtResource("3_0ondy")
+texture = ExtResource("3_i3sr0")
 
 [node name="FuseSizzle" type="AudioStreamPlayer2D" parent="." index="2"]
 bus = &"SFX Wet"
@@ -41,6 +42,11 @@ bus = &"SFX Wet"
 script = ExtResource("4_gtt0a")
 
 [node name="ExplosionVFX" parent="RemoveableChildren" index="0" instance=ExtResource("5_ylaup")]
+amount = 13
+lifetime = 0.3
+one_shot = true
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_vcwxn")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="RemoveableChildren" index="1"]
 stream = ExtResource("6_kroav")
@@ -65,8 +71,6 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemydetector" index="0"]
-position = Vector2(0, -2)
-rotation = 1.5708
 shape = SubResource("CapsuleShape2D_w61sn")
 debug_color = Color(0.700483, 0.451121, 0.531814, 0.42)
 

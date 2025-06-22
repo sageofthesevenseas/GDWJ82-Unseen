@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bi4dpscy1x5qi"]
 
 [ext_resource type="Script" uid="uid://fmhyul3f0c1g" path="res://Scripts/throwing_system.gd" id="1_gi8x3"]
+[ext_resource type="Texture2D" uid="uid://bmgb2yeo6ipqd" path="res://UI_Textures/Bomb.png" id="2_pvovm"]
 [ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_wlfx5"]
-[ext_resource type="Texture2D" uid="uid://cpmluky30rapy" path="res://ItemTextures/Pipebomb.png" id="2_yt3l2"]
-[ext_resource type="Texture2D" uid="uid://bb0n2lhyoa177" path="res://ItemTextures/Torch_preview.png" id="3_kxw5q"]
+[ext_resource type="Texture2D" uid="uid://dxyegb1ila2ch" path="res://UI_Textures/Torch.png" id="3_cb8sg"]
 [ext_resource type="PackedScene" uid="uid://di5yr5i43ao81" path="res://00_Scenes/projectile_bomb_deriv2.tscn" id="4_kxw5q"]
 [ext_resource type="PackedScene" uid="uid://bppo74h6hkep" path="res://00_Scenes/projectile_torch_deriv.tscn" id="5_kxw5q"]
 [ext_resource type="Texture2D" uid="uid://cwslskahro0pi" path="res://ItemTextures/circle.png" id="7_kxw5q"]
@@ -12,8 +12,8 @@
 
 [node name="ThrowingSystem" type="Node2D" groups=["throwingsystem"]]
 script = ExtResource("1_gi8x3")
-bomb_image = ExtResource("2_yt3l2")
-flare_image = ExtResource("3_kxw5q")
+bomb_image = ExtResource("2_pvovm")
+flare_image = ExtResource("3_cb8sg")
 bomb_prefab = ExtResource("4_kxw5q")
 flare_prefab = ExtResource("5_kxw5q")
 flare_quantity = 20
@@ -23,8 +23,8 @@ max_throw_force = 3000.0
 
 [node name="ProjectileHoldup" type="Sprite2D" parent="."]
 position = Vector2(-1, -333)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_wlfx5")
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("2_pvovm")
 
 [node name="ProjectileTarget" type="Sprite2D" parent="."]
 texture = ExtResource("7_kxw5q")
