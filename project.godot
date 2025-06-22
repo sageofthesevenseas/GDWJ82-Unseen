@@ -61,6 +61,7 @@ GUI=""
 Journals=""
 chestminigame=""
 PlayerUI=""
+fmod=""
 
 [input]
 

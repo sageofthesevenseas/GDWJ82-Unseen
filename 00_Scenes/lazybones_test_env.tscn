@@ -66,6 +66,7 @@ position = Vector2(-1553, 332)
 position = Vector2(-1448, -201)
 
 [editable path="CharacterBody2D"]
+[editable path="CharacterBody2D/PlayerUI/Logs"]
 [editable path="HiddenChest"]
 [editable path="Projectile Torch"]
 [editable path="Projectile Torch/MainLight"]
