@@ -455,6 +455,7 @@ theme_override_font_sizes/font_size = 64
 text = "Thanks for playing you cheeky bugger ;)"
 
 [node name="DebugAddJournals" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

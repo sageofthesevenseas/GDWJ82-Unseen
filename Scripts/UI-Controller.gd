@@ -74,7 +74,8 @@ func _on_mx_toggle_toggled(toggled_on: bool) -> void:
 var camera_zoom_before_pausemenu : Vector2
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action(&"Escape") and event.is_pressed() and not_in_main_menu:
-		print("menu")
+		if GameController.instance.in_game_over:
+			return
 		
 		if not menu_open:
 			open_menu()
@@ -114,6 +115,10 @@ func _on_button_10_pressed() -> void:
 	GameController.instance.add_lore(9)
 	
 func _on_continue_pressed():
+	if get_tree().get_first_node_in_group(&"throwingsystem"):
+		get_tree().get_first_node_in_group(&"throwingsystem").can_throw = false
+		get_tree().get_first_node_in_group(&"throwingsystem").enable_throw_after_delay()
+	emit_signal("play_sound", "accept")
 	close_menu()
 
 func open_menu() -> void:

@@ -6,6 +6,10 @@ static var instance: GameController
 
 signal player_ui_ready()
 
+# can't go to menu via escape while this is the case!!
+var in_game_over : bool = false
+
+
 func _ready() -> void:
 	instance = self
 	var resolution : Vector2 = get_viewport().get_visible_rect().size
@@ -87,8 +91,7 @@ func _on_health_depleted():
 	$GameOver.visible = true
 	zoom_enable = false
 	zoom_reset()
-	
-	pass
+	in_game_over = true
 
 func _on_return_pressed() -> void:
 	$FmodEventEmitter2D_Cave.stop()
@@ -98,5 +101,4 @@ func _on_return_pressed() -> void:
 	get_tree().paused = false
 	var MenuNode = get_node("GUI/UI_Handler")
 	MenuNode.visible = true
-
-	
+	in_game_over = false
