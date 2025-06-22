@@ -8,6 +8,7 @@
 pickup_type = 2
 
 [node name="ImageBackground2" type="Sprite2D" parent="." index="0"]
+visible = false
 scale = Vector2(0.36, 0.36)
 texture = ExtResource("2_ve77k")
 
@@ -17,7 +18,7 @@ scale = Vector2(0.919561, 0.919561)
 texture = ExtResource("2_ve77k")
 
 [node name="StoryImage" type="Sprite2D" parent="." index="1"]
-scale = Vector2(0.0769231, 0.0769231)
+scale = Vector2(0.092, 0.092)
 texture = ExtResource("3_ve77k")
 
 [node name="CollisionShape2D" parent="." index="2"]

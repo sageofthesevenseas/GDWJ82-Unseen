@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dye34evdgknxg" path="res://00_Scenes/Basic Scenes (Inherit from these)/pickup_base.tscn" id="1_06h2p"]
 [ext_resource type="Texture2D" uid="uid://c6m5xi1bpvtj0" path="res://ItemTextures/basic circle 256px white.png" id="2_pavqr"]
-[ext_resource type="Texture2D" uid="uid://bepkb3qlv14mq" path="res://ItemTextures/LockpickingPin.png" id="3_pavqr"]
+[ext_resource type="Texture2D" uid="uid://b0vedv2sbueqn" path="res://UI_Textures/Cheese.png" id="3_pavqr"]
 
 [node name="CheesePickup" instance=ExtResource("1_06h2p")]
 
 [node name="ImageBackground2" type="Sprite2D" parent="." index="0"]
+visible = false
 scale = Vector2(0.36, 0.36)
 texture = ExtResource("2_pavqr")
 
@@ -16,7 +17,8 @@ scale = Vector2(0.919561, 0.919561)
 texture = ExtResource("2_pavqr")
 
 [node name="CheeseImage" type="Sprite2D" parent="." index="1"]
-scale = Vector2(0.475, 0.475)
+position = Vector2(-2, -6)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("3_pavqr")
 
 [node name="CollisionShape2D" parent="." index="2"]

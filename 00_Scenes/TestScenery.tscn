@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="1_chrnd"]
 [ext_resource type="PackedScene" uid="uid://b5w1cm171ketk" path="res://00_Scenes/StaticObjects/torch_static.tscn" id="2_irmfu"]
-[ext_resource type="Script" uid="uid://cbdbrojmbdtes" path="res://Scripts/bat_spawner.gd" id="3_02sna"]
+[ext_resource type="Script" path="res://Scripts/bat_spawner.gd" id="3_02sna"]
 [ext_resource type="PackedScene" uid="uid://bxfw4dap4a6ha" path="res://00_Scenes/StaticObjects/rock02.tscn" id="3_3tj0l"]
 [ext_resource type="PackedScene" uid="uid://bb0dr6gy06r64" path="res://00_Scenes/StaticObjects/rock06.tscn" id="3_kunwh"]
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="4_70k2p"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bajs5fdbhmyqn" path="res://EnvTextures/floor01.png" id="5_mu4cm"]
 [ext_resource type="PackedScene" uid="uid://p0ov64q4sinr" path="res://00_Scenes/StaticObjects/rock09.tscn" id="6_0iuyj"]
 [ext_resource type="PackedScene" uid="uid://l04nsg0jtwj5" path="res://00_Scenes/chest_map.tscn" id="6_dokna"]
-[ext_resource type="PackedScene" path="res://00_Scenes/spawn_point.tscn" id="7_0oj2q"]
+[ext_resource type="PackedScene" uid="uid://lccfk6156mwg" path="res://00_Scenes/spawn_point.tscn" id="7_0oj2q"]
 [ext_resource type="Texture2D" uid="uid://bjgxqv8oojc7u" path="res://VFX/ParticleFX/Smell00/smell_DIF-02.png" id="7_dokna"]
 [ext_resource type="PackedScene" uid="uid://pfdwy5xk4g2e" path="res://00_Scenes/StaticObjects/rock10.tscn" id="7_vqdus"]
 [ext_resource type="PackedScene" uid="uid://5quho63r7hif" path="res://00_Scenes/StaticObjects/rock11.tscn" id="8_h8cyp"]
@@ -472,37 +472,157 @@ metadata/_edit_lock_ = true
 
 [node name="ChestMap" parent="." instance=ExtResource("6_dokna")]
 position = Vector2(16, 0)
-number_of_chests = 10
+number_of_chests = 18
 
 [node name="SpawnPoint" parent="ChestMap/SpawnPoints" index="0" instance=ExtResource("7_0oj2q")]
-position = Vector2(-3246, -4008)
+position = Vector2(-3246, -5091)
 
-[node name="SpawnPoint2" parent="ChestMap/SpawnPoints" index="1" instance=ExtResource("7_0oj2q")]
-position = Vector2(-3927, -94)
+[node name="SpawnPoint13" parent="ChestMap/SpawnPoints" index="1" instance=ExtResource("7_0oj2q")]
+position = Vector2(-1709, -6707)
 
-[node name="SpawnPoint3" parent="ChestMap/SpawnPoints" index="2" instance=ExtResource("7_0oj2q")]
+[node name="SpawnPoint33" parent="ChestMap/SpawnPoints" index="2" instance=ExtResource("7_0oj2q")]
+position = Vector2(1319, -6930)
+
+[node name="SpawnPoint2" parent="ChestMap/SpawnPoints" index="3" instance=ExtResource("7_0oj2q")]
+position = Vector2(-4101, -1542)
+
+[node name="SpawnPoint28" parent="ChestMap/SpawnPoints" index="4" instance=ExtResource("7_0oj2q")]
+position = Vector2(-2381, -1394)
+
+[node name="SpawnPoint34" parent="ChestMap/SpawnPoints" index="5" instance=ExtResource("7_0oj2q")]
+position = Vector2(-8, -3069)
+
+[node name="SpawnPoint35" parent="ChestMap/SpawnPoints" index="6" instance=ExtResource("7_0oj2q")]
+position = Vector2(3877, -2676)
+
+[node name="SpawnPoint47" parent="ChestMap/SpawnPoints" index="7" instance=ExtResource("7_0oj2q")]
+position = Vector2(1923, -826)
+
+[node name="SpawnPoint29" parent="ChestMap/SpawnPoints" index="8" instance=ExtResource("7_0oj2q")]
+position = Vector2(-3297, -3610)
+
+[node name="SpawnPoint30" parent="ChestMap/SpawnPoints" index="9" instance=ExtResource("7_0oj2q")]
+position = Vector2(-5070, -5068)
+
+[node name="SpawnPoint31" parent="ChestMap/SpawnPoints" index="10" instance=ExtResource("7_0oj2q")]
+position = Vector2(-8498, -478)
+
+[node name="SpawnPoint32" parent="ChestMap/SpawnPoints" index="11" instance=ExtResource("7_0oj2q")]
+position = Vector2(-7474, -2606)
+
+[node name="SpawnPoint11" parent="ChestMap/SpawnPoints" index="12" instance=ExtResource("7_0oj2q")]
+position = Vector2(-6015, -183)
+
+[node name="SpawnPoint12" parent="ChestMap/SpawnPoints" index="13" instance=ExtResource("7_0oj2q")]
+position = Vector2(-5660, -2251)
+
+[node name="SpawnPoint3" parent="ChestMap/SpawnPoints" index="14" instance=ExtResource("7_0oj2q")]
 position = Vector2(4361, 2362)
 
-[node name="SpawnPoint4" parent="ChestMap/SpawnPoints" index="3" instance=ExtResource("7_0oj2q")]
+[node name="SpawnPoint18" parent="ChestMap/SpawnPoints" index="15" instance=ExtResource("7_0oj2q")]
+position = Vector2(6173, 2451)
+
+[node name="SpawnPoint19" parent="ChestMap/SpawnPoints" index="16" instance=ExtResource("7_0oj2q")]
+position = Vector2(5257, 5534)
+
+[node name="SpawnPoint45" parent="ChestMap/SpawnPoints" index="17" instance=ExtResource("7_0oj2q")]
+position = Vector2(7125, 6022)
+
+[node name="SpawnPoint20" parent="ChestMap/SpawnPoints" index="18" instance=ExtResource("7_0oj2q")]
+position = Vector2(3080, 6401)
+
+[node name="SpawnPoint4" parent="ChestMap/SpawnPoints" index="19" instance=ExtResource("7_0oj2q")]
 position = Vector2(1703, 7386)
 
-[node name="SpawnPoint5" parent="ChestMap/SpawnPoints" index="4" instance=ExtResource("7_0oj2q")]
+[node name="SpawnPoint21" parent="ChestMap/SpawnPoints" index="20" instance=ExtResource("7_0oj2q")]
+position = Vector2(1989, 3968)
+
+[node name="SpawnPoint22" parent="ChestMap/SpawnPoints" index="21" instance=ExtResource("7_0oj2q")]
+position = Vector2(-336, 3347)
+
+[node name="SpawnPoint37" parent="ChestMap/SpawnPoints" index="22" instance=ExtResource("7_0oj2q")]
+position = Vector2(-3129, 898)
+
+[node name="SpawnPoint50" parent="ChestMap/SpawnPoints" index="23" instance=ExtResource("7_0oj2q")]
+position = Vector2(-1175, 1770)
+
+[node name="SpawnPoint38" parent="ChestMap/SpawnPoints" index="24" instance=ExtResource("7_0oj2q")]
+position = Vector2(-3428, 2646)
+
+[node name="SpawnPoint40" parent="ChestMap/SpawnPoints" index="25" instance=ExtResource("7_0oj2q")]
+position = Vector2(7385, 1301)
+
+[node name="SpawnPoint41" parent="ChestMap/SpawnPoints" index="26" instance=ExtResource("7_0oj2q")]
+position = Vector2(9116, -240)
+
+[node name="SpawnPoint42" parent="ChestMap/SpawnPoints" index="27" instance=ExtResource("7_0oj2q")]
+position = Vector2(7532, -4378)
+
+[node name="SpawnPoint43" parent="ChestMap/SpawnPoints" index="28" instance=ExtResource("7_0oj2q")]
+position = Vector2(1557, -2900)
+
+[node name="SpawnPoint39" parent="ChestMap/SpawnPoints" index="29" instance=ExtResource("7_0oj2q")]
+position = Vector2(-3915, 4763)
+
+[node name="SpawnPoint23" parent="ChestMap/SpawnPoints" index="30" instance=ExtResource("7_0oj2q")]
+position = Vector2(-2316, 5356)
+
+[node name="SpawnPoint24" parent="ChestMap/SpawnPoints" index="31" instance=ExtResource("7_0oj2q")]
+position = Vector2(-1449, 7198)
+
+[node name="SpawnPoint25" parent="ChestMap/SpawnPoints" index="32" instance=ExtResource("7_0oj2q")]
+position = Vector2(-5852, 4805)
+
+[node name="SpawnPoint5" parent="ChestMap/SpawnPoints" index="33" instance=ExtResource("7_0oj2q")]
 position = Vector2(6058, -1006)
 
-[node name="SpawnPoint6" parent="ChestMap/SpawnPoints" index="5" instance=ExtResource("7_0oj2q")]
-position = Vector2(5314, -4814)
+[node name="SpawnPoint36" parent="ChestMap/SpawnPoints" index="34" instance=ExtResource("7_0oj2q")]
+position = Vector2(2125, 2285)
 
-[node name="SpawnPoint7" parent="ChestMap/SpawnPoints" index="6" instance=ExtResource("7_0oj2q")]
-position = Vector2(881, -6109)
+[node name="SpawnPoint17" parent="ChestMap/SpawnPoints" index="35" instance=ExtResource("7_0oj2q")]
+position = Vector2(4275, 747)
 
-[node name="SpawnPoint8" parent="ChestMap/SpawnPoints" index="7" instance=ExtResource("7_0oj2q")]
-position = Vector2(6227, 5298)
+[node name="SpawnPoint46" parent="ChestMap/SpawnPoints" index="36" instance=ExtResource("7_0oj2q")]
+position = Vector2(3490, -527)
 
-[node name="SpawnPoint9" parent="ChestMap/SpawnPoints" index="8" instance=ExtResource("7_0oj2q")]
+[node name="SpawnPoint6" parent="ChestMap/SpawnPoints" index="37" instance=ExtResource("7_0oj2q")]
+position = Vector2(9126, -4361)
+
+[node name="SpawnPoint15" parent="ChestMap/SpawnPoints" index="38" instance=ExtResource("7_0oj2q")]
+position = Vector2(6999, -2194)
+
+[node name="SpawnPoint49" parent="ChestMap/SpawnPoints" index="39" instance=ExtResource("7_0oj2q")]
+position = Vector2(4765, -1444)
+
+[node name="SpawnPoint16" parent="ChestMap/SpawnPoints" index="40" instance=ExtResource("7_0oj2q")]
+position = Vector2(4280, -5392)
+
+[node name="SpawnPoint48" parent="ChestMap/SpawnPoints" index="41" instance=ExtResource("7_0oj2q")]
+position = Vector2(5746, -4624)
+
+[node name="SpawnPoint7" parent="ChestMap/SpawnPoints" index="42" instance=ExtResource("7_0oj2q")]
+position = Vector2(3067, -6395)
+
+[node name="SpawnPoint14" parent="ChestMap/SpawnPoints" index="43" instance=ExtResource("7_0oj2q")]
+position = Vector2(-95, -5026)
+
+[node name="SpawnPoint44" parent="ChestMap/SpawnPoints" index="44" instance=ExtResource("7_0oj2q")]
+position = Vector2(2375, -5026)
+
+[node name="SpawnPoint8" parent="ChestMap/SpawnPoints" index="45" instance=ExtResource("7_0oj2q")]
+position = Vector2(7675, 4402)
+
+[node name="SpawnPoint9" parent="ChestMap/SpawnPoints" index="46" instance=ExtResource("7_0oj2q")]
 position = Vector2(-2254, 4238)
 
-[node name="SpawnPoint10" parent="ChestMap/SpawnPoints" index="9" instance=ExtResource("7_0oj2q")]
+[node name="SpawnPoint10" parent="ChestMap/SpawnPoints" index="47" instance=ExtResource("7_0oj2q")]
 position = Vector2(-6457, 3205)
+
+[node name="SpawnPoint26" parent="ChestMap/SpawnPoints" index="48" instance=ExtResource("7_0oj2q")]
+position = Vector2(-7866, 693)
+
+[node name="SpawnPoint27" parent="ChestMap/SpawnPoints" index="49" instance=ExtResource("7_0oj2q")]
+position = Vector2(-5246, 1245)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false

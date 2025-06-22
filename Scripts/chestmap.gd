@@ -17,7 +17,7 @@ var chosen_spots = []
 	#"story item": story_item_prefab,
 	#"weapon item": weapon_item_prefab,
 	#"utility item": util_item_prefab
-#}
+
 
 func _ready() -> void:
 	spawn_chests()
@@ -30,9 +30,9 @@ func spawn_chests():
 		var chest = chest_prefab.instantiate()
 		chests_spawned.add_child(chest)
 		chest.position = chest_location.position
-		var storynum = story_array.pick_random()
-		story_array.erase(storynum)
-		chest.pass_in_story(storynum)
+		#var storynum = story_array.pick_random()
+		#story_array.erase(storynum)
+		#chest.pass_in_story(storynum)
 	var chest_number = chests_spawned.get_children().size()
 	print("there are ", chest_number, " chests spawned for the player to find")
 
