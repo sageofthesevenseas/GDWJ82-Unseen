@@ -157,6 +157,7 @@ text = "000"
 visible = false
 
 [node name="CloseButton" type="Button" parent="PlayerUI/Logs"]
+layout_mode = 0
 offset_left = 1199.0
 offset_top = 81.0
 offset_right = 1263.0

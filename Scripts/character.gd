@@ -68,6 +68,7 @@ func _ready() -> void:
 		PlayerStats.instance.player_health = health
 	else:
 		push_warning("No PlayerStats instance available.")
+	DebugMenuSingleton.kill_self_pressed.connect(die)
 
 func _physics_process(delta : float) -> void:
 	curframe_can_open_chest = false

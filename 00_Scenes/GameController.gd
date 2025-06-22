@@ -101,4 +101,5 @@ func _on_return_pressed() -> void:
 	get_tree().paused = false
 	var MenuNode = get_node("GUI/UI_Handler")
 	MenuNode.visible = true
+	MenuNode.not_in_main_menu = false
 	in_game_over = false

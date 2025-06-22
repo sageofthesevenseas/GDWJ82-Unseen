@@ -3,6 +3,7 @@ extends Control
 signal infinite_ammo_toggled(toggled_on : bool)
 signal enemy_nav_hints_toggled(toggled_on : bool)
 signal story_logs_toggled(toggled_on : bool)
+signal kill_self_pressed()
 
 var debug_menu_scene : PackedScene = load("res://00_Scenes/Debug Nodes/debug_menu.tscn")
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 	($DebugMenu/VBoxContainer/InfiniteAmmo/InfiniteAmmo as CheckButton).toggled.connect(on_infinite_ammo_toggled)
 	($DebugMenu/VBoxContainer/ShowEnemyNavHints/ShowEnemyNavHints as CheckButton).toggled.connect(on_enemy_nav_hints_toggled)
 	($DebugMenu/VBoxContainer/ToggleStoryLogs/ToggleStoryLogs as CheckButton).toggled.connect(on_story_logs_toggled)
+	($DebugMenu/VBoxContainer/KillSelf/KillSelf as Button).pressed.connect(on_kill_self_pressed)
 	visible = false
 
 func set_material_recursively(node : Control, the_material : Material) -> void:
@@ -37,3 +39,6 @@ func on_enemy_nav_hints_toggled(toggled_on : bool) -> void:
 
 func on_story_logs_toggled(toggled_on : bool) -> void:
 	story_logs_toggled.emit(toggled_on)
+
+func on_kill_self_pressed() -> void:
+	kill_self_pressed.emit()

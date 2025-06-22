@@ -45,3 +45,14 @@ text = "Toggle story logs"
 
 [node name="ToggleStoryLogs" type="CheckButton" parent="VBoxContainer/ToggleStoryLogs"]
 layout_mode = 2
+
+[node name="KillSelf" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/KillSelf"]
+layout_mode = 2
+text = "Kill self"
+
+[node name="KillSelf" type="Button" parent="VBoxContainer/KillSelf"]
+layout_mode = 2
+text = "x"
