@@ -66,21 +66,16 @@ func _on_sfx_toggle_toggled(toggled_on: bool) -> void:
 func _on_mx_h_slider_drag_ended(value_changed: bool) -> void:
 	if not value_changed:
 		return
-	# doesn't work because fmod isn't funnelled into the music master bus.
-	# LZB NOTE 22-06-25 - have no fear my friend, I am here to help
-	# LZB NOTE 22-06-25 - still isnt in the master bus tho
-	for i: FmodEventEmitter2D in fmods:
-		i.volume = $Settings/MX_HSlider.value
-	#AudioServer.set_bus_volume_``` # LZB NOTE 22-06-25 - WONT BE NEEDING THAT ANYMORE
-
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(&"Music Master"), $Settings/MX_HSlider.value)
+	
 func _on_mx_toggle_toggled(toggled_on: bool) -> void:
-	# doesn't work because fmod isn't funnelled into the music master bus. # LZB NOTE 22-06-25 - have no fear my friend, I am here to help
-	for i: FmodEventEmitter2D in fmods:
-		if toggled_on == true:
-			i.volume = $Settings/MX_HSlider.value
-		if toggled_on == false:
-			i.volume = 0.0
-	#AudioServer.set_bus_mute(AudioServer.get_bus_index(&"Music Master"), not toggled_on) # LZB NOTE 22-06-25 - wont be needing THAT anymore
+	 #doesn't work because fmod isn't funnelled into the music master bus. # LZB NOTE 22-06-25 - have no fear my friend, I am here to help
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(&"Music Master"), not toggled_on)
+		#for i: FmodEventEmitter2D in fmods:
+		#if toggled_on == true:
+			#i.volume = $Settings/MX_HSlider.value
+		#if toggled_on == false:
+			#i.volume = 0.0
 var camera_zoom_before_pausemenu : Vector2
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action(&"Escape") and event.is_pressed() and not_in_main_menu:

@@ -3,6 +3,11 @@ class_name GameController
 static var instance: GameController
 
 @onready var camera: Node2D = $Camera
+@onready var menu_music: AudioStreamPlayer2D = %MenuMusic
+@onready var menu_music_end: AudioStreamPlayer2D = %MenuMusicEnd
+@onready var level_ambience: AudioStreamPlayer2D = %LevelAmbience
+@onready var battle_music: AudioStreamPlayer2D = %BattleMusic
+
 
 signal player_ui_ready()
 
@@ -20,7 +25,7 @@ func _ready() -> void:
 	GuiNode.add_child(Main_Menu)
 	var MenuNode = get_node("GUI/UI_Handler")
 	MenuNode.connect("start_game", Callable(self, "_on_start_game"))
-	$FmodEventEmitter2D_Menu.play()
+	menu_music.play()
 	
 	# deeply evil code. just for debugging.
 	DebugMenuSingleton.story_logs_toggled.connect(func (toggled_on : bool) -> void: for i in lore_found.size(): lore_found[i] = toggled_on)
@@ -51,7 +56,12 @@ func zoom_reset():
 func add_lore(index : int) -> void:
 	lore_found[index] = true
 	print(lore_found)
+	if lore_found.all(func(value): return value):
+		you_win()
+	#if bool_array.all(func(value): return value == true):
 
+func you_win():
+	print("YOU WIN!!!!")
 
 func _on_start_game():
 	var WorldNode = get_node("World2D")
@@ -63,12 +73,15 @@ func _on_start_game():
 	emit_signal("player_ui_ready")
 	MenuNode.visible = false
 	
-	$FmodEventEmitter2D_Menu.set_parameter("GameStart", 1)
+	#$FmodEventEmitter2D_Menu.set_parameter("GameStart", 1)
+	menu_music.stop()
+	menu_music_end.play()
 	$Timer.start()
 
 	
 func _on_timer_timeout() -> void:
-	$FmodEventEmitter2D_Cave.play()
+	level_ambience.play()
+	#$FmodEventEmitter2D_Cave.play()
 
 
 func spawn_player_and_switch_camera():
@@ -95,9 +108,11 @@ func _on_health_depleted():
 	in_game_over = true
 
 func _on_return_pressed() -> void:
-	$FmodEventEmitter2D_Cave.stop()
-	$FmodEventEmitter2D_Menu.set_parameter("GameStart", 0)
-	$FmodEventEmitter2D_Menu.play()
+	#$FmodEventEmitter2D_Cave.stop()
+	level_ambience.stop()
+	#$FmodEventEmitter2D_Menu.set_parameter("GameStart", 0)
+	menu_music.play()
+	#$FmodEventEmitter2D_Menu.play()
 	$GameOver.visible = false
 	get_tree().paused = false
 	var MenuNode : Control = get_node("GUI/UI_Handler")
@@ -106,3 +121,14 @@ func _on_return_pressed() -> void:
 	MenuNode.not_in_main_menu = false
 	$GUI.position = Vector2.ZERO
 	in_game_over = false
+
+
+
+func _on_menu_music_finished() -> void:
+	menu_music.play()
+
+func _on_level_ambience_finished() -> void:
+	level_ambience.play()
+
+func _on_battle_music_finished() -> void:
+	battle_music.play()

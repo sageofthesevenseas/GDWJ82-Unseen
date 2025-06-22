@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctxqtjrcc0d7"]
+[gd_scene load_steps=15 format=3 uid="uid://ctxqtjrcc0d7"]
 
 [ext_resource type="Script" uid="uid://m3v58b01t2vd" path="res://00_Scenes/GameController.gd" id="1_coj0j"]
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_xfl2n"]
@@ -9,6 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://c33ca52imty1s" path="res://SFX/menu_accept-02.ogg" id="5_6d08n"]
 [ext_resource type="PackedScene" uid="uid://dclyhubdk31cs" path="res://00_Scenes/camera.tscn" id="6_8471c"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="10_hv3wc"]
+[ext_resource type="AudioStream" uid="uid://bbv23r1cx2adv" path="res://Music/Main Menu Theme.mp3" id="10_vplmn"]
+[ext_resource type="AudioStream" uid="uid://dpm8yr8vrecsb" path="res://Music/Menu Ending.mp3" id="11_w5f2u"]
+[ext_resource type="AudioStream" uid="uid://cvaitp0xq5qgk" path="res://Music/Cave Ambiance.mp3" id="12_oadnn"]
+[ext_resource type="AudioStream" uid="uid://bv8yqtw1jhfae" path="res://Music/Cave Combat Cut.mp3" id="13_r3xwd"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hlxf8"]
 light_mode = 1
@@ -54,30 +58,6 @@ offset_bottom = 40.0
 [node name="World3D" type="Node3D" parent="."]
 
 [node name="World2D" type="Node2D" parent="."]
-
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://Music/Desktop/Master.strings.bank", "res://Music/Desktop/Master.bank", "res://Music/Desktop/Cave.bank", "res://Music/Desktop/Menu.bank"]
-
-[node name="FmodEventEmitter2D_Menu" type="FmodEventEmitter2D" parent="." groups=["fmod"]]
-event_name = "event:/MainMenu"
-event_guid = "{8a1ef185-3888-4b2d-be1b-dd1b9abbc42d}"
-attached = false
-volume = 0.5
-fmod_parameters/GameStart/id = 460050821763118337
-fmod_parameters/GameStart = 0
-fmod_parameters/GameStart/variant_type = 2
-
-[node name="FmodEventEmitter2D_Cave" type="FmodEventEmitter2D" parent="." groups=["fmod"]]
-event_name = "event:/CaveAmbiance"
-event_guid = "{9aa36312-7e51-4e3b-b79c-5c56633ac0e7}"
-attached = false
-volume = 0.5
-fmod_parameters/GameplayType/id = -7955650638421249893
-fmod_parameters/GameplayType = "Exploration"
-fmod_parameters/GameplayType/labels = PackedStringArray("Exploration", "Combat")
-fmod_parameters/GameplayType/variant_type = 4
-
-[node name="FmodListener2D" type="FmodListener2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -128,5 +108,44 @@ theme_override_fonts/font = ExtResource("10_hv3wc")
 theme_override_font_sizes/font_size = 41
 text = "Return"
 
+[node name="Music" type="Node" parent="."]
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("10_vplmn")
+max_distance = 300000.0
+attenuation = 1e-05
+bus = &"Music Master"
+parameters/looping = true
+
+[node name="MenuMusicEnd" type="AudioStreamPlayer2D" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("11_w5f2u")
+max_distance = 300000.0
+attenuation = 1e-05
+panning_strength = 0.0
+bus = &"Music Master"
+
+[node name="LevelAmbience" type="AudioStreamPlayer2D" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("12_oadnn")
+max_distance = 300000.0
+attenuation = 1e-05
+panning_strength = 0.0
+bus = &"Music Master"
+parameters/looping = true
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("13_r3xwd")
+volume_db = -80.0
+max_distance = 300000.0
+attenuation = 1e-05
+panning_strength = 0.0
+bus = &"Music Master"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOver/Return" to="." method="_on_return_pressed"]
+[connection signal="finished" from="Music/MenuMusic" to="." method="_on_menu_music_finished"]
+[connection signal="finished" from="Music/LevelAmbience" to="." method="_on_level_ambience_finished"]
+[connection signal="finished" from="Music/BattleMusic" to="." method="_on_battle_music_finished"]

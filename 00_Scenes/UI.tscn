@@ -205,9 +205,9 @@ offset_top = 644.0
 offset_right = 1129.0
 offset_bottom = 660.0
 scale = Vector2(2, 2)
-max_value = 1.0
+max_value = 1.2
 step = 0.05
-value = 0.5
+value = 1.0
 
 [node name="MX_Toggle" type="CheckButton" parent="Settings"]
 layout_mode = 0

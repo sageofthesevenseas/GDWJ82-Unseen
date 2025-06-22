@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djncqltffufdv"
+path="res://.godot/imported/Cave - Combat.mp3-33631dd6ae68755c1c34050002509aab.mp3str"
+
+[deps]
+
+source_file="res://Music/Cave - Combat.mp3"
+dest_files=["res://.godot/imported/Cave - Combat.mp3-33631dd6ae68755c1c34050002509aab.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
