@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://chrftql7lrj5f" path="res://Scripts/journals.gd" id="3_lgx2n"]
 [ext_resource type="Texture2D" uid="uid://5puypvfvy5pu" path="res://ItemTextures/paper-01.png" id="4_icyyo"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
-[ext_resource type="FontFile" uid="uid://cjll6tk1uyy7f" path="res://Fonts/Mayonice.otf" id="5_icyyo"]
+[ext_resource type="FontFile" uid="uid://cdiqf1rd2eota" path="res://Fonts/Dark Shadow.otf" id="6_17fi0"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
 [ext_resource type="Texture2D" uid="uid://51g0kr05jrcg" path="res://UI_Textures/title_art.png" id="9_icyyo"]
 
@@ -344,7 +344,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "I brought a bottle of whiskey with me to work today.
 
@@ -364,7 +364,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "We’d been feeling the pain of budget cuts for a while now. When that disease ran through the rats, we lost a lot more than we could have because we only had one vet on staff. I think about stuff like that as I take inventory of everything I’m responsible for now.
 
@@ -387,7 +387,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "I need to go out and get another bottle, I’m gonna miss my team.
 
@@ -404,7 +404,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "There are 40 animals left in the facility. 10 bats, 20 rats, and 10 rabbits. Johnny, our old animal handler, was helpful enough to give them all names beforehand, and broke down the specifics of caring for each of them in his manual. He didn’t leave anything out, and it shows me just how much work he was doing before he got fired.
 
@@ -422,7 +422,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "Even with all the instructions, this is still too much damn work.
 
@@ -443,7 +443,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "I brought aI’m tired and scared but I need to write this down before I do anything else.
 
@@ -466,7 +466,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "I stayed up all night and there wasn’t anything there in the morning. Some kind of nocturnal hunter. Maybe it can smell the animals inside.
 
@@ -488,7 +488,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "I woke up to it banging at the station door. 
 
@@ -509,7 +509,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "I can hear it outside. It can tell how to turn off the lights, and it’s trying to find a way to get it.
 
@@ -530,7 +530,7 @@ offset_top = -365.0
 offset_right = 204.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_icyyo")
+theme_override_fonts/normal_font = ExtResource("6_17fi0")
 theme_override_font_sizes/normal_font_size = 32
 text = "I’m gonna die tonight.
 
