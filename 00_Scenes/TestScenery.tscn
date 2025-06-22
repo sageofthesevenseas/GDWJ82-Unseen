@@ -53,7 +53,6 @@ colors = PackedColorArray(0.215802, 0.25058, 1, 1, 1, 1, 1, 0)
 [node name="TestScenery" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="MainLight" parent="." instance=ExtResource("1_chrnd")]

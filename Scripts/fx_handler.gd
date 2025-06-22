@@ -2,7 +2,7 @@ extends Node
 
 class_name fx_handler
 static var instance : fx_handler
-@export var accept_default_volume : float = 15
+@export var accept_default_volume : float = 5
 @export var paper_default_volume : float = 20
 @export var decline_default_volume : float = 10
 @export var throw_default_volume : float = 4

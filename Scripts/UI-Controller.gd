@@ -24,7 +24,6 @@ func _on_game_start_pressed() -> void:
 	emit_signal("get_gameplay_nodes")
 	print("Signals emmitted")
 	not_in_main_menu = true
-	GameController.instance.add_lore(0)
 
 func _on_credits_pressed() -> void:
 	emit_signal("play_sound", "accept")
