@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://chrftql7lrj5f" path="res://Scripts/journals.gd" id="3_lgx2n"]
 [ext_resource type="Texture2D" uid="uid://5puypvfvy5pu" path="res://ItemTextures/paper-01.png" id="4_icyyo"]
 [ext_resource type="Texture2D" uid="uid://br5gtgj8frjjy" path="res://ItemTextures/ChestFront.png" id="5_am61d"]
-[ext_resource type="FontFile" uid="uid://cdiqf1rd2eota" path="res://Fonts/Dark Shadow.otf" id="6_17fi0"]
+[ext_resource type="FontFile" uid="uid://kmc5kgcor0j8" path="res://Fonts/LemonTuesday.otf" id="6_17fi0"]
 [ext_resource type="Texture2D" uid="uid://h3mx416pcad4" path="res://ItemTextures/ChestLid.png" id="6_lgx2n"]
 [ext_resource type="Texture2D" uid="uid://51g0kr05jrcg" path="res://UI_Textures/title_art.png" id="9_icyyo"]
 
