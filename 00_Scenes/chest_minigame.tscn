@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://rwqyuhniy1u"]
+[gd_scene load_steps=24 format=3 uid="uid://rwqyuhniy1u"]
 
 [ext_resource type="Script" uid="uid://c1ocir65gud0d" path="res://Scripts/chest_minigame.gd" id="1_bd1gb"]
 [ext_resource type="Script" uid="uid://cimgpfksro1lg" path="res://Scripts/chest_minigame_manager.gd" id="1_h54ls"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bepkb3qlv14mq" path="res://ItemTextures/LockpickingPin.png" id="5_iga1p"]
 [ext_resource type="AudioStream" uid="uid://brlo6uf3bvjh2" path="res://SFX/open_chest.ogg" id="7_xauol"]
 [ext_resource type="AudioStream" uid="uid://lxrlahvlulq8" path="res://SFX/unlock_sound.wav" id="8_epv20"]
+[ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="9_epv20"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h54ls"]
 light_mode = 1
@@ -155,6 +156,9 @@ _data = {
 &"Open": SubResource("Animation_h54ls"),
 &"RESET": SubResource("Animation_xauol")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k4h6y"]
+light_mode = 1
 
 [node name="Chest_Minigame" type="Node2D"]
 z_index = 1000
@@ -316,6 +320,23 @@ playback_type = 1
 stream = ExtResource("8_epv20")
 bus = &"SFX Wet"
 playback_type = 1
+
+[node name="TutorialCanvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="TutorialCanvas"]
+material = SubResource("CanvasItemMaterial_k4h6y")
+offset_left = 295.0
+offset_top = 205.0
+offset_right = 1645.0
+offset_bottom = 251.0
+pivot_offset = Vector2(675, 0)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_epv20")
+theme_override_font_sizes/font_size = 36
+text = "Press E and release when the knobs are aligned to unlock the chest"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="minigame_completed" from="MiniGame1" to="." method="_on_mini_game_1_minigame_completed"]
 [connection signal="minigame_ready" from="MiniGame1" to="." method="_on_mini_game_1_minigame_ready"]

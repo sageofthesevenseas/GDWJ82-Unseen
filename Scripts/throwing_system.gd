@@ -37,6 +37,9 @@ var can_throw : bool = true
 signal bombs_increased
 signal flares_increased
 
+signal ui_bomb_active
+signal ui_torch_active
+
 func enable_throw_after_delay() -> void:
 	get_tree().create_timer(0.02).timeout.connect(func () -> void: can_throw = true)
 
@@ -62,12 +65,14 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("select_bomb"):
 		weapon_counter = 0
+		emit_signal("ui_bomb_active")
 		check_weapon_selected()
 		projectile_holdup.visible = true
 		holdup_display_timer.start(1.5)
 	
 	if Input.is_action_just_pressed("select_flare"): #this will hard set to flare
 		weapon_counter = 1
+		emit_signal("ui_torch_active")
 		check_weapon_selected()
 		projectile_holdup.visible = true
 		holdup_display_timer.start(1.5)
@@ -78,6 +83,10 @@ func _process(_delta: float) -> void:
 		check_weapon_selected()
 		projectile_holdup.visible = true
 		holdup_display_timer.start(1.5)
+		if weapon_counter == 0:
+			emit_signal("ui_bomb_active")
+		elif weapon_counter == 1:
+			emit_signal("ui_torch_active")	
 	
 	if Input.is_action_pressed("throw"):
 		projectile_target.visible = true

@@ -15,6 +15,7 @@ var game_is_playing : bool = false
 func _ready() -> void:
 	if DEBUG_run_mini_on_ready == true:
 		start_minigame()
+		
 
 #func start_minigame(relevant_hidden_chest : HiddenChest) -> void:
 func start_minigame() -> void:
@@ -24,6 +25,7 @@ func start_minigame() -> void:
 	mini_game_1.visible = true
 	mini_game_2.visible = true
 	mini_game_3.visible = true
+	$TutorialCanvas.visible = true
 	animation_player.play("RESET")
 	mini_game_1.prep()
 	mini_game_2.prep()
@@ -70,5 +72,6 @@ func exit_minigame():
 	mini_game_2.stop()
 	mini_game_3.stop()
 	visible = false
+	$TutorialCanvas.visible = false
 	chest_game_cancelled.emit()
 	

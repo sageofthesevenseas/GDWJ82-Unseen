@@ -7,7 +7,10 @@ func _ready():
 	player.connect("entered_darkness", Callable(self, "_on_entering_darkness"))
 	player.connect("exited_darkness", Callable(self, "_on_exiting_darkness"))
 	player.connect("damage_taken", Callable(self, "_on_damage_taken"))
-
+	
+	get_tree().get_first_node_in_group("throwingsystem").connect("ui_bomb_active", Callable(self, "_on_ui_bomb_active"))
+	get_tree().get_first_node_in_group("throwingsystem").connect("ui_torch_active", Callable(self, "_on_ui_torch_active"))
+	
 func _process(_delta: float) -> void:
 	$BombValue.text = str(PlayerStats.instance.get_bombs())
 	$TorchValue.text = str(PlayerStats.instance.get_flares())
@@ -21,6 +24,7 @@ func _on_damage_taken():
 	$HeartOutside/HeartInside.scale = Vector2(health, health) / 100
 	emit_signal("screenshake")
 	print(screenshake)
+
 
 func show_lore(index : int) -> void:
 	$Logs.visible = true
@@ -47,3 +51,13 @@ func close_lores() -> void:
 	get_tree().paused = false
 	get_tree().get_first_node_in_group(&"throwingsystem").enable_throw_after_delay()
 	fx_handler.instance._on_play_sound("paper")
+
+	
+func _on_ui_bomb_active():
+	$BombActiveIndicator.visible = true
+	$TorchActiveIndicator.visible = false
+
+func _on_ui_torch_active():
+	$BombActiveIndicator.visible = false
+	$TorchActiveIndicator.visible = true
+
