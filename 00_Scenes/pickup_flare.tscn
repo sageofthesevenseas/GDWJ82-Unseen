@@ -6,7 +6,7 @@
 
 [node name="Flare_Pickup" instance=ExtResource("1_jbab6")]
 pickup_type = 1
-item_value_int = 3
+item_value_int = 2
 
 [node name="ImageBackground2" type="Sprite2D" parent="." index="0"]
 visible = false

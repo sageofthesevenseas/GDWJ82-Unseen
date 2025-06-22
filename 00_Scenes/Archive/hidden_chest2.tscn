@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://rrt2b3hgtl7r"]
+
+[ext_resource type="Script" uid="uid://b8duy7cy81uku" path="res://Scripts/hidden_chest.gd" id="1_0a3up"]
+[ext_resource type="PackedScene" uid="uid://cmr5lyfmqmup3" path="res://00_Scenes/exposed_chest.tscn" id="2_6f2ct"]
+[ext_resource type="Texture2D" uid="uid://botbqjsj7vhjh" path="res://VFX/ParticleFX/Explosion00/Smoke05.png" id="5_kb1cw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n74om"]
+radius = 350.0
+
+[sub_resource type="Curve" id="Curve_oexk1"]
+_data = [Vector2(0, 0.94382), 0.0, 0.0, 0, 0, Vector2(0.694444, 0.157303), 0.0, 0.0, 0, 0, Vector2(1, 0.104831), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_aoaxv"]
+offsets = PackedFloat32Array(0, 0.87013, 1)
+colors = PackedColorArray(0.00793114, 0.390869, 0, 1, 0.180349, 0.139957, 3.60981e-08, 1, 0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_lfk5i"]
+
+[node name="HiddenChest" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_0a3up")
+real_chest = ExtResource("2_6f2ct")
+
+[node name="DetectionArea" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n74om")
+
+[node name="SpawnCPUParticle" type="CPUParticles2D" parent="."]
+amount = 250
+texture = ExtResource("5_kb1cw")
+lifetime = 10.0
+preprocess = 10.0
+speed_scale = 0.5
+local_coords = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 420.0
+initial_velocity_max = 450.0
+angular_velocity_min = -351.45
+angular_velocity_max = 232.68
+linear_accel_min = -2.34
+linear_accel_max = -2.34
+radial_accel_min = -5.94
+radial_accel_max = 13.86
+tangential_accel_min = -4.95
+tangential_accel_max = 31.29
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_oexk1")
+color = Color(1, 1, 1, 0.266667)
+color_ramp = SubResource("Gradient_aoaxv")
+color_initial_ramp = SubResource("Gradient_lfk5i")
+hue_variation_min = -0.28
+hue_variation_max = 0.18
