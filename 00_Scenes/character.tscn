@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://qlr7s5cs5b3y"]
+[gd_scene load_steps=24 format=3 uid="uid://qlr7s5cs5b3y"]
 
 [ext_resource type="Script" uid="uid://66km6hddhlgn" path="res://Scripts/character.gd" id="1_48qfa"]
 [ext_resource type="PackedScene" uid="uid://rwqyuhniy1u" path="res://00_Scenes/chest_minigame.tscn" id="3_h7igj"]
@@ -12,11 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bmgb2yeo6ipqd" path="res://UI_Textures/Bomb.png" id="10_veate"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="11_is46d"]
 [ext_resource type="Texture2D" uid="uid://dxyegb1ila2ch" path="res://UI_Textures/Torch.png" id="11_ya0x4"]
+[ext_resource type="PackedScene" uid="uid://cvudr03xlp637" path="res://00_Scenes/logs.tscn" id="13_b674n"]
 [ext_resource type="AudioStream" uid="uid://dc5ijsohjr7l5" path="res://SFX/take_damage.ogg" id="13_cpku8"]
-ene" uid="uid://cvudr03xlp637" path="res://00_Scenes/logs.tscn" id="13_f0sn6"]
-
 [ext_resource type="Texture2D" uid="uid://bgroyr1p1rlj4" path="res://UI_Textures/selection_indicator-01.png" id="13_f0sn6"]
-
 [ext_resource type="AudioStream" uid="uid://b44f7d6nwrcob" path="res://SFX/item_pickup.ogg" id="14_cpku8"]
 [ext_resource type="AudioStream" uid="uid://droev6ph8uajq" path="res://SFX/heartbeat.ogg" id="14_k4yda"]
 [ext_resource type="AudioStream" uid="uid://cq1lkmxk4cmko" path="res://SFX/heal_eating.wav" id="15_cpku8"]
@@ -155,12 +153,10 @@ theme_override_fonts/font = ExtResource("11_is46d")
 theme_override_font_sizes/font_size = 42
 text = "000"
 
-
-[node name="Logs" parent="PlayerUI" instance=ExtResource("13_f0sn6")]
+[node name="Logs" parent="PlayerUI" instance=ExtResource("13_b674n")]
 visible = false
 
 [node name="CloseButton" type="Button" parent="PlayerUI/Logs"]
-layout_mode = 0
 offset_left = 1199.0
 offset_top = 81.0
 offset_right = 1263.0
@@ -185,7 +181,6 @@ offset_top = 819.0
 offset_right = 741.0
 offset_bottom = 1075.0
 texture = ExtResource("13_f0sn6")
-
 
 [node name="SFX" type="Node2D" parent="."]
 
