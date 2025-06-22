@@ -97,14 +97,10 @@ func _physics_process(delta : float) -> void:
 	curframe_in_darkness = not in_light
 	if curframe_in_darkness:
 		time_in_darkness += delta
-		if not prvframe_in_darkness:
-			emit_signal(&"entered_darkness")
 		if time_in_darkness > max_time_in_darkness_before_despawn:
 			queue_free()
 	else:
 		time_in_darkness = 0.0
-		if prvframe_in_darkness:
-			emit_signal(&"exited_darkness")
 	#endregion
 
 	target_seen = can_see_target();

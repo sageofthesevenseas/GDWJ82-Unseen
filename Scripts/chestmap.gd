@@ -3,39 +3,36 @@ class_name ChestMap
 
 @export var chest_prefab: PackedScene
 @export var number_of_chests: int = 20
+@export var story_array = [0,1,2,3,4,5,6,7,8,9]
 var location_array = []
 var chosen_spots = []
 @onready var spawn_points: Node = %SpawnPoints
 @onready var chests_spawned: Node = %ChestsSpawned
+# LZB NOTE 15-06-25 - I have not completed this part yet, not sure how it should be finished
 
+#var weapon_item_prefab: Node
+#var util_item_prefab: Node
 # LZB NOTE 15-06-25 - I have not completed this part yet, not sure how it should be finished
-@export var story_item_prefab: Node
-var weapon_item_prefab: Node
-var util_item_prefab: Node
-# LZB NOTE 15-06-25 - I have not completed this part yet, not sure how it should be finished
-var possible_items = {
-	"story item": story_item_prefab,
-	"weapon item": weapon_item_prefab,
-	"utility item": util_item_prefab
-}
+#var possible_items = {
+	#"story item": story_item_prefab,
+	#"weapon item": weapon_item_prefab,
+	#"utility item": util_item_prefab
+#}
 
 func _ready() -> void:
 	spawn_chests()
 
 func spawn_chests():
+
 	await choose_chest_locations()
 	for chest_location in chosen_spots:
 		# LZB NOTE 15-06-25 - pick a random chest contents/typed
-		#if the chosen type is a plot item, assign one of those and remove it from the plot item list
-		
-		#get the actual vector 2 location
-		
-		#spawn the hidden mine
 		var chest = chest_prefab.instantiate()
 		chests_spawned.add_child(chest)
 		chest.position = chest_location.position
-		#hand over the contents
-		
+		var storynum = story_array.pick_random()
+		story_array.erase(storynum)
+		chest.pass_in_story(storynum)
 	var chest_number = chests_spawned.get_children().size()
 	print("there are ", chest_number, " chests spawned for the player to find")
 

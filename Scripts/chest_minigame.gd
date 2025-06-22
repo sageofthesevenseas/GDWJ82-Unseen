@@ -40,7 +40,6 @@ func prep():
 	var tbar_starting_position = randf_range(0,1) # start the bar somewhere random so it moves into the right spot from a different place every time
 	target_bar.progress_ratio = tbar_starting_position
 	tbar_target_position = randf_range(0.2,0.93) 	# pick position of the target. Can't be set to 0 as thats cruel
-
 	target_range_min = tbar_target_position - target_range_offset
 	target_range_max = tbar_target_position + target_range_offset #move the min and max ranges based on the tolerance we want to give
 	print("target position of the target bar is ", tbar_target_position, " while the target ranges are min: ", target_range_min, " Max: ", target_range_max)
@@ -57,6 +56,7 @@ func _process(delta: float) -> void:
 			emit_minigame_ready() #this will also stop emit from happening 10000 times
 	
 	if game_state == MinigameState.RUNNING:
+		target_bar.progress_ratio = tbar_target_position
 		if Input.is_action_pressed("chest_minigame_key"): #player has to hold the key to progress
 			#print("chest_minigame_key being held")
 			player_pin.progress_ratio += minigame_speed * delta

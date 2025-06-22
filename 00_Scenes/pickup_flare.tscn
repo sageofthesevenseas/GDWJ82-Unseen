@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dye34evdgknxg" path="res://00_Scenes/Basic Scenes (Inherit from these)/pickup_base.tscn" id="1_jbab6"]
 [ext_resource type="Texture2D" uid="uid://c6m5xi1bpvtj0" path="res://ItemTextures/basic circle 256px white.png" id="2_5rqd1"]
-[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_o08rb"]
+[ext_resource type="Texture2D" uid="uid://bb0n2lhyoa177" path="res://ItemTextures/Torch_preview.png" id="3_5rqd1"]
 
 [node name="Flare_Pickup" instance=ExtResource("1_jbab6")]
 pickup_type = 1
@@ -17,8 +17,9 @@ scale = Vector2(0.919561, 0.919561)
 texture = ExtResource("2_5rqd1")
 
 [node name="FlareImage" type="Sprite2D" parent="." index="1"]
-scale = Vector2(0.49, 0.49)
-texture = ExtResource("2_o08rb")
+rotation = 0.887303
+scale = Vector2(0.140929, 0.140929)
+texture = ExtResource("3_5rqd1")
 
 [node name="CollisionShape2D" parent="." index="2"]
 visible = false

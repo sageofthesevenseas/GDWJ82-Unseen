@@ -239,7 +239,7 @@ func heal(amount: float) -> void:
 	if prev_health >= max_health:
 		return #do nothing
 	if  prev_health < max_health:
-		heal_sfx.play
+		heal_sfx.play()
 	if health > warning_health:
 		heart_beat_looper.stop()
 		heart_beat_sfx.stop() # LZB NOTE 22-06-25 - maybe tween the volume down instead

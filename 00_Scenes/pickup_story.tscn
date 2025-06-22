@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://xoae86k6l84"]
 
 [ext_resource type="PackedScene" uid="uid://dye34evdgknxg" path="res://00_Scenes/Basic Scenes (Inherit from these)/pickup_base.tscn" id="1_sna0n"]
-[ext_resource type="Texture2D" uid="uid://dung3pr0ow7d5" path="res://icon.svg" id="2_0gh3e"]
 [ext_resource type="Texture2D" uid="uid://c6m5xi1bpvtj0" path="res://ItemTextures/basic circle 256px white.png" id="2_ve77k"]
+[ext_resource type="Texture2D" uid="uid://5puypvfvy5pu" path="res://ItemTextures/paper-01.png" id="3_ve77k"]
 
 [node name="StoryPickup" instance=ExtResource("1_sna0n")]
 pickup_type = 2
@@ -17,8 +17,8 @@ scale = Vector2(0.919561, 0.919561)
 texture = ExtResource("2_ve77k")
 
 [node name="StoryImage" type="Sprite2D" parent="." index="1"]
-scale = Vector2(0.495, 0.495)
-texture = ExtResource("2_0gh3e")
+scale = Vector2(0.0769231, 0.0769231)
+texture = ExtResource("3_ve77k")
 
 [node name="CollisionShape2D" parent="." index="2"]
 visible = false

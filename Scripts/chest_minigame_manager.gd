@@ -5,7 +5,7 @@ class_name ChestMinigameManager extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var open_sound: AudioStreamPlayer2D = $Open_sound
 @onready var click_sound: AudioStreamPlayer2D = $Click_Sound
-
+@export var game_beaten_bool: bool = false
 @export var DEBUG_run_mini_on_ready: bool = false
 signal chest_game_beaten
 signal chest_game_cancelled
@@ -18,6 +18,7 @@ func _ready() -> void:
 
 #func start_minigame(relevant_hidden_chest : HiddenChest) -> void:
 func start_minigame() -> void:
+	game_beaten_bool = false
 	game_is_playing = true
 	visible = true
 	mini_game_1.visible = true
@@ -43,20 +44,25 @@ func _on_mini_game_2_minigame_completed() -> void:
 	click_sound.play()
 
 func _on_mini_game_3_minigame_completed() -> void:
-	print("player has completed minigame!")
 	game_is_playing = false
+	game_beaten_bool = true
 	mini_game_1.visible = false
 	mini_game_2.visible = false
 	mini_game_3.visible = false
 	animation_player.play("Open")
 	click_sound.play()
 	open_sound.play()
-	chest_game_beaten.emit()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action(&"quit_minigame") and event.is_pressed() and game_is_playing:
 		get_viewport().set_input_as_handled()
+		if game_beaten_bool == true:
+			emit_game_beaten() # LZB NOTE 22-06-25 - for animation cancelling the lid open
 		exit_minigame()
+
+func emit_game_beaten():
+	chest_game_beaten.emit()
 
 func exit_minigame():
 	game_is_playing = false
