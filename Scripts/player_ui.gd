@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal screenshake()
+signal close_lore
 
 func _ready():
 	var player = get_tree().get_first_node_in_group("player")
@@ -51,6 +52,7 @@ func close_lores() -> void:
 	get_tree().paused = false
 	get_tree().get_first_node_in_group(&"throwingsystem").enable_throw_after_delay()
 	fx_handler.instance._on_play_sound("paper")
+	close_lore.emit()
 
 	
 func _on_ui_bomb_active():
@@ -60,4 +62,3 @@ func _on_ui_bomb_active():
 func _on_ui_torch_active():
 	$BombActiveIndicator.visible = false
 	$TorchActiveIndicator.visible = true
-

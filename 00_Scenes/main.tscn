@@ -63,6 +63,87 @@ offset_bottom = 40.0
 one_shot = true
 ignore_time_scale = true
 
+[node name="YouWin" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="YouWin"]
+offset_left = -43.0
+offset_top = -26.0
+offset_right = 1963.0
+offset_bottom = 1120.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelWin" type="Label" parent="YouWin"]
+anchors_preset = -1
+anchor_left = 0.364
+anchor_top = 0.243
+anchor_right = 0.636
+anchor_bottom = 0.342
+offset_left = -0.880066
+offset_top = -0.440002
+offset_right = 0.879883
+offset_bottom = -0.360016
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_fonts/font = ExtResource("10_hv3wc")
+theme_override_font_sizes/font_size = 84
+text = "You win!"
+
+[node name="LabelWin2" type="Label" parent="YouWin"]
+anchors_preset = -1
+anchor_left = 0.134
+anchor_top = 0.712
+anchor_right = 0.866
+anchor_bottom = 0.811
+offset_left = -0.779999
+offset_top = 0.039978
+offset_right = 0.779907
+offset_bottom = 0.119934
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_fonts/font = ExtResource("10_hv3wc")
+theme_override_font_sizes/font_size = 84
+text = "Thanks for playing our game!"
+
+[node name="LabelJournals" type="Label" parent="YouWin"]
+anchors_preset = -1
+anchor_left = 0.303
+anchor_top = 0.379
+anchor_right = 0.697
+anchor_bottom = 0.441
+offset_left = -0.76001
+offset_top = -0.320007
+offset_right = 0.76001
+offset_bottom = -0.280029
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_hv3wc")
+theme_override_font_sizes/font_size = 24
+text = "Having regained his memories, Ernest is able to escape this cave and live a long happy life "
+autowrap_mode = 2
+
+[node name="Credits" type="Button" parent="YouWin"]
+anchors_preset = -1
+anchor_left = 0.367
+anchor_top = 0.515
+anchor_right = 0.633
+anchor_bottom = 0.633
+offset_left = -0.640015
+offset_top = -0.200073
+offset_right = 0.640015
+offset_bottom = 0.359985
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_hv3wc")
+theme_override_font_sizes/font_size = 41
+text = "Credits"
+
 [node name="GameOver" type="CanvasLayer" parent="."]
 process_mode = 3
 visible = false
@@ -145,6 +226,7 @@ panning_strength = 0.0
 bus = &"Music Master"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="YouWin/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="GameOver/Return" to="." method="_on_return_pressed"]
 [connection signal="finished" from="Music/MenuMusic" to="." method="_on_menu_music_finished"]
 [connection signal="finished" from="Music/LevelAmbience" to="." method="_on_level_ambience_finished"]

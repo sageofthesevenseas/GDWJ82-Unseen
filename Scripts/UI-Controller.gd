@@ -6,11 +6,11 @@ signal play_sound(sfx_name)
 signal get_gameplay_nodes
 var not_in_main_menu = false
 var menu_open = false
-var fmods
+#var fmods
 
 func _ready() -> void:
 	set_parent_material_recurse(self)
-	fmods = get_tree().get_nodes_in_group("fmod")
+	#fmods = get_tree().get_nodes_in_group("fmod")
 
 func set_parent_material_recurse(node : CanvasItem) -> void:
 	for child in node.get_children():

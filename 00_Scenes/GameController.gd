@@ -10,6 +10,7 @@ static var instance: GameController
 
 
 signal player_ui_ready()
+var player_ui_node
 
 # can't go to menu via escape while this is the case!!
 var in_game_over : bool = false
@@ -56,13 +57,21 @@ func zoom_reset():
 func add_lore(index : int) -> void:
 	lore_found[index] = true
 	print(lore_found)
-	if lore_found.all(func(value): return value):
-		you_win()
+
 	#if bool_array.all(func(value): return value == true):
 
 func you_win():
-	print("YOU WIN!!!!")
-
+	get_tree().get_first_node_in_group("camera").reparent(get_node("/root/GameController"))
+	get_tree().get_first_node_in_group("camera").global_position = Vector2(0, 0)
+	get_viewport().get_camera_2d().zoom = Vector2(1,1)
+	for child in $World2D.get_children():
+		child.queue_free()
+	get_tree().paused = true
+	$YouWin.visible = true
+	zoom_enable = false
+	zoom_reset()
+	in_game_over = true
+	
 func _on_start_game():
 	var WorldNode = get_node("World2D")
 	var GuiNode = get_node("GUI")
@@ -93,7 +102,9 @@ func spawn_player_and_switch_camera():
 	camera.reparent(Player)
 	WorldNode.add_child(Player)
 	get_tree().get_first_node_in_group("player").connect("health_depleted", Callable(self, "_on_health_depleted"))
+	get_tree().get_first_node_in_group("PlayerUI").connect("close_lore", Callable(self, "_on_close_lore"))
 	zoom_enable = true
+	
 
 func _on_health_depleted():
 	get_tree().get_first_node_in_group("camera").reparent(get_node("/root/GameController"))
@@ -132,3 +143,22 @@ func _on_level_ambience_finished() -> void:
 
 func _on_battle_music_finished() -> void:
 	battle_music.play()
+
+func _on_close_lore()-> void:
+	if lore_found.all(func(value): return value):
+		you_win()
+
+func _on_credits_pressed() -> void:
+	#var gui = get_tree().get_first_node_in_group("GUI")._on_credits_pressed()
+	$YouWin.visible = false
+	get_tree().paused = false
+	level_ambience.stop()
+	menu_music.play()
+	var MenuNode : Control = get_node("GUI/UI_Handler")
+	MenuNode.visible = true
+	MenuNode.get_node("Main").visible = false
+	MenuNode.get_node("Credits").visible = true
+	MenuNode.get_node("Credits").get_node("EasterEgg").visible = true
+	MenuNode.not_in_main_menu = false
+	$GUI.position = Vector2.ZERO
+	in_game_over = false

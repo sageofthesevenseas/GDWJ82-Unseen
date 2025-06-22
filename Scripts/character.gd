@@ -63,7 +63,7 @@ signal entered_darkness()
 signal exited_darkness()
 
 func _ready() -> void:
-	$"Label".visible = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
+	#$"Label".visible = current_geolocation_state == GeolocationState.IN_DIGGABLE_RANGE
 	if PlayerStats.instance != null:
 		PlayerStats.instance.player_health = health
 	else:
@@ -188,11 +188,11 @@ func geolocation_process(_delta : float, geolocatables : Array[HiddenChest]) -> 
 	if not previously_in_diggable_range and in_diggable_range:
 		current_geolocation_state = GeolocationState.IN_DIGGABLE_RANGE
 		emit_signal(&"entered_diggable_range")
-		($"Label" as Label).visible = true
+		#($"Label" as Label).visible = true
 	elif previously_in_diggable_range and not in_diggable_range:
 		current_geolocation_state = GeolocationState.IDLE
 		emit_signal(&"exited_diggable_range")
-		($"Label" as Label).visible = false
+		#($"Label" as Label).visible = false
 
 func dig_anywhere() -> void:
 	emit_signal(&"dug_anywhere")
