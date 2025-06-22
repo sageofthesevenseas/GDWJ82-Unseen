@@ -85,6 +85,7 @@ func spawn_player_and_switch_camera():
 func _on_health_depleted():
 	get_tree().get_first_node_in_group("camera").reparent(get_node("/root/GameController"))
 	get_tree().get_first_node_in_group("camera").global_position = Vector2(0, 0)
+	get_viewport().get_camera_2d().zoom = Vector2(1,1)
 	for child in $World2D.get_children():
 		child.queue_free()
 	get_tree().paused = true
@@ -99,7 +100,9 @@ func _on_return_pressed() -> void:
 	$FmodEventEmitter2D_Menu.play()
 	$GameOver.visible = false
 	get_tree().paused = false
-	var MenuNode = get_node("GUI/UI_Handler")
+	var MenuNode : Control = get_node("GUI/UI_Handler")
 	MenuNode.visible = true
+	MenuNode.get_node("Main").visible = true
 	MenuNode.not_in_main_menu = false
+	$GUI.position = Vector2.ZERO
 	in_game_over = false
