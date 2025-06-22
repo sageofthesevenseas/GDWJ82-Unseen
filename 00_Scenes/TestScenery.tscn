@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dtixa5vp1ijuq" path="res://VFX/Lighting/main_light.tscn" id="1_chrnd"]
 [ext_resource type="PackedScene" uid="uid://b5w1cm171ketk" path="res://00_Scenes/StaticObjects/torch_static.tscn" id="2_irmfu"]
-[ext_resource type="Script" uid="uid://cbdbrojmbdtes" path="res://Scripts/bat_spawner.gd" id="3_02sna"]
+[ext_resource type="Script" path="res://Scripts/bat_spawner.gd" id="3_02sna"]
 [ext_resource type="PackedScene" uid="uid://bxfw4dap4a6ha" path="res://00_Scenes/StaticObjects/rock02.tscn" id="3_3tj0l"]
 [ext_resource type="PackedScene" uid="uid://bb0dr6gy06r64" path="res://00_Scenes/StaticObjects/rock06.tscn" id="3_kunwh"]
 [ext_resource type="PackedScene" uid="uid://ccrokse2n0guf" path="res://VFX/VFX_Sprites/background_overlay.tscn" id="4_70k2p"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bajs5fdbhmyqn" path="res://EnvTextures/floor01.png" id="5_mu4cm"]
 [ext_resource type="PackedScene" uid="uid://p0ov64q4sinr" path="res://00_Scenes/StaticObjects/rock09.tscn" id="6_0iuyj"]
 [ext_resource type="PackedScene" uid="uid://l04nsg0jtwj5" path="res://00_Scenes/chest_map.tscn" id="6_dokna"]
-[ext_resource type="PackedScene" path="res://00_Scenes/spawn_point.tscn" id="7_0oj2q"]
+[ext_resource type="PackedScene" uid="uid://lccfk6156mwg" path="res://00_Scenes/spawn_point.tscn" id="7_0oj2q"]
 [ext_resource type="Texture2D" uid="uid://bjgxqv8oojc7u" path="res://VFX/ParticleFX/Smell00/smell_DIF-02.png" id="7_dokna"]
 [ext_resource type="PackedScene" uid="uid://pfdwy5xk4g2e" path="res://00_Scenes/StaticObjects/rock10.tscn" id="7_vqdus"]
 [ext_resource type="PackedScene" uid="uid://5quho63r7hif" path="res://00_Scenes/StaticObjects/rock11.tscn" id="8_h8cyp"]

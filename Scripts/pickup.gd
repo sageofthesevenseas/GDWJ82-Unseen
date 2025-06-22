@@ -3,8 +3,7 @@ extends RigidBody2D
 
 enum Categories {BOMB, FLARE, STORY, CHEESE}
 @export var pickup_type: Categories = Categories.CHEESE
-@export_range (0, 9) var selected_story: int = 0
-
+@export_range(0, 9) var passed_in_story: int = 0
 
 @export var attraction_strength: float = 2500.0
 @export var player_center_offset= Vector2(0,100)
@@ -40,9 +39,13 @@ func pickup_assignment():
 	match  pickup_type:
 		Categories.BOMB:
 			player_throwing_system.increase_bombs(item_value_int)
+			player.pickup_sound()
 		Categories.FLARE:
 			player_throwing_system.increase_flares(item_value_int)
+			player.pickup_sound()
 		Categories.STORY:
-			GameController.instance.add_lore(selected_story)
+			GameController.instance.add_lore(passed_in_story)
+			player.pickup_sound()
 		Categories.CHEESE:
 			player.heal(health_value)
+			player.pickup_sound()
