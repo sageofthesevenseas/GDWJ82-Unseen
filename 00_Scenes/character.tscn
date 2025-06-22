@@ -5,17 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://b206ab03crtra" path="res://Player/player_visuals.tscn" id="3_vwvbh"]
 [ext_resource type="PackedScene" uid="uid://diaw6c2xtaibp" path="res://00_Scenes/dig_minigame.tscn" id="4_vwvbh"]
 [ext_resource type="PackedScene" uid="uid://bi4dpscy1x5qi" path="res://00_Scenes/throwing_system.tscn" id="5_spk8f"]
-[ext_resource type="Script" path="res://Scripts/player_ui.gd" id="6_5jv7e"]
+[ext_resource type="Script" uid="uid://ej32mq7giigx" path="res://Scripts/player_ui.gd" id="6_5jv7e"]
 [ext_resource type="Texture2D" uid="uid://dg28hw1fsl7rc" path="res://UI_Textures/Sun.png" id="7_igamm"]
 [ext_resource type="Texture2D" uid="uid://dx6xvtslc4mjc" path="res://UI_Textures/Heart outside.png" id="8_gcin8"]
 [ext_resource type="Texture2D" uid="uid://bovuktice4xm3" path="res://UI_Textures/Heart inside.png" id="9_lqwpu"]
 [ext_resource type="Texture2D" uid="uid://bmgb2yeo6ipqd" path="res://UI_Textures/Bomb.png" id="10_veate"]
 [ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="11_is46d"]
 [ext_resource type="Texture2D" uid="uid://dxyegb1ila2ch" path="res://UI_Textures/Torch.png" id="11_ya0x4"]
-[ext_resource type="AudioStream" uid="uid://tprxoyf42yfn" path="res://SFX/screech-01.ogg" id="13_is46d"]
+[ext_resource type="AudioStream" uid="uid://dc5ijsohjr7l5" path="res://SFX/take_damage.ogg" id="13_cpku8"]
 [ext_resource type="AudioStream" uid="uid://b44f7d6nwrcob" path="res://SFX/item_pickup.ogg" id="14_cpku8"]
 [ext_resource type="AudioStream" uid="uid://droev6ph8uajq" path="res://SFX/heartbeat.ogg" id="14_k4yda"]
-[ext_resource type="AudioStream" uid="uid://cgn0tsp8313r4" path="res://SFX/PLACEHOLDER Voicy_Medic Heal SFX.mp3" id="15_cpku8"]
+[ext_resource type="AudioStream" uid="uid://cq1lkmxk4cmko" path="res://SFX/heal_eating.wav" id="15_cpku8"]
 [ext_resource type="AudioStream" uid="uid://osa285nkqs23" path="res://SFX/PLACEHOLDER Eerierumble.wav" id="17_cpku8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7igj"]
@@ -154,11 +154,9 @@ text = "000"
 [node name="SFX" type="Node2D" parent="."]
 
 [node name="HurtSFX" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("13_is46d")
-volume_db = -20.0
-pitch_scale = 2.44
+stream = ExtResource("13_cpku8")
 max_polyphony = 3
-bus = &"SFX Wet"
+bus = &"SFX Dry"
 
 [node name="PickupSFX" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("14_cpku8")
@@ -173,6 +171,7 @@ bus = &"SFX Wet"
 
 [node name="HealSFX" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("15_cpku8")
+volume_db = 3.0
 bus = &"SFX Wet"
 
 [node name="HeartBeatSFX" type="AudioStreamPlayer2D" parent="SFX"]

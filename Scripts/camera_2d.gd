@@ -53,7 +53,6 @@ func set_shake(add_trauma = 0.5):
 	trauma = min(trauma + add_trauma, 1.0)
 
 func rough_shake():
-	#print("trying rough shake")
 	amount = pow(trauma, trauma_power)
 	rotation = max_roll * amount * randf_range(-0.3, 0.3)
 	offset.x = max_offset.x * amount * randf_range(-0.3, 0.3)

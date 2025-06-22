@@ -58,6 +58,21 @@ theme_override_fonts/font = ExtResource("2_oma37")
 theme_override_font_sizes/font_size = 41
 text = "Descend"
 
+[node name="Continue" type="Button" parent="Main"]
+visible = false
+layout_mode = 0
+offset_left = 704.0
+offset_top = 265.0
+offset_right = 1216.0
+offset_bottom = 393.0
+pivot_offset = Vector2(256, 0)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oma37")
+theme_override_font_sizes/font_size = 41
+text = "Continue"
+
 [node name="Settings" type="Button" parent="Main"]
 layout_mode = 0
 offset_left = 704.0
@@ -772,6 +787,7 @@ position = Vector2(960, 540)
 texture = ExtResource("9_icyyo")
 
 [connection signal="pressed" from="Main/GameStart" to="." method="_on_game_start_pressed"]
+[connection signal="pressed" from="Main/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Main/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Main/Journals" to="." method="_on_journals_pressed"]
 [connection signal="pressed" from="Main/Credits" to="." method="_on_credits_pressed"]

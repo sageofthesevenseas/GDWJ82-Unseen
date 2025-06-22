@@ -16,7 +16,7 @@ func _ready() -> void:
 	GuiNode.add_child(Main_Menu)
 	var MenuNode = get_node("GUI/UI_Handler")
 	MenuNode.connect("start_game", Callable(self, "_on_start_game"))
-
+	$FmodEventEmitter2D_Menu.play()
 	
 	# deeply evil code. just for debugging.
 	DebugMenuSingleton.story_logs_toggled.connect(func (toggled_on : bool) -> void: for i in lore_found.size(): lore_found[i] = toggled_on)
@@ -75,4 +75,28 @@ func spawn_player_and_switch_camera():
 	var camera = get_tree().get_first_node_in_group("camera")
 	camera.reparent(Player)
 	WorldNode.add_child(Player)
+	get_tree().get_first_node_in_group("player").connect("health_depleted", Callable(self, "_on_health_depleted"))
 	zoom_enable = true
+
+func _on_health_depleted():
+	get_tree().get_first_node_in_group("camera").reparent(get_node("/root/GameController"))
+	get_tree().get_first_node_in_group("camera").global_position = Vector2(0, 0)
+	for child in $World2D.get_children():
+		child.queue_free()
+	get_tree().paused = true
+	$GameOver.visible = true
+	zoom_enable = false
+	zoom_reset()
+	
+	pass
+
+func _on_return_pressed() -> void:
+	$FmodEventEmitter2D_Cave.stop()
+	$FmodEventEmitter2D_Menu.set_parameter("GameStart", 0)
+	$FmodEventEmitter2D_Menu.play()
+	$GameOver.visible = false
+	get_tree().paused = false
+	var MenuNode = get_node("GUI/UI_Handler")
+	MenuNode.visible = true
+
+	

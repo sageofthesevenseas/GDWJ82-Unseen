@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctxqtjrcc0d7"]
+[gd_scene load_steps=12 format=3 uid="uid://ctxqtjrcc0d7"]
 
 [ext_resource type="Script" uid="uid://m3v58b01t2vd" path="res://00_Scenes/GameController.gd" id="1_coj0j"]
 [ext_resource type="PackedScene" uid="uid://cniuy7xdthf14" path="res://00_Scenes/Debug Nodes/debug_quit_restart_key.tscn" id="1_xfl2n"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c33ca52imty1s" path="res://SFX/menu_accept-02.ogg" id="5_6d08n"]
 [ext_resource type="PackedScene" uid="uid://dclyhubdk31cs" path="res://00_Scenes/camera.tscn" id="6_8471c"]
 [ext_resource type="AudioStream" uid="uid://csbfghd7gtbth" path="res://SFX/flame-02.ogg" id="7_hlxf8"]
+[ext_resource type="FontFile" uid="uid://dmpjsdopx1lr4" path="res://Fonts/CELTG___.TTF" id="10_hv3wc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hlxf8"]
 light_mode = 1
@@ -54,15 +55,13 @@ offset_bottom = 40.0
 
 [node name="World2D" type="Node2D" parent="."]
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="." groups=["camera"]]
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://Music/Desktop/Master.strings.bank", "res://Music/Desktop/Master.bank", "res://Music/Desktop/Cave.bank", "res://Music/Desktop/Menu.bank"]
 
 [node name="FmodEventEmitter2D_Menu" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/MainMenu"
 event_guid = "{8a1ef185-3888-4b2d-be1b-dd1b9abbc42d}"
 attached = false
-autoplay = true
-auto_release = true
 volume = 0.5
 fmod_parameters/GameStart/id = 460050821763118337
 fmod_parameters/GameStart = 0
@@ -72,7 +71,6 @@ fmod_parameters/GameStart/variant_type = 2
 event_name = "event:/CaveAmbiance"
 event_guid = "{9aa36312-7e51-4e3b-b79c-5c56633ac0e7}"
 attached = false
-auto_release = true
 volume = 0.5
 fmod_parameters/GameplayType/id = -7955650638421249893
 fmod_parameters/GameplayType = "Exploration"
@@ -85,4 +83,50 @@ fmod_parameters/GameplayType/variant_type = 4
 one_shot = true
 ignore_time_scale = true
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+offset_left = -43.0
+offset_top = -26.0
+offset_right = 1963.0
+offset_bottom = 1120.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelGameOver" type="Label" parent="GameOver"]
+offset_left = 714.0
+offset_top = 263.0
+offset_right = 1238.0
+offset_bottom = 370.0
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_fonts/font = ExtResource("10_hv3wc")
+theme_override_font_sizes/font_size = 84
+text = "Game Over"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelJournals" type="Label" parent="GameOver"]
+offset_left = 607.0
+offset_top = 400.0
+offset_right = 1365.0
+offset_bottom = 432.0
+theme_override_fonts/font = ExtResource("10_hv3wc")
+theme_override_font_sizes/font_size = 24
+text = "Try again, or read some of the journals you have found."
+metadata/_edit_use_anchors_ = true
+
+[node name="Return" type="Button" parent="GameOver"]
+offset_left = 704.0
+offset_top = 556.0
+offset_right = 1216.0
+offset_bottom = 684.0
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.960784, 0.788235, 0.360784, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_hv3wc")
+theme_override_font_sizes/font_size = 41
+text = "Return"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOver/Return" to="." method="_on_return_pressed"]

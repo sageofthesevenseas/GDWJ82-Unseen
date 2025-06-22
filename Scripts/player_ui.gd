@@ -21,6 +21,6 @@ func _on_exiting_darkness():
 func _on_damage_taken():
 	var health = PlayerStats.instance.get_health()
 	$HeartOutside/HeartInside.scale = Vector2(health, health) / 100
-	#emit_signal("screenshake")
+	emit_signal("screenshake")
 	print(screenshake)
 	
