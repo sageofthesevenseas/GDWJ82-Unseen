@@ -51,6 +51,8 @@ var prvframe_in_darkness : bool = false
 var curframe_can_dig_chest : bool = false
 var curframe_can_open_chest : bool = false
 
+var force_to_add_next_frame : Vector2 = Vector2.ZERO
+
 signal dug_anywhere()
 signal dug_chest()
 
@@ -101,6 +103,8 @@ func _physics_process(delta : float) -> void:
 		velocity += acceleration * input_dir * delta
 	velocity -= velocity * friction * delta
 	velocity = velocity.limit_length(max_speed)
+	velocity += force_to_add_next_frame
+	force_to_add_next_frame = Vector2.ZERO
 	move_and_slide()
 	#endregion
 
@@ -244,6 +248,8 @@ func heal(amount: float) -> void:
 		heart_beat_looper.stop()
 		heart_beat_sfx.stop() # LZB NOTE 22-06-25 - maybe tween the volume down instead
 
+func push(dir : Vector2, force : float) -> void:
+	force_to_add_next_frame += dir * force
 
 func pickup_sound():
 	pickup_sfx.play()

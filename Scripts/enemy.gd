@@ -26,6 +26,7 @@ var attack_state : AttackState = AttackState.NOT_READY
 @export var swoop_attack_min_range : float = 400.0
 @export var swoop_attack_cooldown : float = 6.0
 @export var swoop_attack_damage : float = 5.0
+@export var swoop_attack_knockback : float = 1000.0
 
 @export var max_swoop_time : float = 1.2
 
@@ -288,6 +289,7 @@ func initiate_attack_target() -> void:
 
 func finish_attack_target() -> void:
 	(target as Character).take_damage(swoop_attack_damage)
+	(target as Character).push(velocity.normalized(), swoop_attack_knockback)
 	attack_state = AttackState.NOT_READY
 	movement_state = MovementState.FLYING
 	time_since_attack = 0.0
