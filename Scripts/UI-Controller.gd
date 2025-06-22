@@ -52,14 +52,24 @@ func _on_journals_pressed() -> void:
 	$Main.visible = false
 	$Journals.visible = true
 	
-func _on_fx_h_slider_value_changed(value: float) -> void:
+func _on_fx_h_slider_drag_ended(value_changed : bool) -> void:
+	if not value_changed:
+		return
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(&"SFX Master"), $Settings/FX_HSlider.value)
 	emit_signal("play_sound", "accept")
 
 func _on_sfx_toggle_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		GameController.instance.get_child(1).set_process(true)
-	else:
-		GameController.instance.get_child(1).set_process(false)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(&"SFX Master"), not toggled_on)
+
+func _on_mx_h_slider_drag_ended(value_changed: bool) -> void:
+	if not value_changed:
+		return
+	# doesn't work because fmod isn't funnelled into the music master bus.
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(&"Music Master"), $Settings/MX_HSlider.value)
+
+func _on_mx_toggle_toggled(toggled_on: bool) -> void:
+	# doesn't work because fmod isn't funnelled into the music master bus.
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(&"Music Master"), not toggled_on)
 
 var camera_zoom_before_pausemenu : Vector2
 func _unhandled_input(event: InputEvent) -> void:
@@ -120,6 +130,7 @@ func open_menu() -> void:
 	menu_open = true
 	get_tree().paused = true
 	print("menu opened")
+	GameController.instance.zoom_enable = false
 
 
 func close_menu() -> void:
@@ -133,7 +144,8 @@ func close_menu() -> void:
 	$Settings.visible = false
 	$Main/GameStart.visible = true
 	$Main/Continue.visible = false
-	get_tree().get_first_node_in_group("PlayerUI").visible = false
+	get_tree().get_first_node_in_group("PlayerUI").visible = true
 	menu_open = false
 	print("menu closed")
 	get_tree().paused = false
+	GameController.instance.zoom_enable = true

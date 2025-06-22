@@ -3,6 +3,7 @@ extends RigidBody2D
 
 enum Categories {BOMB, FLARE, STORY, CHEESE}
 @export var pickup_type: Categories = Categories.CHEESE
+@export var use_next_story : bool = true
 @export_range(0, 9) var passed_in_story: int = 0
 
 @export var attraction_strength: float = 2500.0
@@ -11,7 +12,7 @@ enum Categories {BOMB, FLARE, STORY, CHEESE}
 @export var health_value: float = 10.0
 
 var player_throwing_system: ThrowingSystem
-var player: CharacterBody2D
+var player: Character
 
 func _ready() -> void:
 	player_throwing_system = get_tree().get_first_node_in_group("throwingsystem")
@@ -44,7 +45,13 @@ func pickup_assignment():
 			player_throwing_system.increase_flares(item_value_int)
 			player.pickup_sound()
 		Categories.STORY:
+			if use_next_story:
+				passed_in_story = GameController.instance.lore_found.find(false)
+				# all stories already found
+				if passed_in_story == -1:
+					return
 			GameController.instance.add_lore(passed_in_story)
+			get_tree().get_first_node_in_group("PlayerUI").show_lore(passed_in_story)
 			player.pickup_sound()
 		Categories.CHEESE:
 			player.heal(health_value)
